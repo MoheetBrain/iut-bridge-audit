@@ -1,0 +1,722 @@
+=== PDF PAGE 1 ===
+ON THE FORMALIZA TION OF IUT: A PRELIMINAR Y
+PROGRESS REPOR T [JOINT WORK IN PROGRESS
+WITH Y. HOSHI, G. Y AMASHIT A, Y. Y ANG, ... ]
+Shinichi Mochizuki (RIMS, Kyoto University)
+April 2026
+https://www.kurims.kyoto-u.ac.jp/~motizuki/Formalization%20of%20IUT%20
+(2026-04%20version).pdf
+§ 1. Lean formalization (“LeanForm”) as a communication tool
+§ 2. First steps toward the LeanForm of IUT
+§ 3. Brief review of inter-universal Teichm¨ uller theory (IUT)
+§ 4. Skeletal Lean code for “3.11.5 = ⇒ 3.12”
+Typeset by A M S -T E X
+1
+
+=== PDF PAGE 2 ===
+2 SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+§ 1. Lean formalization (“LeanF orm”) as a communication tool
+· The signiﬁcance of LeanForm: veriﬁcation vs. communication :
+Classically, the signiﬁcance of LeanForm is typically regarded as
+lying in the veriﬁcation of the logical correctness of a mathema-
+tical theory. In the case of IUT, however, although this veriﬁca-
+tion aspect of LeanForm is welcome , in fact the logical structure
+of the theory is rather simple , so this verif. aspect of LeanForm
+is not a central focal point of interest from the point of view of
+researchers in IUT. Rather, in the case of IUT, the signiﬁcance
+of LeanForm lies in producing a precise record of the logical str.
+of IUT that is immune to false misinterpretations and hence
+can be used, in a pivotal way, to communicate this simplicity
+in a maximally eﬃcient/precise way to other mathematicians.
+· The key to overcoming formidable communication barriers lies
+in breaking out of the following
+(closely interrelated!) vicious cycles :
+“The logic of
+(supposedly diﬃcult
+portions of) IUT
+is in fact very simple
+and elementary .”
+⇆
+Accusations (without any
+mathematical proof!) :
+“Don’t insult me/my intel-
+ligence!” or “It’s entirely
+inconceivable that the abc
+inequality could follow
+from such simple logic!”
+⇑ ⇓
+“It’s impossible to become
+suﬃciently motivated to
+study [IUTchI-IV] seriously
+without conﬁdence that the
+theory is correct , e.g., by
+seeing a suﬀ’ly transparent
+synopsis of the argument!”
+⇆
+“In order to understand
+the logic of IUT in a
+genuine/rigorous way,
+it is necessary to study
+[IUTchI-IV] in detail
+(as many others have
+already done!).”
+LeanForm oﬀers (to my knowledge) the ﬁrst technology that ap-
+pears to have the technical capacity to allow us to break free of
+such vicious cycles , i.e., by providing conﬁdence via a precise and
+logically veriﬁed record of the logical structure of IUT that can
+be processed by a machine in a fraction of a second in a way that
+is entirely immune to nonmathematical accusations (such as
+those discussed above) or the human mental fatigue/stress that
+occurs when trying to comprehend an unfamiliar mathematical
+theory (cf. [RptIUT], § 3.2, (LnIm)).
+
+=== PDF PAGE 3 ===
+FORMALIZATION OF IUT: PRELIMINARY PROGRESS REPORT 3
+· Unfortunately, the issue of conﬁdence in correctness has a very
+human, nonmathematical social/political dimension:
+That is to say, no one wants to invest substantial resources of
+time and eﬀort in a “ shinking ship ”. Ultimately, social/political
+power may be understood as a reﬂection of perceived capacity to
+reliably deliver/ensure long-term mathematical accountability for
+the mathematical correctness of results/assertions. Thus, to my
+knowledge, LeanForm appears to be the ﬁrst technology that has
+the technical capacity do this in a fashion that is intrinsically in-
+dependent of/ unshackled from human social/political structures .
+· From a purely technical point of view, the essence of LeanForm
+— at least in the case of IUT — lies in undertaking a fundamental
+reorganization of the theory into
+suitable purely formal/combinatorial blackboxes
+— cf. [RptIUT], § 3.2, (MthFm), (BBxFm), (BBxDD); § 4 below
+for technical details of this reorganization in the case of the ﬁnal
+portion of IUT, which has received the most public attention .
+· The Lean code to be discussed in § 4 below arose precisely from
+the challenges presented by the task of communicating IUT to
+mathematicians (arithmetic geometers) who are thoroughly fa-
+miliar with Lean, but who had only a relatively superﬁcial know-
+ledge of IUT (cf. [RptIUT], (LnCom)). This situation was remar-
+kable in that it had the eﬀect of
+faithfully recreating in a “laboratory” the vicious cycles
+discussed above, but in a generally friendly/productive nontoxic
+environment, while still preserving the essential dynamics and
+overall sense of utter hopelessness and frustration that are char-
+acteristic of such vicious cycles. The remarkable conclusion to
+the story is that the Lean code discussed in § 4 had the power to
+overcome these vicious cycles and, in particular, to
+successfully and eﬃciently record, in a nonnegatable fashion,
+the logic of the ﬁnal portion of IUT.
+We note, however, that this Lean code is still in a somewhat
+skeletal/bare bones form, i.e., its success as a communication tool
+depends on the level of understanding of the mathematicians
+involved (i.e., on the receiving end) of the basic set-up of IUT
+and of the main issues involved . In particular, it will still take
+some more time before suﬃciently many details can be added to
+“ ﬂesh out ” the Lean code to a degree that it is suitable for release
+to the general public.
+
+=== PDF PAGE 4 ===
+4 SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+§ 2. First steps toward the LeanF orm of IUT
+· The main strategy for the LeanForm of IUT :
+Stage 1 : [IUTchIII] Theorem 3.11 = ⇒ Corollary 3.12
+(since this has received the most public attention! )
+Stage 2 : Proof of [IUTchIII] Theorem 3.11 modulo [IUTchI-II]
+Stage 3 : [IUTchI-II] modulo earlier results (1995 - 2015) on
+anabelian geometry/Frobenioids/theta functions , etc.
+Stage 4 : Earlier results (1995 - 2015): [ p GC], [GeoAn], [AbsAnb],
+[NCBel], [AbSc], [SemiAn], [QuCnf], [CbGC], [Conﬁg],
+[FrdI-II], [EtTh], [GenEll], [NodNon], [AbsTopI-III]
+Stage 5 : Numerical aspects ([IUTchIV], [ExpEst])
+(We are currently in the early “ skeletal ” portion of Stage 1.)
+Here, the current main focus is on Stages 1 and 2 since Stage 1
+has received the most public attention , but in fact is not so diﬃ-
+cult and ultimately (when understood properly!) just shows that
+what one is really interested in is Stage 2. Moreover, Stages 1
+and 2 most likely require the most human intervention , i.e., ulti-
+mately (most probably!) in terms of having my research group
+at RIMS actually write the skeletal Lean code , as in the case dis-
+cussed in detail in § 4. By contrast, the mathematical content of
+Stages 4 and 5, as well as (to a lesser extent) Stage 3, are under-
+stood by a much larger class of mathematicians and have never
+been a source of confusion/debate, hence should be regarded as
+long-term goals that seem much more amenable to LeanForm by
+research groups not so closely connected to my research group
+at RIMS, e.g., (perhaps) via machine-based autoformalization .
+· The theory of species/mutations :
+As was mentioned to me by one Lean expert, it is of fundamental
+importance to begin any LeanForm project with a formalization
+of the basic deﬁnitions underlying the theory to be formalized.
+In the case of IUT, this amounts to formalizing the notion of a
+“ functorial algorithm ” (i.e., in more technical language, the no-
+tion of a “mutation”), which, in essence, amounts to the theory
+of species/mutations . This notion of a functorial algorithm is of
+fundamental importance not only in IUT, but also in anabelian
+geometry (of the sort that is relevant to IUT), as well as, in a
+certain sense, in pure mathematics as a whole.
+species : a type of mathematical object (such as a group, scheme,
+diagram of schemes, etc.) deﬁned (in a fashion that is
+independent of any particular model ZFC set theory!)
+by some set-theoretic formula
+mutation : a construction of one species from another that is de-
+ﬁned (in a fashion that is independent of any particu-
+lar ZFC-model!) by some set-theoretic formula
+
+=== PDF PAGE 5 ===
+FORMALIZATION OF IUT: PRELIMINARY PROGRESS REPORT 5
+· Thus,
+a species determines a category of species-objects , while
+a mutation determines a functor between associated categories
+of species-objects.
+Put another way, one may regard species/mutations as a sort of
+natural reﬁnement of the classical notions of categories/functors .
+Alternatively, and more precisely, if one is willing to go up “one
+step” in the hierarchy of universes under consideration, then one
+may regard species/mutations as internal categories/functors in
+the syntactic category associated to ZFC regarded as a ﬁrst order
+theory . In particular, it follows that the LeanForm of species/mu-
+tations becomes essentially immediate once one has a LeanForm
+of ZFC as a ﬁrst order theory . In the fall of 2025, I discovered,
+on the one hand, that such a LeanForm had in fact already re-
+cently been achieved by a young Japanese researcher named Sho-
+go Saito, but, on the other hand, (was quite surprised to learn!)
+that such a LeanForm does not yet exist in MathLib (the stan-
+dard library for refereed Lean code). Here, we observe that the
+technical signiﬁcance of formalizing ZFC as a ﬁrst order theory
+lies in the fact that this is necessary in order to be able to work
+with “ some indeterminate set-theoretic formula φ ” (i.e., as op-
+posed to speciﬁc set-theoretic formulas “a ∈ A ”, “ B ⊆ C ∩ D ”,
+etc., which are “natively” available in Lean).
+· Ultimately, as a result of various consultations with Lean experts,
+I reached the conclusion that in fact the formalization of species/
+mutations in the abstract using some sort of LeanForm of ZFC as
+a ﬁrst order theory (though ultimately theoretically desirable at
+some possibly much later stage in the project!) was most likely
+not necessary for the LeanForm of (at least Stages 1 ∼ 2 of) IUT.
+Instead, suitable use of standard Lean commands for formalizing
+types of mathematical objects and relationships between various
+respective “ component pieces of data ” in the input/output of a
+functor seems to be suﬃcient for formalizing the logic of IUT
+(at least in the case of Stages 1 ∼ 2 — cf. the Lean code discussed
+below in § 4).
+· Nevertheless, the nonexistence of a LeanForm in MathLib of ZFC
+as a ﬁrst order theory made a strong impression on me, especial-
+ly considering how fundamental ZFC as a ﬁrst order theory is
+throughout pure mathematics. Indeed, this situation struck me
+as a remarkable example of the power of Lean as a communication
+tool (cf. § 1), namely, by faithfully communicating/reﬂecting the
+nonexistence — i.e., in the mathematics that has already been
+formalized in MathLib — of the algorithmic construction point
+of view , which is so fundamental to the logic of IUT , as well as
+related anabelian geometry , and which seems to have been one
+substantial obstacle to the study of IUT for many mathemati-
+cians who are not familiar with this point of view.
+
+=== PDF PAGE 6 ===
+6 SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+§ 3. Brief review of inter-universal T eichm¨ uller theory (IUT)
+· A more detailed exposition of IUT may be found in
+· the survey texts [Alien], [EssLgc] (cf. also [IUTchI-IV],
+[IUAni1], [IUAni2]), well as in
+· the videos/slides available at the following URLs:
+(cf. also my series of DWANGO LECTURES on IUT
+— URLs available to professional mathematicians at request!):
+https://www.kurims.kyoto-u.ac.jp/~motizuki/ExpHoriz
+IUT21/WS3/ExpHorizIUT21-InvitationIUT-notes.html
+https://www.kurims.kyoto-u.ac.jp/~motizuki/ExpHoriz
+IUT21/WS4/ExpHorizIUT21-IUTSummit-notes.html
+· Let R be an integral domain (e.g., Z ⊆ Q ) equipped with the
+action of a group G , ( Z ∋ ) N ≥ 2. For simplicity, assume that
+N = 1+ · · · +1 ̸= 0 ∈ R ; R has no nontrivial N -th roots of unity .
+Write R⊿ ⊆ R for the multiplicative monoid R \ { 0 } . Then
+let us observe that the N -th power map on R⊿ determines an
+isomorphism of multiplicative monoids equipped with actions
+by G
+G ↷ R⊿ ∼
+→ (R⊿ ) N ( ⊆ R⊿ ) ↶ G
+that does not arise from a ring homomorphism , i.e., it is clearly
+not compatible with addition (cf. our assumption on N !).
+· Let †R , ‡R be two distinct copies of the integral domain R ,
+equipped with respective actions by two distinct copies †G , ‡G
+of the group G . We shall use similar notation for objects with
+labels “ † ”, “ ‡ ” to the previously introduced notation. Then
+one may use the isomorphism of multiplicative monoids arising
+from the N -th power map discussed above to glue together
+†G ↷ †R ⊇ (†R⊿ ) N ∼
+← ‡R⊿ ⊆ ‡R ↶ ‡G
+... where the notion of a gluing may be understood
+· as a quotient set via identiﬁcations, or (preferably!)
+· as an abstract diagram (cf. graphs of groups/anabelioids!)
+the ring †R to the ring ‡R along the multiplicative monoids
+(†R⊿ ) N ∼
+← ‡R⊿ (with group actions). This gluing is compatible
+with the resp. actions of †G , ‡G relative to the isomorphism
+†G
+∼
+→ ‡G given by forgetting the labels “ † ”, “ ‡ ”, but, since the
+N -th power map is not compatible with addition (!), this isom.
+†G
+∼
+→ ‡G may be regarded either as an isom. of (“ coric ”, i.e.,
+invariant w.r.t. the N -th power map) abstract groups (cf. the
+notion of “ inter-universality ”, as discussed in [EssLgc], § 3.2,
+§ 3.8!) or as an isomorphism of groups equipped with actions on
+certain multiplicative monoids , but not as an isomorphism of
+(“ Galois ” — cf. the inner automorphism indeterminacies of
+SGA1!) groups equipped with actions on rings/ﬁelds .
+
+=== PDF PAGE 7 ===
+FORMALIZATION OF IUT: PRELIMINARY PROGRESS REPORT 7
+· The problem of describing (certain portions of the) ring structure
+of †R in terms of the ring structure of ‡R — in a fashion that
+is compatible with the gluing and via a single algorithm that may
+be applied to the common (cf. logical AND ∧ ! ) glued data to re-
+construct simultaneously (certain portions of) the ring structures
+of both †R and ‡R , up to suitable relatively mild indeterminacies
+(cf. the theory of crystals !) — seems (at ﬁrst glance/in general)
+to be hopelessly intractable (cf. the case of Z )!
+... where we note that here, considering portions is
+important because we want to decompose the above
+diagram up into pieces so that we can consider
+symmetry properties involving these pieces!
+One well-known elementary example: when N = p , working
+modulo p (cf. indeterminacies , analogy with crystals !), where
+there is a common ring structure that is compatible with the
+p -th power map !
+Another important example: Faltings’ proof of invariance of
+height of elliptic curves under isogeny , under the assumption
+of the existence of a global multiplicative subspace (cf. [ClsIUT],
+§ 1; [EssLgc], Example 3.2.1)!
+... This is precisely what is achieved in IUT by means of the
+multiradial representation for the Θ -pilot via
+· anabelian geometry (cf. the abstract groups †G , ‡G !);
+· the p -adic/complex logarithm, Galois eval. of theta functions ;
+· Kummer theory , to relate Frob.-/´ etale-like versions of objects.
+· Main point :
+The multiplicative monoid and abstract group structures (but not
+the ring structures!) are common (cf. “ logical AND ∧ ! ”) to † , ‡
+and can be used as the input data for an algorithm to construct
+the multiradial representation for the Θ -pilot , i.e., a common
+container for the distinct ring strs. (i.e., “ arith. hol. strs. ”) † , ‡
+†R ⊆
+(
+multirad. rep. for the Θ-pilot
+)
+⊇ ‡R
+· When R = Z (or, in fact, more generally, the ring of integers
+“ O F ” of a number ﬁeld F — cf. the multiplicative norm map
+N F/ Q : F → Q ), one may consider the “ height/log-volume ”
+log( |x | ) ∈ R
+for 0 ̸= x ∈ Z . Then the N -th power map of (i), (ii) corresponds,
+after passing to heights , to multiplying real numbers by N ; the
+multiradial algorithm corresponds to saying that the height is
+unaﬀected (up to a mild error term!) by multiplication by N ,
+hence that the height is bounded !
+
+=== PDF PAGE 8 ===
+8
+SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+· In the case of IUT, the multirad. rep. for the Θ-pilot is
+obtained by
+means of a sort of “ analytic continuation”
+along a certain “inﬁnite H ”
+of
+the log-theta-lattice (cf.
+the discussion surrounding [EssLgc], §3.3,
+(InfH))
+... where
+· the Θ-link b
+etween distinct ring strs. “ •” corresponds
+to the N-th power map discussed in the present §3, while
+· the log-link lo
+cally at nonarchimedean valuations looks
+like the p-adic logarithm between distinct ring strs. “ •”;
+· the descent operations rev
+olve around the establishment
+of certain coricity/symmetry prop
+erties.
+..
+. .
+.
+.
+↑
+log
+↑
+
+log
+...
+Θ
+− → •
+Θ
+− → •
+Θ
+− → ...
+↑
+log
+↑log
+...
+Θ
+− → •
+Θ
+− → •
+Θ
+− → ...
+↑
+log
+↑log
+...
+Θ
+− → •
+Θ
+− → •
+Θ
+− → ...
+↑
+log
+↑log
+..
+. .
+.
+.
+⊇
+.
+.
+. .
+.
+.
+↑
+log
+↑
+
+log
+• •
+↑
+log
+↑log
+•
+Θ
+− → •
+↑
+log
+↑log
+• •
+↑
+log
+↑log
+..
+. .
+.
+.
+(0, 0)
+(Stp1)
+⇝ (0, ◦)
+(Stp2)
+⇝ (0, ◦)⊢ (Stp3)
+⇝ (0, 0)⊢ (Stp3)
+⇐ ⇒ (1, 0)⊢
+— which involves a gradual introduction via “ descent
+”
+operations of
+“fuzziﬁcations”,
+corresponding to indeterminacies (cf.
+the discussion
+of [EssLgc], §3.10).
+· At a more technical level, the multirad. rep. for the Θ-pilot is
+obtained by
+constructing invariants with
+respects to the log-link,
+which has the eﬀect
+of juggling addition and multiplication —
+i.e., juggling the dilated and
+non-dilate
+d p
+ortions of the ring strs. —
+and, as a result, eﬀects a sort of
+“miraculous rotation”
+(the discussion of [EssLgc], §3.11)
+•
+↑log
+•
+Θ
+− → •
+of the
+· “mysterious log-volume-dilating Θ-link gap”
+(between the
+domain/codomain of the Θ-link) onto the
+· “harmless log-volume-preserving log-link gap”
+(between the
+domain/codomain of the log-link) !
+“ “  ↷ ↷  
+” ”  
+
+=== PDF PAGE 9 ===
+FORMALIZATION OF IUT: PRELIMINARY PROGRESS REPORT 9
+§ 4. Skeletal Lean code for “3.11.5 = ⇒ 3.12”
+· The signiﬁcance of the multiradial representation lies in the fact
+that it expresses — by means of the technique of descent (cf. the
+ﬁnal portion of § 3) — the Θ -pilot (i.e., in essence, the image of
+the N -th power map) in the domain of the Θ-link (i.e., in essence,
+the N -th power map) in terms of purely group-theoretic data —
+called the etHT (i.e., “´ etale Hodge theater”) — that is vertically
+coric (i.e., invariant with respect to the log -link) and ( unlike the
+Θ-link/ N -th power map x ↦→ x N !!) is symmetric
+etHT in the domain
+of the Θ-link ⇆
+etHT in the codomain
+of the Θ-link
+radial
+algorithm ↘ ↙ radial
+algorithm
+´ etale-like portion
+“G v ” of BPS
+with respect to the operation of switching the domain/codomain
+of the Θ-link, while holding the gluing data , called the BPS (i.e.,
+“ basic prime-strip ”, that is to say, in the original terminology of
+[IUTchI-IV], “ F ⊩▶ × µ -prime-strip”), of the Θ-link ﬁxed .
+
+=== PDF PAGE 10 ===
+10 SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+· The theory surrounding this operation of descent is summarized
+in the ﬁrst two commuting triangles (i.e., “
+↷
+△ ”) of the follow-
+ing diagram of species (i.e., boxes) and mutations (i.e., arrows):
+BPS mlt. algo.
+− →
+mlt.
+rep.
+hull+det
+− →
+mlt. rep.
++hull+det
+↘
+↷
+↗
+↷
+(dsc) ↖
+↷
+(HDD) ↗
+↷
+↖
+(HDD)
+◦ (SHE)
+BPS+
+0-col-
+umn
+forget
+− →
+BPS+
+etHT
+(SHE)
+← −
+q -plt.+
+etHT
+That is to say:
+· the ﬁrst
+↷
+△ expresses the multiradial algorithm — whose input
+is a BPS, and whose output is the multiradial representation —
+as an algorithm whose input may be thought of as a BPS glued
+(via a “full poly-isomorphism”, i.e., an arbitrary indeterminate
+isomorphism) to the underlying BPS of the Θ-pilot (at (0 , 0))
+arising from the 0-column of the log-theta-lattice, where we re-
+call that the multiradial representation is constructed as a sort
+of quotient of the 0 -column , by regarding it up to suitable inde-
+terminacies (Ind1,2,3) ;
+· the second
+↷
+△ expresses — via the “ descent-arrow (dsc) ” —
+the descent aspect of the multiradial representation, i.e., that
+if one works up to the indeterminacies (Ind1,2,3), then one may
+regard the multiradial representation as an object that is con-
+structed from weaker data — namely, a BPS whose “´ etale-like”
+(i.e., group-theoretic) portion is glued (via a “full poly-isomor-
+phism”, i.e., an arbitrary indeterminate isomorphism) to the
+corresponding portion of the (vertically coric!) etHT associated
+to the 0-column of the log-theta-lattice;
+· the third
+↷
+△ simply expresses the deﬁnition of the composite
+arrow (HDD) := (hull+det) ◦ (dsc) obtained by composing the
+descent-arrow (dsc) (cf. the second
+↷
+△ !) with a certain elemen-
+tary operation “hull+det” (obtained essentially by taking the
+determinant of the module over a ring generated by a certain
+topological module that appears in the multiradial representa-
+tion);
+· the fourth
+↷
+△ expresses the composite (HDD) ◦ (SHE) that is
+obtained by restricting the arrow (HDD) (cf. the third
+↷
+△ !) to
+the special case where the input data “BPS+etHT” of (HDD)
+is taken — by applying the “ SHE-arrow (SHE) ”, where “SHE”
+stands for simultaneous holomorphic expressibility — to be the
+data given by the q -pilot constructed from the etHT (i.e., in
+essence, the data in the domain of the N -th power map).
+
+=== PDF PAGE 11 ===
+FORMALIZATION OF IUT: PRELIMINARY PROGRESS REPORT 11
+· The skeletal Lean code that was referred to in the discussion of
+§ 1 concerns the the fourth
+↷
+△ of the preceding diagram, i.e., the
+simultaneous comparison relative to a single ring structure (cf.
+the discussion of a “ common container ” in § 3) of
+· the Θ -pilot — which corresponds to (HDD), or, alternatively,
+to the image of the N -th power map — and
+· the q -pilot — which corresponds to (SHE), or, alternatively, to
+to the domain of the N -th power map.
+We chose to concentrate on this aspect of the theory ﬁrst since
+this aspect of the theory — i.e., “Stage 1: [IUTchIII] Theorem
+3.11 = ⇒ Corollary 3.12” (cf. the discussion at the beginning
+of § 2) — has received the most public attention . Indeed, this as-
+pect corresponds to the essential nontrivial content of the theory,
+i.e., that the height of the elliptic curve under consideration is
+equal to N times the height of the elliptic curve (where N is a
+large positive number), up to a small discrepancy (arising from
+(Ind1,2,3) + hull), thus implying a bound on the height.
+· In fact, the fourth
+↷
+△ corresponds to the ﬁnal portion of a certain
+reorganization/decomposition of the implication “3.11 = ⇒ 3.12”
+into several portions, which correspond to the four
+↷
+△ discussed
+above. We shall refer to this ﬁnal portion as “3.11.5 = ⇒ 3.12”
+(although in fact “3.11.5 (=3.11+Rmk. 3.9.5)” never appears in
+[IUTchI-IV]!). At a more technical level, this reorgan./decomp.
+is obtained by “ moving ” the “hull+det” in 3.12 to “3.11.5”, thus
+making it possible to concentrate, in “3.11.5 = ⇒ 3.12”, on the
+crucial simultaneous comparison aspect of 3.12 discussed above.
+This aspect also involves the input prime-strip link (IPL) proper-
+ty, which refers to the relationship between the data contained
+in the input BPS of the multiradial algorithm and the data con-
+tained in the output of the multiradial algorithm. In fact, IPL
+also plays an important role in the implication “3.11 = ⇒ 3.11.5”,
+i.e., which corresponds to the ﬁrst/second/third
+↷
+△ . The central
+aspect of the (slightly nontrivial, by comparison to the ﬁrst
+↷
+△ )
+second/third
+↷
+△ lies in the algorithmic parallel transport (APT)
+property, which concerns the way in which “ gluings up to inde-
+terminacies ” (such as (Ind1,2,3) + hull) are expressed. Our re-
+search group at RIMS is currently making substantial progress
+with regard to writing skeletal Lean code for the second/third
+↷
+△
+that formalizes the APT aspect of the theory.
+Thm. 3.11:
+(dsc)
+APT
++ IPL
+= ⇒
+1st/2nd/
+3rd
+↷
+△
+“Thm. 3.11.5”:
+(hull+det) ◦ (dsc)
+SHE
++ IPL
+= ⇒
+4th
+↷
+△
+Cor. 3.12:
+comparison
+of q -, Θ-plts.
+
+=== PDF PAGE 12 ===
+12 SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+References
+[p GC] S. Mochizuki, The Local Pro- p Anabelian Geometry of Curves, Invent.
+Math. 138 (1999), pp. 319-423.
+[GeoAn] S. Mochizuki, The Geometry of Anabelioids, Publ. Res. Inst. Math. Sci.
+40 (2004), pp. 819-881.
+[AbsAnb] S. Mochizuki, The Absolute Anabelian Geometry of Hyperbolic Curves,
+Galois Theory and Modular Forms , Kluwer Academic Publishers (2004),
+pp. 77-122.
+[NCBel] S. Mochizuki, Noncritical Belyi Maps, Math. J. Okayama Univ. 46
+(2004), pp. 105-113.
+[AbSc] S. Mochizuki, Galois Sections in Absolute Anabelian Geometry, Nagoya
+Math. J. 179 (2005), pp. 17-45.
+[SemiAn] S. Mochizuki, Semi-graphs of Anabelioids, Publ. Res. Inst. Math. Sci.
+42 (2006), pp. 221-322.
+[QuCnf] S. Mochizuki, Conformal and quasiconformal categorical representation
+of hyperbolic Riemann surfaces, Hiroshima Math. J. 36 (2006), pp. 405-
+441.
+[CbGC] S. Mochizuki, A combinatorial version of the Grothendieck conjecture,
+Tohoku Math. J. 59 (2007), pp. 455-479.
+[Conﬁg] S. Mochizuki, A. Tamagawa, The algebraic and anabelian geometry of
+conﬁguration spaces, Hokkaido Math. J. 37 (2008), pp. 75-131.
+[FrdI] S. Mochizuki, The Geometry of Frobenioids I: The General Theory,
+Kyushu J. Math. 62 (2008), pp. 293-400.
+[FrdII] S. Mochizuki, The Geometry of Frobenioids II: Poly-Frobenioids, Kyushu
+J. Math. 62 (2008), pp. 401-460.
+[EtTh] S. Mochizuki, The ´Etale Theta Function and its Frobenioid-theoretic
+Manifestations, Publ. Res. Inst. Math. Sci. 45 (2009), pp. 227-349.
+[GenEll] S. Mochizuki, Arithmetic Elliptic Curves in General Position, Math. J.
+Okayama Univ. 52 (2010), pp. 1-28.
+[NodNon] Y. Hoshi, S. Mochizuki, On the Combinatorial Anabelian Geometry of
+Nodally Nondegenerate Outer Representations, Hiroshima Math. J. 41
+(2011), pp. 275-342.
+[AbsTopI] S. Mochizuki, Topics in Absolute Anabelian Geometry I: Generalities,
+J. Math. Sci. Univ. Tokyo 19 (2012), pp. 139-242.
+
+=== PDF PAGE 13 ===
+FORMALIZATION OF IUT: PRELIMINARY PROGRESS REPORT 13
+[AbsTopII] S. Mochizuki, Topics in Absolute Anabelian Geometry II: Decomposi-
+tion Groups and Endomorphisms, J. Math. Sci. Univ. Tokyo 20 (2013),
+pp. 171-269.
+[AbsTopIII] S. Mochizuki, Topics in Absolute Anabelian Geometry III: Global Re-
+construction Algorithms, J. Math. Sci. Univ. Tokyo 22 (2015), pp. 939-
+1156.
+[IUAni1] E. Farcot, I. Fesenko, S. Mochizuki, The Multiradial Representation of
+Inter-universal Teichm¨ uller Theory , animation available at the follow-
+ing URL:
+https://www.kurims.kyoto-u.ac.jp/~motizuki/IUT-
+animation-Thm-A-black.wmv
+[IUAni2] E. Farcot, I. Fesenko, S. Mochizuki, Computation of the log-volume of
+the q -pilot via the multiradial representation , animation available at the
+following URL:
+https://www.kurims.kyoto-u.ac.jp/~motizuki/2020-
+01%20Computation%20of%20q-pilot%20(animation).mp4
+[IUTchI] S. Mochizuki, Inter-universal Teichm¨ uller Theory I: Construction of
+Hodge Theaters, Publ. Res. Inst. Math. Sci. 57 (2021), pp. 3-207.
+[IUTchII] S. Mochizuki, Inter-universal Teichm¨ uller Theory II: Hodge-Arakelov-
+theoretic Evaluation, Publ. Res. Inst. Math. Sci. 57 (2021), pp. 209-401.
+[IUTchIII] S. Mochizuki, Inter-universal Teichm¨ uller Theory III: Canonical Split-
+tings of the Log-theta-lattice, Publ. Res. Inst. Math. Sci. 57 (2021),
+pp. 403-626.
+[IUTchIV] S. Mochizuki, Inter-universal Teichm¨ uller Theory IV: Log-volume Com-
+putations and Set-theoretic Foundations, Publ. Res. Inst. Math. Sci. 57
+(2021), pp. 627-723.
+[ExpEst] S. Mochizuki, I. Fesenko, Y. Hoshi, A. Minamide, W. Porowski, Explicit
+Estimates in Inter-universal Teichm¨ uller Theory, Kodai Math. J. 45
+(2022), pp. 175-236.
+[Alien] S. Mochizuki, The Mathematics of Mutually Alien Copies: from Gauss-
+ian Integrals to Inter-universal Teichm¨ uller Theory, Inter-universal Te-
+ichmuller Theory Summit 2016 , RIMS K¯ oky¯ uroku Bessatsu B84 , Res.
+Inst. Math. Sci. (RIMS), Kyoto (2021), pp. 23-192; available at the
+following URL:
+https://www.kurims.kyoto-u.ac.jp/~motizuki/Alien%20Copies,%20
+Gaussians,%20and%20Inter-universal%20Teichmuller%20Theory.pdf
+[EssLgc] S. Mochizuki, On the essential logical structure of inter-universal Teich-
+m¨ uller theory in terms of logical AND “ ∧ ”/logical OR “ ∨ ” relations:
+
+=== PDF PAGE 14 ===
+14 SHINICHI MOCHIZUKI (RIMS, KYOTO UNIVERSITY)
+Report on the occasion of the publication of the four main papers on
+inter-universal Teichm¨ uller theory , preprint available at the following
+URL:
+https://www.kurims.kyoto-u.ac.jp/~motizuki/Essential%20Logical
+%20Structure%20of%20Inter-universal%20Teichmuller%20Theory.pdf
+[RptIUT] S. Mochizuki, Report on the current situation surrounding inter-universal
+Teichm¨ uller theory (IUT) , October 2025, available at the following
+URL:
+https://www.kurims.kyoto-u.ac.jp/~motizuki/IUT-report-2025-10.pdf

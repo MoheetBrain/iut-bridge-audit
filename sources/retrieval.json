@@ -1,0 +1,44 @@
+[
+  {
+    "file": "IUT_III.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20III.pdf",
+    "bytes": 1307865,
+    "sha256": "9a7ee3c77b1c7717210c0613eb39b6844649d0040dc3d9e1be7d544f8f91a0b9"
+  },
+  {
+    "file": "Essential_Logical_Structure.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Essential%20Logical%20Structure%20of%20Inter-universal%20Teichmuller%20Theory.pdf",
+    "bytes": 1021306,
+    "sha256": "c0e63b629aa174aa065e93d08defe3e5d0837c8778aab527383798baf8ca6e32"
+  },
+  {
+    "file": "Formalization_2026_04.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Formalization%20of%20IUT%20%282026-04%29.pdf",
+    "bytes": 347480,
+    "sha256": "9a32b2485b5875574d7470256d3414b88ee6ac3ed8a39a82ea7332e25072ee9c"
+  },
+  {
+    "file": "Scholze_Stix.pdf",
+    "url": "https://www.math.uni-bonn.de/people/scholze/WhyABCisStillaConjecture.pdf",
+    "bytes": 527012,
+    "sha256": "4ec276246a2a92d2e211a0dae5afd073b5eae7e2b37e9bbabe3cb82c7e0b34a0"
+  },
+  {
+    "file": "LANA_report_202607.tex",
+    "url": "https://raw.githubusercontent.com/katobungen/LANA_report_202607/main/LANA_report_202607.tex",
+    "bytes": 189256,
+    "sha256": "13c60b0669644b0e5dea72adfdb55b1dad367ff91f5b11fadf75e48ac0e66f51"
+  },
+  {
+    "file": "LANA_report_202607.pdf",
+    "url": "https://raw.githubusercontent.com/katobungen/LANA_report_202607/pdf/LANA_report_202607.pdf",
+    "bytes": 640461,
+    "sha256": "aa53093aa8d69dbce5f8fb4f541069a418650260dee1ef532917aa8db89606c7"
+  },
+  {
+    "file": "Comments_Scholze_Stix.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Cmt2018-05.pdf",
+    "bytes": 95893,
+    "sha256": "d71c38308322bdb403b11c6f450f8f67797600c5c9ac7c28505c8d1c43c1f53b"
+  }
+]

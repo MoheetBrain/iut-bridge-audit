@@ -1,0 +1,56 @@
+name = "iut"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["Iut", "Iut4Sec1", "Challenge", "Solution"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+warn.sorry = false # `sorry` is load-bearing in Comparator/Challenge.lean
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.0"
+
+# Tate q-parameters and the classical theta function (taxis #13/#37); consumed by
+# the initial Θ-data and Corollary 3.12 variant strand (taxis #33).
+[[require]]
+name = "tate-curves-theta"
+git = "https://github.com/lana-agents/tate-curves-theta"
+rev = "ca6c2279d3cea0690cdb01328e727118d5485d68"
+
+# Arithmetic elliptic curves in general position (taxis #2): the height formalism and
+# Theorem 2.1, consumed by the ABC target statement and the implication strand
+# (taxis #1449, #1451, #1455).
+[[require]]
+name = "genl"
+git = "https://github.com/LANA-Project/genl"
+rev = "6e9a6543b46a2a02fd7fe7ec8ab203d878f32859"
+
+# Corollary 3.12 variant (IUT III) and the ABC target statement.
+[[lean_lib]]
+name = "Iut"
+
+# Section 1 of IUT IV, "Log-volume Estimates".
+[[lean_lib]]
+name = "Iut4Sec1"
+
+# Comparator challenge/solution roots for the ten-target Section 1 suite.
+# They declare matching names and must remain in separate environments.
+[[lean_lib]]
+name = "Challenge"
+srcDir = "Comparator"
+
+[[lean_lib]]
+name = "Solution"
+srcDir = "Comparator"
+
+# Local replacement for checkdecls that omits the duplicate comparator roots.
+[[lean_exe]]
+name = "checkdecls"
+root = "CheckDecls"
+supportInterpreter = true
+weakLinkArgs = ["-lLake"]

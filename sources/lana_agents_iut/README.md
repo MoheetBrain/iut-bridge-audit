@@ -1,0 +1,660 @@
+# iut
+
+Inter-universal Teichmüller theory: the ABC/IUT trunk.
+
+This repository holds the IUT-specific material — the parts of the programme that are
+particular to Mochizuki's papers rather than independently established mathematics.
+It does **not** verify IUT.
+
+It carries two strands:
+
+* **IUT4 §1 — "Log-volume Estimates."** A Lean 4 formalization of the self-contained
+  mathematics in Section 1 of *Inter-universal Teichmüller Theory IV*. Merged here from
+  `LANA-Project/iut4-sec1` with its history.
+* **The Corollary 3.12 variant.** A project-owner-specified variant of IUT III,
+  Corollary 3.12: initial Θ-data (IUT I, Definition 3.1), processions and tensor-packets
+  of log-shells, the large volume container, its log-volume, and the holomorphic hull.
+* **The implication to ABC.** The proof that the Corollary 3.12 variant implies the ABC
+  conjecture, via IUT IV §1 (Theorem 1.10, the `Iut4Sec1` strand) and §2 (Corollaries
+  2.2 and 2.3, using [`LANA-Project/genl`](https://github.com/LANA-Project/genl)).
+  Tracked as taxis [#1449](https://taxis.lana.merten.dev/issues/1449); the main theorems
+  are `Iut.cor312Variant_implies_abc`, `Iut.cor312Variant_implies_abc_concrete`,
+  `Iut.cor312Variant_implies_abc_curves` and `Iut.Anabelian.cor312Variant_implies_abc_model`.
+* **The anabelian model.** A concrete model of the anabelian interface behind the
+  Θ-data (`Iut/Anabelian/`): orbicurves as elliptic curves with level data, cusps as
+  torsion quotients, the bad-place predicates from minimal Weierstrass models, and a
+  proof that the anabelian part of initial Θ-data exists (IUT I, Definition 3.1(d)–(f);
+  taxis [#276](https://taxis.lana.merten.dev/issues/276),
+  [#279](https://taxis.lana.merten.dev/issues/279),
+  [#1469](https://taxis.lana.merten.dev/issues/1469)). Fundamental groups remain
+  explicit residual interfaces.
+
+Mochizuki's *Arithmetic Elliptic Curves in General Position* is **not** developed here;
+it lives in [`LANA-Project/genl`](https://github.com/LANA-Project/genl).
+
+## Honesty boundary
+
+Claims imported from IUT I–III, and mathematical infrastructure unavailable in Mathlib,
+are kept behind explicit interfaces or certificates rather than introduced as axioms or
+hidden inside helper structures. See the [implementation specification and honesty
+boundary](Plans/Iut4Sec1Spec.md#2-honesty-boundary).
+
+The certificate interfaces are discharged in separate repositories, so that this one
+states its results conditionally:
+
+* [`padic-log-volume`](https://github.com/lana-agents/padic-log-volume) — `p`-adic
+  log/exp and normalized Haar log-volume.
+* [`elliptic-reduction`](https://github.com/lana-agents/elliptic-reduction) — the
+  `ReductionCertificate` for Proposition 1.8(v)–(vii).
+* [`prime-counting`](https://github.com/lana-agents/prime-counting) — the
+  `PrimeCountingCertificate` for Proposition 1.6 with the printed factor `4/3`. The `Iut`
+  library no longer needs it: its `PrimeCountingBound` (factor `3/2`) is proved from
+  Mathlib's Chebyshev bound (`Iut.primeCountingBoundExplicit`).
+
+**Interface corrections.** Two fields of the delegated local theory `Iut.LocalTheory K`
+were restricted when the construction showed the unrestricted statements to be false for
+every construction: `componentVol_prime_preimage` (the scaling law `μ^log(p⁻¹U) = μ^log(U)
++ log p`) is stated for admissible regions of packets all of whose places lie over `p`
+(it fails for `U = ∅`; see the remark in `Iut/Concrete/LocalConstruct/Volume.lean`), and
+`prop14_iii` (IUT IV, Proposition 1.4(iii)) carries the same hypothesis that every place
+of the packet lies over `p`: for a packet with a place not over `p` — the zero ring in
+the construction — the log-volume is identically `0` while the bound is negative for
+`ord_p(x)` large (`componentVol_eq_zero_of_not_isOver`). Both fields are only ever
+applied to tuples of the fiber over `p` (`LocalTheory.tuple_isOver`), so the restriction
+does not weaken the conditional results.
+
+The Corollary 3.12 strand is a **specification / formal-statement project only**. Proving
+the resulting proposition is explicitly out of scope. The formalisation must not silently
+identify the variant with Mochizuki's published Corollary 3.12, and must not encode any
+disputed implication as a proved theorem. Every assumption and specification boundary
+should be visible in the types. The intended statement will differ in some respects from
+the formulation printed in the IUT papers; the precise data, hypotheses, definitions and
+conclusion are supplied per-issue by the project owner.
+
+**Anabelian components of the Θ-data.** The conditions of IUT I, Definition 3.1(d)–(e)
+that involve fundamental groups and cores — that `C̲_K` has `K`-core `C_K`, and the
+profinite étale and tempered fundamental groups of the orbicurves with their comparison
+maps and the open immersions attached to the covering diagrams — are fields of
+`Iut.AnabelianGeometry` / `Iut.TemperedGeometry` and of the Θ-data record, exactly as
+printed. The anabelian model instantiates them through the interfaces
+`Iut.Anabelian.EtalePi1Theory` (étale `π₁` of the model orbicurves, open immersions for
+covers, the core relation with its two stability properties, and [CanLift],
+Proposition 2.7: the finite set `excJ` of exceptional `j`-invariants and the field
+`hasCore_oncePunctured`, that the once-punctured elliptic curve has the core `X/{±1}`
+unless `j` is exceptional) and `Iut.Anabelian.TemperedPi1Theory` (tempered `π₁` with its
+comparison map), which are **universally quantified parameters** of the main theorems:
+nothing is constructed or assumed about them beyond the listed fields, and the theorems
+hold for every such theory, in particular for the actual fundamental groups. The core
+condition on the curve of a point enters as the finiteness of the exceptional set of points
+whose once-punctured curve has no core (`Iut.Tripod.CoreFinitenessHyp`), which is
+**proved** for the model geometry (`Iut.Tripod.coreFiniteness`,
+[`Core.lean`](Iut/Tripod/Core.lean)): `j(E_λ) = 256(λ² − λ + 1)³/(λ²(λ − 1)²)`, so the
+exceptional points are roots of finitely many nonzero polynomials. In this way the variant
+hypothesis `h312` is quantified over exactly the class of data of the printed corollary —
+it is never strengthened.
+
+**Reduction predicates and the cyclic-subgroup bound.** `HasGoodReductionAt`,
+`HasMultiplicativeReductionAt`, `HasSplitMultiplicativeReductionAt` and
+`HasStableReductionAt` (`Iut/Cor312/ThetaData/GlobalField.lean`) are stated up to a global
+change of variables: Mathlib's reduction classes refer to the given Weierstrass model (they
+assert its minimality), whereas IUT I, Definition 3.1(a) is a property of the curve. With
+the model-bound form, stable reduction everywhere is false for the Legendre models of the
+tripod points. In the curve-bound form it is **proved** for the curves `E_λ/F_λ` of the
+tripod points (`Iut.Tripod.stable_reduction`, [`Iut/Tripod/StableOdd.lean`](Iut/Tripod/StableOdd.lean),
+[`StableTwo.lean`](Iut/Tripod/StableTwo.lean)): at the places of odd residue characteristic
+from the Legendre model `y² = x(x−1)(x−λ)` (good if `λ`, `λ−1` are units, multiplicative
+otherwise) and its twist `E_{1/λ}` by `√λ ∈ F_λ` when `λ` is not integral; at the places over
+`2` by an elementary form of Raynaud's criterion for the rational `3`-torsion: on an integral
+model a point of order `3` has integral coordinates and integral tangent slope (its
+`x`-coordinate is a root of `ψ₃ = 3x⁴ + …`, with `3` a unit), the integral change of
+variables moving it to the origin with horizontal tangent gives the normal form
+`y² + Axy + By = x³` (`Δ = B³(A³−27B)`, `c₄ = A(A³−24B)`), which is good or multiplicative
+unless `A`, `B` are both non-units, and then the second independent point of order `3`,
+whose `x`-coordinate is a nonzero integral root of `3x³ + A²x² + 3ABx + 3B²`, forces
+`B ∈ 𝔪³` by a dominant-term argument, so that the model can be rescaled by a uniformizer.
+Likewise the cyclic-subgroup bound of [GenEll] Lemma 3.5 (`cyclic_bound` in
+`Corollary22Inputs`, `CurveInputs`) is stated for primes `ℓ ≥ 7` under (P2), as it is
+used; quantified over all primes it fails for the curves of the points, whose 3- and
+5-torsion is rational. Its local half, [GenEll] Lemma 3.2(i) — under (P2) an `ℓ`-cyclic
+subgroup is the graph line `μ_ℓ` of the Tate uniformisation — is proved at the multiplicative
+places of odd residue characteristic (`Iut/Tripod/CyclicLocal.lean`), and the bound is
+derived (`Iut.Tripod.cyclicBound_of`, `Iut/Tripod/CyclicBound.lean`) from the residual
+`Prop` `Iut.Tripod.CyclicGraphBoundHyp`: the same bound for subgroups that are the graph
+line at the odd places, whose content is Lemma 3.2(i) at the places over `2` (the Tate
+uniformisation of `tate-curves-theta` assumes `‖2‖ = 1`), Lemma 3.2(ii) for the quotient
+`E/μ_ℓ`, the Faltings-height inequality for the isogeny `E → E/μ_ℓ`, and Proposition 3.4 —
+Faltings heights, isogenies and quotient curves have no counterpart in Mathlib.
+
+## Current scope (IUT4 §1)
+
+The library proves the real-arithmetic error bound used in Proposition 1.4(iii), the
+finite weighted-average identity of Proposition 1.7, the elementary range identities
+(E1)/(E2), positive finite packet-weight normalization, and the finite-support
+arithmetic-divisor foundations of Definition 1.9(i), including normalized global-degree
+invariance under pullback.
+
+It also proves a related raw-degree local-ratio invariance theorem. It does **not** claim
+Definition 1.9(ii)'s displayed globally normalized quotient: under the implemented
+pullback, that numerator is invariant while its local-degree denominator scales by the
+extension degree. The blueprint labels this boundary explicitly.
+
+Later Section 1 results remain planned, partial, or conditional as recorded in the
+specification. In particular, IUT I–III inputs and missing elliptic or reduction
+infrastructure must appear as ordinary theorem arguments when used. (The exact
+prime-counting coefficient `4/3` of Proposition 1.6 is unavailable in the pinned Mathlib
+release; the `Iut` library uses the factor `3/2`, which Mathlib provides and which suffices,
+see below.)
+
+## Corollary 3.12 variant strand (`Iut`)
+
+The `Iut` library states the project-owner-specified variant of IUT III,
+Corollary 3.12 (taxis [#33](https://taxis.lana.merten.dev/issues/33)):
+`Iut.Corollary312Variant` in [`Iut/Cor312/Statement.lean`](Iut/Cor312/Statement.lean),
+a `Prop`-valued definition `−|log(q)| ≤ −|log(Θ)|` that is deliberately left without
+proof and without axiom. The stack beneath it:
+
+* **Initial Θ-data** (IUT I, Definition 3.1; taxis #38–#42):
+  [`Iut/Cor312/ThetaData/`](Iut/Cor312/ThetaData). Reduction predicates, the field of
+  moduli `ℚ(j)`, torsion rationality, the mod-`ℓ` representation pinned to the genuine
+  Galois action on `E(F̄)[ℓ]`, and the `ℓ`-torsion field `K` are real Mathlib content;
+  orbicurves, fundamental groups and tempered groups enter through the explicit
+  interfaces `Iut.AnabelianGeometry` / `Iut.TemperedGeometry` (seams for taxis #7, #10,
+  #11, #13; discharge tracked in #276, #279). Bad-place Tate `q`-parameters come from
+  [`tate-curves-theta`](https://github.com/lana-agents/tate-curves-theta) (taxis #37).
+* **The large volume container, log-volume, and holomorphic hull** (taxis #43–#45):
+  [`Iut/Cor312/Container.lean`](Iut/Cor312/Container.lean),
+  [`LogVolume.lean`](Iut/Cor312/LogVolume.lean),
+  [`HolomorphicHull.lean`](Iut/Cor312/HolomorphicHull.lean) and neighbours. Interface
+  amendments made for the concrete instantiation: packet summands are commutative rings
+  ([`Iut/Implication/Theorem110.lean`]he tensor products of local fields are products of fields), integral structures are
+  sets (the archimedean one is the unit ball), the packet-volume combination law is
+  stated for nonempty components, and a hull system carries the class of hull regions
+  among which its hull is least (all `a·O` at a prime; the real radial scalings `t·B_I`
+  at `∞`, where a least region among arbitrary units need not exist).
+* **LHS/RHS** (taxis #34/#35): `−|log(q)|` from the bad-place `q`-orders with the
+  `(1/2ℓ)` normalization recorded in IUT IV, and the procession-normalized log-volume of
+  the holomorphic hull of the theta-pilot region.
+
+### Concrete instantiation of the inputs (`Iut/Concrete/`)
+
+Every input of the variant except the anabelian interfaces is now given a concrete
+implementation, with the standard mathematics it needs isolated in explicit structures
+whose fields are the target statements of the sibling projects:
+
+* [`LocalTheory.lean`](Iut/Concrete/LocalTheory.lean) — `Iut.LocalTheory K`: the
+  local-field theory of the tensor packets `⊗_j K_{v_j}` of a number field (integral
+  structures, log-shells, normalized Haar log-volume, least hull regions, the
+  indeterminacy automorphisms of IUT IV Proposition 1.2, and Propositions 1.4(iii),(iv),
+  1.5(iii),(iv)). Ramification indices, residue degrees, weights, `ord_p` and the
+  different exponents are defined from Mathlib. Delegated to
+  [`padic-log-volume`](https://github.com/lana-agents/padic-log-volume) (taxis #4, #278).
+* [`LocalConstruct/`](Iut/Concrete/LocalConstruct) — the **construction** of
+  `Iut.LocalTheory K` (`Theory.lean`, `concreteLocalTheory`): the packets as
+  `PiTensorProduct`s of the completions over `ℚ_p`/`ℝ` with their norm topology
+  (`Packet.lean`), the order `R_I = ⊗ 𝓞_{v_j}` (`Integral.lean`) and the maximal order
+  `(R_I)^∼` as the integral closure of `ℤ_p` — bounded because the packet is reduced
+  (formally unramified over `ℚ_p`) and embeds in the product of its residue fields
+  (`MaximalOrder.lean`), the projective unit ball `B_I` at `∞` (`Archimedean.lean`), the
+  normalized Haar log-volume with its scaling laws (`Haar.lean`, `Volume.lean`), the
+  admissible class (`Admissible.lean`), the indeterminacy automorphisms `⊗ σ_j` — finitely
+  many, continuous, preserving `(R_I)^∼` (`Indeterminacy.lean`, `ThetaAdmissible.lean`) —
+  the `p`-adic logarithm and log-shells of a local field (`PadicLog.lean`), the log-shell
+  of a packet — the `(R_I)^∼`-module generated by their tensor product, containing
+  `(R_I)^∼` — with the automorphism invariance of IUT IV Proposition 1.2 (`LogShell.lean`),
+  the archimedean log-shell `π^{|I|}·B_I` with Proposition 1.5 (`ArchLogShell.lean`), and
+  the arithmetic of the number field — places over `p`, `∑ e_v f_v = [K : ℚ]`, the
+  different (`Arithmetic.lean`), and the least hull regions at `∞` — the least real
+  radial scaling `t·B_I` containing an admissible region, `t = sup ‖·‖_π`
+  (`Admissible.lean`), and at the primes — least among all `a·(R_I)^∼`, computed
+  componentwise in the residue fields of the packet with their spectral norms
+  (`ResidueField.lean`, `Hull.lean`) — and IUT IV Proposition 1.4(iii), with the hull region
+  `p^{⌊ord_p x⌋}·(R_I)^∼` (`Prop14.lean`). No propositional input remains:
+  `Iut.LocalConstruct.concreteLocalTheory K : LocalTheory K` is a closed term.
+* [`Container.lean`](Iut/Concrete/Container.lean) — the container, log-volume data
+  (weights `[K_v : ℚ_p]/[K : ℚ]` summing to `1`) and hull system (least among all hull
+  regions `a·(R_I)^∼` at a prime, among the real radial scalings `t·B_I` at `∞`), all
+  proved from `LocalTheory`.
+* [`ThetaRegion.lean`](Iut/Concrete/ThetaRegion.lean) — `Iut.ThetaLocalData` (the
+  `2ℓ`-th roots of the Tate parameters at the bad places of `K`; delegated to
+  `tate-curves-theta`), the **concrete theta-pilot region**: the union over the
+  indeterminacy automorphisms of the images of `q_{v_j}^{j²}·(R_I)^∼` (IUT IV, Step (v)),
+  the concrete `q`-pilot data (`Iut.QPilotInputs`: finiteness of the bad locus, residue
+  degrees positive), and `Iut.concreteVariantData`, the assembled bundle.
+* [`Invariants.lean`](Iut/Concrete/Invariants.lean) — the Theorem 1.10 invariants of the
+  tower `F_mod ⊆ F_tpd ⊆ F ⊆ K` defined from Mathlib: the tripodal field
+  `F_tpd = ℚ(j, E[2])`, the normalized different degree `log N(𝔡_L)/[L : ℚ]`, the
+  conductor degree, the distinguished primes and `log(d^K_p)`; the tower facts (R4),
+  Steps (ii), (iii) form the `Prop`-structure `Iut.TowerArithmetic`, derived in
+  `Iut/Tower/` from the residual local facts `Iut.TowerLocalFacts` (see below).
+* [`Iut/Tower/`](Iut/Tower/) — **the tower arithmetic of Theorem 1.10**
+  (`Iut.towerArithmetic_of_localFacts`, [`Main.lean`](Iut/Tower/Main.lean)): (R4),
+  Steps (ii), (iii) for the tower `F_mod ⊆ F_tpd ⊆ F ⊆ K = F(E[ℓ])` from the global
+  theory of Dedekind domains — the orders of ideals at places and `log N(I) = ∑_v ord_v(I)
+  f_v log p_v` ([`Basic.lean`](Iut/Tower/Basic.lean)), `∑_p log(d^K_p) = log(d_K)`
+  ([`LogDK.lean`](Iut/Tower/LogDK.lean)), `[K : F] ≤ |GL₂(𝔽_ℓ)|` by the Galois
+  correspondence and (R4) ([`RamIdx.lean`](Iut/Tower/RamIdx.lean)), the tower formula
+  `log(d_K) = log(d_{F_tpd}) + log N(𝔇_{K/F_tpd})/[K : ℚ]` and Step (ii)
+  ([`Different.lean`](Iut/Tower/Different.lean)), the uniformity of ramification in Galois
+  extensions, `e_u − 1 ≤ ord_u(𝔡)` and Step (iii) ([`StepIII.lean`](Iut/Tower/StepIII.lean))
+  — together with the three **residual local facts** of `Iut.TowerLocalFacts`
+  ([`Residual.lean`](Iut/Tower/Residual.lean); IUT IV, Proposition 1.8): for a place `v`
+  of `K` over `u` of `F_tpd`, the wild ramification bound `v_p(e(v/u)) ≤ c_p` with
+  `c_p = 12, 2, 1` at `p = 2, 3, 5`, `1` at `p = ℓ` and `0` otherwise (the tameness of `K/F`
+  away from `ℓ` and of `F/F_tpd` away from `2·3·5`, with `e(v/w) ∣ [K : F] ∣ |GL₂(𝔽_ℓ)|`,
+  `e(w/u) ∣ [F : F_tpd] ∣ 2¹²·3²·5`); Néron–Ogg–Shafarevich (`e(v/u) = 1` for
+  `p ∉ {2,3,5,ℓ}`, `u` not bad); and `e(v/u) ≤ 30ℓ` for `p ∉ {2,3,5,ℓ}`. **The different
+  bound of Proposition 1.3**, `ord_v(𝔇_{K/F_tpd}) + 1 ≤ e(v/u) + e_v·c_p`, is a theorem
+  (`Iut.TowerLocalFacts.ordAt_different_le`,
+  [`DifferentBound.lean`](Iut/Tower/DifferentBound.lean)): it is **Serre's bound**
+  `ord_v(𝔇_{K/k}) ≤ e(v/u) − 1 + e_v·v_p(e(v/u))` (*Local Fields* III §6, Remark after
+  Prop. 13; `Iut.ordAt_differentIdeal_add_one_le`), proved for arbitrary extensions of
+  Dedekind domains with finite residue fields (`Iut.Serre.not_pow_dvd_differentIdeal`,
+  [`SerreBound.lean`](Iut/Tower/SerreBound.lean)): by Mathlib's trace criterion it suffices
+  to find `x ∈ J^{κ+1}` (`𝔭B = 𝔓^e J`, `κ = e_u v_p(e)`) with `Tr(x) ∉ 𝔭^{κ+1}`; after
+  localizing at `𝔭` the trace modulo `𝔭^{κ+1}` is the trace of
+  `B/𝔓^{e(κ+1)} × B/J^{κ+1}` over `A/𝔭^{κ+1}`, and `B/𝔓^{e(κ+1)}` is free of rank `e` over
+  a Hensel lift `R' ≅ A/𝔭^{κ+1}[X]/(g)` of the residue extension (by Nakayama and a count),
+  so its trace is `e·Tr_{R'/R}` with `Tr_{R'/R}` surjective
+  ([`SerreCore.lean`](Iut/Tower/SerreCore.lean), [`QuotientBasis.lean`](Iut/Tower/QuotientBasis.lean)).
+  For the curves of the tripod the wild ramification bound follows from the tameness
+  of `K/F_λ` away from `ℓ` (`Iut.Tripod.TameTorsionHyp`), since
+  `e(v/w) ∣ [K : F_λ] ∣ |GL₂(𝔽_ℓ)|` and `e(w/u) ∣ [F_λ : ℚ(λ)] ∣ 2¹²·3²·5` are theorems
+  (`Iut.Tripod.padicValNat_relRamIdx_le_of_tame`,
+  [`WildRamIdx.lean`](Iut/Tripod/WildRamIdx.lean)). **The tameness away from `2·ℓ`,
+  Néron–Ogg–Shafarevich and the bound `e(v/u) ≤ 30ℓ` are theorems for the tripod**
+  ([`TowerFacts.lean`](Iut/Tripod/TowerFacts.lean)): for a place of odd residue
+  characteristic `p` the Legendre model `y² = x(x − 1)(x − λ)` (or that of `1 − λ`, `1/λ`) has
+  good or multiplicative reduction, the kernel of reduction has no prime-to-`p` torsion (the
+  `n`-division polynomial has degree `(n² − 1)/2` in `x` with leading coefficient `n`,
+  [`ReductionKernel.lean`](Iut/Tower/ReductionKernel.lean)), and reduction is injective on the
+  prime-to-`p` torsion of the points with nonsingular reduction; hence the inertia group
+  (`e(v/u) = |I_v|`, Mathlib's `Ideal.card_inertia_eq_ramificationIdxIn`,
+  [`Inertia.lean`](Iut/Tower/Inertia.lean)) fixes the prime-to-`p` torsion at a good place
+  ([`TorsionRigid.lean`](Iut/Tower/TorsionRigid.lean), `Iut.relRamIdx_eq_one_of_torsion`;
+  `Iut.Tripod.relRamIdx_eq_one_of_not_bad`, [`Unramified.lean`](Iut/Tripod/Unramified.lean),
+  with the rigidity of the square roots `√−1, √λ, √(1 − λ)` of units) and acts unipotently on
+  it at a multiplicative place (it moves a point of the node by a point with nonsingular
+  reduction, [`MultiplicativeKernel.lean`](Iut/Tower/MultiplicativeKernel.lean);
+  [`InertiaUnipotent.lean`](Iut/Tripod/InertiaUnipotent.lean)), so that `I_v(K/F_λ)` is an
+  `ℓ`-subgroup of a group of order dividing `|GL₂(𝔽_ℓ)|`, of order `≤ ℓ`
+  ([`BadRamIdx.lean`](Iut/Tripod/BadRamIdx.lean), `Iut.Tripod.not_dvd_relRamIdx_torsionField`,
+  `Iut.Tripod.relRamIdx_torsionField_le`), and `I_w(F_λ/ℚ(λ))` has an index-`≤ 2` subgroup
+  (fixing `√λ`, `√(1 − λ)`) acting unipotently on the `3`- and `5`-torsion, of order `≤ 15`
+  ([`TpdInertia.lean`](Iut/Tripod/TpdInertia.lean), with the mod-`3` and mod-`5`
+  representations of `Gal(F_λ/ℚ(λ))`, [`TpdTorsionRep.lean`](Iut/Tripod/TpdTorsionRep.lean)),
+  giving `e(v/u) = e(w/u)·e(v/w) ≤ 30·ℓ` (`Iut.Tripod.relRamIdx_le_thirty_mul`). **The
+  tameness of `K/F_λ` at the places over `2`** (`2 ∤ e(v/w)` for `v ∣ 2`,
+  `Iut.Tripod.tameTwoHyp`, [`TameTwo.lean`](Iut/Tripod/TameTwo.lean)), where the reduction
+  theory of the Legendre model is unavailable (`v(2) < 1`), is a theorem as well: `E_λ` has a
+  good or multiplicative `w`-integral model there (the stable reduction from the rational
+  `3`-torsion, [`StableTwo.lean`](Iut/Tripod/StableTwo.lean)); an element `σ` of order `2` of
+  the inertia group `I_v` would act on `E(K)[ℓ]` as an involution, so some nonzero
+  `Q ∈ E(K)[ℓ]` has `σ Q = −Q`, i.e. `σ x = x`, `σ y = −y − a₁x − a₃`; the tangent slope `λ`
+  at `Q` satisfies `σ λ = −λ − a₁`, which forces `v(λ) > 1` (at a multiplicative model `a₁` is
+  a unit and `v(σ λ − λ) = v(2λ + a₁) = 1` would contradict the inertia condition; at a good
+  model `2y + a₁x + a₃ = y − σ y` is not a unit, so `3x² + 2a₂x + a₄ − a₁y` is, by the
+  nonsingularity of the reduced curve over the residue field), whence `x(2Q)` is non-integral
+  and `2Q` is a nonzero `ℓ`-torsion point of the kernel of reduction — impossible, since for an
+  arbitrary integral model the kernel of reduction has no odd prime-to-`p` torsion
+  (`Iut.IntegralTorsion.nsmul_ne_zero_of_one_lt`,
+  [`IntegralTorsion.lean`](Iut/Tower/IntegralTorsion.lean): the division polynomials only
+  depend on the `b`-invariants, which are unchanged by completing the square `y ↦ y − (a₁x +
+  a₃)/2`); hence `σ` fixes `E(K)[ℓ]` and `σ = 1` by faithfulness
+  ([`InertiaInvolution.lean`](Iut/Tower/InertiaInvolution.lean),
+  `Iut.InertiaInvolution.map_eq_self`), so `|I_v| = e(v/w)` is odd. Hence `TowerLocalHyp` is a
+  theorem (`Iut.Tripod.towerLocalHyp`). The fourth local input,
+  `e(u/u₀) ≤ 2` for `F_tpd/F_mod` at `u₀ ∈ V_mod^bad` (`Iut.RelRamIdxModLeTwo`; the Tate
+  uniformization of the `2`-torsion), is a **theorem for the curves of the tripod**
+  (`Iut.Tripod.relRamIdx_tpd_le_two`, [`TpdRamIdx.lean`](Iut/Tripod/TpdRamIdx.lean)): at a
+  place where `j` is non-integral one of `λ, 1/λ, 1 − λ` has positive valuation, only two
+  of the six roots of the sextic are congruent to it modulo the place, and the inertia
+  group of `ℚ(λ)/ℚ(j)`, of order `e(u/u₀)` (Mathlib's
+  `Ideal.card_inertia_eq_ramificationIdxIn`), acts freely on the roots. The general theorem
+  also takes `F_tpd/F_mod` Galois with `[F_tpd : F_mod] ≤ 6`,
+  `[F : ℚ] ≤ 552960·[F_tpd : ℚ]`, the finiteness of the bad places and the description of
+  the bad residue characteristics — all theorems for the curves of the tripod.
+* [`Existence.lean`](Iut/Concrete/Existence.lean) — **initial Θ-data from an elliptic
+  curve**: `Iut.EllipticCurveData.thetaData` builds IUT I, Definition 3.1 data for
+  `(E/F, ℓ)` with `V_mod^bad` the places of `F_mod` not over `2ℓ` with multiplicative
+  reduction, from `CurveArithmetic` (Prop 1.8 and places of `F/F_mod`), `TateInputs`,
+  `ModEllRepData ℓ` and the anabelian existence `Iut.AnabelianExistence`; the local height
+  data of the curve; `Iut.CurveInputs` (the inputs of Corollary 2.2 in terms of the curves
+  of the points), from which `ConcreteThetaDataExistence` is *proved*.
+
+## Implication strand (`Iut/Implication`, `Iut/Concrete`)
+
+The proof that the Corollary 3.12 variant implies ABC, along IUT IV
+(taxis [#1449](https://taxis.lana.merten.dev/issues/1449)). Main theorems, all
+sorry-free with standard axioms only:
+
+* `Iut.Theorem110Invariants.theorem110`
+  ([`Iut/Implication/Theorem110.lean`](Iut/Implication/Theorem110.lean)) — IUT IV,
+  Theorem 1.10, `(1/6)·log(q) ≤ (1 + 20·d_mod/ℓ)·(log d_{F_tpd} + log f_{F_tpd}) +
+  20·(e*_mod·ℓ + η_prm)`, from the variant, the local estimates of Steps (iv)–(vii), the
+  arithmetic certificate of Steps (ii)–(iii), and the prime-counting bound of
+  Proposition 1.6 (`Iut.PrimeCountingBound`, with the factor `3/2` in place of the printed
+  `4/3`; the constant tracking absorbs the difference, and the printed conclusion is
+  unchanged). The procession average (E1), (E2) and the constant tracking of Step (viii)
+  are proved.
+* `Iut.LocalHeightData.exists_prime_selection`
+  ([`PrimeSelection.lean`](Iut/Implication/PrimeSelection.lean)) — Proposition 2.1(ii)
+  and the choice of the prime `ℓ` with (P1)–(P3), from Chebyshev bounds.
+* `Iut.Corollary22Inputs.c2` ([`Corollary22.lean`](Iut/Implication/Corollary22.lean)) —
+  Corollary 2.2(ii),(iii): the inequality (C2) with `ε_E ≤ 1` outside a finite set,
+  including the arguments for (P4), (P5) at large height.
+* `Iut.cor312Variant_implies_abc` ([`Corollary23.lean`](Iut/Implication/Corollary23.lean))
+  — Corollary 2.3 and ABC, via genl's Theorem 2.1 (ii) ⇒ (i).
+* `Iut.cor312Variant_implies_abc_concrete` ([`Iut/Concrete/Main.lean`](Iut/Concrete/Main.lean))
+  — the same with the variant assumed only for the concrete data bundles, and the local
+  estimates of Theorem 1.10 *derived* for the concrete theta-pilot region
+  ([`LocalEstimate.lean`](Iut/Concrete/LocalEstimate.lean): Propositions 1.4/1.5, the
+  weighted average of Proposition 1.7, and (R4)).
+* `Iut.cor312Variant_implies_abc_curves` ([`Iut/Concrete/Existence.lean`](Iut/Concrete/Existence.lean))
+  — the same with the existence of initial Θ-data *proved* from the curves of the points
+  and the standard providers; the only IUT-theoretic hypothesis left is
+  `Iut.AnabelianExistence`.
+
+The ABC target is `Iut.ABC T := T.StatementI` ([`Iut/Abc/Target.lean`](Iut/Abc/Target.lean)),
+[GenEll] Theorem 2.1(i) for a height formalism `T` of
+[`LANA-Project/genl`](https://github.com/LANA-Project/genl); the concrete height theory is
+taxis #1452.
+
+Remaining explicit inputs of the main theorem `Iut.cor312Variant_implies_abc_curves`,
+each a structure whose fields are precise target statements (see the taxis issues linked
+from #1449):
+
+| Input | Content | Status |
+| --- | --- | --- |
+| `Iut.LocalTheory K` | tensor packets, log-shells, Haar log-volume, hulls, Props 1.4/1.5 | **constructed and proved** (`Iut.LocalConstruct.concreteLocalTheory K`, no residual input; [#1462](https://taxis.lana.merten.dev/issues/1462)) |
+| `Iut.ThetaLocalData D LT` | `2ℓ`-th roots of the Tate parameters, `q`-degree base change | **constructed** (`Iut.thetaLocalData`), from the rationality of the ℓ- and 2-torsion |
+| `Iut.TowerArithmetic D LT TL` | (R4), Steps (ii), (iii) of Theorem 1.10 for the tower `F_mod ⊆ F_tpd ⊆ F ⊆ K` | **proved for the tripod** (`Iut.Tripod.towerArithmetic_of_towerLocalHyp`) from the local facts `Iut.TowerLocalFacts` (three local fields: the wild ramification bound `v_p(e(v/u)) ≤ c_p`, Néron–Ogg–Shafarevich, the ramification bound away from `2·3·5·ℓ`), **theorems for the tripod** (`Iut.Tripod.towerLocalHyp`, [`TowerFacts.lean`](Iut/Tripod/TowerFacts.lean), including the tameness of `F_λ(E_λ[ℓ])/F_λ` at the places over `2`, `Iut.Tripod.tameTwoHyp`, [`TameTwo.lean`](Iut/Tripod/TameTwo.lean); the different bound of Prop 1.3 is the theorem `Iut.TowerLocalFacts.ordAt_different_le` (Serre's bound, [#1463](https://taxis.lana.merten.dev/issues/1463)) and the ramification bound `e(u/u₀) ≤ 2` of `ℚ(λ)/ℚ(j)` at the bad places is the theorem `Iut.Tripod.relRamIdx_tpd_le_two`), elliptic-reduction, [#1493](https://taxis.lana.merten.dev/issues/1493) |
+| `Iut.ChebyshevBound` | Proposition 2.1(ii) | **proved** (`Iut.chebyshevBoundExplicit`, threshold `10^12`, from Mathlib's Chebyshev bounds) |
+| `Iut.PrimeCountingBound` | Proposition 1.6 (factor `3/2`) | **proved** (`Iut.primeCountingBoundExplicit`, from Mathlib's `θ(x) ≤ (log 4)·x` and the Abel-summation identity for `π`; `Iut.PrimeCountingHyp` is the theorem `Iut.primeCountingHyp_holds`), [#1466](https://taxis.lana.merten.dev/issues/1466) |
+| `Iut.CurveInputs T K d` | the curves `E_x/F_x` of the points with [GenEll] §§1, 3 inputs | **constructed for the tripod** (`Iut.Tripod.curveInputs`); residual `Prop` `CurveFactsProp` (one field, the cyclic-subgroup bound in its residual form), see below |
+| `Genl.HeightTheory.ProofPackage` | [GenEll] Theorem 2.1 (ii) ⇒ (i) | not needed for the tripod target `StatementII` |
+| `EllipticCurveData.CurveArithmetic` | Prop 1.8 | six of ten fields **proved** (`CurveArithmetic.ofCore`); for the tripod curves `√−1 ∈ F`, stable reduction (`Iut/Tripod/StableOdd.lean`, `StableTwo.lean`), `E[6]` rational and `F/F_mod` Galois of degree prime to `ℓ` (`Iut/Tripod/Galois.lean`) are all **proved** |
+| `EllipticCurveData.TateInputs` | Tate parameters at the multiplicative places | **constructed** (`EllipticCurveData.tateInputs`) |
+| `EllipticCurveData.ModEllRepData ℓ` | the mod-`ℓ` representation on `E[ℓ]` | **constructed** (`modEllRepData`) from `E[ℓ] ≅ (ℤ/ℓ)²` ([#277](https://taxis.lana.merten.dev/issues/277)) |
+| `Iut.AnabelianExistence AG TG` | IUT I, Definition 3.1(d)–(f): `C̲_K`, `ε`, `V` and the bad-place conditions | **proved** for the anabelian model (`Iut.Anabelian.anabelianExistence Pi1 Tp`) for every étale/tempered `π₁` theory `Pi1`, `Tp` (universally quantified) and curves whose once-punctured curve has a core; see below |
+
+
+### The tripod theorem with propositional inputs (`Iut/Tripod/`)
+
+`Iut.Tripod.abc_of_variant` ([`Iut/Tripod/Main.lean`](Iut/Tripod/Main.lean)) states the
+implication for the concrete tripod `ℙ¹ ∖ {0,1,∞}`: every object is constructed in this
+repository and every hypothesis is a proposition about the constructed objects.
+
+* [`Basic.lean`](Iut/Tripod/Basic.lean), [`Northcott.lean`](Iut/Tripod/Northcott.lean) —
+  the height formalism `Iut.Tripod.tripodTheory`: points `λ ∈ ℚ̄ ∖ {0,1}`, `ptLE d` by the
+  degree of the minimal polynomial, `htCan` the absolute logarithmic Weil height (Mathlib),
+  `logDiff` the normalized log-discriminant of `ℚ(λ)`, `logCond` the normalized conductor
+  of `λ` with respect to `{0,1,∞}`, and the valuation-bounded compactly bounded subsets
+  `CompactlyBounded` (finite places over a finite set of primes containing `2`, and all
+  archimedean places, bounded). Northcott over all number fields of degree `≤ d` is
+  **proved** (`northcottHyp`, by bounding the coefficients of minimal polynomials). The
+  target is `tripodTheory.StatementII`: ABC for points of bounded degree in a compactly
+  bounded subset.
+* [`Legendre.lean`](Iut/Tripod/Legendre.lean), [`CurveOf.lean`](Iut/Tripod/CurveOf.lean),
+  [`TwoTorsion.lean`](Iut/Tripod/TwoTorsion.lean) — the Legendre curve
+  `E_λ : y² = x(x−1)(x−λ)` over `F_λ = ℚ(λ, √−1, √λ, √(1−λ), E_λ[3], E_λ[5])` (the two
+  extra square roots make `F_λ/ℚ(j)` Galois: the conjugates of `λ` give the twists of
+  `E_λ` by `λ` and `1−λ`), its four rational 2-torsion points.
+* [`Galois.lean`](Iut/Tripod/Galois.lean) —
+  **proved**: `F_λ/ℚ(j)` is Galois of degree prime to every prime `ℓ ≥ 7`
+  (`Iut.Tripod.galois_deg_prime_of_torsion_basis`, from `E_λ[n] ≅ (ℤ/n)²` for `n = 3, 5`).
+  `Gal(ℚ̄/ℚ(j))` moves `λ` to one of its six conjugates `λ, 1−λ, 1/λ, 1/(1−λ), 1−1/λ,
+  1−1/(1−λ)` (the roots of `256(T²−T+1)³ − j·T²(T−1)²`), and `F_λ` contains the square roots
+  of all conjugates and the torsion fields of the conjugate curves, which are changes of
+  variables `⟨√−1, 1, 0, 0⟩`, `⟨√λ, 0, 0, 0⟩` of `E_λ` (`Iut.Anabelian.vcEquiv`,
+  `Iut.Anabelian.pointMap`); the degree is the product of the relative degrees
+  `≤ 6, ≤ 2, ≤ 2, ≤ 2, ∣ 48, ∣ 480` of the tower `ℚ(j) ⊆ ℚ(λ) ⊆ … ⊆ F_λ`.
+* [`CurveFacts.lean`](Iut/Tripod/CurveFacts.lean),
+  [`TorsionDegree.lean`](Iut/Tripod/TorsionDegree.lean),
+  [`Providers.lean`](Iut/Tripod/Providers.lean) — proved: `√−1 ∈ F_λ`, `E[6]` rational,
+  `[ℚ(j) : ℚ] ≤ deg λ`, `[F_λ : ℚ] ≤ 552960·deg λ` (the torsion fields have degree
+  `≤ |GL₂(𝔽_ℓ)|`, by the Galois correspondence), `log-diff = ` the different degree of the
+  tripodal field `ℚ(λ)`; the curve-level data (Tate parameters, mod-`ℓ` representations,
+  finiteness of torsion) — all **proved** (`Iut.Tripod.tripodProviders` is a closed term):
+  the finiteness of the torsion of `E_λ(ℚ̄)` and the bases `E_λ(ℚ̄)[ℓ] ≅ (ℤ/ℓ)²` for primes
+  `ℓ` ([`TorsionBasis.lean`](Iut/Tripod/TorsionBasis.lean), from the division-polynomial
+  theory of [`Iut/Torsion/`](Iut/Torsion/), see below); the stable reduction of `E_λ/F_λ` at
+  every finite place
+  ([`StableOdd.lean`](Iut/Tripod/StableOdd.lean), [`StableTwo.lean`](Iut/Tripod/StableTwo.lean):
+  the Legendre model and its twist `E_{1/λ}` at the odd places, Raynaud's criterion for the
+  rational `3`-torsion at the places over `2`, see the honesty boundary), and that
+  `F_λ/ℚ(j)` is Galois of degree prime to `ℓ ≥ 7` is proved in
+  [`Galois.lean`](Iut/Tripod/Galois.lean); the remaining
+  facts of Corollary 2.2 as the `Prop` structure `CurveFactsProp` (the cyclic-subgroup
+  bound of [GenEll] Lemma 3.5 for `ℓ ≥ 7` under (P2), assumed in its residual form
+  `Iut.Tripod.CyclicGraphBoundHyp`: for the cyclic-subgroup bound, [GenEll] Lemma 3.2(i) at
+  the odd multiplicative places (a Galois-stable `ℓ`-cyclic subgroup is the graph line
+  `μ_ℓ ⊆ E_λ[ℓ]` of the Tate uniformisation when `ℓ ∤ ord(q)`, by a counting argument in the
+  decomposition group of the `ℓ`-torsion field:
+  `Iut.EllipticCurveData.ModEllRepData.comap_bcKR_eq_graphLineAt`,
+  [`CyclicTorsion.lean`](Iut/Tripod/CyclicTorsion.lean),
+  [`CyclicLocal.lean`](Iut/Tripod/CyclicLocal.lean)), the decomposition of `log q_∀` by the
+  graph-line places with the non-graph part bounded by the `2`-adic bound, and the derivation
+  of the bound from the residual (`cyclicBound_of`, [`CyclicBound.lean`](Iut/Tripod/CyclicBound.lean))
+  are **proved**; the residual `CyclicGraphBoundHyp` is Lemma 3.2(i) over `2`, Lemma 3.2(ii),
+  the Faltings-height inequality for `E → E/μ_ℓ` and [GenEll] Prop 3.4); the finiteness of the points whose
+  once-punctured curve has no core ([CanLift] Prop 2.7, `Iut.Tripod.coreFiniteness` from the
+  `excJ`/`hasCore_oncePunctured` fields of `EtalePi1Theory` and the `j`-invariant of the
+  Legendre curve, [`Core.lean`](Iut/Tripod/Core.lean)), the height comparison
+  `(1/6)·log q_∀ ≈ h(λ)` of IUT IV Cor 2.2(i) / [GenEll] Prop 3.4
+  (`Iut.Tripod.legendreHeight`, [`Height.lean`](Iut/Tripod/Height.lean): `log q_∀(E_λ)` is
+  the finite part of the Weil height of `j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²)` by stable reduction
+  and the invariance of the finite part of the height under finite extensions, and
+  `h_fin(j) = 6·h(λ) + O(d)` on a compactly bounded subset by the ultrametric inequality
+  place by place, with explicit constants `log 2/3` and `c|V| + c + log 2/3`), the `2`-adic
+  bound (`Iut.Tripod.twoAdicBound`, with `B = 4c` on `CompactlyBounded` sets), the conductor
+  comparisons `log-cond_{F_tpd} ≤ log-cond(λ) ≤ log-cond_{F_tpd} + log 2ℓ`
+  (`logCondGe`, `logCondLe`, [`TwoAdic.lean`](Iut/Tripod/TwoAdic.lean),
+  [`LogCond.lean`](Iut/Tripod/LogCond.lean)) and the `SL₂`-image lemma of [GenEll]
+  Lemma 3.1(iii) (`Iut.Tripod.sl2Image`, from the general
+  `Iut.EllipticCurveData.sl_le_range_of` of
+  [`Iut/Concrete/SL2Image.lean`](Iut/Concrete/SL2Image.lean): under (P2), (P4), (P5) the
+  Tate parameter at a bad place is an `ℓ`-th power in the completion of `F(E[ℓ])`, so `ℓ`
+  divides a ramification index, hence `|Gal(F(E[ℓ])/F)|`; Cauchy's theorem gives a
+  transvection in the image, which stabilizes no line by (P4), and such a subgroup of
+  `GL₂(𝔽_ℓ)` contains `SL₂(𝔽_ℓ)`, [`Iut/Tripod/SL2Generation.lean`](Iut/Tripod/SL2Generation.lean))
+  are **proved**. These were audited for satisfiability with the repository's exact
+  normalisations; the audit forced two corrections recorded in the honesty boundary (the
+  reduction predicates up to a change of variables, and the restriction of the
+  cyclic-subgroup bound to `ℓ ≥ 7`).
+* [`TpdGalois.lean`](Iut/Tripod/TpdGalois.lean), [`TpdRamIdx.lean`](Iut/Tripod/TpdRamIdx.lean),
+  [`Tower.lean`](Iut/Tripod/Tower.lean) —
+  `ℚ(λ)/ℚ(j)` is Galois of degree `≤ 6` (`ℚ(λ)` is the splitting field over `ℚ(j)` of the
+  sextic `256(X² − X + 1)³ − j·X²(X − 1)²`, whose roots are `λ, 1−λ, 1/λ, 1/(1−λ),
+  λ/(λ−1), (λ−1)/λ`), `ℚ(λ)/ℚ(j)` has ramification index `≤ 2` at every place where `j` is
+  non-integral, in particular over `V_mod^bad` (`Iut.Tripod.relRamIdx_tpd_le_two`: the
+  inertia group acts freely on the two roots congruent to a root of positive valuation),
+  and the tower arithmetic `Iut.TowerArithmetic` of the Θ-data of a
+  point (`towerArithmetic_of_towerLocalHyp`) from the local facts
+  `Iut.Tripod.TowerLocalHyp` (the three fields of `Iut.TowerLocalFacts` for the curves of
+  the tripod), which are theorems (`Iut.Tripod.towerLocalHyp`,
+  [`TowerFacts.lean`](Iut/Tripod/TowerFacts.lean), [`TameTwo.lean`](Iut/Tripod/TameTwo.lean)).
+  The earlier hypothesis quantified the tower arithmetic over *all* Θ-data of
+  the model, which is false (Step (ii) fails for `F` replaced by `F(√p)`, `p` large); it
+  is now assumed only in the form of the local facts for the constructed data.
+
+Final statement (hypotheses only): universally quantified fundamental-group theories
+`Pi1 : EtalePi1Theory`, `Tp : TemperedPi1Theory Pi1` (so that `h312` ranges over exactly
+the Θ-data of IUT I, Definition 3.1 — the variant is never strengthened),
+`∀ K d, ∃ T_K, CyclicGraphBoundHyp … K d T_K` (the residual form of the cyclic-subgroup
+bound), and the variant `h312`; conclusion `tripodTheory.StatementII`. The prime-counting bound of
+Proposition 1.6 is supplied by `Iut.primeCountingBoundExplicit`.
+`StatementI` (all hyperbolic curves) additionally needs heights on curves and the
+coverings of [GenEll] Theorem 2.1, which remain in genl's scope.
+
+### Division polynomials and the torsion of elliptic curves (`Iut/Torsion/`)
+
+Mathlib defines the division polynomials `ψₙ` of a Weierstrass curve and their degrees, but
+not their relation to the multiples of a point. For a curve `y² = x³ + a₂x² + a₄x + a₆`
+(`a₁ = a₃ = 0`) over a field of characteristic `≠ 2`, `Iut.Torsion.good`
+([`EDS.lean`](Iut/Torsion/EDS.lean)) proves by a strong induction along the doubling
+recursions of the normalised elliptic divisibility sequence that, for every nonsingular
+point `P = (x, y)` and every `n`, `ψₙ(P) = 0` iff `nP = 0`, and otherwise
+`x(nP) ψₙ(P)² = x ψₙ(P)² − ψₙ₊₁(P) ψₙ₋₁(P)` (i.e. `x(nP) = Φₙ(x)/ψₙ(P)²`) and
+`ψ₂(nP) ψₙ(P)⁴ = ψ₂ₙ(P)`; the step reduces to fixed identities of the group law
+([`Identities.lean`](Iut/Torsion/Identities.lean), proved by computer-generated
+`linear_combination` certificates). Over an algebraically closed field of characteristic `0`
+the fibres of the multiplication by `n` are counted by the roots of `Φₙ − x₀ ΨSqₙ`
+([`Count.lean`](Iut/Torsion/Count.lean)): `|E[n]| = n²` (`Iut.Torsion.card_torsionBy_eq_sq`)
+and `E[ℓ] ≅ (ℤ/ℓ)²` for primes `ℓ` (`Iut.Torsion.torsionBasis`).
+
+## Anabelian model strand (`Iut/Anabelian`)
+
+The interfaces `Iut.AnabelianGeometry` and `Iut.TemperedGeometry` behind the Θ-data are
+instantiated by a **linear-algebraic model** (taxis
+[#276](https://taxis.lana.merten.dev/issues/276),
+[#279](https://taxis.lana.merten.dev/issues/279)):
+
+* [`Model.lean`](Iut/Anabelian/Model.lean) — model orbicurves `(E, ℓ, M, ±)` standing for
+  `(E/M) ∖ (E[ℓ]/M)` and its `±`-quotient (the only shapes IUT I, Definition 3.1 uses);
+  covers induced by `[n]`, base change, cusps `E(k)[ℓ]/M` (mod `±`), the rank-one
+  quotient, the `±`-quotient cartesian squares, the types `(1, ℓ-tors)`,
+  `(1, ℓ-tors)^±`; and the residual interface `Iut.Anabelian.EtalePi1Theory` (étale
+  fundamental groups, open immersions, cores, and [CanLift] Prop 2.7: the exceptional
+  `j`-invariants `excJ` and `hasCore_oncePunctured`).
+* [`Local.lean`](Iut/Anabelian/Local.lean) — over a valued field: the kernel of
+  reduction and the **graph line** `E(k)[ℓ] ∩ E₁(k)` (= `μ_ℓ` under Tate
+  uniformization), the **canonical generators** `q^{±1/ℓ}` of the graph quotient
+  (`ℓ·v(x(P)) = -v(j)` in minimal models), split multiplicative reduction, the type
+  `(1, ℤ/ℓℤ)^±`, theta-root models and the canonical graph cusp.
+* [`Geometry.lean`](Iut/Anabelian/Geometry.lean) — the terms `Iut.Anabelian.modelAG` and
+  `Iut.Anabelian.modelTG` (with the residual `TemperedPi1Theory`).
+* [`Torsion.lean`](Iut/Anabelian/Torsion.lean), [`Linear.lean`](Iut/Anabelian/Linear.lean),
+  [`Existence.lean`](Iut/Anabelian/Existence.lean) — the ℓ-torsion is rational over
+  `K = F(E[ℓ])`; `SL₂(𝔽_ℓ)` acts transitively on (line, generator of the quotient) pairs;
+  **`Iut.Anabelian.anabelianExistence`**: `C̲_K = (E_K, ℓ, ⟨e₁⟩, ±)`, `ε = e₂ mod ⟨e₁⟩`,
+  and at each bad place a place of `K` chosen through `SL₂(𝔽_ℓ)` so that the graph line
+  is `⟨e₁⟩` and the canonical generators are `±e₂` — the mechanism of (P7) in the proof
+  of IUT IV, Corollary 2.2. The final theorem is
+  `Iut.Anabelian.cor312Variant_implies_abc_model`.
+* [`PlacesOver.lean`](Iut/Cor312/ThetaData/PlacesOver.lean),
+  [`TateStructure.lean`](Iut/Cor312/ThetaData/TateStructure.lean),
+  [`TateFamily.lean`](Iut/Cor312/ThetaData/TateFamily.lean),
+  [`TateTorsion.lean`](Iut/Anabelian/TateTorsion.lean),
+  [`LocalInputs.lean`](Iut/Anabelian/LocalInputs.lean) — the arithmetic inputs of the
+  existence proof, all proved: places of `K` over `F_mod`, the Galois action on places and
+  decomposition groups; and, from the Tate uniformizations carried by the Θ-data
+  (`InitialThetaData.tate`: Tate parameter, model change, uniformization pinned by the
+  coordinates of the Tate parametrization, Galois-equivariant), the ℓ-torsion of the Tate
+  curve (`|E(K_w)[ℓ]| ≤ ℓ²`, graph line = kernel of the residue homomorphism to `ℤ/ℓℤ`,
+  canonical generators `±q^{1/ℓ}`), hence the rationality of the local ℓ-torsion, the
+  graph line of order `ℓ` and the canonical cosets at the bad places.
+
+* [`VariableChangePoint.lean`](Iut/Cor312/ThetaData/VariableChangePoint.lean),
+  [`UltrametricSqrt.lean`](Iut/Cor312/ThetaData/UltrametricSqrt.lean),
+  [`ReductionNorm.lean`](Iut/Cor312/ThetaData/ReductionNorm.lean),
+  [`TateIsomorphism.lean`](Iut/Cor312/ThetaData/TateIsomorphism.lean),
+  [`TateStructureOfIso.lean`](Iut/Cor312/ThetaData/TateStructureOfIso.lean),
+  [`TateStructureUnique.lean`](Iut/Cor312/ThetaData/TateStructureUnique.lean),
+  [`TateStructureTransport.lean`](Iut/Cor312/ThetaData/TateStructureTransport.lean),
+  [`GalCompletion.lean`](Iut/Cor312/ThetaData/GalCompletion.lean),
+  [`BadPlaceNorm.lean`](Iut/Cor312/ThetaData/BadPlaceNorm.lean),
+  [`TateFamilyGalois.lean`](Iut/Cor312/ThetaData/TateFamilyGalois.lean),
+  [`TateFamilyOfSplit.lean`](Iut/Cor312/ThetaData/TateFamilyOfSplit.lean) — **Tate's
+  theorem and the Tate family, proved** (taxis #1582): points along changes of variables
+  form a group isomorphism; Hensel's lemma for square roots; Mathlib's reduction classes
+  read as norm conditions on the completion; an elliptic curve over a complete ultrametric
+  field with `‖2‖ = 1` and split multiplicative reduction is a Tate curve `E_q` after a
+  change of variables (short normal forms with equal `j` differ by a scaling whose square
+  is `c₄c₆(E)/c₄c₆(E_q)` up to squares, a unit that is a square modulo the maximal ideal
+  because `−c₄c₆` is the discriminant of the tangent quadratic at the node); Tate
+  structures on such curves, their uniqueness up to sign (`Aut(E_q) = ±1`) and transport
+  along isometric isomorphisms; the isometry `K_w ≃ K_{σw}` extending `σ ∈ Gal(K/F)`; and
+  the Galois equivariance of the graph lines and canonical generators, which holds for any
+  choice of Tate structures by uniqueness. The Tate family of the Θ-data is
+  **constructed** (`EllipticCurveData.tateFamily`, `Iut.tateFamilyOfTorsion`) from the
+  multiplicative reduction of `E` at the places of `F` over `V_mod^bad` and the rationality
+  of the ℓ-torsion over `K = F(E[ℓ])`, with no further input: the reduction at a place `w`
+  of `K` is split because `−c₄c₆` is a square in `K_w`
+  ([`SqrtAtBadPlace.lean`](Iut/Cor312/ThetaData/SqrtAtBadPlace.lean)) — in
+  `K' = K(√(−c₄c₆))` ([`QuadraticExtension.lean`](Iut/Cor312/ThetaData/QuadraticExtension.lean))
+  the curve is a Tate curve over the completion at a place `w'` over `w`; if the conjugation
+  fixes `w'` it acts on that completion fixing the curve and all its ℓ-torsion, so by the
+  sign theorem ([`TateSign.lean`](Iut/Cor312/ThetaData/TateSign.lean): an isometric
+  automorphism fixing all the ℓ-torsion fixes the Tate structure, hence a square root of
+  `−c₄c₆`) it would fix `√(−c₄c₆)`, which it negates; otherwise `w` splits in `K'`, the
+  residue degree is `1` ([`ValuationTransfer.lean`](Iut/Cor312/ThetaData/ValuationTransfer.lean):
+  valuations along extensions of number fields, `Σ e f = [K' : K]`), `−c₄c₆` is a square
+  modulo `w`, and Hensel's lemma applies. In
+  tate-curves-theta (now at `ca6c227`) the hypothesis `‖12‖ = 1` of the Tate uniformization
+  was weakened to `‖2‖ = 1 ∧ 12 ≠ 0` (residue characteristic `3` occurs in `V_mod^bad`), and
+  the naturality of the Tate coordinates under base change was added.
+
+Interface amendments made for this (recorded on taxis #1453): the "lies over" relation on
+finite places is the prime-ideal relation (the absolute-value form of the delivered
+statement was only satisfiable at unramified split primes); `IsTypeOneZModPM`,
+`IsThetaRootModel` and `canonicalGraphCusp` take a Tate structure on the local orbicurve
+over a complete rank-one valued field, and the local theta data carry the chosen Tate
+structures (`tateX`, `tateC`); the Θ-data carry the Tate uniformizations at the places of
+the torsion field (`InitialThetaData.tate`).
+
+Interfaces of the model, each an explicit structure that the main theorems quantify over
+universally (the Tate family of the Θ-data is proved, see above):
+
+| Input | Content | Owner |
+| --- | --- | --- |
+| `Iut.Anabelian.EtalePi1Theory` | étale `π₁` of the model orbicurves, open immersions for covers, `k`-cores and their stability, and [CanLift] Prop 2.7 (`excJ`, `hasCore_oncePunctured`: the once-punctured elliptic curve has the core `X/{±1}` unless `j` is one of finitely many exceptional values) | anabelian geometry, [#1527](https://taxis.lana.merten.dev/issues/1527) (#276, #10) |
+| `Iut.Anabelian.TemperedPi1Theory` | tempered `π₁` with the comparison to the étale `π₁` | tempered-fundamental-groups, [#1528](https://taxis.lana.merten.dev/issues/1528) (#7) |
+
+## Comparator suite
+
+[`Comparator/Challenge.lean`](Comparator/Challenge.lean) states ten selected mathlib-only
+targets from Section 1. Five currently have project proofs, are re-exported by
+`Comparator/Solution.lean`, and are configured for `leanprover/comparator`. The exact
+target list and inclusion policy are in [`Comparator/README.md`](Comparator/README.md).
+
+## Blueprint
+
+The Verso blueprint can be served locally with:
+
+```bash
+cd blueprint-verso
+lake exe vbp build --serve
+```
+
+## Libraries
+
+| Library | Contents |
+| --- | --- |
+| `Iut` | Corollary 3.12 variant, its concrete instantiation, and the implication to ABC |
+| `Iut4Sec1` | IUT IV, Section 1 |
+| `Challenge` / `Solution` | Comparator suite roots (separate environments) |
+
+Lean 4 project pinned to `leanprover/lean4:v4.32.0` with Mathlib at `v4.32.0`.
+
+## Build and audits
+
+Install [elan](https://github.com/leanprover/elan); it selects the Lean version pinned by
+`lean-toolchain`. Then run from the repository root:
+
+```bash
+lake exe cache get
+lake build
+./scripts/check_comparator_signature.sh
+./scripts/audit_trust.sh
+./scripts/audit_axioms.sh
+git diff --check
+```
+
+The challenge contains the suite's reviewed proof placeholders. Public project modules and
+the Solution re-exports are checked separately by the trust and axiom audits.
+
+## Validation
+
+`.orchestra/` tells the agent harness how to prepare the environment and how to check that
+a change is complete:
+
+* `before.sh` warms the Mathlib build cache before work starts.
+* `validation.sh` checks the worktree is clean, that every `.lean` file is imported
+  ([`Iut/Implication/Theorem110.lean`]mk_all --check`, for both `Iut` and `Iut4Sec1`), and that everything builds with
+  warnings as errors (`lake build --wfail`).
+
+Run it locally with `bash .orchestra/validation.sh`.
+
+## Tracker
+
+Work is tracked in taxis: [#1](https://taxis.lana.merten.dev/issues/1) (programme umbrella); implication strand [#1449](https://taxis.lana.merten.dev/issues/1449): [#3](https://taxis.lana.merten.dev/issues/3), [#1451](https://taxis.lana.merten.dev/issues/1451), [#1453](https://taxis.lana.merten.dev/issues/1453), [#1454](https://taxis.lana.merten.dev/issues/1454), [#1455](https://taxis.lana.merten.dev/issues/1455); statement strand: [#33](https://taxis.lana.merten.dev/issues/33), [#34](https://taxis.lana.merten.dev/issues/34), [#35](https://taxis.lana.merten.dev/issues/35), [#38](https://taxis.lana.merten.dev/issues/38), [#39](https://taxis.lana.merten.dev/issues/39), [#40](https://taxis.lana.merten.dev/issues/40), [#41](https://taxis.lana.merten.dev/issues/41), [#42](https://taxis.lana.merten.dev/issues/42), [#43](https://taxis.lana.merten.dev/issues/43), [#44](https://taxis.lana.merten.dev/issues/44), [#45](https://taxis.lana.merten.dev/issues/45); interface-discharge issues: [#276](https://taxis.lana.merten.dev/issues/276) (anabelian interface), [#277](https://taxis.lana.merten.dev/issues/277) (mod-ℓ torsion and representation), [#278](https://taxis.lana.merten.dev/issues/278) (container/log-volume/hull instantiation), [#279](https://taxis.lana.merten.dev/issues/279) (étale theta, anabelian side)

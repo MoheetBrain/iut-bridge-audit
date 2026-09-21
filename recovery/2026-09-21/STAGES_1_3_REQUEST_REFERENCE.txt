@@ -1,0 +1,1107 @@
+PROJECT: IUT BRIDGE AUDIT
+TASK: STAGES 1–3 — SOURCE LOCK, η-ALGORITHM RECONSTRUCTION, AND ADMISSIBILITY/ORBIT LEDGER
+
+ROLE
+
+You are the first execution agent for a rigorous mathematical audit of the
+Theorem 3.11 → Corollary 3.12 bridge in Inter-universal Teichmüller Theory.
+
+You are NOT being asked to prove IUT wrong.
+You are NOT being asked to prove IUT correct.
+You are NOT being asked to invent a toy countermodel.
+
+Your immediate job is much narrower:
+
+    reconstruct the exact mathematical object that must be proved,
+    reconstruct every admissible choice entering that object,
+    and produce a source-audited specification from which later proof,
+    counterexample, invariant-search, or Lean work can proceed.
+
+The project repository is:
+
+    iut-bridge-audit
+
+If the repository is empty, initialize the research structure described below.
+If files already exist, inspect them first and preserve useful work.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+0. SCIENTIFIC RULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Treat every previous conclusion as a hypothesis until verified from primary sources.
+
+In particular, DO NOT assume any of the following:
+
+- that IUT III contains a gap;
+- that Project LANA proved a gap;
+- that Project LANA proved an additional axiom is necessary;
+- that Mochizuki's bridge is valid;
+- that an isomorphism is being illicitly promoted to equality;
+- that relative rescaling is actually allowed by the full IUT structure;
+- that a failure of ordinary diagram commutativity matters;
+- that Higuchi or Pajo gives a faithful IUT countermodel.
+
+The current primary-source status is:
+
+    the relevant compatibility has not been reconstructed by LANA;
+    it has not thereby been proved false.
+
+Every output must distinguish:
+
+    SOURCE FACT
+    SOURCE CLAIM
+    RECONSTRUCTION
+    INFERENCE
+    OPEN QUESTION
+
+Never silently convert one into another.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TARGET — THIS IS THE CENTRAL OBJECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The project is no longer aimed vaguely at:
+
+    xi-e → xi-f
+
+or merely:
+
+    -|log q| ∈ R_{≤ -|log Θ|}.
+
+Project LANA reformulates the relevant compatibility in terms of two
+pointed oriented-real-line isomorphisms:
+
+    η_anab_S :
+        R_val ≃ R_ss
+
+and
+
+    η_q :
+        R_val ≃ R_ss.
+
+Very roughly:
+
+η_anab_S
+    is produced by the anabelian / Kummer / multiradial reconstruction,
+    depending on admissible integral-structure data S;
+
+η_q
+    is obtained from the native q-pilot arithmetic-holomorphic structure.
+
+The compatibility target is:
+
+    ∃ S, η_q = η_anab_S.                     [TARGET ★]
+
+Equivalently, after we have rigorously defined admissibility:
+
+    η_q ∈ O_anab(D)
+
+where
+
+    O_anab(D)
+      := { η_anab_S | S ∈ Adm(D) }
+
+for genuine initial Θ-data D.
+
+DO NOT formalize these definitions from this prompt as fact.
+
+Your job is to reconstruct their precise meanings and hypotheses
+from the primary sources.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. WHY THIS TASK EXISTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Existing attacks stop at lower levels of faithfulness.
+
+Higuchi-style logical countermodels establish, at most, that certain
+qualitative abstractions do not imply the desired numerical conclusion.
+
+Pajo-style rescaling arguments establish, at most, that scale-free
+common-container abstractions do not imply numerical inequalities.
+
+Neither by itself establishes:
+
+    M ⊨ actual relevant IUT hypotheses
+    but
+    η_q ∉ O_anab(D).
+
+Conversely, Mochizuki's reply to Scholze–Stix argues that faithful IUT
+contains structure omitted by simplified linear/scaling models.
+
+Therefore the next project cannot simply build a more complicated toy model.
+
+It must first answer:
+
+    WHAT EXACTLY IS Adm(D)?
+
+and:
+
+    WHAT EXACTLY CAN EACH ADMISSIBLE CHOICE CHANGE?
+
+Only then can we search for an invariant, obstruction, or witness.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. SCOPE OF THIS CODEX RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMPLETE ONLY STAGES 1–3.
+
+STAGE 1
+    establish a primary-source evidence base.
+
+STAGE 2
+    reconstruct the η-algorithm and exact compatibility theorem.
+
+STAGE 3
+    construct Adm(D), the choice/action/invariant ledger,
+    and the formal orbit specification.
+
+DO NOT yet:
+
+- prove an obstruction;
+- construct a countermodel;
+- claim a flaw;
+- implement the full Lean formalization;
+- formalize all of IUT;
+- compute abc examples;
+- use Fargues–Fontaine curves to manufacture a speculative model.
+
+At the end, produce a STOP/GATE report telling us whether the source
+reconstruction is sufficiently complete for Stage 4.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. PRIMARY SOURCES TO ACQUIRE AND PIN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create:
+
+    sources/
+    sources/primary/
+    sources/secondary/
+    sources/metadata/
+
+Acquire the authoritative/current versions available for at least:
+
+A. Mochizuki
+
+1. Inter-universal Teichmüller Theory III
+   especially:
+   - Theorem 3.11
+   - Corollary 3.12
+   - proof Step (xi), especially xi-e and xi-f
+   - definitions invoked by these steps
+   - relevant preceding remarks/corollaries
+
+2. On the Essential Logical Structure of IUT
+   especially material concerning:
+   - Logical AND / Logical OR
+   - simultaneous treatment
+   - multiradiality
+   - arithmetic-holomorphic structures
+
+3. On the Formalization of IUT:
+   A Preliminary Progress Report (2026)
+   especially:
+   - the decomposition of 3.11 → 3.12
+   - “3.11.5”
+   - the fourth triangle
+   - simultaneous q-pilot / Θ-pilot comparison
+   - single/common ring structure
+
+B. Project LANA
+
+4. July 2026 LANA report
+
+5. Current public `lana-agents/iut` repository
+
+For the repository record:
+
+    commit hash
+    branch
+    fetch date
+    relevant Lean files
+    README assertions
+    every theorem/definition directly relevant to Corollary312Variant
+    every `sorry`
+    every axiom
+    every specification boundary or abstract interface.
+
+C. Critical prior art
+
+6. Scholze–Stix:
+   Why abc is still a conjecture
+
+7. Mochizuki's relevant response(s) to Scholze–Stix.
+
+D. Clarificatory literature
+
+8. Dupuy–Hilado:
+   The Statement of Mochizuki's Corollary 3.12: Initial Theta Data
+
+Retrieve additional papers ONLY when a dependency in the reconstruction
+requires them.
+
+Do not fill the repository with hundreds of irrelevant PDFs.
+
+For every acquired source create a metadata record containing:
+
+    title
+    authors
+    publication status
+    version/date
+    URL
+    retrieval date
+    SHA256
+    primary/secondary
+    relevant sections
+    reason included.
+
+Never rely on a search snippet as mathematical evidence.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. STAGE 1 — SOURCE LOCK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create:
+
+    research/01_source_lock/
+
+with:
+
+    SOURCE_MANIFEST.csv
+    SOURCE_PRIORITY.md
+    CLAIM_REGISTRY.csv
+    SOURCE_GAPS.md
+
+### SOURCE_MANIFEST.csv
+
+Fields:
+
+    source_id
+    author
+    title
+    year
+    version
+    status
+    primary_secondary
+    local_path
+    url
+    sha256
+    relevant_pages_sections
+    purpose
+
+### CLAIM_REGISTRY.csv
+
+Every nontrivial project claim must receive an ID.
+
+Schema:
+
+    claim_id
+    exact_claim
+    status
+    source_id
+    location
+    evidence_type
+    confidence
+    notes
+
+Allowed status:
+
+    VERIFIED_PRIMARY
+    VERIFIED_SECONDARY
+    SOURCE_CLAIM_ONLY
+    RECONSTRUCTION
+    HYPOTHESIS
+    UNRESOLVED
+    CONTRADICTED
+
+Seed the registry with at least:
+
+C001:
+    LANA defines/reconstructs η_anab_S.
+
+C002:
+    LANA defines/reconstructs η_q.
+
+C003:
+    LANA's target is ∃S, η_q = η_anab_S.
+
+C004:
+    establishing that compatibility gives the required
+    Corollary-3.12 comparison in LANA's reconstruction.
+
+C005:
+    LANA has not proved this compatibility.
+
+C006:
+    LANA has not disproved this compatibility.
+
+C007:
+    the current LANA Lean repository leaves its
+    Corollary-3.12 variant unproved.
+
+C008:
+    the downstream Corollary312Variant → abc path is
+    formalized without relying on an axiom for the disputed bridge,
+    IF this is actually what the repository currently establishes.
+
+C009:
+    Mochizuki's 2026 formalization report isolates a final comparison
+    involving q-pilot and Θ-pilot relative to one ring structure.
+
+C010:
+    IUT's tensor-packet machinery couples integer multiplication
+    with log-volume scaling across labels.
+
+VERIFY EACH FROM THE SOURCE.
+
+If one is inaccurate, mark it inaccurate.
+Do not preserve our wording merely because it appears in this prompt.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. STAGE 2 — RECONSTRUCT THE EXACT η-ALGORITHM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create:
+
+    research/02_eta_reconstruction/
+
+Files:
+
+    ETA_TARGET.md
+    ETA_ALGORITHM.md
+    ETA_ALGORITHM.csv
+    OBJECT_DICTIONARY.csv
+    MAP_DICTIONARY.csv
+    DEPENDENCY_DAG.json
+    DEPENDENCY_DAG.md
+    OPEN_INTERPRETATION_QUESTIONS.md
+
+This is the core deliverable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6A. ETA_TARGET.md
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+State the target theorem using source-faithful notation.
+
+Do NOT begin with our reconstructed notation.
+
+First quote/paraphrase the source's actual objects and maps with
+page/section references.
+
+Then state a normalized version:
+
+    Given admissible initial Θ-data D,
+    does there exist admissible S such that
+
+        η_q = η_anab_S ?
+
+Explain precisely:
+
+- domain of η_q;
+- codomain of η_q;
+- domain of η_anab_S;
+- codomain of η_anab_S;
+- what “pointed” means;
+- what “oriented” means;
+- whether equality means:
+      literal equality of functions,
+      equality after canonical identification,
+      equality of pointed-line isomorphisms,
+      equivalence class equality,
+      or something else.
+
+DO NOT GUESS.
+
+If the source is ambiguous, mark ambiguity explicitly.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6B. ETA_ALGORITHM.md
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Reconstruct LANA's complete η-algorithm step by step.
+
+The previous research suggests there are nine steps.
+VERIFY THIS.
+
+For each step write:
+
+STEP NUMBER
+SOURCE LOCATION
+INPUT OBJECTS
+OUTPUT OBJECTS
+OPERATION
+THEOREM/DEFINITION JUSTIFYING IT
+CHOICES INTRODUCED
+STRUCTURE PRESERVED
+STRUCTURE FORGOTTEN
+CANONICAL?
+INDETERMINACY INTRODUCED?
+DEPENDENCIES
+OPEN QUESTION
+
+Pay particular attention to the late chain approximately described as:
+
+    M_∞
+      → H¹
+      → cyclotomic rigidity
+      → ∏ O_{v,t}^▷
+      → ∏ log(O_{v,t}^{×μ})
+      → log-shells
+
+Do not trust this notation until checked against the source.
+
+Flag Steps 6–9 separately because current research suggests these may be
+where synchronization, integral structure and Ind3 become decisive.
+
+But do NOT call them defective or suspicious in the deliverables.
+Call them:
+
+    HIGH-PRIORITY COMPATIBILITY STEPS.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6C. OBJECT_DICTIONARY.csv
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Every relevant mathematical object gets one row.
+
+Fields:
+
+    object_id
+    source_notation
+    normalized_name
+    mathematical_type
+    ambient_structure
+    pointed?
+    oriented?
+    local_global
+    label/index
+    construction_source
+    equality_semantics
+    notes
+
+At minimum identify source-faithfully:
+
+- R_val
+- R_ss
+- η_q
+- η_anab_S
+- q-pilot data
+- Θ-pilot data
+- BPS
+- Θ-BPS
+- relevant log-shells
+- relevant volume containers
+- relevant integral structures S
+- relevant monoids/groups
+- any tensor packets needed
+- every object used in Steps 6–9.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6D. MAP_DICTIONARY.csv
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For every arrow/map/isomorphism:
+
+    map_id
+    source_notation
+    domain
+    codomain
+    canonicality
+    injective?
+    surjective?
+    isomorphism?
+    structure_preserved
+    structure_forgotten
+    dependence_on_choice
+    dependence_on_S
+    affected_by_Ind1
+    affected_by_Ind2
+    affected_by_Ind3
+    source_location
+    notes
+
+This map ledger is more important than prose.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. STAGE 3 — RECONSTRUCT Adm(D)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create:
+
+    research/03_admissibility_orbit/
+
+with:
+
+    ADM_DEFINITION.md
+    CHOICE_REGISTRY.csv
+    INDETERMINACY_LEDGER.csv
+    ORBIT_LEDGER.csv
+    INVARIANT_CANDIDATES.md
+    ORBIT_SPEC.md
+    FALSIFICATION_TESTS.md
+
+This stage answers:
+
+    WHAT IS ACTUALLY ALLOWED TO VARY?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7A. ADM_DEFINITION.md
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Define:
+
+    Adm(D)
+
+ONLY after extracting it from the sources.
+
+Do not simply say “all S”.
+
+Determine exactly:
+
+- what S is;
+- where it comes from;
+- what conditions make S admissible;
+- which parts of S are chosen;
+- which are reconstructed;
+- which are forced;
+- whether different S may yield the same η_anab;
+- what equivalence relation, if any, identifies choices;
+- whether all indeterminacies are independent;
+- whether compatibility conditions couple them.
+
+If a fully rigorous definition cannot yet be reconstructed, define:
+
+    Adm_partial(D)
+
+and list exactly what remains unknown.
+
+Never hide uncertainty.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7B. CHOICE_REGISTRY.csv
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+One row per choice/freedom in the η-algorithm.
+
+Fields:
+
+    choice_id
+    stage
+    object_acted_on
+    source_of_choice
+    allowed_values
+    canonical?
+    existence_proved?
+    uniqueness?
+    affects_eta?
+    affects_scale?
+    affects_orientation?
+    affects_pointing?
+    affects_integral_structure?
+    interaction_with_other_choices
+    source_location
+    confidence
+    notes
+
+Explicitly investigate, if actually present:
+
+- BPS ↔ Θ-BPS identifications;
+- decomposition-group choices;
+- cyclotomic rigidity identifications;
+- synchronization choices;
+- integral structure S;
+- local/global indexing choices;
+- Ind1;
+- Ind2;
+- Ind3.
+
+Do not invent a choice merely because previous summaries mention one.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7C. INDETERMINACY_LEDGER.csv
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For Ind1, Ind2, Ind3:
+
+record:
+
+    formal source definition
+    object acted upon
+    action type
+    orbit/equivalence generated
+    structure preserved
+    structure lost
+    whether numerical scale changes
+    whether orientation changes
+    whether point changes
+    whether log-volume changes
+    whether native q-pilot is acted upon
+    whether η_q is acted upon
+    whether η_anab_S is acted upon
+    exact source citation.
+
+If the source does NOT establish an entry, use:
+
+    UNKNOWN
+
+not an inferred answer.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7D. ORBIT_LEDGER.csv
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+We ultimately want:
+
+    O_anab(D)
+      = {η_anab_S | S ∈ Adm(D)}.
+
+But instead of pretending we know this orbit, build it compositionally.
+
+For each admissible transformation g:
+
+    transformation_id
+    origin
+    acts_on
+    action_on_S
+    action_on_eta_anab
+    invariant_properties
+    potentially_changed_properties
+    exact/provisional
+    source
+    notes
+
+The most valuable output of this stage is:
+
+    CHOICE → ACTION → PROVEN INVARIANT
+
+not a speculative attack.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7E. INVARIANT_CANDIDATES.md
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+After completing the source-grounded ledgers, generate candidate invariants.
+
+Candidates to investigate include—but are not limited to:
+
+1. pilot normalization;
+2. stabilizer / automorphism type;
+3. integral-structure dependence;
+4. product-formula compatibility;
+5. naturality;
+6. synchronization data;
+7. Ind3-invariant data;
+8. integer-action normalization;
+9. tensor-packet normalization;
+10. orientation / pointing data.
+
+For EACH candidate assign:
+
+    STATUS:
+        PROVEN INVARIANT
+        PLAUSIBLE
+        DISPROVEN
+        UNKNOWN
+
+and provide the source evidence.
+
+Do not call something invariant because it “looks invariant”.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. CRUCIAL NEGATIVE CONTROLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Actively test the following tempting but invalid shortcuts.
+
+NEGATIVE CONTROL 1
+
+    η_anab_S is noncanonical
+
+does NOT imply failure, because the target is existential:
+
+    ∃ S.
+
+Record this explicitly.
+
+NEGATIVE CONTROL 2
+
+    some diagram in the log-theta lattice fails to commute
+
+does NOT automatically imply failure.
+
+IUT deliberately uses noncommutative / upper-semi-compatible structures
+in relevant places.
+
+We require the exact compatibility relevant to TARGET ★.
+
+NEGATIVE CONTROL 3
+
+    x ↦ ax gives a Pajo-style scaling countermodel
+
+cannot be used unless you prove that this transformation preserves all
+actual IUT normalization structures relevant to Adm(D).
+
+In particular check:
+
+    integer action
+    tensor-packet normalization
+    product formula
+    orientation
+    pointing
+    log-Kummer structure
+    Ind1/2/3 compatibility.
+
+NEGATIVE CONTROL 4
+
+Do not formalize a fake Lean universe containing:
+
+    InputType
+    OutputType
+    ThetaLink
+
+and then claim that failure to prove an inequality says anything about IUT.
+
+Such a toy specification may later be useful pedagogically,
+but it is NOT the Stage-3 research object.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. MINIMAL LANA CODE AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Also create:
+
+    research/02_eta_reconstruction/LANA_CODE_AUDIT.md
+
+Inspect the current Lean repository directly.
+
+Find the exact declaration corresponding to:
+
+    Corollary312Variant
+
+or its current equivalent.
+
+Record:
+
+- exact declaration;
+- namespace/module;
+- assumptions;
+- theorem status;
+- whether proof exists;
+- whether axiom exists;
+- whether `sorry` exists;
+- downstream theorems depending on it;
+- whether downstream ABC implications are sorry-free;
+- exact commit.
+
+Build a dependency slice containing ONLY the nodes relevant to:
+
+    theorem-3.11-side specification
+        ?
+        ↓
+    Corollary312Variant
+        ↓
+    downstream ABC result.
+
+Do not describe LANA as having proved an upstream failure unless its code
+or report literally proves one.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. SOURCE CITATION STANDARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Every substantive mathematical row in every CSV must contain a source locator.
+
+Preferred locator:
+
+    source_id
+    theorem/definition/remark
+    section
+    page
+    repository path + line range
+    commit hash when applicable.
+
+Avoid citations such as:
+
+    “Gemini report”
+    “blog says”
+    “according to summary”.
+
+Secondary literature is allowed for discovery and interpretation,
+but claims about the mathematics should be traced to primary sources
+where possible.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+11. REPOSITORY STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create or normalize the repository to:
+
+iut-bridge-audit/
+│
+├── README.md
+├── STATUS.md
+├── sources/
+│   ├── primary/
+│   ├── secondary/
+│   └── metadata/
+│
+├── research/
+│   ├── 01_source_lock/
+│   ├── 02_eta_reconstruction/
+│   └── 03_admissibility_orbit/
+│
+├── schemas/
+│   ├── claim_registry.schema.json
+│   ├── object_dictionary.schema.json
+│   ├── map_dictionary.schema.json
+│   ├── choice_registry.schema.json
+│   └── orbit_ledger.schema.json
+│
+├── scripts/
+│   ├── verify_sources.py
+│   ├── validate_ledgers.py
+│   └── build_dependency_graph.py
+│
+└── tests/
+    └── test_research_artifacts.py
+
+Do not introduce Lean yet unless needed to inspect/replay LANA code.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12. MACHINE-READABLE FIRST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Do not produce only prose.
+
+The core research objects must be machine-readable.
+
+Implement validation scripts that reject:
+
+- missing source IDs;
+- unknown object IDs;
+- dangling map endpoints;
+- choice records referencing nonexistent steps;
+- invariants lacking evidence status;
+- claims lacking epistemic status.
+
+Generate Markdown views FROM the structured data where practical.
+
+This repository should become a research database,
+not a pile of notes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+13. README
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+README.md should explain the project in approximately this order:
+
+1. Research question
+
+        Is η_q in the orbit of admissible
+        anabelian reconstructions?
+
+2. Why this matters for 3.11 → 3.12.
+
+3. What is known.
+
+4. What is NOT known.
+
+5. What this repository currently does.
+
+6. Scientific rules.
+
+7. Reproducibility.
+
+Do NOT write:
+
+    “we found the flaw”
+
+or:
+
+    “IUT is invalid”.
+
+Use neutral language.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+14. COMPLETION GATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create:
+
+    STAGE_1_3_GATE.md
+
+Answer exactly these questions.
+
+Q1.
+Can η_q be typed exactly from the primary sources?
+
+YES / PARTIAL / NO
+with citation.
+
+Q2.
+Can η_anab_S be typed exactly?
+
+YES / PARTIAL / NO.
+
+Q3.
+Can Adm(D) currently be defined without hand-waving?
+
+YES / PARTIAL / NO.
+
+Q4.
+Have all nine η-algorithm steps been source-reconstructed?
+
+YES / PARTIAL / NO.
+
+Q5.
+Can every admissible choice currently be enumerated?
+
+YES / PARTIAL / NO.
+
+Q6.
+Can the action of Ind1/2/3 on η_anab be stated rigorously?
+
+YES / PARTIAL / NO.
+
+Q7.
+Can η_q and η_anab_S be shown to inhabit exactly the same equality type?
+
+YES / PARTIAL / NO / DISPUTED.
+
+Q8.
+Is TARGET ★ already proved somewhere in the acquired primary corpus?
+
+YES / NO / UNCLEAR.
+
+If YES:
+    STOP the attack and give the exact proof chain.
+
+Q9.
+Is TARGET ★ already disproved somewhere?
+
+YES / NO / UNCLEAR.
+
+If YES:
+    provide the exact theorem and assumptions.
+
+Q10.
+What is the smallest unresolved proposition remaining?
+
+State it formally.
+
+Q11.
+What is the strongest source-supported candidate invariant for Stage 4?
+
+Q12.
+Are we ready for Stage 4?
+
+    GO
+    GO-CONDITIONAL
+    NO-GO
+
+with reasons.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15. STAGE 4 MUST NOT START AUTOMATICALLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STOP after the gate.
+
+Do NOT automatically:
+
+- search for an obstruction;
+- construct an automorphism;
+- build an L4/L5 countermodel;
+- create a Lean proof;
+- claim independence.
+
+The human will inspect Stages 1–3 first.
+
+The next stage will likely be one of two mutually exclusive programs:
+
+POSITIVE PROGRAM
+
+    construct S explicitly or prove existence of S such that
+
+        η_q = η_anab_S;
+
+or:
+
+NEGATIVE PROGRAM
+
+    identify a genuine invariant J satisfying
+
+        ∀S ∈ Adm(D),
+        J(η_anab_S) = c
+
+    while
+
+        J(η_q) ≠ c.
+
+But the evidence gathered in this run must decide which direction
+is mathematically defensible.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+16. EXECUTION DISCIPLINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You may download primary sources and clone public repositories as necessary.
+
+Pin every mutable source.
+
+Hash every downloaded paper.
+
+Record exact commands.
+
+Run validation/tests.
+
+Never invent a citation.
+
+Never invent a theorem name.
+
+Never invent a page number.
+
+Never report a mathematical fact merely because a previous AI report stated it.
+
+Where the evidence conflicts, preserve the conflict.
+
+If a claim cannot presently be established:
+
+    write UNKNOWN.
+
+UNKNOWN is a successful outcome.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL RESPONSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+When finished, report only:
+
+1. files created/changed;
+2. sources acquired and pinned;
+3. tests/validation run and results;
+4. Stage-1–3 gate verdict;
+5. the exact current form of TARGET ★;
+6. the smallest unresolved proposition;
+7. the strongest candidate invariant, if one is source-supported;
+8. serious blockers;
+9. exact recommended Stage-4 task.
+
+Do not bury the result under a general explanation of IUT.
+
+The purpose of this execution is to turn:
+
+    “perhaps there is a compatibility problem”
+
+into a source-verified mathematical specification of exactly:
+
+    what η_q is,
+    what η_anab_S is,
+    what S may be,
+    what transformations are admissible,
+    and whether η_q lies in that admissible orbit.
+
+Begin.

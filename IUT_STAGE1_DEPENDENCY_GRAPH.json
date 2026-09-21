@@ -1,0 +1,1580 @@
+{
+  "schema_version": "1.0",
+  "title": "IUT Stage 1 critical bridge: provenance and unresolved dependency graph",
+  "author": "Astra (OpenAI Codex)",
+  "date": "2026-09-21",
+  "outcome": "TARGET_NOT_YET_FORMALIZABLE_WITHOUT_LARGER_IUT_DEPENDENCY",
+  "outcome_scope": "Completion boundary of this audit; not intrinsic unformalizability or a flaw finding",
+  "search_classification": "FOUND_ONLY_AS_INFORMAL_EXPLANATION",
+  "recursive_dependency_search_complete": false,
+  "source_search_note": "Strong candidate assertions found before xi-f; source-faithful interpretation and all recursive proofs not certified.",
+  "formal_target": {
+    "finite_case": true,
+    "qVol": "Real",
+    "bound": "Real",
+    "OutVol": "{x:Real | x<=bound}",
+    "conclusion": "qVol in OutVol",
+    "premise_theory_status": "SOURCE_LEDGER_ONLY_NOT_COMPLETE_TYPED_H_IUT"
+  },
+  "candidate_bridge": {
+    "name": "P_approx",
+    "formula": "forall epsilon>0, exists O:A, qVol-epsilon<=L(O)",
+    "requires": [
+      "source-faithful A",
+      "normalized L",
+      "forall O:A, L(O)<=bound"
+    ],
+    "proven_iut_instance": false,
+    "globally_weakest_noncircular_premise_claimed": false
+  },
+  "relation_type_vocabulary": [
+    "DEFINITIONAL_EQUALITY",
+    "PROPOSITIONAL_EQUALITY",
+    "ISOMORPHISM",
+    "EQUIVALENCE",
+    "SAME_ORBIT_UNDER_INDETERMINACY",
+    "IMAGE_UNDER_MAP",
+    "MEMBERSHIP",
+    "LINKED_RELATION",
+    "APPROXIMATE_RELATION",
+    "OTHER_EXPLICITLY_DEFINED_RELATION"
+  ],
+  "object_registry": [
+    {
+      "name": "InputPrimeStrip",
+      "proposed_type": "F^{⊩▶×μ} global/local prime-strip data at (1,0), with native q realization",
+      "relation_types": [
+        "ISOMORPHISM"
+      ],
+      "source_entries": [
+        "D01",
+        "D02",
+        "P19"
+      ],
+      "typing_status": "SOURCE_TYPE_PARTIALLY_EXPANDED"
+    },
+    {
+      "name": "OutputPrimeStrip",
+      "proposed_type": "Family of output prime-strip data, with explicit staged forgetful operations",
+      "relation_types": [
+        "IMAGE_UNDER_MAP",
+        "ISOMORPHISM"
+      ],
+      "source_entries": [
+        "P09",
+        "P10",
+        "P11",
+        "P20"
+      ],
+      "typing_status": "OUTPUT_CONSTRUCTION_UNRESOLVED"
+    },
+    {
+      "name": "qPilot",
+      "proposed_type": "Distinguished object up to isomorphism in the input global realified Frobenioid",
+      "relation_types": [
+        "ISOMORPHISM",
+        "IMAGE_UNDER_MAP"
+      ],
+      "source_entries": [
+        "D02",
+        "P02",
+        "P05"
+      ],
+      "typing_status": "NATIVE_REALIZATION_MUST_BE_RETAINED"
+    },
+    {
+      "name": "thetaPilot",
+      "proposed_type": "Distinguished object up to isomorphism in the left LGP construction",
+      "relation_types": [
+        "ISOMORPHISM",
+        "IMAGE_UNDER_MAP"
+      ],
+      "source_entries": [
+        "P04"
+      ],
+      "typing_status": "SOURCE_TYPE_PARTIALLY_EXPANDED"
+    },
+    {
+      "name": "IPL",
+      "proposed_type": "Operation-induced composite poly-isomorphism",
+      "relation_types": [
+        "ISOMORPHISM"
+      ],
+      "source_entries": [
+        "P13"
+      ],
+      "typing_status": "COMPOSITE_PROVENANCE_REQUIRED"
+    },
+    {
+      "name": "SHE",
+      "proposed_type": "Right-column execution diagram preserving the native input constraint under correlated choices",
+      "relation_types": [
+        "OTHER_EXPLICITLY_DEFINED_RELATION"
+      ],
+      "source_entries": [
+        "P11",
+        "P16",
+        "P21"
+      ],
+      "typing_status": "EXACT_FUNCTORS_AND_COHERENCE_UNRESOLVED"
+    },
+    {
+      "name": "APT",
+      "proposed_type": "Descended algorithm with natural comparison to the algorithm on stronger input data",
+      "relation_types": [
+        "OTHER_EXPLICITLY_DEFINED_RELATION"
+      ],
+      "source_entries": [
+        "P17",
+        "E04"
+      ],
+      "typing_status": "DESCENT_SPECIFICATION_UNRESOLVED"
+    },
+    {
+      "name": "Ind1",
+      "proposed_type": "Specified procession automorphism actions",
+      "relation_types": [
+        "SAME_ORBIT_UNDER_INDETERMINACY"
+      ],
+      "source_entries": [
+        "P14"
+      ],
+      "typing_status": "ACTION_DATA_REQUIRED"
+    },
+    {
+      "name": "Ind2",
+      "proposed_type": "Specified Ism actions on unit/Kummer data",
+      "relation_types": [
+        "SAME_ORBIT_UNDER_INDETERMINACY"
+      ],
+      "source_entries": [
+        "D02",
+        "P14"
+      ],
+      "typing_status": "ACTION_DATA_REQUIRED"
+    },
+    {
+      "name": "Ind3",
+      "proposed_type": "Indexed inclusion/surjection and iteration-compatibility predicates of Prop 3.5(ii)",
+      "relation_types": [
+        "OTHER_EXPLICITLY_DEFINED_RELATION"
+      ],
+      "source_entries": [
+        "P15"
+      ],
+      "typing_status": "NOT_MODELED_AS_ONE_GROUP_ACTION"
+    },
+    {
+      "name": "LogKummer",
+      "proposed_type": "Indexed Kummer comparisons plus partial logarithm maps on units",
+      "relation_types": [
+        "ISOMORPHISM",
+        "IMAGE_UNDER_MAP"
+      ],
+      "source_entries": [
+        "P01",
+        "P06",
+        "P10"
+      ],
+      "typing_status": "DOMAIN_AND_VERTICAL_INDEX_REQUIRED"
+    },
+    {
+      "name": "HolomorphicHull",
+      "proposed_type": "Right-structure closure operation on source-admissible regions plus quotient/descent data",
+      "relation_types": [
+        "MEMBERSHIP",
+        "OTHER_EXPLICITLY_DEFINED_RELATION"
+      ],
+      "source_entries": [
+        "P07",
+        "P08",
+        "P09"
+      ],
+      "typing_status": "SOURCE_DOMAIN_REQUIRED"
+    },
+    {
+      "name": "Determinant",
+      "proposed_type": "Positive-power twisted determinant and its normalized realified output",
+      "relation_types": [
+        "IMAGE_UNDER_MAP",
+        "PROPOSITIONAL_EQUALITY"
+      ],
+      "source_entries": [
+        "P09",
+        "P20"
+      ],
+      "typing_status": "NORMALIZATION_COMPATIBILITY_REQUIRED"
+    },
+    {
+      "name": "LogVolume",
+      "proposed_type": "Locally normalized volume maps with global packet/procession weights",
+      "relation_types": [
+        "IMAGE_UNDER_MAP",
+        "PROPOSITIONAL_EQUALITY"
+      ],
+      "source_entries": [
+        "D06",
+        "P05",
+        "P06",
+        "P12"
+      ],
+      "typing_status": "NOT_RAW_MEASURE_PRESERVATION"
+    },
+    {
+      "name": "CommonContainer",
+      "proposed_type": "Right tensor-packet region/category ambient data; separately scalar real target",
+      "relation_types": [
+        "MEMBERSHIP",
+        "OTHER_EXPLICITLY_DEFINED_RELATION"
+      ],
+      "source_entries": [
+        "P19",
+        "P20",
+        "E04"
+      ],
+      "typing_status": "DO_NOT_COLLAPSE_STAGES"
+    },
+    {
+      "name": "OutputPossibilities",
+      "proposed_type": "Correlated admissible output construction through formal quotient and normalized degree",
+      "relation_types": [
+        "IMAGE_UNDER_MAP",
+        "APPROXIMATE_RELATION"
+      ],
+      "source_entries": [
+        "P08",
+        "P11",
+        "P21"
+      ],
+      "typing_status": "FAITHFUL_ADMISSIBILITY_NOT_COMPLETE"
+    }
+  ],
+  "sources": [
+    {
+      "file": "IUT_III.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20III.pdf",
+      "bytes": 1307865,
+      "sha256": "9a7ee3c77b1c7717210c0613eb39b6844649d0040dc3d9e1be7d544f8f91a0b9",
+      "id": "III",
+      "reading_scope": "COMPLETE",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Comments_Scholze_Stix.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Cmt2018-05.pdf",
+      "bytes": 95893,
+      "sha256": "d71c38308322bdb403b11c6f450f8f67797600c5c9ac7c28505c8d1c43c1f53b",
+      "id": "CMT",
+      "reading_scope": "COMPLETE",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Essential_Logical_Structure.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Essential%20Logical%20Structure%20of%20Inter-universal%20Teichmuller%20Theory.pdf",
+      "bytes": 1021306,
+      "sha256": "c0e63b629aa174aa065e93d08defe3e5d0837c8778aab527383798baf8ca6e32",
+      "id": "ELS",
+      "reading_scope": "COMPLETE",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Formalization_2026_04.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Formalization%20of%20IUT%20%282026-04%29.pdf",
+      "bytes": 347480,
+      "sha256": "9a32b2485b5875574d7470256d3414b88ee6ac3ed8a39a82ea7332e25072ee9c",
+      "id": "FORM",
+      "reading_scope": "COMPLETE",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Scholze_Stix.pdf",
+      "url": "https://www.math.uni-bonn.de/people/scholze/WhyABCisStillaConjecture.pdf",
+      "bytes": 527012,
+      "sha256": "4ec276246a2a92d2e211a0dae5afd073b5eae7e2b37e9bbabe3cb82c7e0b34a0",
+      "id": "SS",
+      "reading_scope": "COMPLETE",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "LANA_report_202607.pdf",
+      "url": "https://raw.githubusercontent.com/katobungen/LANA_report_202607/pdf/LANA_report_202607.pdf",
+      "bytes": 640461,
+      "sha256": "aa53093aa8d69dbce5f8fb4f541069a418650260dee1ef532917aa8db89606c7",
+      "id": "LANA",
+      "reading_scope": "COMPLETE",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "IUT_I.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20I.pdf",
+      "bytes": 1280589,
+      "sha256": "7360e3ed27c235b5497a0743d3ed1646fbb97688547d16b7c784fc7f127f1f03",
+      "pages": 186,
+      "id": "I",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "IUT_II.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20II.pdf",
+      "bytes": 1203855,
+      "sha256": "180bfa6aaddc4ae37af37acaad51f61e0a47b33b8255ad3169e28a970ae39b7c",
+      "pages": 174,
+      "id": "II",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Frobenioids_I.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Geometry%20of%20Frobenioids%20I.pdf",
+      "bytes": 804375,
+      "sha256": "8e5ac14e3aadb457ee4edde81a325b64b060cefb14712d70cf2ca66b373aaf53",
+      "pages": 126,
+      "id": "FRI",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Frobenioids_II.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Geometry%20of%20Frobenioids%20II.pdf",
+      "bytes": 514623,
+      "sha256": "0185e64c4107123a20d2fd72f6e5a5ff8e5c1356d3caee69b7d5700e291ac0a9",
+      "pages": 72,
+      "id": "FRII",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "AbsTop_III.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Topics%20in%20Absolute%20Anabelian%20Geometry%20III.pdf",
+      "bytes": 1132226,
+      "sha256": "e8115df30a86dea26e2ebf60cb333558ff28fe3e4d57017a80421787b53421a9",
+      "pages": 164,
+      "id": "ABS",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Etale_Theta.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Etale%20Theta%20Function%20and%20its%20Frobenioid-theoretic%20Manifestations.pdf",
+      "bytes": 814566,
+      "sha256": "42c5d9180c69bc9fa6596ce1a11662494315954ed74301060bf1819f955a7406",
+      "pages": 112,
+      "id": "ET",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "IUT_IV.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20IV.pdf",
+      "bytes": 632447,
+      "sha256": "5bf4b1e0a8c2686562a6859e5009d301335044cfb5efec5d3a9edf764e4af87f",
+      "pages": 87,
+      "id": "IV",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    },
+    {
+      "file": "Alien_Copies.pdf",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Alien%20Copies,%20Gaussians,%20and%20Inter-universal%20Teichmuller%20Theory.pdf",
+      "bytes": 1016365,
+      "sha256": "b2510b7276ab08f9f758e283200a4fc87205d2439d6d9b75afe8df6ccb182d1e",
+      "pages": 170,
+      "id": "ALIEN",
+      "reading_scope": "SELECTED_PASSAGES_ONLY",
+      "page_system": "PDF/preprint"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "D01",
+      "kind": "source_entry",
+      "source_id": "I",
+      "locator": "Definition 5.2(i)–(iv)",
+      "pages": "134–135",
+      "role": "PRE_XIF_SOURCE",
+      "status": "DEFINITION_INSPECTED",
+      "relation_type": "ISOMORPHISM",
+      "interpretation": "PS stores its local indexed category data, global realified Frobenioid, place bijection, and localization monoid isomorphisms. Retain this structure in every interpretation."
+    },
+    {
+      "id": "D02",
+      "kind": "source_entry",
+      "source_id": "II",
+      "locator": "Definition 4.9(i)–(viii)",
+      "pages": "153–158",
+      "role": "PRE_XIF_SOURCE",
+      "status": "DEFINITION_INSPECTED",
+      "relation_type": "DEFINITIONAL_EQUALITY",
+      "interpretation": "Local split data include unit quotients and Kummer structures; global strip carries a pilot object up to isomorphism. Not merely an unpointed real line."
+    },
+    {
+      "id": "D03",
+      "kind": "source_entry",
+      "source_id": "FRI",
+      "locator": "Theorems 5.1, 5.2, 6.4",
+      "pages": "96–97; 100–101; 114–115",
+      "role": "PRE_XIF_SOURCE",
+      "status": "SELECTED_DEPENDENCY_INSPECTED",
+      "relation_type": "ISOMORPHISM",
+      "interpretation": "Picard/divisor descriptions and arithmetic degree interpretation require the stated Frobenioid hypotheses; realified equivalences scale degrees positively unless stronger hypotheses force scale one."
+    },
+    {
+      "id": "D04",
+      "kind": "source_entry",
+      "source_id": "FRII",
+      "locator": "Theorem 1.2; Example 5.6(iii)–(v)",
+      "pages": "9–10; 62–65",
+      "role": "PRE_XIF_SOURCE",
+      "status": "SELECTED_DEPENDENCY_INSPECTED",
+      "relation_type": "IMAGE_UNDER_MAP",
+      "interpretation": "Model Frobenioid and local/global localization interfaces; III cQ3 cites the functors in Example 5.6. The substituted quotient construction needs its own compatibility verification."
+    },
+    {
+      "id": "D05",
+      "kind": "source_entry",
+      "source_id": "II",
+      "locator": "Corollary 4.10(iii)–(v); Remark 4.10.3",
+      "pages": "158–162",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "SAME_ORBIT_UNDER_INDETERMINACY",
+      "interpretation": "The specified unit comparison and global positive-degree orbit comparison are distinct predicates. Do not promote positive-scale equivalence to native degree equality."
+    },
+    {
+      "id": "D06",
+      "kind": "source_entry",
+      "source_id": "ABS",
+      "locator": "Propositions 5.7–5.8",
+      "pages": "137–141",
+      "role": "PRE_XIF_SOURCE",
+      "status": "SELECTED_DEPENDENCY_INSPECTED",
+      "relation_type": "PROPOSITIONAL_EQUALITY",
+      "interpretation": "This formula applies to the open unit subsets on which log induces a bijection; it is not an unrestricted measure-preservation theorem. The reconstruction includes its own normalized real target."
+    },
+    {
+      "id": "D07",
+      "kind": "source_entry",
+      "source_id": "ET",
+      "locator": "Proposition 1.4(iii)",
+      "pages": "20–21",
+      "role": "PRE_XIF_SOURCE",
+      "status": "SELECTED_DEPENDENCY_INSPECTED",
+      "relation_type": "IMAGE_UNDER_MAP",
+      "interpretation": "Theta values and their Kummer classes have specific evaluation and integral/unit conditions. Do not replace these by freely chosen scalar maps."
+    },
+    {
+      "id": "D08",
+      "kind": "source_entry",
+      "source_id": "IV",
+      "locator": "Section 3; Definition 3.1",
+      "pages": "67–68",
+      "role": "FOUNDATIONAL_DEPENDENCY",
+      "status": "SELECTED_DEPENDENCY_INSPECTED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Species formalism is a possible language for structured data and operations; no automatic proof of the critical comparison follows."
+    },
+    {
+      "id": "P01",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Definition 1.1; Proposition 1.2; Theorem 1.5",
+      "pages": "23–39; 49–55",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "IMAGE_UNDER_MAP",
+      "interpretation": "Use logarithms on their specified unit domains; retain separate Kummer maps and unit/Galois synchronization. No general commuting-square axiom."
+    },
+    {
+      "id": "P02",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Definition 2.4; Remark 2.4.2",
+      "pages": "87–91",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "DEFINITIONAL_EQUALITY",
+      "interpretation": "The value-part strip determines a distinguished negative pilot in an ordered Picard monoid and specified localization maps. Raw strip isomorphism still needs comparison with native normalized volume."
+    },
+    {
+      "id": "P03",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Propositions 3.1–3.5",
+      "pages": "92–106",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Tensor packets and local/global normalized data must retain place indexing, weights, and one-sided log-shell conditions."
+    },
+    {
+      "id": "P04",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Proposition 3.7; Definition 3.8; Remark 3.8.1",
+      "pages": "109–114",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "ISOMORPHISM",
+      "interpretation": "Record the operation-induced theta comparison with its pilot data. It is not a field isomorphism preserving both native arithmetic realizations."
+    },
+    {
+      "id": "P05",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Proposition 3.9(i)–(iv)",
+      "pages": "115–118",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "IMAGE_UNDER_MAP",
+      "interpretation": "Use specified packet/procession-normalized maps L and their global degree comparison, with the exact hypotheses of each compatibility statement."
+    },
+    {
+      "id": "P06",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.9.4(iii)–(vi)",
+      "pages": "120–126",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "EQUIVALENCE",
+      "interpretation": "Volume classes and normalized vertical comparisons are separate from maps of raw regions; preserve the native q realization through the particular allowed operations."
+    },
+    {
+      "id": "P07",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.9.5(i)–(ii), P1–P3",
+      "pages": "127",
+      "role": "PRE_XIF_SOURCE",
+      "status": "DEFINITION_AND_PROPERTIES_INSPECTED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Hull extensivity and monotonicity on the source region domain; no inference of native input coverage from extensivity alone."
+    },
+    {
+      "id": "P08",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.9.5(iii)–(v)",
+      "pages": "128–130",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "APPROXIMATE_RELATION",
+      "interpretation": "Equal-volume hull choices, bounded alternatives and formal quotients must be distinguished. Local equal-volume choices need not exist; the global construction uses additional structure."
+    },
+    {
+      "id": "P09",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.9.5(vii), Ob1–Ob9",
+      "pages": "131–139",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "IMAGE_UNDER_MAP",
+      "interpretation": "Construct the positive-power twisted determinant of the localized bundle and normalize its volume; keep units/Galois data for subsequent operations before scalar forgetting."
+    },
+    {
+      "id": "P10",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.9.5(viii), sQ1–sQ5",
+      "pages": "139–141",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Reconcile the vertical offset through the specified log-Kummer operation, with its allowed iterates and indeterminacies."
+    },
+    {
+      "id": "P11",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.9.5(ix), cQ3/cQ4/iQ5",
+      "pages": "141–144",
+      "role": "PRE_XIF_SOURCE",
+      "status": "CRITICAL_SOURCE_ASSERTION_NOT_FAITHFULLY_FORMALIZED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Source asserts closure of the specified composite through the right-column structure up to formal quotient indeterminacies. Must be translated and checked, not dropped or assumed as the final inequality."
+    },
+    {
+      "id": "P12",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remarks 3.9.6–3.9.7; Proposition 3.10 and Remark 3.10.1",
+      "pages": "145–151",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Global product formula, infinite-region limit conventions, and the precise MOD versus mod distinction must survive normalization and abstraction."
+    },
+    {
+      "id": "P13",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.10.2 diagram; Remark 3.11.1(iii)",
+      "pages": "152; 160–161",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "ISOMORPHISM",
+      "interpretation": "Use the shown composite poly-isomorphisms with their provenance; a selected arbitrary isomorphism of abstract types is insufficient."
+    },
+    {
+      "id": "P14",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Theorem 3.11(i)–(iii)",
+      "pages": "153–159",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "SAME_ORBIT_UNDER_INDETERMINACY",
+      "interpretation": "Ind1 is the specified procession automorphism action; Ind2 is the specified Ism action. Each orbit relation must retain its underlying action."
+    },
+    {
+      "id": "P15",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Theorem 3.11(ii), Ind3; Proposition 3.5(ii)",
+      "pages": "155–156",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "State the nonarchimedean one-sided inclusions and archimedean inclusion/surjection clauses with their iteration compatibility. Do not use a generic quotient by a group."
+    },
+    {
+      "id": "P16",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.11.1(iii)–(viii)",
+      "pages": "160–166",
+      "role": "PRE_XIF_SOURCE",
+      "status": "CRITICAL_SOURCE_ASSERTION_NOT_FAITHFULLY_FORMALIZED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Simultaneous execution in the designated right arithmetic structure must retain the fixed input realization and all correlations; precise source-faithful preservation predicate unresolved."
+    },
+    {
+      "id": "P17",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.11.1(iv)",
+      "pages": "162",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Algorithm descent requires a construction and compatibility with the original richer input data; not an asserted transport map on underlying regions."
+    },
+    {
+      "id": "P18",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Corollary 3.12 statement and initial proof reductions",
+      "pages": "173–175",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Treat the extended-bound case separately; use the stated compactness/finiteness reduction for the real-valued nontrivial case."
+    },
+    {
+      "id": "P19",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Corollary 3.12, xi-a–c",
+      "pages": "181–182",
+      "role": "PRE_XIF_SOURCE",
+      "status": "STATED_NOT_REDERIVED",
+      "relation_type": "ISOMORPHISM",
+      "interpretation": "Retain the native q location and the constructed right tensor-packet container/hull with the specific comparisons of the construction."
+    },
+    {
+      "id": "P20",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Corollary 3.12, xi-d",
+      "pages": "183",
+      "role": "PRE_XIF_SOURCE",
+      "status": "DEFINITION_INSPECTED",
+      "relation_type": "DEFINITIONAL_EQUALITY",
+      "interpretation": "OutVol is the displayed real downset. Determinant/normalization and vertical reconciliation occur before comparing it to the native q degree."
+    },
+    {
+      "id": "P21",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Corollary 3.12, xi-e",
+      "pages": "183–184",
+      "role": "PRE_XIF_SOURCE",
+      "status": "CRITICAL_SOURCE_ASSERTION_NOT_FAITHFULLY_FORMALIZED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Operations execute subject to the native fixed q-pilot degree. Need a checked interpretation of what this entails for the constructed admissible output degrees."
+    },
+    {
+      "id": "T01",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Corollary 3.12, xi-f",
+      "pages": "184",
+      "role": "TARGET_EXCLUDED_FROM_H",
+      "status": "TARGET_NOT_PROVED_OR_REFUTED",
+      "relation_type": "MEMBERSHIP",
+      "interpretation": "Target membership; not included in the premise set. Its preceding approximation assertion is part of the step under audit."
+    },
+    {
+      "id": "E01",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Corollary 3.12, xi-g; Figure 3.8",
+      "pages": "184–185",
+      "role": "POST_XIF_EXCLUDED_FROM_H",
+      "status": "POST_TARGET_EXPLANATION",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Post-conclusion diagram cannot serve as an independently established pre-xi-f compatibility premise."
+    },
+    {
+      "id": "E02",
+      "kind": "source_entry",
+      "source_id": "III",
+      "locator": "Remark 3.12.2",
+      "pages": "187–195",
+      "role": "POST_XIF_EXCLUDED_FROM_H",
+      "status": "POST_TARGET_EXPLANATION",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Use later explanations to locate intended construction, not as a substitute proof of a pre-xi-f lemma."
+    },
+    {
+      "id": "E03",
+      "kind": "source_entry",
+      "source_id": "CMT",
+      "locator": "C12–C14; C17–C18",
+      "pages": "5–6",
+      "role": "LATER_EXPLANATION_NOT_PREMISE",
+      "status": "AUTHOR_RESPONSE_INSPECTED",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Distinguish abstract pilot normalization from native arithmetic degree and retain the objection to the scalar-linear substitution."
+    },
+    {
+      "id": "E04",
+      "kind": "source_entry",
+      "source_id": "ELS",
+      "locator": "Sections 3.6, 3.9–3.11; Stp7–Stp8",
+      "pages": "111–116; 139–164",
+      "role": "LATER_EXPLANATION_NOT_PREMISE",
+      "status": "CANDIDATE_BRIDGE_EXPLANATION",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "AND/common-container and synchronized construction explanation must be instantiated as a typed preservation statement, including formal quotient and vertical data."
+    },
+    {
+      "id": "E05",
+      "kind": "source_entry",
+      "source_id": "ALIEN",
+      "locator": "Section 3.11(v), cld1–cld9",
+      "pages": "143–146",
+      "role": "EXPOSITION_NOT_INDEPENDENT_PREMISE",
+      "status": "CANDIDATE_BRIDGE_EXPLANATION",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "The intended return construction retains both unit and value data; arbitrary reduction to a single real scalar is not justified by this explanation."
+    },
+    {
+      "id": "E06",
+      "kind": "source_entry",
+      "source_id": "FORM",
+      "locator": "Formalization diagrams and informal 3.11.5 interface",
+      "pages": "3; 10–11",
+      "role": "LATER_FORMALIZATION_EVIDENCE",
+      "status": "INCOMPLETE_FORMALIZATION_DESCRIPTION",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "Diagrammatic reorganization requires source-faithful definitions; an incomplete or unpublished skeleton cannot be counted as a checked critical bridge."
+    },
+    {
+      "id": "E07",
+      "kind": "source_entry",
+      "source_id": "LANA",
+      "locator": "Sections 6.2, 8, 9.2; equation (9-1)",
+      "pages": "33–36; 40–46",
+      "role": "LATER_FORMULATION_NOT_PREMISE",
+      "status": "PROPOSED_COMPARISON_NOT_VERIFIED",
+      "relation_type": "PROPOSITIONAL_EQUALITY",
+      "interpretation": "Existence of suitable S with equality of these specified maps is a proposed bridge; admissibility, target comparison and pilot evaluation need source-faithful certification."
+    },
+    {
+      "id": "E08",
+      "kind": "source_entry",
+      "source_id": "SS",
+      "locator": "Section 2.2",
+      "pages": "9–10",
+      "role": "EXTERNAL_CRITICISM_NOT_PREMISE",
+      "status": "CRITICISM_INSPECTED_NOT_ADOPTED_AS_COUNTERMODEL",
+      "relation_type": "OTHER_EXPLICITLY_DEFINED_RELATION",
+      "interpretation": "The scalar/monodromy objection requires a faithful interpretation of actual IUT data before it can refute this target. No such interpretation was proved here."
+    },
+    {
+      "id": "G01",
+      "kind": "audit_obligation",
+      "statement": "Provide source-faithful admissible-output type and normalized map, including formal quotients and correlations.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "G02",
+      "kind": "audit_obligation",
+      "statement": "Derive degree coverage for native q realization through the specified construction; approximation or order witness may suffice.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "L01",
+      "kind": "elementary_conditional_lemma",
+      "statement": "UB(A,L,b) and forall epsilon>0 exists O:A, a-epsilon<=L(O) imply a<=b.",
+      "status": "PROVED_IN_PROSE_ONLY"
+    },
+    {
+      "id": "G03",
+      "kind": "audit_obligation",
+      "statement": "Translate A/B/C with admissibility, pilot evaluation, target normalization and source-faithfulness proved.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "G04",
+      "kind": "audit_obligation",
+      "statement": "Interpret every actual premise in an abstraction; realize or reflect any proposed abstract failure back to the intended claim.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "CODE01",
+      "kind": "code_boundary",
+      "repository": "https://github.com/LANA-Project/iut4-sec1",
+      "revision": "a7551d2f575b7e462cf9e82c587d9c6308e7b15c",
+      "status": "IUT_IV_SECTION_1_SCOPE_NO_CRITICAL_BRIDGE_PROOF"
+    },
+    {
+      "id": "CODE02",
+      "kind": "code_boundary",
+      "repository": "https://github.com/lana-agents/iut",
+      "revision": "2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "inspected_files": [
+        "README.md",
+        "Iut/Cor312/Statement.lean",
+        "Iut/Cor312/LeftHandSide.lean",
+        "Iut/Cor312/RightHandSide.lean",
+        "Iut/Cor312/ContainerHull.lean"
+      ],
+      "status": "ABSTRACT_VARIANT_STATEMENT_AND_CONDITIONAL_INTERFACES_NOT_BRIDGE_PROOF"
+    }
+  ],
+  "edges": [
+    {
+      "from": "D01",
+      "to": "D02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D03",
+      "to": "D02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D04",
+      "to": "D02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D03",
+      "to": "D04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D01",
+      "to": "D05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D02",
+      "to": "D05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D03",
+      "to": "D05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D02",
+      "to": "P01",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D06",
+      "to": "P01",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D01",
+      "to": "P02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D02",
+      "to": "P02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D03",
+      "to": "P02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P01",
+      "to": "P03",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D07",
+      "to": "P03",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P03",
+      "to": "P04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D05",
+      "to": "P04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P03",
+      "to": "P05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D06",
+      "to": "P05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P01",
+      "to": "P06",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P06",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D06",
+      "to": "P06",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P03",
+      "to": "P07",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P07",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P08",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P07",
+      "to": "P08",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P09",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P07",
+      "to": "P09",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P08",
+      "to": "P09",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D03",
+      "to": "P09",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D04",
+      "to": "P09",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P01",
+      "to": "P10",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P06",
+      "to": "P10",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P09",
+      "to": "P10",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D04",
+      "to": "P11",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P04",
+      "to": "P11",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P08",
+      "to": "P11",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P09",
+      "to": "P11",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P10",
+      "to": "P11",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P12",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P06",
+      "to": "P12",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D03",
+      "to": "P12",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P04",
+      "to": "P13",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P13",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D05",
+      "to": "P13",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P01",
+      "to": "P14",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P03",
+      "to": "P14",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P04",
+      "to": "P14",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P14",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P13",
+      "to": "P14",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P01",
+      "to": "P15",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P03",
+      "to": "P15",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P15",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "P16",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P13",
+      "to": "P16",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P14",
+      "to": "P16",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P15",
+      "to": "P16",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P13",
+      "to": "P17",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P14",
+      "to": "P17",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P15",
+      "to": "P17",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P07",
+      "to": "P18",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P08",
+      "to": "P18",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P12",
+      "to": "P18",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P14",
+      "to": "P18",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P15",
+      "to": "P18",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P13",
+      "to": "P19",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P14",
+      "to": "P19",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P15",
+      "to": "P19",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P16",
+      "to": "P19",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P17",
+      "to": "P19",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P05",
+      "to": "P20",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P09",
+      "to": "P20",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P10",
+      "to": "P20",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P18",
+      "to": "P20",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P19",
+      "to": "P20",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "P21",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P13",
+      "to": "P21",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P16",
+      "to": "P21",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P20",
+      "to": "P21",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P21",
+      "to": "T01",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "T01",
+      "to": "E01",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "T01",
+      "to": "E02",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P02",
+      "to": "E03",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "E03",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P21",
+      "to": "E03",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "E04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P16",
+      "to": "E04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P21",
+      "to": "E04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D08",
+      "to": "E04",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "E05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "D02",
+      "to": "E05",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "E06",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P16",
+      "to": "E06",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P21",
+      "to": "E06",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "E07",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P16",
+      "to": "E07",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P21",
+      "to": "E07",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P02",
+      "to": "E08",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "E08",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P21",
+      "to": "E08",
+      "kind": "AUDIT_DEPENDENCY_OR_CONTEXT",
+      "status": "NOT_A_CERTIFIED_PROOF_EDGE"
+    },
+    {
+      "from": "P11",
+      "to": "G01",
+      "kind": "REQUIRES_FAITHFUL_TRANSLATION",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "P16",
+      "to": "G01",
+      "kind": "REQUIRES_FAITHFUL_TRANSLATION",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "P21",
+      "to": "G02",
+      "kind": "REQUIRES_PRESERVATION_VERIFICATION",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "G01",
+      "to": "G02",
+      "kind": "NEEDED_BEFORE_STATEMENT",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "G02",
+      "to": "L01",
+      "kind": "WOULD_SUPPLY_CANDIDATE_PREMISE",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "L01",
+      "to": "T01",
+      "kind": "CONDITIONAL_SCALAR_LAST_STEP",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "E07",
+      "to": "G03",
+      "kind": "PROPOSED_ALTERNATIVE_FORMULATION",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "E04",
+      "to": "G03",
+      "kind": "AUTHOR_FORMULATION",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "T01",
+      "to": "G03",
+      "kind": "PRINTED_TARGET",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "G01",
+      "to": "G04",
+      "kind": "NEEDED_FOR_COUNTERMODEL",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    },
+    {
+      "from": "CODE02",
+      "to": "G01",
+      "kind": "INTERFACE_DOES_NOT_DISCHARGE",
+      "status": "CONDITIONAL_OR_UNRESOLVED"
+    }
+  ],
+  "edge_semantics": "Edges record source references, audit dependencies or conditional reasoning. They are not a machine-checked proof graph and do not certify exact exhaustive direct citations.",
+  "unexpanded_frontier": [
+    "Full formal quotient semantics and induced comparison in III Remark 3.9.5(ix)",
+    "Instantiation of cQ3/cQ4 with native q constraint and subsequent normalized output coverage",
+    "Recursive group-theoretic reconstruction dependencies of IUT I/II and AbsTop III",
+    "All source-side conditions for the comparison to LANA suitable S and equation (9-1)",
+    "Source-faithful model interpretation and realization/reflection for any counterexample"
+  ],
+  "countermodel": {
+    "found": false,
+    "layer0_abstraction": "REJECTED_FOR_UNPROVED_PRESERVATION",
+    "lin_model_used": false,
+    "actual_to_abstract_preservation_proved": false,
+    "counterexample_realization_proved": false
+  },
+  "lean": {
+    "new_file_created": false,
+    "reason": "Core source-faithfulness predicates not stable; conditional scalar lemma would not formalize requested theorem",
+    "complete_critical_bridge_proof_found": false
+  },
+  "scope": {
+    "superlinear_modified": false,
+    "cloud_compute_used": false,
+    "new_stage_started": false,
+    "compute_spend_gbp": 0
+  },
+  "quote_policy": "EXACT TEXT cells use short exact source markers or mathematical transcriptions with typography flattened. Full premise statements are located, not reproduced; FORMAL INTERPRETATION is original audit analysis.",
+  "formulation_implications": [
+    {
+      "from": "A",
+      "to": "B",
+      "status": "NOT_YET_FORMALIZABLE"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "status": "NOT_YET_FORMALIZABLE"
+    },
+    {
+      "from": "B",
+      "to": "A",
+      "status": "NOT_YET_FORMALIZABLE"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "status": "NOT_YET_FORMALIZABLE"
+    },
+    {
+      "from": "C",
+      "to": "A",
+      "status": "NOT_YET_FORMALIZABLE"
+    },
+    {
+      "from": "C",
+      "to": "B",
+      "status": "NOT_YET_FORMALIZABLE"
+    }
+  ]
+}

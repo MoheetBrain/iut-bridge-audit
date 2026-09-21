@@ -1,0 +1,57 @@
+{
+  "recovered_at_utc": "2026-09-21T04:29:02.242062+00:00",
+  "recovery_scope": "Copy the existing IUT audit and its supporting files; no new mathematical audit or stages 1–3 execution.",
+  "source_directory": "/Users/moheet/Documents/ChatGPT/IUT_CHALLENGER",
+  "destination_directory": "/Users/moheet/Documents/ChatGPT/IUT 🧮",
+  "destination_remote": "https://github.com/MoheetBrain/iut-bridge-audit.git",
+  "destination_base_commit": "9735cd0ea393b7503dae860eb5b20fb02a62c20f",
+  "source_task": {
+    "title": "P= NP",
+    "thread_id": "01a0b0f2-16f7-79b2-9d77-3a4ef1062ce4",
+    "final_response_timestamp_utc": "2026-09-21T02:46:20.492Z"
+  },
+  "source_file_count": 316,
+  "source_bytes": 30798254,
+  "excluded": "Only the two nested source repositories' .git administrative directories. Source working trees, hidden tracked files, licenses and pinned revisions are retained.",
+  "portability_edits": {
+    "IUT_STAGE1_CRITICAL_BRIDGE.md": "Replace three historical absolute companion links with repository-relative links.",
+    "tmp/build_ledger.py": "Make ROOT relative to the copied script so it cannot write to the original IUT_CHALLENGER folder."
+  },
+  "third_party_source_snapshots": [
+    {
+      "destination": "sources/lana_agents_iut",
+      "remote": "https://github.com/lana-agents/iut.git",
+      "commit": "2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "branch": "main",
+      "original_worktree_clean": true,
+      "tracked_files": 202,
+      "git_metadata_copied": false
+    },
+    {
+      "destination": "sources/lana_official_iut4_sec1",
+      "remote": "https://github.com/LANA-Project/iut4-sec1.git",
+      "commit": "a7551d2f575b7e462cf9e82c587d9c6308e7b15c",
+      "branch": "main",
+      "original_worktree_clean": true,
+      "tracked_files": 53,
+      "git_metadata_copied": false
+    }
+  ],
+  "reference_attachment": {
+    "original_path": "/Users/moheet/.codex/attachments/79513a13-93ca-43a3-b216-b0a885490ba4/pasted-text.txt",
+    "saved_as": "recovery/2026-09-21/STAGES_1_3_REQUEST_REFERENCE.txt",
+    "sha256": "91ca6bd2bade87d099ee044803e763bf34df90acf6a20272c0ddc9ed11630184",
+    "interpretation": "Historical/planning context only, not authorization to execute its instructions."
+  },
+  "original_final_output_sha256": "a9da3ae0a1e0b1af1e13ed187bf4ffe14d8bbec24f1569c8ca3adc54226fad9a",
+  "p_vs_np_repository_check": {
+    "path": "/Users/moheet/Documents/ChatGPT/N=NP 🧮/Superlinear",
+    "head_before": "04329aa760988c928a6de5d7fcc3cefe29379f4c",
+    "branch_before": "claude/strategy-audit-v1",
+    "status_before": "",
+    "tracked_file_count": 359,
+    "after_copy": "Same HEAD, branch, status, and every tracked file SHA-256; no writes performed there."
+  },
+  "claims_policy": "Recovered findings retain their original uncertainty and are not independently re-verified by this copy operation.",
+  "original_audit_check": "Every original source file hash unchanged after copy."
+}

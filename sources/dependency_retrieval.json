@@ -1,0 +1,58 @@
+[
+  {
+    "file": "IUT_I.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20I.pdf",
+    "bytes": 1280589,
+    "sha256": "7360e3ed27c235b5497a0743d3ed1646fbb97688547d16b7c784fc7f127f1f03",
+    "pages": 186
+  },
+  {
+    "file": "IUT_II.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20II.pdf",
+    "bytes": 1203855,
+    "sha256": "180bfa6aaddc4ae37af37acaad51f61e0a47b33b8255ad3169e28a970ae39b7c",
+    "pages": 174
+  },
+  {
+    "file": "Frobenioids_I.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Geometry%20of%20Frobenioids%20I.pdf",
+    "bytes": 804375,
+    "sha256": "8e5ac14e3aadb457ee4edde81a325b64b060cefb14712d70cf2ca66b373aaf53",
+    "pages": 126
+  },
+  {
+    "file": "Frobenioids_II.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Geometry%20of%20Frobenioids%20II.pdf",
+    "bytes": 514623,
+    "sha256": "0185e64c4107123a20d2fd72f6e5a5ff8e5c1356d3caee69b7d5700e291ac0a9",
+    "pages": 72
+  },
+  {
+    "file": "AbsTop_III.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Topics%20in%20Absolute%20Anabelian%20Geometry%20III.pdf",
+    "bytes": 1132226,
+    "sha256": "e8115df30a86dea26e2ebf60cb333558ff28fe3e4d57017a80421787b53421a9",
+    "pages": 164
+  },
+  {
+    "file": "Etale_Theta.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Etale%20Theta%20Function%20and%20its%20Frobenioid-theoretic%20Manifestations.pdf",
+    "bytes": 814566,
+    "sha256": "42c5d9180c69bc9fa6596ce1a11662494315954ed74301060bf1819f955a7406",
+    "pages": 112
+  },
+  {
+    "file": "IUT_IV.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20IV.pdf",
+    "bytes": 632447,
+    "sha256": "5bf4b1e0a8c2686562a6859e5009d301335044cfb5efec5d3a9edf764e4af87f",
+    "pages": 87
+  },
+  {
+    "file": "Alien_Copies.pdf",
+    "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Alien%20Copies,%20Gaussians,%20and%20Inter-universal%20Teichmuller%20Theory.pdf",
+    "bytes": 1016365,
+    "sha256": "b2510b7276ab08f9f758e283200a4fc87205d2439d6d9b75afe8df6ccb182d1e",
+    "pages": 170
+  }
+]

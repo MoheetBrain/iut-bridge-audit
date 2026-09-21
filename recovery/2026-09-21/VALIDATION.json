@@ -1,0 +1,19 @@
+{
+  "validated_at_utc": "2026-09-21T04:30:45.462148+00:00",
+  "result": "PASS",
+  "manifest_entries_verified": 316,
+  "byte_identical_working_copies": 314,
+  "portability_edits_with_exact_originals_preserved": 2,
+  "original_source_hashes_unchanged": true,
+  "retrieved_source_hashes_verified": 15,
+  "copied_json_files_parsed": 24,
+  "source_ledger_rows_and_source_hashes_verified": 38,
+  "relative_links_checked": 19,
+  "final_status_matches_original_response": true,
+  "copied_helper_syntax_valid": true,
+  "copied_helper_targets_its_own_repository": true,
+  "nested_git_metadata_absent": true,
+  "helper_executed": false,
+  "mathematical_revalidation_performed": false,
+  "lean_build_performed": false
+}

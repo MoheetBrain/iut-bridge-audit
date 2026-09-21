@@ -1,0 +1,2841 @@
+=== PDF PAGE 1 ===
+PROJECT LANA INTERIM REPORT ON IUT THEORY
+LANA PROJECT
+Abstract.This interim report presents the current state of Project LANA’s investi-
+gation of Shinichi Mochizuki’s inter-universal Teichm¨ uller theory. Its principal aim is
+to provide a readable and deliberately compressed account of the structures relevant to
+the passage from Theorem 3.11 to Corollary 3.12 of IUT III, including initial Theta-
+data, Hodge theaters, basic prime strips, log-shells, volume containers, the Theta-link,
+and the multiradial algorithm. Within this framework, we isolate a specific compatibil-
+ity problem at the final stage of the argument: the relation between the construction
+arising directly from theq-pilot in its native arithmetic holomorphic structure and the
+construction obtained by anabelian and Kummer-theoretic methods through the multi-
+radial procedure. We also compare this formulation with the 2018 analysis of Scholze
+and Stix. At present, however, Project LANA has not yet reconstructed a proof of the
+required compatibility. Accordingly, this report does not offer a final verdict on the
+validity of IUT theory; rather, it records the present extent of our understanding, iden-
+tifies the remaining point to be clarified, and provides a basis for further mathematical
+analysis and eventual formalization in Lean.
+Contents
+0. Introduction 1
+1. Basic ideas of IUT theory 9
+2. Overview of initial Θ-data 11
+3. Local GM-data and log-shells 16
+4. BPS and ´ etale Hodge theater 23
+5. Volume container and log-links 26
+6. Multiradial algorithm 30
+7. Θ-link and the big-H diagram 37
+8. On the logic from theorem 3.11 to corollary 3.12 40
+9. Points to be clarified 43
+10. An examination of Scholze-Stix document 46
+References 49
+0.Introduction
+0.1.A brief historical overview of IUT theory.Shinichi Mochizuki’s inter-universal
+Teichmuller theory (IUT theory) is a theory that, against the background of anabelian
+geometry, Frobenioids, ´ etale theta functions, Hodge-Arakelov theory, and so on, aims
+to construct a new form of arithmetic geometry surrounding number fields and elliptic
+curves. Its central result was the assertion that deep Diophantine-geometric results,
+including theabcconjecture, are derived from this theory. In August 2012, Mochizuki
+released the four papers that constitute IUT theory and submitted them to a specialized
+journal. Immediately after their release, these papers attracted the attention of arithmetic
+Date: Last Updated: July 20, 2026.
+1
+
+=== PDF PAGE 2 ===
+geometers around the world because of the significance of the claim that theabcconjecture
+had been solved. At the same time, however, it also became clear that, because of the
+length of the papers, the abundance of original terminology, and their dependence on
+Mochizuki’s vast body of prior preparatory work, they were an extremely unusual and
+difficult object as “papers that can be read and verified” in the ordinary sense.
+The period from 2012 to around 2016 was mainly a stage of understanding and dis-
+semination. Centered on the Research Institute for Mathematical Sciences of Kyoto
+University, reading, exposition, seminars, and the preparation of surveys were carried
+forward by Go Yamashita, Yuichiro Hoshi, Mohamed Saidi, and others. From 2015 on-
+ward, international workshops were held at RIMS, Beijing, Oxford, and again at RIMS.
+During this period, researchers who tried to understand IUT theory positively empha-
+sized the originality and novelty of the theory, and warned against the danger of carrying
+over existing scheme-theoretic intuition without modification. On the other hand, many
+outside experts felt that it was difficult to grasp where the key points of the argument
+lay and what had to be checked in order to guarantee the validity of the proof as a whole.
+Thus the early controversy was not only a question of “whether the proof is correct,” but
+also a question of “whether the proof can be understood in a form that is verifiable by
+the community.”
+A major turning point came in March 2018. Peter Scholze and Jakob Stix visited Kyoto
+and held several days of intensive discussions with Mochizuki and Hoshi. Subsequently,
+Scholze-Stix published a report asserting that there was a serious defect near the final
+stage leading from Theorem 3.11 to Corollary 3.12 of IUT III, that is, at the core of
+the derivation of the inequality that leads toward theabcconjecture. In their view, the
+problem was not of a kind that could be remedied by a minor correction, and therefore
+theabcconjecture remained unsolved. In response, Mochizuki argued that Scholze-Stix
+had made impermissible simplifications, especially simplifications that identified objects,
+labels, and Hodge theaters that should originally be distinguished, and that for this reason
+their criticism failed to capture the essence of IUT theory. At this stage, the controversy
+shifted from a mere problem of difficulty of reading to mathematical and logical issues
+concerning the separation of objects, links, labels, indeterminacies, and “what can be
+compared between distinct Hodge theaters,” all of which are specific to IUT.
+In 2020, it was reported that, after a long refereeing process, the four IUT papers had
+been accepted by PRIMS, and in 2021 they were formally published as a special issue of
+PRIMS, Vol. 57, No. 1/2. This was an important institutional milestone, and meant that
+IUT theory had appeared in a peer-reviewed specialized journal. Publication, however,
+did not immediately imply a consensus in the international mathematical community. In
+particular, the critical side regarded the problem near Corollary 3.12, pointed out in 2018,
+as still unresolved in the published version, while the positive side regarded the critics
+as misunderstanding the logical structure of the theory. Thus, even after publication, a
+double state continued: IUT was at once “a theory published in PRIMS” and “a theory
+whose proof was still regarded as incomplete by some major experts.”
+After 2022, the controversy branched in several further directions. Expositions and
+developmental work related to IUT continued on the part of Mochizuki and researchers
+around him, and movements to explore its relationship with anabelian geometry and ´ etale
+homotopy theory also progressed through international networks such as AHGT. On the
+other hand, attempts at reformulation or alternative explanation by Taylor Dupuy, Kirti
+Joshi, and others, as well as criticisms of these attempts, also appeared. In 2023, more-
+over, the IUT Challenger Prize by Nobuo Kawakami was announced, setting up, in a form
+2
+
+=== PDF PAGE 3 ===
+unusual in the mathematical world, an incentive for the controversy by offering one mil-
+lion dollars for a peer-reviewed paper that would demonstrate an essential defect in IUT
+theory. In this way, by the middle of the 2020s the situation had become more complex
+than a simple confrontation between “support” and “opposition”: affirmative positions,
+critical positions, and positions attempting alternative reformulations coexisted.
+To summarize the picture up to immediately before computer formalization emerged
+as an open issue in the autumn of 2025, IUT theory remained “a theory that had been
+published, but had not reached a broad consensus.” For Mochizuki and his supporters,
+the criticisms were the result of missing the logical structure peculiar to IUT, and the
+theory remained valid. From the critical position, including Scholze-Stix, the proof of
+theabcconjecture had not been established, and the central gap remained. And for
+many third parties, there still did not exist a sufficiently transparent form in which the
+claims of both sides could be verified independently. Thus, as of the autumn of 2025,
+the controversy surrounding IUT theory, even after publication and repeated exchanges
+of objections and replies, had not yet reached a decisive shared understanding.
+0.2.A brief overview of the activities of the LANA project.The LANA Project
+began with the aim of formalizing Shinichi Mochizuki’s IUT theory in Lean and, in par-
+ticular, examining the logic leading from Theorem 3.11 to Corollary 3.12 of the third
+paper in a form that can withstand both ordinary mathematical understanding and for-
+malization. Preparations began in the autumn of 2023. Fumiharu Kato, then a professor
+of mathematics at Tokyo Institute of Technology, learned about the situation after the
+Liquid Tensor Experiment, especially the formalization of modern mathematics in Lean,
+through a lecture series by Johan Commelin at a University of Tokyo colloquium that
+he organized jointly with Shane Kelly of the University of Tokyo, and began to consider
+the possibility of examining the controversy surrounding IUT theory by means of for-
+malization. Kato contacted Johan Commelin and Adam Topaz through Kelly and began
+discussions to launch the project. In April 2024, Kiran Kedlaya also joined the team.
+Initially, it was important for this project to be somewhat independent from Mochizuki
+himself, the selection of an expert member with a deep understanding of IUT theory
+required care, but Kato persuaded Yuichiro Hoshi and, in December 2024, strongly asked
+him to become one of the active members. In this way, the core members of the LANA
+Project were formed. At present, with younger members added to the core members, the
+project has become an internationally diverse project of somewhat more than ten people
+in total.
+The year 2024 was a preparatory period before entering into substantive verification.
+The center of this period consisted of detailed meetings for deciding the broad outline
+of the activities. A rough policy was worked out: rather than immediately placing the
+entirety of IUT theory onto Lean, the project would look toward the formalization of
+the basic parts of anabelian geometry, while eventually moving on to the core of IUT
+theory. At the same time, on the Japanese side, Lean study sessions and preliminary
+online seminars began, and efforts were also made to share the literacy required for
+formalization.
+Beginning with the Kamakura–Zushi bootcamp in February 2025, LANA’s activities
+came to proceed around intensive bootcamp-style discussions. In this first full-scale
+bootcamp, the principal members gathered in person and tried to share an overall picture
+of the core of IUT theory, especially the derivation from Theorem 3.11 to Corollary 3.12.
+Already here, the problem that would later be called the “wall” inside LANA appeared.
+Roughly speaking, it was the problem of in what sense, and under what indeterminacies,
+3
+
+=== PDF PAGE 4 ===
+the pilot object that had moved to the theta side could be compared with the original
+pilot object on theq-side. At this point, it was not clear whether this was simply a lack
+of understanding on the LANA side, or whether it was a problem related to the argument
+of the paper itself.
+After this, through the Kelowna bootcamp in May 2025, the Higashi-Ginza bootcamp
+in July, and the Zaandam bootcamp in November, the discussion deepened step by step.
+In Kelowna, basic prime strips, Hodge theaters, volume containers, the rigidity of ´ etale
+theta, and related matters were intensively examined, and a common understanding
+progressed concerning the relations among the valuative portion, the monoidal portion,
+the log-shell, and indeterminacies handled by IUT theory. In Higashi-Ginza, with Θ-link
+compatibility as the axis, the “wall” began to appear as a problem of the commutativity of
+a certain diagram or the id-ness of a specific isomorphism. In Zaandam, new explanations
+supplied from Mochizuki’s side, and the discussions surrounding species, mutations, SHE,
+and IPL, were examined, and a direction opened in which the discussion would proceed
+with Lean code, albeit at low resolution, as a common language. Nevertheless, in none
+of these bootcamps was the final logical obstacle completely resolved.
+In short, the series of bootcamps in 2025 was a process, prior to “formalizing IUT
+theory,” of “translating the core of the controversy into mathematical statements ex-
+plicit enough to be formalizable.” At first, the issue was how to understand the large
+apparatuses such as Hodge theaters, pilot objects, and theta links. Gradually, however,
+the focus narrowed to the final point in the passage from Theorem 3.11 to Corollary
+3.12: which structure can be said to be the same as which other structure, whether that
+sameness is merely an isomorphism or a stronger sameness, and what is preserved when
+indeterminacies are allowed. This narrowing itself was a major achievement of LANA’s
+activities in 2025.
+In parallel with this, the LANA Project has been involved in formalizing concepts and
+theorems in arithmetic geometry—which provide the foundation for anabelian geometry—
+as well as in building the Lean community in Japan. In July 2025, the ZMC Conference
+2025 was held on the 12th floor of the Kabukiza Tower in Higashi-Ginza, Tokyo, featuring
+lectures on formalization and group work sessions where participants could experience the
+formalization process firsthand. This was the first time a research conference for math-
+ematicians of this nature had been held in Japan. Mochizuki, who participated in the
+conference online, learned of the progress being made in formalization techniques using
+Lean and became interested in it. Immediately after that conference, Mochizuki sent an
+email to Topaz, and that is how their communication slowly began.
+Mochizuki and members of his research group began working on the formalization
+of IUT theory using Lean, independently of LANA. It is still fresh in our memory how
+Mochizuki suddenly began discussing the possibility of formalizing IUT theory using Lean
+in his report [14] from this period, surprising the world.
+In tandem with these developments, LANA members had already begun reviewing
+documents sent to us by Mochizuki via Topaz from the Zaandam bootcamp. Our com-
+munication with Mochizuki thus began modestly. Currently, as announced at the press
+conference on March 31, 2026, the style of communication between Mochizuki and us has
+somewhat settled into a format where the LANA Project poses questions to Mochizuki
+regarding unclear points and then persistently discusses his responses.
+The first bootcamp of 2026 was held in San Diego from February 16 to 20, and it
+was a very important one. Before the bootcamp, Topaz and Kato submitted preliminary
+questions to Yuichiro Hoshi concerning the relationship of the objects appearing in the
+input and output of the multiradial algorithm, what it means for a certain isomorphism
+4
+
+=== PDF PAGE 5 ===
+to be “essentially the identity,” and why theq-pilot appears in the orbit of the algorithmic
+indeterminacy. During the bootcamp, the discussion proceeded around these questions.
+Although the detailed course was complex, the result was that the “wall” was extracted
+in a fairly clear form. Namely, it was confirmed that the problem concentrates on the
+proposition of whether, after taking 1st, 2nd, and 3rd indeterminacies into account, a
+certain diagram is commutative, or a certain isomorphism can be said to be the identity.
+The importance of the San Diego bootcamp lies in this “confirmation.” LANA did
+not conclude that IUT theory is wrong. Nevertheless, it reached the understanding that,
+at least according to LANA’s present understanding, in the derivation from Theorem
+3.11 to Corollary 3.12 there seems a point where a proof is not fully written, and that
+this point can be specified as a problem of diagrammatic commutativity or id-ness. This
+understanding is close to the criticism by Scholze-Stix, but differs essentially in several
+respects. What LANA is problematizing is the meaning of a certain kind of diagram or
+construction “coinciding” under indeterminacies that include Ind3 (the third indetermi-
+nacy). Thus the San Diego bootcamp did not give the IUT controversy a judgment that
+“it is over”; rather, it was a bootcamp that made the location of the problem visible in
+a form that can be treated mathematically.
+After the bootcamp, Topaz wrote the skeleton of the logic leading to the problematic
+point as Lean code, and shared it also with Mochizuki’s side. Subsequently, Mochizuki’s
+side, using this skeleton as a basis, prepared low-resolution Lean code for filling the
+problematic point and examined it in an online meeting with Topaz. This exchange is
+important in the sense that the dialogue between LANA and Mochizuki’s side began, for
+the first time, to engage through the common language of Lean code. However, what
+was obtained there still contains many black boxes and is not a complete formal proof.
+While evaluating this development positively, the LANA side maintained the cautious
+view that the “wall” identified in San Diego had not yet been crossed.
+In response to these rapid developments, on March 31, 2026, ZMC formally announced
+the existence of the LANA Project. In the announcement, the five core members were
+made public: Johan Commelin, Kiran Kedlaya, Yuichiro Hoshi, Adam Topaz, and Fu-
+miharu Kato (the project leader). The project’s aims were also stated to be the Lean
+formalization of anabelian geometry and the verification of IUT theory by Lean. At the
+same time, it was explained that, concerning the verification of IUT theory, there remain
+important points that are still not understood at present; that no final judgment has
+been made as to whether these are genuine mathematical gaps or a lack of understanding
+on LANA’s side; that dialogue with Mochizuki will continue; and that an intermediate
+presentation of results is planned.
+As of July 2026, the LANA Project has not made a final judgment on the correctness
+or incorrectness of IUT theory. However, through the multiple bootcamps held since
+February 2025 and lively discussions during numerous online meetings, it has progressed
+to the point of transforming the core of the controversy, which for many years had been
+discussed in vague terms, into the form of diagrams, types, code, black boxes, and explicit
+questions. In particular, the San Diego bootcamp was the occasion on which LANA first
+verbalized “what it does not understand,” and in this sense it was an event that marked
+the first season of the project. The task from now on is to further refine this verbalized
+problem in both Lean code and mathematical exposition, and to clarify, within open
+mathematical discussion, whether the gap will ultimately be filled or confirmed as a gap.
+In this article, beginning with the next section, we give an introduction to IUT theory,
+in a form accessible to as wide an audience as possible, while indicating instructions for
+5
+
+=== PDF PAGE 6 ===
+reading the Lean code that the LANA Project created through the activities described
+above and released on July 17, 2026.
+0.3.Purpose of this document.As a survey of IUT theory that also serves as an
+activity report of the LANA Project, this article aims, roughly speaking, at the length
+and level of technicality of an expos´ e in the Bourbaki Seminar. However, although a
+few individual LANA members possess a good (even deep) understanding of IUT theory,
+such expertise is not shared by all; consequently, the collective knowledge of the group
+remains undeniably immature. It is therefore inevitable that this exposition will also be
+incomplete. Nevertheless, the reason we have written this paper as a survey is that, to the
+best of our knowledge, no one has yet written a “reasonably precise and technical survey
+of IUT theory of a readable length.” We believe that conducting this survey without fear
+or favor is itself one of our missions.
+Our basic policies in writing this expository essay are as follows.
+First, concerning the “scope” of this exposition: this paper does not treat IUT theory
+in its entirety, but mainly explains the understanding shared by the LANA members of
+the process of attempting to derive Corollary 3.12 from Theorem 3.11 of the third paper.
+Formally, this constitutes only a portion of the third paper; however, the prerequisite
+knowledge required in the first place to understand its logic extends to the first and
+second papers (as well as Mochizuki’s earlier works), and also to the rest of the third
+paper. Accordingly, although we had to understand these contents to a certain extent,
+we also had no choice but to begin by treating many points as black boxes. In this report
+as well, much of this prerequisite knowledge will be presented in black-box form.
+Second, we would like to state our view concerning the “degree of precision” of this
+exposition. Even though we treat many matters as black boxes, developing a fully precise
+argument is beyond our capabilities and may also prevent the text from functioning as a
+survey for a broad audience. Accordingly, in this report, we must make “harmless simpli-
+fications” with regard to many matters. Of course, no simplification can be completely
+harmless, in the sense that it forgets some information. However, since our purpose is
+specifically focused on the “process of attempting to derive Corollary 3.12 from Theorem
+3.11,” and since we wish to secure a certain degree of readability for a broad audience,
+the need to strike a certain balance will naturally arise.
+Let us give one example. There is a fundamental object in IUT theory called anF⊩▶×µ-
+prime-strip, and in this paper we propose an object called a “basic prime strip (BPS)”
+as its “nearly equivalent substitute.” Since this object forgets various mathematical and
+technical structures that occur in the definition of anF ⊩▶×µ-prime-strip, it can hardly
+be said to be completely equivalent to it as a structure. Nevertheless, we believe that the
+“essence of the underlying idea” is almost the same (nearly equivalent). We believe that,
+for the purpose of understanding IUT theory, and especially the “process of deriving
+Corollary 3.12 from Theorem 3.11” on which we focus, the difference will be almost
+negligible. The same applies to the concepts of log-shells and volume containers that we
+will explain in this article. They are certainly “overly simplified” in comparison with
+their counterparts in the original papers on IUT theory. For our purposes, however,
+their “essence is the same,” and although it would not be meaningless to treat all of
+their aspects accurately in the context of our discussion, we do not consider it especially
+efficient when one takes into account the cost of the effort and the number of pages
+required. In this sense, we believe that simplifications that “do not alter the essence so
+much in our context” are sufficiently worthwhile in relation to the harm they cause. We
+believe that simplifications of the degree made in this report do not alter the essence.
+6
+
+=== PDF PAGE 7 ===
+This report is not a precise reorganization of the arguments of IUT theory. It com-
+presses an enormous body of mathematical argument, which would presumably amount
+to hundreds or thousands of pages in full, into no more than a few dozen pages. With
+compression on this scale, it is of course unavoidable that a certain amount of information
+will be lost. Nevertheless, so long as we can believe that the compression does not lose
+the essence so much, we must not be afraid of simplification.
+The third basic policy is to compensate for the cost of the “simplifications” just de-
+scribed. In order to improve the flow of the discussion and enhance readability, we
+make many simplifications and give deliberately sloppy arguments. However, wherever
+possible, we note that incomplete objects or arguments are incomplete, and provide as
+detailed references as possible to the original papers. Moreover, where necessary, there
+are many passages in which we have Mochizuki himself provide the explanation by means
+of excerpts from the original papers.
+There is another reason why we have relied rather heavily on excerpts from the original
+papers. From the earliest stage of its activities, the LANA Project has held, as a matter
+of firm conviction, that it must maintain a neutral position concerning the validity of
+IUT theory. In undertaking the task of writing a report on the basis of immature knowl-
+edge, this strong commitment to neutrality often became a major constraint. In such
+situations, the most effective method was to quote verbatim documents that had already
+been published and made publicly available. Thus, for us, including excerpts from the
+original papers at important points served two purposes at once.
+Finally, I would like to add the following. The objective of the LANA project regarding
+the verification of IUT theory lies in its Lean formalization. For this reason, when we
+first began writing this document, it was also intended to serve as a manual for readers of
+the Lean codes. However, since we ultimately decided not to publish the Lean codes in
+this interim report, that aspect of its role has been eliminated this time, and as a result,
+its primary function has become that of a survey.
+In any case, this article is the first report of the LANA Project and the first ambitious
+attempt to make the activities of the LANA Project known to the worldwide mathemat-
+ical community. We hope that it will be read by many people and that we will receive
+feedback from many readers.
+Acknowledgments.We would like to thank Daniel Allcock, Yves Andr´ e, Brian Conrad,
+Antoine Ducros, Shane Kelly, Minhyong Kim, and Alex Kontorovich, who supported
+this project either as members of the team or from outside it. Thanks are also due to
+the many others who, although they declined to contribute formally, we are certain are
+cheering us on in their hearts. We would further like to thank Utrecht University and
+the University of Alberta for jointly hosting this project. Furthermore, we are grateful
+to Nobuo Kawakami, who endorsed the concept of this project and was a vital source
+of support, both financially and morally. Finally but not least, we thank KADOKAWA
+DWANGO Educational Institute, which backed us from the very beginning of this project,
+as well as the Educational Institute of The Nippon Foundation and DWANGO—the
+parent organization of ZEN University, Japan’s first full-fledged online university, which
+opened in April 2025—for their financial investment in this project and their heartfelt
+support.
+0.4.Notation and conventions.
+0.4 (a). For a number fieldL, we denote the set of its valuations by
+V(L) =V(L) non ∐︁V(L)arc,
+7
+
+=== PDF PAGE 8 ===
+whereV(L) non (resp.V(L) arc) denotes the set of non-archimedean (resp. archimedean)
+valuations.
+0.4 (b). For any fieldkwith a non-archimedean valuation| · |:k→R, we write
+• O ×
+k ={a∈k| |a|= 1}(group by the multiplication ofk);
+• O ▷
+k ={a∈k|0<|a| ≤1}(monoid by the multiplication ofk);
+• O k ={a∈k| |a| ≤1}(subring ofk).
+Note thatO ▷
+k =O k \ {0}, and thatO ×
+k is the group of invertible elements of the monoid
+O▷
+k .
+0.4 (c). LetG i (i= 1,2) be groups acting respectively onX i (sets, monoids, etc.). By a
+morphism
+ϕ: (G 1 ↷M 1)− →(G 2 ↷M 2),
+we mean a pairϕ= (ϕ G, ϕX) of morphismsϕ G :G 1 →G 2 andϕ M :M 1 →M 2 such that
+the square diagram
+G1 ×M 1
+ϕG×ϕM//
+↷
+
+G2 ×M 2
+↷
+
+M1 ϕM
+// M2
+commutes.
+0.4 (d). For a fieldkand a natural numbern,µ n(k) denotes the group of alln-th roots
+of unity, i.e.,µ n(k) ={a∈k|a n = 1}.
+0.4 (e). When we say “an objectAis isomorphic toB,” we simply mean that there exists
+an isomorphismA
+∼
+→Bwithout specifying such an isomorphism.
+0.4 (f).Cyclotomes.LetGbe a topological group, and letMbe a topological module
+equipped with a continuous action ofG. Then we shall say that the continuousG-module
+Mis aG-cyclotome(orcyclotomefor simplicity) if there exist a field Ω of characteristic
+zero, an algebraic closure Ω of Ω, and a morphismϕ= (ϕ G, ϕM) in the sense of§0.4 (c)
+fromG↷Mto
+Gal(Ω/Ω)↷Λ( Ω)
+def
+= lim← −n
+µn(Ω),
+wherenranges over the positive integers, such that the homomorphismϕ G :G→Gal( Ω/Ω)
+is surjective, and the homomorphismϕ M :M→Λ( Ω) is an isomorphism; here, we are
+concerned only with the existence of such a morphismϕ, and do not specify it.
+If we are given two cyclotomes (G1, M1), (G2, M2), then we define amorphism(G 1, M1)→
+(G2, M2) of cyclotomes to be a morphismψ= (ψ G, ψM) from (G 1, M1) to (G 2, M2) (as
+in§0.4 (c)) such that the homomorphismψ M :M 1 →M 2 is an isomorphism.
+Note that every cyclotome admits a faithful action of the topological group ˆ︁Z×, which
+acts on the topological group portion trivially and, moreover, on the topological module
+portion by multiplication.
+8
+
+=== PDF PAGE 9 ===
+1.Basic ideas of IUT theory
+1.1.The Szpiro conjecture for elliptic curves over number fields.Here we would
+like to give an overview of the approach that IUT theory takes toward proving the Szpiro
+conjecture for elliptic curves over number fields.
+First, we prepare the notation. LetFbe a number field (a finite extension ofQ), let
+Fbe an algebraic closure ofF, letG F
+def
+= Gal( F /F), letEbe an elliptic curve overF,
+and letX⊆Ebe the hyperbolic curve overFobtained by removing its origin fromE.
+Moreover, for eachv∈V(F), letF v be the completion ofFatv, let F v be an algebraic
+closure ofF v containing F, letG v
+def
+= Gal(F v/Fv)⊆G F , and let|-|: F v →R(a↦→ |a|)
+be an absolute value on F v normalized so that|p|=p −1 whenvis a finite prime lying
+over a prime numberp, and|2|= 2 whenvis an infinite prime. Furthermore, set
+O×
+v
+def
+={a∈ F v | |a|= 1} ⊆ O▷
+v
+def
+={a∈ F v |0<|a| ≤1}
+⊆ Ov
+def
+={a∈ F v | |a| ≤1} ⊆ F v,
+O×
+Fv
+def
+= (O×
+v )Gv ⊆ O ▷
+Fv
+def
+= (O▷
+v )Gv ⊆ O Fv
+def
+= OGv
+v ⊆F v = F Gv
+v ,
+and setE v
+def
+=E× F Fv andX v
+def
+=X× F Fv.
+We assume that for every finite primev∈V(F),E v has at most split multiplicative
+reduction overO Fv. Then, for each primev∈V(F), aq-parameterq v ∈ O ▷
+Fv ofE v is
+determined (whereq v = 1 at finite places of good reduction and at infinite places). The
+collection ofq-parameters
+qE
+def
+= (q v)v∈V(F) ∈
+∏︂
+v∈V(F)
+O▷
+Fv
+defines an arithmetic line bundle overF
+L
+def
+= “{q vOFv }v∈V(F) ”.
+That is,Lis the arithmetic line bundle associated to the arithmetic divisor determined
+byq −1
+E . Then the Szpiro conjecture in this case will follow, if, in some sense, one can
+“bound from above” the absolute value of the arithmetic degree of this arithmetic line
+bundle
+degL
+def
+=−[F:Q] −1
+∑︂
+v∈V(F)
+log
+(︁
+#(OFv /qvOFv)
+)︁
+(≤0).
+1.2.Global multiplicative subspace.To attain this goal, roughly speaking, it suffices
+to prove the following:
+(∗) There exist an integerN≥2 and a comparatively small nonnegative real number
+Csuch that|degL ⊗N | ≤ |degL|+C.
+This says, in effect, that degL ⊗N and degLare “almost equal,” that is,
+qE ≓q N
+E .
+Such an estimate can be obtained relatively easily for elliptic curves equipped with a
+special structure called a global multiplicative subspace (GMS). A GMS of an elliptic
+curveEis a subgroup scheme ofE[l] (for a sufficiently large primel) which, at every bad
+placev, coincides with the subgroupµ l in the natural exact sequence
+0→µ l →E v[l]→Z/lZ→0.
+In this situation, if we setE ∗ =E/(GMS), then one hasq E∗ =q l
+E. On the other hand,
+the existence of the isogenyE→E ∗ allows one to bound the difference between the
+9
+
+=== PDF PAGE 10 ===
+degrees of the arithmetic line bundles determined byq E andq E∗, and this yields an
+estimate of the above kind. Mochizuki also gives another explanation in [7,§1], based on
+Hodge-Arakelov theory [2, 3].
+The problem is that, for almost all elliptic curvesE/F, one cannot expect the existence
+of a GMS. For this reason, we must take another method.
+1.3.The method by links: a toy model.IUT theory attempts to overcome this
+situation by the so-calledmethod by links. Before discussing this method, let us present
+a toy model that will serve as a template for the arguments that follow.
+Let us consider the ringR=Z[T] and its quotient rings
+A:=R/(T) ∼= ZandB:=R/(3) ∼= F3[T].
+The ringsAandBare not isomorphic, but their multiplicative monoids of nonzero
+elements,A ▷ andB ▷, are isomorphic; both are the direct product of{1,−1}with a free
+commutative monoid generated by countably many elements.
+Fix an isomorphism of monoids
+φ:A ▷ ∼
+− →B▷,
+and call it atoy-link. Obviously, this toy-link is not compatible with various ring-theoretic
+notions. For example, 1 + 1 insideAcannot be linked to 1 + 1 insideB. Therefore, in
+a context where this toy-link is fixed, it is safer to distinguish notationally between the
+element 2∈Aon the left-hand side and the element 2∈Bon the right-hand side. For
+this reason, we denote by †Rthe copy ofRthat gives rise toAon the left-hand side,
+and by ‡Rthe copy ofRthat gives rise toBon the right-hand side. We also attach the
+symbols†and‡to their elements and the associated objects in order to distinguish them.
+In particular, the toy-link is denoted as
+φ: †A▷ ∼
+− →‡B▷.
+Here, one observes that for two elementsx, y∈ †A▷, the set of non-zero elements of the
+ideal (x, y)⊂ †Agenerated byxandycorresponds, via the link, to the set of non-zero
+elements of the ideal (φ(x), φ(y))⊂ ‡Bgenerated byφ(x) andφ(y). This is because the
+notion of an ideal of a PID, although a priori ring-theoretic, can be described using only
+the language of the underlying multiplicative monoid.
+The pattern of argument presented by this toy model can be summarized as follows:
+(1) prepare two ring-theoretic settings—in the above case, two rings †Rand ‡R;
+(2) “glue” these ring-theoretic settings together by identifying structures that are
+truly weaker than the ring-theoretic structures—in the above case, the toy-linkφ;
+(3) share ring-theoretic constructions solely through this “gluing of truly weaker
+structures”—in the above case, the construction of ideals.
+As this example illustrates, it can be nontrivial to determine what sorts of notions are
+sharedvia a non-ring-theoretic link. One may say that IUT is a theory that examines
+this kind ofsharabilityin a much larger setting 1.
+1.4.Hodge theaters and the Theta-link.In IUT theory, one considers the so-called
+Hodge theatersas the “ring-theoretic settings” prepared in (1) of§1.3. According to
+Mochizuki himself, the concept of Hodge theaters is briefly explained as follows:
+1However, it should be noted that this example lacks counterparts of various important concepts in
+IUT, and is therefore entirely insufficient for understanding the arguments in the actual theory.
+10
+
+=== PDF PAGE 11 ===
+[The Hodge theaters] may be thought of asminiature models ofconven-
+tional scheme theoryin which thetwo underlying combinatorial
+dimensionsof a number field—which may be thought of as corresponding
+to theadditiveandmultiplicativestructures of a ring or, alternatively,
+to thegroup of unitsandvalue groupof a local field associated to
+the number field—are, in some sense,“dismantled”or“disentangled”
+from one another. ([10, Abstract, p. 3])
+We consider two copies of Hodge theaters †HTand ‡HT, and distinguish objects from
+these two copies by placing†and‡on the upper left. For example, the number fieldF
+is distinguished as †Fand ‡F.
+As for the “link” as in (2) of§1.3, we consider the so-called Θ-link, which is one
+example of the concept of a “link” in IUT theory. In general, in IUT theory, the word
+“link” is used to mean an identification between underlying structures obtained from two
+structures. Very roughly speaking, the Θ-link is an identification between certain weaker
+structures calledBPSs(cf.§4.1 below) obtained from Hodge theaters, which realizes the
+correspondence
+†qN
+E ↦− →‡qE.(1-1)
+A more detailed definition of the actual Θ-link will be given in§7.1 (b).
+Under this setup, the ring-theoretic calculation as in (3) of§1.3 that IUT theory seeks
+to “share” on each side of the Θ-link is the “calculation of the degrees of certain arithmetic
+line bundles.” If such sharing were possible up to a small error, then one could say that
+the degrees of the arithmetic line bundles determined by the two sides of (1-1) are equal
+up to a small error. That is, one has
+degL≓degL ⊗N ,
+which would prove the Szpiro conjecture.
+Remark1.4.1.While we do not believe it is possible to provide a precise definition of the
+term “shared” or “sharable” here, we do believe that its typical meaning is clarified to
+some extent by the toy model presented in§1.3; i.e., suppose that we have a link between
+†Aand ‡Bwhich identifies certain “weaker” structuresF( †A) withG( ‡B). Then we can
+say that a propertyPis shared by such a link if the propertyPwithin †A(resp. ‡B) can
+be proven using only the weaker structuresF( †A) (resp.G( ‡B)).
+2.Overview of initialΘ-data
+To outline the rest of this discussion, we need to provide a little more detailed context.
+Therefore, let us briefly shift our focus to the concept that provides that “context,” and
+then return to the original discussion.
+The concept that provides that context is the so-called initial Θ-data, which is a seven-
+tuple of data
+(F /F, X F , l, C K,V ,V bad
+mod, ϵ ) (2-1)
+that are necessary and sufficient for executing the entire package of IUT theory. In this
+section, we introduce only those aspects of initial Θ-data that are related to the derivation
+from Theorem 3.11 to Corollary 3.12.
+11
+
+=== PDF PAGE 12 ===
+2.1.The base field and the global curve.The starting point of initial Θ-data consists
+of the following data.
+(a)Fis a number field satisfying √−1∈F, and Fis its algebraic closure (fixed once
+for all). We write
+GF
+def
+= Gal(F /F).
+(b)X F is a once-punctured elliptic curve overF, that is, a hyperbolic curve of type
+(1,1), and has stable reduction at all valuations ofV(F) non. The elliptic curve
+EF is obtained by compactifyingX F at one point.
+(c)C F is the stack-theoretic quotient ofX F by the uniqueF-involutiona↦→ −a, and
+XF − →CF (2-2)
+denotes the corresponding quotient map.
+Remark2.1.1.In what follows,X F and covering curves ofX F will often also be regarded
+as logarithmic curves whose underlying schemes are the corresponding covering curves of
+EF . In that case, the points on which the log structure is placed (the “missing” points)
+are called cusps.
+Recall that, depending on the choice of base points, there correspond ´ etale fundamental
+groups
+ΠXF
+def
+=π 1(XF )⊆Π CF
+def
+=π 1(CF ).
+Moreover, we write the geometric fundamental groups as
+∆X
+def
+=π 1(XF ×F F)⊆∆ C
+def
+=π 1(CF ×F F).
+Then, for (−)∈ {X, C}, there is an exact sequence
+1− →∆ (−) − →Π(−)F − →GF − →1.
+2.2.Field of moduli and valuations onF mod.
+Notation 2.2.1(field of moduli and its valuations).LetF mod ⊆Fbe the field of moduli
+ofX F , i.e.F mod =Q(j EF ). We write the set of valuations ofF mod as
+Vmod
+def
+=V(F mod),V non
+mod
+def
+=V(F mod)non,V arc
+mod
+def
+=V(F mod)arc.
+Definition 2.2.2(bad and good valuations overF mod).We fix a non-empty finite subset
+Vbad
+mod ofV non
+mod satisfying the following conditions.
+(a) The residue characteristic of each element is an odd prime number.
+(b) At each valuation belonging to the inverse image
+V(F) bad def
+=V bad
+mod ×Vmod V(F)
+underV(F)→V mod, the elliptic curveE F has bad reduction.
+Moreover, defineV good
+mod by
+Vgood
+mod
+def
+=V mod \V bad
+mod.
+Remark2.2.3.Note that thisV good
+mod means the set of places that we regard as “good,”
+and does not necessarily mean the set of all places at whichX F has good reduction.
+Notation 2.2.4.LetL/F mod be a finite extension. We write the inverse images inV(L)
+ofV bad
+mod andV good
+mod , respectively, as
+V(L)bad def
+=V bad
+mod ×Vmod V(L),V(L) good def
+=V good
+mod ×Vmod V(L).
+12
+
+=== PDF PAGE 13 ===
+2.3.The primeland thel-torsion fieldK.We fix a prime numberl≥5 satisfying
+the following conditions.
+(a)F/F mod is a Galois extension, and its degree is prime tol.
+(b) The 2·3-torsion points ofE F are rational overF.
+(c) The image of the Galois representation onE F [l]
+GF − →GL2(Fl) (2-3)
+contains SL2(Fl).
+(d) The primelis prime to the residue characteristics of the valuations inV bad
+mod, and
+is also prime to the orders of theq-parameters ofE F at the valuations inV(F) bad.
+Definition 2.3.1.The fieldK⊆ Fis the fixed field of the kernel of the representation
+(2-3) above. That is,K=F(E F [l]), andK/Fis a finite Galois extension. Moreover, set
+GK
+def
+= Gal(F /K).
+Assumption 2.3.2.Assume that the extensionK/F mod is a Galois extension.
+2.4.C K and its fundamental group.SetX K
+def
+=X× F K, and let
+X K − →XK
+be a connected finite ´ etale covering overK, unramified at the cusps ofX K, whose Galois
+group is isomorphic toF l. By definition, the cusps ofX K consist of exactlyl K-rational
+points. The compactification ofX K naturally carries the structure of an elliptic curve.
+By considering the stack-theoretic quotients by the actions of{±1}onX K andX K, we
+obtain the following Cartesian diagram of hyperbolic logarithmic orbicurves overK:
+X K //
+
+XK
+
+C K // CK
+(2-4)
+Here the right vertical arrow is the base-change toKof (2-2).
+Assumption 2.4.1(K-coricity ofC K).Assume that the logarithmic orbifoldC K over
+Kis aK-core. That is, assume that it is a terminal object in the category of logarithmic
+orbifolds that are isogenous toC K in the sense of finite Kummer log ´ etale coverings.
+Remark2.4.2.Assumption 2.4.1 implies the following: every automorphism overKof
+CK orC K is the identity, and
+AutK(XK) = Gal(XK/CK) ∼= {±1},
+AutK(X K) = Gal(X K/CK) ∼= Gal(X K/XK)⋊Gal(X K/CK) ∼= Fl ⋊{±1}.
+For the corresponding fundamental groups, under suitable choices of base points, we
+obtain
+ΠX K ⊆Π CK ,∆ X ⊆∆ C ⊆∆ C.
+2.5.Section placesV and their bad/good decomposition.
+Definition 2.5.1(the section placesV ).Fix a set-theoretic section of the natural sur-
+jectionV(K)↠V mod, and denote it byV .
+13
+
+=== PDF PAGE 14 ===
+By definition, there exists a natural bijection
+V
+∼
+− →Vmod.
+For (−)∈ {non,arc,bad,good}, we set
+V(−) def
+=V ∩V(K) (−)
+(cf.§0.4 (a) & Notation 2.2.4). By definition,V bad is the inverse image ofV bad
+mod under
+V
+∼
+→V mod, namely
+Vbad ={v ∈V |v |Fmod ∈V bad
+mod }.
+In particular, there is a natural bijection
+Vbad ∼
+− →Vbad
+mod.
+Similarly, we have a natural bijectionV good ∼
+→V good
+mod .
+2.6.Local fields, decomposition groups, and local curves at bad places.For
+v ∈V , letK v be thev -adic completion ofK. The valuationv determines, up toG K-
+conjugacy, a decomposition group
+Gv ⊆G K.
+Under the choice of an algebraic closure (chosen for the moment so that K⊂ K v), this
+is identified with the local absolute Galois group Gal( K v/Kv).
+Notation 2.6.1(localization of orbicurves).Letv ∈V(K), and letv∈V(F) be the
+valuation ofFlying below it. We denote base-change toK v by the lower-right subscript
+v. That is,
+Xv, C v, X v, C v
+denote the objects obtained by base-changing the corresponding global curve or orbicurve
+toK v.
+For eachv ∈V bad, we construct the following diagram of connected tempered Kummer
+log ´ etale coverings ofCv.
+¨Y v //
+
+¨Yv
+δ
+
+Y v //
+
+Yv
+γ
+
+X v
+β // X v
+α //
+
+Xv
+
+C v // Cv
+The square on the bottom right is obtained as the base-change of diagram (2-4) toK v.
+We impose the following assumption on the morphismα:
+Assumption 2.6.2.Assume that the morphismαinduces a topological covering (a cov-
+ering of graphs) in the Zariski topology between the respective stable reductions.
+It follows that the special fiber ofX is a cycle oflprojective lines, with one cusp
+on each component (one of which corresponds to the origin), for a total oflcusps. Let
+β:X v →X v be the finite Kummer log ´ etaleµ l-covering that totally ramifies precisely
+at theselcusps.
+14
+
+=== PDF PAGE 15 ===
+The compositionα◦γ:Y v →X v is given by theTate uniformization: it is the connected
+tempered Kummer log ´ etale covering which arises from the universal covering of the dual
+graph of the special fiber ofX v. In particular, the Galois group Gal(Y v/Xv) is isomorphic
+toZ, and Gal(Y v/X v) corresponds toℓZ⊂Z. Also, the special fiber ofY v is an infinite
+chain of projective lines, with one cusp on each component. The curveY v is then defined
+as the base-change ofY v alongβ.
+The morphismδ: ¨Yv →Y v is a double covering overY v unramified over all cusps.
+The special fiber of ¨Yv is an infinite chain of projective lines, with two cusps on each
+component. The curve ¨Y v is then defined as the base-change of ¨Yv alongβ.
+Letq v denote theq-parameter ofE v, and let ¨Udenote the canonical coordinate on
+¨Yv ∼= Gan
+m,Kv. Then we have the classical Θ-function
+¨Θ( ¨U) =
+∑︂
+n∈Z
+(−1)nq
+1
+2 n(n+1)
+v ¨U 2n+1 (2-5)
+on ¨Yv. If we putξ j = √−1qj/2
+v ∈G an
+m,Kv
+∼= ¨Yv, then the value of the normalized Θ-function
+¨Θ(ξ0)−1 · ¨Θ( ¨U) atξ j isq −j2/2
+v . Such expressions of powers ofq v as special values of the
+Θ-function play an important role in IUT theory.
+Forv ∈V good, one can construct aµ l-covering ([10, Def. 1.1, p. 44])X− →v →X v which
+is analogous toX v →X v. Since the casev ∈V bad is the one that plays an essential role
+in our discussion in this report, we omit a detailed explanation of the casev ∈V good.
+2.7.The cuspϵ .The final componentϵ of the initial Θ-data is a cusp of the curveC K
+lying below a non-zero cusp ofX K. For each primev ∈V , this determines a cuspϵ v of
+the curveC v. Recall that forv ∈V bad, the special fiber ofX v is a cycle oflprojective
+lines, with one cusp on each component.
+Assumption 2.7.1.Assume that for everyv ∈V bad, the two cusps ofX v lying above
+ϵv are on the components of the special fiber adjacent to the component containing the
+origin.
+x0 o
+x1
+˜︁ϵv
+x−1
+−˜︁ϵv
+Figure 1.Special fiber ofX v
+Figure 1 illustrates the special fiber ofX v. Hereois the origin,x 0 is the unique
+nontrivial 2-torsion point lying on the same component aso, and thex i are translates
+ofx 0. Note that the pointx j is the image of the pointξ j ∈ ¨Yv defined in the preceding
+subsection. The cusps±˜︁ϵv are the cusps lying above the cuspϵ v ofC v.
+15
+
+=== PDF PAGE 16 ===
+3.Local GM-data and log-shells
+3.1.Dismantling ring structures.By Assumption 2.3.2, for two placesv i (i= 1,2)
+ofKwhose restrictions toF mod coincide, the arithmetic geometries of the localizations of
+XF at the respectivev i are mutually isomorphic. Thus, intuitively, one is led to an idea
+of “arithmetic geometry” of the form in which one localizes objects overKat the primes
+ofV and globalizes them using the product formula forF mod. Assumption 2.6.2 assumes
+the existence of global data (α:X K →X K, ϵ) satisfying the local condition described
+above at eachv ∈V bad; this can be regarded as the existence of a GMS (cf.§1.2) over
+“Fmod cut out insideK” (or the image of a “section” of SpecK→SpecF mod
+2).
+As mentioned in§1.2, the existence of such global data (α:X K →X K, ϵ) which satisfies
+the local condition for allv∈V(K) bad is extremely rare, and this is what makes it
+difficult to prove the Szpiro conjecture for elliptic curves over number fields. However,
+the existence of (α:X K →X K, ϵ) over “Fmod cut out insideK” as above is not so rare.
+IUT theory aims to prove the Szpiro conjecture from this setting, using this “partial”
+GMS. However, to do so, one must isolate the “V part” from the fieldKand discuss
+it separately. SinceV is a subset ofV(K) that is neither finite nor cofinite, “isolating”
+just that part cannot be achieved using standard operations in arithmetic geometry.
+Mochizuki attempts to achieve this through a non-standard operation—one that involves
+“dismantling the ring structure”:
+Thus, it is precisely by working with such “local analytic sections”—i.e.,
+more concretely, by working with the collection of valuationsV, as opposed
+to the set ofallvaluations ofK—that one can, in some sense,“simulate”
+the notions of a“global multiplicative subspace”or a“global canonical
+generator”. On the other hand, such “simulated global objects” may only
+be achieved at the cost of
+“dismantling”, or performing“surgery”on, theglobal prime
+structureof the number fieldsinvolved [...]
+—a quitedrasticoperation, which has the effect of precipitatingnumer-
+ous technical difficulties, [...] ([10, Introduction, pp. 12–13])
+3.2.Mono-anabelian geometry.As the following excerpt shows, Mochizuki believes
+that techniques from anabelian geometry, especiallyabsolute anabelian geometry[5, 6, 8],
+is necessary to realize such a theory:
+This inter-universal aspect of the theory manifestly leads to the issue of
+considering
+the extent to which one can understandvarious ring/scheme
+structuresby considering only the underlyingabstract topo-
+logical groupof some ´ etale fundamental group arising from
+such a ring/scheme structure
+—i.e., in other words, of considering theabsolute anabelian geome-
+try[.] ([10,§I3, p. 26])
+Therefore, we need to briefly review the basics of anabelian geometry. To begin with,
+the central theme of anabelian geometry lies in a “reconstruction game” in which, for ex-
+ample, one reconstructs objects such as algebraic number fields or hyperbolic curves solely
+2Such a non-scheme-theoretic section is represented by what Mochizuki calls aprime-strip, which we
+will also discuss later in§3.10
+16
+
+=== PDF PAGE 17 ===
+from the topological group-theoretic structure of their arithmetic fundamental groups
+(Galois groups).
+Traditionally, a theorem of anabelian geometry has asserted, for example, that for
+suitable varietiesX, Yover an algebraic number fieldk(e.g., finite extensions ofk,
+hyperbolic curves overk, and so on), the natural morphism
+Isomk(X, Y)− →Isom Gk(π´ et
+1 (X), π´ et
+1 (Y))/Inn(π ´ et
+1 (Y)) (3-1)
+(whereG k is the absolute Galois group Gal( k/k) ofk, and Y=Y⊗ k k) is a bijection. A
+statement of this form prepares two objects, such as the aboveX, Y, and asks whether
+their “comparison” can be reconstructed from a comparison at the level of arithmetic
+fundamental groups. By contrast, Mochizuki considered statements of the form in which
+Xitself is reconstructed directly from the arithmetic fundamental groupπ ´ et
+1 (X). Since
+the former sort of statement treats the comparison of “two” objects, whereas the latter
+treats “one” object, Mochizuki calls the formerbi-anabelian geometryand the latter
+mono-anabelian geometry3.
+3.3.Input objects for reconstruction algorithms.In mono-anabelian geometry, the
+center of the substantive argument lies in the “algorithm” that reconstructsXfrom the
+arithmetic fundamental groupπ ´ et
+1 (X). For this reason, delicate aspects of the treatment
+of objects appear, for example, in the question of what sorts of objects are to be used as
+inputs of the algorithm. As suggested by (3-1), typically the input object is something
+like “a surjective homomorphism of topological groups
+π´ et
+1 (X)−↠G k (3-2)
+considered modulo inner automorphisms by its kernel,” but a little tricky point here is
+that, despite the notation of (3-2), these fundamental groups are treated as abstract
+topological groups and with allowance for indeterminacies arising from certain automor-
+phisms.
+Viewing a fundamental group as an abstract group means disregarding its action on
+the system of coverings, i.e., one has to discard the “interpretation as a fundamental
+group.” This distinction can be illustrated by a more elementary example as follows.
+Example 3.3.1.The symmetric groupS n of degreen(wheren≥3 to avoid trivial
+situations) is usually treated as the group of all bijections of the set [n] ={1,2, . . . , n}
+consisting ofnelements. The difference fromS n as an abstract group (i.e., “S n without
+the interpretation as a permutation group”) lies in whether or not one considers the
+actionS n ↷[n] at the same time. ForS n considered together with its action, there is no
+problem in defining, for example, the signature of an elementσ∈S n and its cycle type.
+But can similar concepts be defined for an element of an abstract groupGisomorphic
+toS n? This question asks whether these concepts can be defined solely from the group
+structure ofG, not relying on the action. There is no problem for the signature, since the
+commutator subgroupD(G) ofGis always mapped ontoA n by any group isomorphism
+G ∼= Sn. On the other hand, the cycle type can be reconstructed whenn̸= 6, but not
+whenn= 6. Indeed, ifn̸= 6, every automorphism ofS n is an inner automorphism
+and preserves conjugacy classes, and in this case, one can construct, from the abstract
+groupGalone, ann-point setX(G) together with an actionG↷X(G) such that any
+group isomorphismG ∼= Sn can be extended to an isomorphism (cf.§0.4 (c)) from the
+actionG↷X(G) to the actionS n ↷[n]. However, forn= 6, such an action cannot
+3For a concise introduction to mono-anabelian geometry, see, e.g., [1].
+17
+
+=== PDF PAGE 18 ===
+be constructed (from the group structure ofGalone), since in this case there exists an
+automorphism ofS 6 that sends transpositions to elements of cycle type (2,2,2).
+Remark3.3.2.With the above description, the issue is fundamentally related to whether
+or notS n is considered merely as a group, or as a group endowed with an action on
+[n]. This has importantpracticalimplications in terms of Lean formalization, primarily
+around the so-calledtypeclass system. The concrete spelling ofS n in Mathlib usually has
+the spellingPerm (Fin n), i.e. the type of permutations ofFin n, which is the standard
+type withnelements. This typePerm (Fin n)comes endowed with two instances:
+(1)Group (Perm (Fin n))and
+(2)MulAction (Perm (Fin n)) (Fin n).
+The first corresponds to the group structure onS n, whereas the second corresponds to
+the action ofS n on [n]. Since these are both registered as instances, Lean’s typeclass
+system willalwaysconsider both when we writePerm (Fin n). In other words, Lean’s
+typeclass systemalwaysconsidersS n as being endowed with its action on [n].
+The process of passing fromS n toGalso has a clear analogue in Lean. That is, we can
+define a copyGofS n asdef G (n : Nat) := Perm (Fin n), and endow itonlywith the
+group structure asinstance (n : Nat) : Group (G n) := inferInstanceAs (Group
+(Perm (Fin n))). If this is done, then we will be able to use Lean’s typeclass system to
+seeG nas a group, butnotas a group endowed with an action on [n].
+3.4.Coricity.Techniques from mono-anabelian geometry play a decisive role in the
+“method by links” described in§1.3 and§1.4. In this method, the calculation of the
+degrees of line bundles on both sides must be synchronized under the link (1-1) (i.e., where
+several ring-theoretic and scheme-theoretic structures cannot be shared). In other words,
+we must carry out “the same task” simultaneously using only the limited information
+that can be shared via links.
+Therefore, when discussing in the situation like this, it is sometimes necessary to con-
+sider the question of what sort of structures are compatible with (1-1). This is a property
+often referred to ascoricityin IUT theory. IUT theory encompasses various types of
+coricity concepts in different contexts. What we are discussing here as coricity is the one
+for properties and concepts that remain invariant under (various) links, as indicated in
+the following excerpt.
+So far, [...] we have discussed various“coricity”properties—i.e., properties
+ofinvariancewith respect to various types of “transformations”—in the
+context of Θ-/Θ ×µ-/Θ×µ
+gau-/Θ×µ
+LGP-/Θ×µ
+lgp -links, as well as in the context of
+log-links. ([12, Introduction, p. 408])
+Incidentally, in IUT theory, Mochizuki uses such a terminology as(arithmetic) holomorphic
+structure (AHS), which, according to our understanding, refers to the following kinds of
+concepts:
+•a “ring-theoretic environment” to which several ring-theoretic objects are associ-
+ated;
+•a structure that gives rise to a “process to reconstruct” the ring structure.
+In opposition to this, a genuinely weaker underlying structure beneath a holomorphic
+structure is called a mono-analytic structure.
+Although we generally would like to avoid using these somewhat ambiguous terms as
+much as possible, if we use them, one can express, by saying that “AHS is not coric with
+respect to our link (1-1),” the fact that the respective number fields “F,” their algebraic
+18
+
+=== PDF PAGE 19 ===
+closures “F” and completions “F v,” the algebraic closures “ F v” of the completions, the
+elliptic curves “E” and “E v,” and the hyperbolic curves “X” and “X v,” which belong
+to the two settings on the†-side and the‡-side, are all not coric under the link. After
+all, since our link is not compatible with the ring structures, it is natural that rings and
+schemes cannot be shared on the two sides of our link.
+3.5.Coricity of local Galois groups.In this context, the first thing to notice is that
+there does not seem to be any circumstance that prevents the local Galois groupG v from
+being coric with respect to the link (1-1). Indeed, the natural action of †Gv (theG v on
+the†-side) on †qN
+v and the natural action of ‡Gv (theG v on the‡-side) on ‡qv are both
+trivial; hence, for any isomorphism of topological groups †Gv ∼= ‡Gv, (1-1) is (trivially)
+equivariant. That is to say, from the point of view of the topological groupG v, there is
+no great difference betweenq N
+v andq v. Indeed, “G v” is chosen, in the actual Θ-link in
+IUT theory, as an object to be shared, and hence is coric.
+Importantly, also in this situation, in order to regard “G v” as coric, one must discard
+the “interpretation as a Galois group” of them. At the level of the definition,Gv is defined
+as the group of suitable automorphisms of the fieldF v. Since the link under consideration
+is not compatible with ring structures, this sort of “ring-theoretic interpretation” ofG v
+cannot be coric. Consequently, an identification of †Gv and ‡Gv that is compatible with
+the link becomes possible only after one regards each of them as an abstract topological
+group.
+Thus, in particular, an identification †Gv
+∼
+→ ‡Gv must take into consideration, as pos-
+sibilities,all isomorphismsbetween these two topological groups. Put another way, an
+identification across the link between†Gv and ‡Gv requires one to consider the Aut(†Gv)≃
+Aut(‡Gv)-orbit of an isomorphism †Gv
+∼
+→ ‡Gv. To begin with, since †Gv and ‡Gv are
+merely abstract topological groups, each belonging to a separate ring-theoretic environ-
+ment, there is no canonical correct answer for an identification between them. Therefore,
+we have no choice but to adopt the standpoint of constructing a theory in which no
+problem arises no matter which identification †Gv
+∼
+→ ‡Gv is adopted. This is one of the
+points at which the “approach by links” adopted by IUT theory differs decisively from
+ordinary arithmetic geometry, and the mono-anabelian geometry plays a large role.
+Let us now explain one more piece of terminology from IUT theory. In IUT theory,
+for two objectsA, B, a certain (usually nonempty) set of morphisms fromAtoBis
+called a poly-morphism, a certain (usually nonempty) set of isomorphisms fromAtoBis
+called a poly-isomorphism, and the set of all isomorphisms fromAtoBis called the full
+poly-isomorphism. Using this terminology, the conclusion of the discussion above may
+be phrased as follows: in order to identify the local Galois groups †Gv and ‡Gv across our
+link, this identification should be the full poly-isomorphism.
+3.6.Coricity of local units.As observed above, data involving ring-theoretic struc-
+tures are, in general, not coric with respect to the link (1-1). For example, one cannot
+share the field K v or the ring of integers Ov, since the value groups are not coric with
+respect to the link. For the same reason, the underlying multiplicative monoids K ×
+v and
+O▷
+v cannot be coric either: indeed, their quotients by the group of units O×
+v give the
+value group.
+On the other hand, the group of units O×
+v , equipped with the canonicalG v-action, can
+be a coric object with respect to the link (1-1). However, in this case as well, just as in the
+case ofG v discussed above, one must discard the provenance that “ O×
+v was constructed
+as a subquotient of the field K v” and regard it as a “bare” topologicalG v-module. Here,
+19
+
+=== PDF PAGE 20 ===
+this abstract pairG v ↷ O×
+v carries a natural ˆ︁Z×-symmetry, and this symmetry acts
+nontrivially on the cyclotomic portion
+Oµ
+v
+def
+= (O×
+v )tor ⊆ O×
+v
+that arises from O×
+v . As we shall see in§6.3, it is difficult to control the indeterminacy
+arising from this action (the “indeterminacy with respect to cyclotomes”).
+We therefore consider the mono-analytic object obtained as the quotient of O×
+v by its
+cyclotomic portion Oµ
+v ⊆ O×
+v :
+Gv ↷ O×µ
+v
+def
+= O×
+v /Oµ
+v .
+This object is chosen, in the actual Θ-link in IUT theory, as an object to be shared, and
+hence is coric. In brief, it is a unit-group-like portion of K v that is isolated from the
+deformation of the value-group portion, and functions as a “common container” shared
+between the two Hodge Theaters.
+3.7.GM-data.The nameGM-data(group-monoid-pairin [1, Def. 5.1]) refers to a type
+of data consisting of a group and a monoid as follows:
+Definition 3.7.1(cf. [1, Def. 5.1]).A triple consisting of a topological groupG, a
+topological monoidM, and a continuous group action
+G↷M
+is called GM-data. A morphism between GM-dataG↷MandG ′ ↷M ′ means a pair
+consisting of a homomorphism of topological groupsG→G ′ and a homomorphism of
+topological monoidsM→M ′ that gives a morphism of actions (cf.§0.4 (c)).
+In GM-dataG↷M, the topological groupGis called its ´ etale-likeportion, andMis
+called its Frobenius-like portion.
+In IUT theory, one often considers abstract GM-data that are isomorphic to the GM-
+data
+Πv ↷ O▷
+v orG v ↷ O×µ
+v .
+Following the terminology of IUT theory, let us call the former holomorphic GM-data
+and the latter mono-analytic GM-data. These terms are used only provisionally in this
+manuscript.
+3.8.Notation for abstract copies.As mentioned earlier, the mathematical structures
+of a fundamental group and its abstract copy differ significantly. While IUT theory
+distinguishes these differences systematically to some extent through notation, it appears
+that the distinction is not fully captured by notation alone, and to some extent, it must
+be determined based on context.
+3.8 (a).Fundamental/Galois groups.With regard to fundamental groups, the following
+notation is used (to a certain extent) consistently ([10, Def. 3.1(e), (f), p. 70–71]):
+(a)G v denotes the local absolute Galois group Gal( K v/Kv).
+(b) Π v denotes the following:
+(b1) Whenv ∈V bad, it denotes the tempered fundamental groupπ temp
+1 (X v);
+(b2) Whenv ∈V good, it denotes the ´ etale fundamental groupπ´ et
+1 (X− →v).
+20
+
+=== PDF PAGE 21 ===
+Note that, in either case, there exists a natural surjective homomorphism
+Πv −↠G v.
+If these objects are marked with a superscript in the upper-left corner, such as †Gv
+or ‡Πv, they are all considered to be isomorphic copies as abstract topological groups.
+As noted in§3.3, one must keep in mind that, a priori, copies “come with no geometric
+interpretation at all as fundamental/Galois groups.”
+3.8 (b).Labeling by indices.As mentioned above, in IUT theory in general, multiple
+objects that are isomorphic each other are often labeled by left superscripts. These
+may be labels of Hodge theaters, or they may be used as labels to distinguish such
+multiple objects when they are treated systematically in a given context of discussion.
+For example, an object belonging to the Hodge theater at the coordinate (m, n) of the log-
+theta-lattice orbig-H diagram(cf.§7.2 below), or an object constructed from an object
+belonging to it by means of subquotients and the like, is written, for example, as
+(m,n)Gv ↷ (m,n)O×µ
+v .
+Moreover, when it is necessary in the context of discussion to distinguish objects by ad
+hoc labels, one writes, for example, using†and‡,
+†Gv ↷ †O×µ
+v , ‡Gv ↷ ‡O×µ
+v
+and so on (both of these are isomorphic toG v ↷O ×µ
+v , but they are distinguished as
+objects with different labels).
+3.8 (c).Monoids.With regard to monoids such as O▷
+v and O×µ
+v , it does not seem that
+a precise distinction is made in the notation as to whether they are subquotients of the
+field K v fixed by the context, or whether they are isomorphic copies of them. Therefore,
+one must to some extent infer this from the context.
+For example, when we say that we “glue” O×µ
+v —as an abstract monoid—to the Hodge
+theater (m,n)HT, this means identifying it via a poly-isomorphism with (m,n)O×µ
+Kv
+, which
+is constructed as a subquotient of (m,n)K v
+4.
+3.9.Compact structure.When an object such as Ov, O▷
+v , or O×
+v is given as an abstract
+ring or monoid, the version without an overline is defined by itsG v-invariant portion.
+For example, when one is given a monoid that is isomorphic to the monoid O▷
+v (denoted
+by the same symbol),O ▷
+v is defined by
+O▷
+v
+def
+= (O▷
+v )Gv .
+Moreover, the version without an overline of O×µ
+v is defined as the image of
+O×
+v
+def
+= (O×
+v )Gv − →O×µ
+v .
+Here, we note thatO ×µ
+v cannot be determined from the abstract GM-dataG v ↷ O×µ
+v
+alone. Therefore, for data of the formG v ↷ O×µ
+v , one often considers at the same time
+the following additional structure:
+4Here we distinguished (m,n)O×µ
+Kv
+from O×µ
+v by notation, but we are not entirely sure whether this
+way of distinction is thoroughly consistent.
+21
+
+=== PDF PAGE 22 ===
+Definition 3.9.1(×µ-Kummer structure).For every open subgroupH < G v ofG v,
+defineI κ
+H to be the image of ( O×
+v )H under O×
+v ↠ O×µ
+v . The resulting family
+{I κ
+H}H
+open
+< G v
+is called the ×µ-Kummer structure or compact structure ofG v ↷ O×µ
+v .
+Mono-analytic GM-data equipped with compact structure is therefore a pair which is
+abstractly isomorphic to the pair
+(Gv ↷ O×µ
+v ,{I κ
+H}H).
+In other words, it is a pair of the form (G↷M,{N H}H) where
+(a)G↷Mis mono-analytic GM-data;
+(b){N H}H is a family of submonoids ofMindexed by open subgroupsH < GofG
+such that, for some isomorphism betweenG↷MandG v ↷ O×µ
+v , it corresponds
+to{I κ
+H}H.
+3.10.Prime-strips.In IUT theory, the local data
+Gv, G v ↷ O×
+v ,
+(︁
+Gv ↷ O×µ
+v ,{I κ
+H}H
+)︁
+are denoted by the symbols
+D⊢
+v ,F ⊢×
+v ,F ⊢×µ
+v
+respectively. Here, the superscript “⊢” denotes “mono-analytic”. Also, the local data
+Πv,Π v ↷ O▷
+v
+are denoted by the symbols
+Dv,F v
+respectively. Here, Π v ↷ O▷
+v is the action determined by the natural surjection Πv ↠G v
+(constructed group-theoretically from Π v).
+Remark3.10.1.More precisely, for example, the object denoted by the symbolD ⊢
+v is not
+the profinite groupG v itself. Rather, it is the full subcategory consisting of connected
+objects of the Galois category determined by this profinite group. From the general
+theory of Galois categories, the profinite groupG v can be reconstructed fromD ⊢
+v up to
+inner automorphism. In this sense,G v andD ⊢
+v are “roughly equivalent data.”
+Similarly, in the case ofF ⊢×
+v , the object denoted by the symbolF ⊢×
+v is not the GM-
+dataG v ↷ O×
+v itself. Rather, it is a certain Frobenioid whose data are equivalent to this
+GM-data.
+Symbol Data
+D⊢
+v Gv
+F ⊢×
+v Gv ↷ O×
+v
+F ⊢×µ
+v
+(︁
+Gv ↷ O×µ
+v ,{I κ
+H}H
+)︁
+Dv Πv
+Fv Πv ↷ O▷
+v
+Table 1.Local data
+22
+
+=== PDF PAGE 23 ===
+These objects also have “infinite-place versions.” An object abstractly isomorphic to
+the collection of these local data, i.e.,
+{D⊢
+v }v∈V (resp.{F ⊢×
+v }v∈V,{F ⊢×µ
+v }v∈V,{D v}v∈V,{F v}v∈V)
+is called aD ⊢-prime-strip (resp.F ⊢×-prime-strip,F ⊢×µ-prime-strip,D- prime-strip,F-
+prime-strip).
+4.BPS and ´etale Hodge theater
+4.1.BPS.In IUT theory, the Θ-link is constructed as an identification between data
+calledF ⊩▶×µ-prime-strips (cf. [11, Def. 4.9, (viii), p. 384]). In this report, we use a
+simplified notion, which we call a basic prime strip (BPS), as a nearly equivalent sub-
+stitute for this concept. A BPS consists of two portions: the ´ etale-unit portion and the
+value-group portion.
+4.1 (a). ´Etale-unit BPS.
+Definition 4.1.1.
+(1) An ´ etaleBPS is aD ⊢-prime strip, i.e., a collection
+{Gv}v∈V
+indexed byv ∈V consisting of topological groups that are isomorphic to the local
+Galois group atv .
+(2) An isomorphism of ´ etale BPSs from{Gv}v∈V to{G ′
+v}v∈V is a collection of isomor-
+phismsG v
+∼
+→G ′
+v of topological groups.
+Definition 4.1.2.
+(1) An ´ etale-unitBPS is anF ⊢×µ-prime strip, i.e., a collection
+{(Gv ↷M v,{N v,H}H)}v∈V (4-1)
+indexed byv ∈V consisting of mono-analytic GM-data with compact struc-
+ture (§3.9); in other words, it is an object abstractly isomorphic to{(G v ↷
+O×µ
+v ,{I κ
+H}H)}v∈V.
+(2) An isomorphism of ´ etale-unit BPSs from{(G v ↷M v,{N v,H}H)}v∈V to{(G ′
+v ↷
+M ′
+v,{N ′
+v,H}H)}v∈V is a collection of isomorphisms{ϕ v = (ϕG,v, ϕM,v)}fromG v ↷
+Mv toG ′
+v ↷M ′
+v (cf.§0.4 (c)) such thatϕ M,v(Nv,H) =N ′
+v,ϕG,v(H).
+Note that one can reconstruct an ´ etale-unit BPS from an ´ etale BPS by a certain
+anabelian reconstruction algorithm.
+In the ´ etale-unit BPS (4-1),{G v}v∈V is called the´ etale portion, which itself forms
+an ´ etale BPS. Note that each isomorphism of ´ etale-unit BPSs induces an isomorphism
+between their ´ etale portions.
+4.1 (b).Value-group BPS.
+Definition 4.1.3.A value-group BPS is a pair
+(C,{φ v}v∈V) (4-2)
+that consists of the data
+•a one-dimensional orientedR-vector spaceC;
+•a collection of nonzero elements{φ v ∈ C} v∈V, called the local pilots;
+23
+
+=== PDF PAGE 24 ===
+such thatφ C
+def
+= ∑︁
+v∈Vbad φv ∈ Cis nonzero. We shall refer to this sumφ C
+def
+= ∑︁
+v∈Vbad φv ∈
+Cas a pilot of the value-group BPS (C,{φ v}v∈V).
+LetBbe a value-group BPS as in (4-2). Then it is immediate that theR-linear map
+⨁︂
+v∈V
+Rv − → C,(4-3)
+whereR v is a copy ofRfor eachv ∈V , and thev -componentR v → Cof this map is
+given by mappinga∈R v toa·φ v ∈ C, is surjective. The kernel of this map is said to be
+the product formula ofB, denoted by PF(B).
+Definition 4.1.4.LetB= (C,{φ v}v) andB ′ = (C ′,{φ ′
+v}v) be two value-group BPSs.
+An isomorphism Φ:B
+∼
+→ B ′ of value-group BPSs is anR-linear isomorphismC
+∼
+→ C ′ that
+mapsφ v ∈ Ctoφ ′
+v ∈ C ′ for everyv .
+Remark4.1.5.The value-group BPSs that appear in the following discussion all have
+the same product formula PF⊂ ⨁︁
+v∈V
+Rv. In such a situation where the product formula
+is fixed, scaling the local pilots{φ v}v∈V uniformly by a non-zero real number does not
+change the product formula; therefore, a value-group BPS is simply given by
+•a one-dimensional orientedR-vector spaceC;
+•a negative elementφ C ∈ C, called the pilot.
+In what follows, we will define value-group BPS in this form, i.e., a “pointed oriented real
+line.”
+4.1 (c).BPS.
+Definition 4.1.6.(1) A basic prime strip (BPS)Bis a pair
+B= (B ´ et-unit,B val)
+of an ´ etale-unit BPS and a value-group BPS. By thepilot of a BPS we mean the pilot of
+its value-group portion.
+(2) An isomorphism of BPSs is a pair consisting of an isomorphism of the ´ etale-unit
+portions and an isomorphism of the value-group portions.
+Lemma 4.1.7.Two BPSsB= ({G v ↷M v,{N v,H}H}v∈V,C,{φ v}v∈V)andB ′ = ({G′
+v ↷
+M ′
+v,{N ′
+v,H}H}v∈V,C ′,{φ ′
+v}v∈V)are isomorphic to each other if and only ifPF(B) =
+PF(B′).
+Proof.First, observe that we always have an isomorphism of the ´ etale-unit portions. Let
+Φ: (C,{φ v}v)
+∼
+→(C ′,{φ ′
+v}v) be an isomorphism of value-group BPSs. This means that
+the following diagram ofR-vector spaces andR-linear homomorphisms is commutative:
+⨁︁
+v∈V
+Rv
+φC // C
+≀ Φ
+⨁︁
+v∈V
+Rv φC′
+// C′.
+Here, the horizontal arrows are theR-linear homomorphisms of (4-3) for the value-group
+BPSsB,B ′, respectively. Then it is immediate that Kerφ C = Kerφ C′, i.e., PF(B) =
+PF(B′). Conversely, if PF(B) = PF(B ′), then there exists anR-linear isomorphism
+Φ:C → C ′ which makes the above diagram commutative.□
+24
+
+=== PDF PAGE 25 ===
+4.2. ´Etale Hodge theater andq-pilot BPSs.
+4.2 (a).Hodge theaters and their ´ etale-like portions.As discussed in§1.4, a link such as
+(1-1) should be regarded as a relationship between “environments,” and theHodge theater
+is such an environment. The first paper on IUT theory [10] is devoted to the introduction
+of Hodge theaters.
+In the usual setting of arithmetic geometry, the additive and multiplicative structures
+of number fields and local fields, the unit groups and the value groups, Galois actions,
+fundamental groups, and so on are intricately bound together. For the reasons we have
+seen in§3.1, the IUT theory “unties” this binding, and try to manage which information
+can be reconstructed from Galois groups or fundamental groups by anabelian geometry,
+and which information can be “shared” through a link. From this, the Hodge theater is
+conceived as a “stage” for ordinary arithmetic geometry 5.
+Roughly speaking, a Hodge theater consists of many pieces of GM-data together with
+the relations among them. In this report, we call the underlying structure of a Hodge
+theater obtained by considering only the ´ etale-like portions of these pieces of GM-data
+an ´ etaleHodge theater. In the original papers, this is called aD-Θ ±ellNF-Hodge theater.
+An ´ etale Hodge theater is roughly a system consisting of (topological groups isomorphic
+to) various ´ etale/tempered fundamental groups, together with homomorphisms among
+them. Its components include the following:
+(1) the ´ etale fundamental groupsπ ´ et
+1 (C K),π ´ et
+1 (X K) of global hyperbolic orbicurves
+C K,X K;
+(2) at bad places, the tempered fundamental groups of local curves such as Πv = Πtp
+X v,
+and their profinite completions.
+In the sequel, for a Hodge theaterHT, its ´ etale-like portion will be denoted byHT D,
+as the symbolDoften indices ´ etale-like portion in the IUT theory.
+4.2 (b).Objects that can be reconstructed from ´ etale Hodge theater.Let us recall ([12,
+Prop. 1.2(vi)–(ix)] and [8, Prop. 3.2; Prop. 3.3]) that one can reconstruct the following
+objects from (a topological group abstractly isomorphic to) the absolute Galois group
+Gv by the relevant local mono-anabelian reconstruction algorithms, with local class field
+theory as one of the ingredients:
+•The residue characteristicp=p v of the local fieldK v.
+•The extension degreed v of the finite field extensionK v/Qp.
+•The absolute ramification indexe v of the local fieldK v.
+•The absolute residue degreef v of the local fieldK v.
+•The topological monoids Oµ
+v ⊆ O×
+v ⊆ O▷
+v with the natural continuous actions of
+Gv.
+•The cyclotome (cf.§0.4 (f))
+Λ(O×
+v )
+def
+= lim← −n
+(O×
+v )gp[n].
+5The following excerpt may explain the name “Hodge” theater:
+the position occupied by a“Hodge theater”within [...] the“log-theta-lattice”[...] cor-
+responds precisely to thespecification of a particular arithmetic holomorphic
+structure[...] ([10, Introduction, p. 25])
+25
+
+=== PDF PAGE 26 ===
+Let us also recall ([4, Thm. 1.6; Thm. 1.10; Cor. 2.18; Cor. 2.19] and [11, Prop. 1.4]) that
+one can reconstruct the following objects from (a topological group abstractly isomorphic
+to) the tempered fundamental group Π v:
+•The topological field K v with the natural continuous action of Π v.
+•The embeddingK ×
+v = (K ×
+v )Gv ↪→H 1(Πv,Λ( O×
+v )) by Kummer theory.
+•At a bad placev , theq-parameterq v ∈K ×
+v (⊆H 1(Πv,Λ( O×
+v ))) of the elliptic
+curveE v overK v.
+4.2 (c).Theq-pilot BPS.Let us fix a single ´ etale Hodge theaterHand work inside it.
+Due to what we have seen in§4.2 (b), one can construct an ´ etale-unit BPSB(H) from
+the objects that is reconstructed fromH.
+For eachv ∈V bad, let us write one of the 2l-th roots ofq v introduced in§1.1 as
+qv.
+For an elementa∈ O Fv, we define
+deg(a)
+def
+= [F:Q] −1 log
+(︁
+#(OFv /aOFv)
+)︁
+.
+Using this, one can construct a value-group BPS as follows:
+•putC
+def
+=R;
+•for eachv ∈V , define the local pilotφ v ∈ Catv by
+φv =
+⎧
+⎪⎪⎨
+⎪⎪⎩
+deg(qv) (v ∈V bad);
+deg(pv) (v ∈V good ∩V non);
+2π(v ∈V arc).
+The value-group BPS obtained in this way is called the q-pilot value-group BPS in the
+´ etale Hodge theaterH, and a BPS having this type of value-group portion is called a
+q-pilot BPS.
+5.Volume container and log-links
+5.1.Log-shells.As explained above, the main goal of IUT theory is to estimate the
+degrees of arithmetic line bundles. However, the integral structureO v ⊂K v needed in
+order to handle arithmetic line bundles is a holomorphic structure that cannot be shared
+via the Θ-link. The notion of a log-shell introduced in this section is an integral structure
+that serves as a substitute forO v for such a situation.
+Letv ∈V non. Then thep-adic logarithm map gives an isomorphism of groups
+log: O×µ
+v
+∼
+− →K v.
+Using this, we define aZ p-moduleI v, called the log-shell atv , by
+Iv = (2pv)−1 ·Im(O ×
+v ↪→ O×
+v ↠ O×µ
+v
+log
+− →K v)⊂K v;
+note that the factor (2p v)−1 makes the inclusionO v ⊂ I v to hold. This construction of
+log-shells involves the function log, whose formation requires the “ring structure” (i.e.,
+addition and multiplication) on O×µ
+v . But there are several different ways to construct
+log-shells, which we now explain.
+26
+
+=== PDF PAGE 27 ===
+5.1 (a).Holomorphic Frobenius-like version (HF).This version of the log-shell is con-
+structed from anF-prime strip (cf.§3.10)
+F={Π v(F)↷ O▷
+v (F)} v∈V.
+From the monoid O▷
+v (F), we construct the set O×
+v (F) of invertible elements, the set
+Oµ
+v (F) of torsion elements, and the quotient O×µ
+v (F) = O×
+v (F)/ Oµ
+v (F). From the given
+action Π v(F)↷ O▷
+v (F) one can construct ([8, Prop. 3.2(iii),(v)]) the “new multiplica-
+tion” on O×µ
+v (F) so that, with the original monoid multiplication regarded as the “new
+addition,” it becomes a field isomorphic to K v on which Πv acts. Let us denote the field
+(acted on by Π v) thus obtained by K v(logF). The holomorphic Frobenius-like log-shell
+atv associated toFis aZ pv-submodule of K v(logF) defined as
+Iv(F) = (2p v)−1 ·Im(O ×
+v (F)↪→ O×
+v (F)↠ K v(logF)),
+whereO ×
+v (F) = ( O×
+v (F)) Πv(F).
+5.1 (b).Holomorphic ´ etale-like version (HE).This version of the log-shell is constructed
+from aD-prime strip (cf.§3.10)
+D={Π v(D)}v∈V.
+From the topological group Π v(D), we can construct GM-dataG v(D)↷ O▷
+v (D) isomor-
+phic toG v ↷ O▷
+v by an anabelian algorithm. Similarly to what we did in (HF), we can
+construct Π v(D)↷ O×µ
+v (D) and K v(logD). The holomorphic ´ etale-likelog-shell atv
+associated toDis aZ pv-submodule of K v(logD) defined as
+Iv(D) = (2pv)−1 ·Im(O ×
+v (D)↪→ O×
+v (D)↠ K v(logD)),
+whereO ×
+v (D) = (O×
+v (D))Πv(D).
+5.1 (c).Mono-analytic Frobenius-like version (MF).This version of the log-shell is con-
+structed from anF ⊢×µ-prime strip (cf.§3.10)
+{Gv ↷ O×µ
+v ,{I κ
+H}H}v∈V.
+The group O×µ
+v is isomorphic to the underlying additive group of the field K v. The
+mono-analytic Frobenius-like log-shell atv is aZ pv-submodule of O×µ
+v defined as
+Iv(F ⊢×µ) = (2pv)−1 ·Im(I κ
+Gv ↪→ O×µ
+v ).
+5.1 (d).Mono-analytic ´ etale-like version (ME).This version of the log-shell is constructed
+from aD ⊢-prime strip (cf.§3.10)
+{Gv}v∈V.
+One can construct via an anabelian algorithm an ´ etale-like version O×µ
+v (Gv) of O×µ
+v
+together with a compact structure{I κ
+H(Gv)}H. The mono-analytic ´ etale-likelog-shell at
+v is aZ pv-submodule of O×µ
+v (Gv) defined as
+Iv(D⊢) = (2pv)−1 ·Im(I κ
+Gv(Gv)↪→ O×µ
+v (Gv)).
+27
+
+=== PDF PAGE 28 ===
+5.1 (e).The roles of the four types of log-shells.According to Mochizuki, the four types of
+log-shells listed above each have their own roles. Following the description in the original
+IUT paper, let us organize them into a bulleted list.
+•The holomorphic Frobenius-like log-shells are constructed within a fixed arith-
+metic holomorphic structure and are essentially identical to the construction us-
+ing the function log presented at the beginning of this section. The holomorphic
+´ etale-like log-shell is used to introduce the “upper semi-compatibility,” which will
+be discussed later in§7.2 (c); see [12, Rem. 1.2.2(iii), pp. 442–443; Prop. 3.5(ii),
+pp. 517–520]. In the notation of Theorem 3.11, this phenomenon is recorded as
+the third indeterminacy Ind 3 [12, Thm. 3.11(ii), pp. 577].
+•The mono-analytic Frobenius-like log-shell and the mono-analytic ´ etale-like log-
+shells are said to serve as containers for shaping the outputs of the multiradial
+algorithm (§6) and for transporting them between different Hodge theaters via
+Θ-links in situations where a complete ring-theoretic structure does not exist in
+the background; see [12, Thm. 1.5(iii),(iv), pp. 455–457] and [12, Rem. 1.5.2(i),
+pp. 460–461].
+5.2.Volume container.As terminology used only in this exposition, we call the direct
+product ∏︁
+v∈V Kv of local fields the small volume container. Each componentK v of this
+direct product is called a small local volume container. These serve as “containers” when
+arithmetic line bundles are represented by fractional ideals. Here, we introduce several
+variants of these notions.
+5.2 (a).Large volume containers.Letℓbe the prime number in the initial Θ-data. Set
+•J=F ℓ/±1 ={0,1,2, . . . , ℓ ⋇ = ℓ−1
+2 };
+•S j ={0,1, . . . , j−1}forj= 1,2, . . . , ℓ ⋇ + 1.
+The (large) local volume container overKatv ∈V is defined by
+LocVC(K) v =
+⨁︂
+j∈J
+KSj+1 ,v,
+where
+KSj+1 ,v =
+(︁⨂︂
+t∈Sj
+⨁︂
+w|vQ
+Kt,w
+)︁
+⊗K j,v.
+Here,K t are copies ofK,v Q denotes the place ofQthat lies belowv , and⊗=⊗ QvQ
+.
+The (large) volume container overKis defined as the product
+VC(K) =
+∏︂
+v∈V
+LocVC(K) v.
+5.2 (b).Log-shell version.The “ I-version” (“ log-shell version”) of the (large) volume
+container (resp. (large) local volume container), denoted by
+VC(I) (resp. LocVC(I) v),
+is similarly defined, whereK v is replaced byI v and⊗ QvQ
+by⊗ ZvQ
+.
+28
+
+=== PDF PAGE 29 ===
+5.2 (c).O-version.The “ O-version” of the (large) local volume container, denoted by
+LocVC(O)v,
+is defined as follows: LocVC(K) v can be written as the direct sum of finitely many
+copies ofK w, wherew are places ofKthat dividesv Q. Then LocVC(O) v is obtained by
+replacing allK w that appears in the direct sum decomposition byO Kw. Equivalently, it
+is obtained by replacingK v byO v and⊗ QvQ
+by⊗ ZvQ
+in the definition of LocVC(K) v,
+and then taking the integral closure.
+The “O-version” of the (large) volume container is defined as the product
+VC(O) =
+∏︂
+v∈V
+LocVC(O)v.
+5.2 (d).Holomorphic hull.Note that VC(K) is naturally a VC(O)-module. For a subset
+S⊂VC(K), the holomorphic hull ofS, denoted byS hol, is the smallest VC(O)-submodule
+of VC(K) that containsS.
+5.2 (e).Procession-normalized volume.One has the notion of “ volume” by Haar measure
+for measurable subsets in VC(K), which is normalized as: the volume of VC(O) is 1, and
+multiplication byp v atv acts as multiplication byp −1
+v on the volume. For a measurable
+subsetSof VC(O), we denote log-vol(S) the logarithm of the volume vol(S) (the log
+volume ofS). For example, the log volume ofp v ·VC(O) (the multiplication being as
+above) is equal to−log(p v).
+Remark5.2.1.The above normalization implements what is called “ procession-normalization”
+in the original IUT papers.
+5.2 (f).The LGP element.We define theLGP element 6 LGP∈VC(O) as follows. First,
+LGP = (LGPv)v∈V,
+and LGPv ∈LocVC(O) v is further decomposed as
+LGPv = (LGPSj+1 ,v)j∈J (LGPSj+1 ,v ∈K Sj+1 ,v).
+Now, as an element inK Sj+1 ,v =
+(︁⨂︁
+t∈Sj
+⨁︁
+w|vQ
+Kt,w
+)︁
+⊗K j,v,
+LGPSj+1 ,v =
+⎧
+⎨
+⎩
+(⨂︁
+t∈Sj(1)w|vQ)⊗q j2
+v ifv is bad,
+(⨂︁
+t∈Sj(1)w|vQ)⊗1 ifv is good.
+5.3.log-links and log sequence.
+5.3 (a).Log-link.Consider two copies of Hodge theaters †HTand ‡HT. In †HT(resp.
+‡HT), as in§5.1 (a), one has the two copies †K v (= †K v(F)) and †K v(logF) (resp. ‡K v
+(= ‡K v(F)) and ‡K v(logF)) of the field K v.
+We fix an isomorphism †HT D ∼
+→ ‡HT D between the ´ etale-like portions of the Hodge
+theaters once for all. Then by the fact ([10, Cor. 5.3 (ii), p. 160]) that any isomorphism
+ofD-prime strips can be uniquely lifted to an isomorphism ofF-prime strips, one obtains
+a unique lift
+log: †K v(logF)
+∼
+− →‡K v.
+6In IUT papers, LGP stands for “Logarithmic Gaussian Procession,” which means a certain collection
+of the special values of the “l-th root of the theta function” of the formq j2
+v forj= 1, . . . , l ⋇.
+29
+
+=== PDF PAGE 30 ===
+We call this isomorphism a log-link from †HTto ‡HT(see Figure 2):
+log: †HT − → ‡HT.
+†K v
+†O×
+v
+†O×µ
+v
+†HT
+‡K v
+‡O×
+v
+‡O×µ
+v
+‡HT
+log
+∼
+Figure 2.The log-link
+Remark5.3.1.Since the ´ etale-like log-shells ´ etIand GalIare constructed only from the
+´ etale-like portionHTD ofHT, they can transcend the walls of log-links and be shared
+with as common data between theHT’s connected by log-links.
+5.3 (b).Log sequence.Consider a collection of copies of Hodge theaters
+{nHT }n∈Z
+indexed by integers, and for eachn∈Z, fix once for all an isomorphism
+nHT D ∼
+− →n+1HT D
+between the ´ etale-like portion of the Hodge theaters numberednandn+ 1. Then, by
+what we have already seen above, one obtains a sequence of log-links
+· · ·
+log
+− →−1HT
+log
+− →0HT
+log
+− →1HT
+log
+− → · · ·,
+which we call a log sequence.
+Notation 5.3.2.Throughout in the sequel, when discussing the log sequence, we will
+simply identify all nHT D forn∈Z, and write them as a single symbol
+◦HT D .
+Note also that, as we remarked in 5.3.1, the holomorphic (resp. mono-analytic) ´ etale
+log-shells nI(D) (resp. nI(D ⊢)) associated to nHTcan also be identified, and can be
+regarded as a single log-shell
+◦I(D) (resp. ◦I(D ⊢))
+associated to ◦HT D.
+6.Multiradial algorithm
+As mentioned in§1.4, the primary goal of IUT theory is to share the framework for
+computing the degree of certain arithmetic line bundles between two Hodge theaters
+joined by a Θ-link. Since the Θ-link does not preserve the ring-theoretic structure used
+in standard degree calculations, we must achieve this using anabelian geometry. The
+algorithm used for this purpose is the one described in Theorem 3.11 of [12]. That
+is to say, in IUT theory, the algorithm is carried out in order to compute the degree
+of theq-pilot object in terms of the log-volumes of members of a certain collection of
+local fractional ideals in a suitable volume container. It takes an abstract BPS as input
+30
+
+=== PDF PAGE 31 ===
+and outputs a region within a volume container. However, the output is not uniquely
+determined, and is subject to three kinds ofindeterminacies:
+(Ind1) First, we need to start from anF-prime-strip (§3.10), rather than BPS alone, so
+we need to writeG v as a quotient of “Π v equipped with an interpretation as a
+fundamental group.” To do this, one must fix an isomorphism between Π v/∆v
+andG v. Because of this choice, one must accept the indeterminacy arising from
+Aut(Gv).
+(Ind2) Next, one needs to write O×µ
+v in the input BPS, as a monoid withG v-action,
+as a quotient of O×
+v (compatibly with the compact structure). For this reason,
+an indeterminacy arises from the automorphism group of O×
+v as a monoid with
+Gv-action.
+(Ind3) In a log-shell version of the volume container (§5.2) constructed in an anabelian
+way, it is not possible to reconstruct VC(O), which is a ring-theoretic object. All
+we can say is that this is an adelic measurable subset of the log-shell version of
+the volume container (upper-semi compatibility; cf.§7.2 (c)). Therefore, instead
+of just VC(O), we must take into account all such subsets.
+An algorithm that allows for such indeterminacies is referred to as amultiradial algo-
+rithmin IUT theory. In this section, we try to give a rough outline of this algorithm.
+6.1.Generalities on Kummer maps.LetGbe a topological group andMa topo-
+logical monoid with a continuous action ofG. Letnvary over a projective system of
+positive integers (with respect to divisibility) and letHvary over an inductive system of
+(open) subgroups ofG(with respect to inclusion). LetM gp denote the groupification of
+M. We make a few assumptions aboutGandM:
+(a)M gp isn-divisible for allnunder consideration;
+(b)M gp[n] is finite for allnunder consideration;
+(c) one hasM= ⋃︁
+H M H, whereHvaries over the subgroups under consideration.
+We put
+Λ(M)
+def
+= lim← −n
+M gp[n],
+considered as a (topological)G-module (cf.§0.4 (f)). For any givennandH, the sequence
+0→M gp[n]→M gp n
+− →Mgp →0
+induces a canonical map
+M H →(M gp)H →H 1(H, Mgp[n]),
+and taking limits inn, we obtain
+M H →(M gp)H →H 1(H,Λ(M)).
+Taking colimits inH, we obtain
+κ:M− →lim− →H
+H1(H,Λ(M)).
+This map isG-equivariant with respect to the natural action ofGonH 1. We refer to all
+such maps asKummer mapsin the text below.
+Such Kummer maps are functorial in the following sense. First, a morphism (or, say,
+anequivariant co-morphism)
+(φ∗, φ∗): (G Y , MY )− →(G X, MX)
+31
+
+=== PDF PAGE 32 ===
+of pairs as above consists of a continuous homomorphismφ∗ :G Y →G X and a continuous
+monoid homomorphismφ ∗ :M X →M Y such that
+φ∗(φ∗(γ)·m) =γ·φ ∗(m)
+for allγ∈G Y ,m∈M X, and such that eachHin theG X-system containsφ ∗(H ′)
+for someH ′ in theG Y -system. Sinceφ ∗ is a monoid homomorphism it restricts to
+λn :M gp
+X [n]→M gp
+Y [n], and hence induces a continuousG Y -equivariant mapλ: Λ(M X)→
+Λ(MY ), whereG Y acts on Λ(MX) throughφ ∗. This induces a map lim− →H H1(H,Λ(M X))→
+lim− →H ′ H1(H ′,Λ(M Y )). It is easy to see that this map is compatible with the Kummer
+maps in the sense that the following square commutes:
+MX lim− →H H1(H,Λ(M X))
+MY lim− →H ′ H1(H ′,Λ(M Y )).
+κX
+φ∗
+κY
+In the text below, we will consider situations whereGX =π 1(X) is an ´ etale fundamental
+group,{H}is the family of subgroups corresponding to finite ´ etale coversX ′ ofX, and
+MX is a submonoid of
+lim− →
+X ′
+O×(X ′).
+In this case the colimit above is the ∞H1(π1(X),Λ(M X)) of§6.2. Thus, everyf∈M X is
+associated to some morphismf:X ′ →G m for some finite coverX ′ ofX. Suppose that
+g:X→Yis a morphism of connected schemes, and putG Y
+def
+=π 1(Y). LettingY ′ vary
+over the finite covers ofY, pulling back invertible functions along the base-change ofg
+gives a morphism
+lim− →
+Y ′
+O×(Y ′)→lim− →
+X ′
+O×(X ′).
+Assume thatM Y is analogously a submonoid of lim− →Y ′ O×(Y ′) carried intoM X by this
+map, writeφ ∗ :M Y →M X for the resulting homomorphism, and letφ ∗ :G X →G Y be
+the map induced byg. Then (φ ∗, φ∗): (G X, MX)→(G Y , MY ) is a morphism of pairs in
+the above sense, and thus the functoriality discussion above applies. These observations
+will be used below, in the special case of a point Speck→X. The above discussion then
+lets us interpret the induced map onH 1 as a Kummer-theoretic analogue of evaluation
+of functions at such a point. (Note that the above discussion can be done also for rigid
+spaces, not only for schemes.)
+6.2. Θ-value-action construction.Among the contents of the algorithm of Theorem
+3.11, what is especially important in the present paper is the part that expresses the
+Θ-values as an action on log-shells (the algorithm of Theorem 3.11 also contains, among
+other things, a part that reconstructs the number fieldF mod, but we do not discuss it
+in the present paper). This part is essentially the same as what we call below theη-
+algorithm(§9.1). Let us now look at this algorithm somewhat more concretely. Figure 3
+displays the schematic diagram of the Θ-value-action construction.
+Here, we write
+∞H i(G, A)
+def
+= lim− →J
+H i(G|J , A),
+whereJranges over all finite-index open subgroups of Π v andG| J =G× Πv J.
+32
+
+=== PDF PAGE 33 ===
+“Πv ↷O×v ·ΘN” Πv,¨Y ↷MΘv,∞ ∞H1(Πv,¨Y,Λ(MΘ,Frobv,∞ )) ∞H1(Πv,¨Y,(l·∆Θ)(Πv))
+∏︁
+t ∞H1(Dt,(l·∆Θ)(Πv))∏︁
+t O▷v,t
+∏︁
+tlog(O×µv,t)∏︁
+t It
+anabelian Kummer Θ-Λ-rgd
+Galois ev.
+Kummer
+Kummer-log realization
+Figure 3.Construction of the Θ-value-action
+Remark6.2.1.Partly for brevity of the explanation, and partly because we may not
+be fully familiar with the finer details of Mochizuki’s intentions, the following descrip-
+tion is necessarily schematic. Mochizuki’s actual formulation seems to distinguish rather
+carefully between the Frobenioid-theoretic theta monoid, its Kummer-theoretic image
+in direct-limit cohomology groups, the corresponding exterior and interior cyclotomes,
+and the indeterminacies attached to these objects [11, Prop. 1.5(iii)–(iv), pp. 240–241;
+Prop. 3.1(i), p. 305; Ex. 3.2(i), pp. 306–307; Prop. 3.3(i), pp. 307–308]. In the present
+report, we suppress some of these distinctions in order to describe the conceptual flow of
+the construction.
+6.2 (a). The classical theta function, the ´ etaletheta class, and the l-th-root class.Before
+describing the steps in Figure 3, we briefly overview the relationship between the classical
+theta function, its Kummer class, and itsl-th-root class. As we saw in§2.6, the classical
+theta function ¨Θv (2-5) is a meromorphic function on ¨Yv. In [4, Prop. 1.3, pp. 245–247]
+Mochizuki constructed the´ etale theta class
+¨ηΘ
+v ∈H 1(︁
+Πv, ¨Y ,∆ Θ,v
+)︁
+,
+which is determined up to multiplication by units, and identified it with the Kummer
+class of ¨Θv [4, Prop. 1.4(iii), p. 248]. Here ∆ Θ,v ∼= ˆ︁Z(1) is a central subquotient of the
+second nilpotent quotient of the geometric fundamental group; see [4,§1, pp. 238–239].
+Although we do not go into the details here, we shall use the following fact from
+[4]: after passing to the relevant degree-lcovering ¨Y v, the ´ etale theta class admits a
+distinguishedl-th-root class
+¨ηΘ
+v
+∈H 1(︁
+Πv, ¨Y , l·∆ Θ,v
+)︁
+,
+whose image underl·∆ Θ,v ↪→∆ Θ,v is the restriction of the original ´ etale theta class ¨ηΘ
+v .
+Mochizuki explains this class as an “l-th root of the ´ etale theta function” [4, Prop. 2.2(ii),
+p. 263; discussion preceding Def. 2.7, p. 267].
+In IUT I, the local theta symbol Θv is then used for the reciprocal of the corresponding
+normalized Frobenioid-theoreticl-th root, rather than for the classical function ¨Θv itself
+[10, Ex. 3.2(ii), pp. 79–80].
+6.2 (b). Step 1: Realizing the input inside a Hodge theater.The starting point of the
+algorithm is an abstract BPS. In order to execute the algorithm of Theorem 3.11, one
+first regards the ´ etale-unit portion of this input BPS as being isomorphic to the ´ etale-unit
+BPS of the form
+Πv/∆v ↷ O×
+v /Oµ
+v
+inside a Hodge theater. Since this choice is not canonical, Ind1 and Ind2 arise, as discussed
+in the beginning of this section.
+Remark6.2.2.As suggested here, the input to the “raw” Theorem 3.11 algorithm appears
+to consist solely of the ´ etale-unit BPS, and the value-group part does not seem to affect the
+33
+
+=== PDF PAGE 34 ===
+algorithm’s result. However, the algorithm’s output is a BPS accompanied by the value-
+group part (of the Θ-pilot, as determined by the theta-value LGP), and the comparison
+between this output and the value-group part on the input side (e.g., aq-pilot value-
+group BPS) is the subject of Corollary 3.12. On the other hand, it is argued that when
+an input accompanied by a value-group portion—such as aq-pilot—is provided, the
+underlying holomorphic structure is not destroyed by the algorithm (the (SHE) property
+discussed later in§8.2); in this sense, the value-group part on the input side may exert
+some influence on the output. Reconciling these points remains a topic of discussion
+among LANA members.
+Note that the abstract ´ etale-unit BPS alone does not contain the full tempered funda-
+mental group Π v. But, at the risk of these indeterminacies, one can start the algorithm
+from the situation that our ´ etale-unit BPS is related to the Hodge theater, which supplies
+the ambient group Πv (and the associated mono-theta-environment data, which, although
+we omit the details, we should use at several places below).
+6.2 (c). Step 2: Reconstructing the l-th-root ´ etaletheta class.This and the next steps
+reconstruct a copy of the so-calledtheta monoid acted on byΠ v, ¨Y by a mono-anabelian
+reconstruction [11, Prop. 1.4] (with a slight suppression, for simplicity, of the distinction
+between the Frobenioid-theoretic ones and their Kummer images; see below).
+First we reconstruct functorially from Π v the subgroup Π v, ¨Y , the coefficient module
+(l·∆ Θ)(Πv), and a distinguished subset
+θ(Πv)⊆H 1(︁
+Πv, ¨Y ,(l·∆ Θ)(Πv)
+)︁
+.(6-1)
+This subset is the functorially reconstructed set ofµ l-multiples of the reciprocal of the
+“(l·Z ×µ2)-orbit of anl-th root of the ´ etale theta function of standard type” [11, Prop. 1.4,
+pp. 237–238]; cf. also [4, Def. 2.7, p. 267].
+6.2 (d). Step 3: Direct-limit theta classes and the schematic theta monoid.LetJrange
+over finite-index open subgroups of Π v, and put
+Πv, ¨Y |J
+def
+= Π v, ¨Y ×Πv J.
+IUT II defines a direct-limit enlargement
+∞θ(Πv)⊆lim− →J
+H1(︁
+Πv, ¨Y |J ,(l·∆ Θ)(Πv)
+)︁
+consisting of elements of the direct limit of the cohomologies for which some positive
+multiple7 coincides up to torsion with an element ofθ(Π v) [11, Prop. 1.4, p. 238]. We
+then write
+M Θ
+v,∞
+def
+= O×
+v (Πv)· ∞θ(Πv)⊆lim− →J
+H1(︁
+Πv, ¨Y |J ,(l·∆ Θ)(Πv)
+)︁
+.
+Here O×
+v (Πv) is an ´ etale-like copy ofO×
+v reconstructed from Π v; see [11, Ex. 1.8(ii),(iii),
+pp. 249–251]. (Here we are intentionally sloppy. In the strict formulation, one distin-
+guishes the Frobenioid-theoretic theta monoidM Θ,Frob
+v,∞ , which appears on the left side of
+Figure 3, from its Kummer-theoretic image, which is the object actually described by the
+cohomological expression above. We use the same notationM Θ
+v,∞ for both sides only as
+a schematic shorthand.)
+7Positive integer power, if one writes the binary operations of the cohomologies multiplicatively.
+34
+
+=== PDF PAGE 35 ===
+6.2 (e). Step 4: Θ-cyclotomic rigidity.The preceding cohomological display uses the in-
+terior cyclotome (l·∆ Θ)(Πv). In Mochizuki’s construction this interior cyclotome is
+compared with the exterior cyclotome arising from the projective system of mono-theta
+environments associated to Πv. We do not define this projective system here, since doing
+so would require recalling the formal construction of mono-theta environments. Instead,
+we suppress it as follows: we write
+Λext
+Θ,v
+for the corresponding exterior cyclotome; in fact, with a suitable interpretation ofMΘ,Frob
+v,∞ ,
+there exists a natural isomorphism
+Λ(M Θ,Frob
+v,∞ )
+∼
+− →Λext
+Θ,v
+([11, Prop. 1.3(i), p. 236; Prop. 1.5(iii), pp. 240–241]), hence one can basically replace it
+by the cyclotome associated to the theta monoid.
+The Θ-cyclotomic rigidity isomorphism identifies this exterior cyclotome with the in-
+terior cyclotome. Schematically, in the direction used in Figure 3, we write
+Θ-Λ-rgd: Λ ext
+Θ,v
+∼
+− →(l·∆ Θ)(Πv),(6-2)
+which is the inverse of the interior-to-exterior cyclotomic rigidity isomorphism of IUT II
+[11, Prop. 1.3, pp. 236–237; Prop. 1.5(iii), pp. 240–241]. The map Θ-Λ-rgd in Figure 3 is
+given by this isomorphism.
+6.2 (f). Step 5: Galois evaluation to decomposition groups.Inside Π v, ¨Y , one reconstructs
+by anabelian techniques the decomposition groupsD t corresponding to the labelst, i.e.
+decomposition subgroups associated to closed points of ¨Y v lying over the pointsx t of
+Figure 1. Restriction to these decomposition groups gives
+∞H1(︁
+Πv, ¨Y ,(l·∆ Θ)(Πv)
+)︁
+− →
+∏︂
+t
+∞H1(︁
+Dt,(l·∆ Θ)(Πv)
+)︁
+.(6-3)
+When applied to Kummer classes associated to functions, this restriction operation can
+be interpreted as the Kummer-theoretic analogue of evaluation at the points associated
+to the decomposition groups in question; see§6.1.
+6.2 (g). Step 6: Kummer-log realization.For eacht, set
+Cv := (l·∆ Θ)(Πv),
+which we regard as aD t-module. We also have a cyclotome
+Λv,t := Λ(K v,t) = lim← −n
+µn(K v,t),
+which is naturally aD t-module. Then it is argued that the projective system of mono-
+theta environments (which we have omitted here) gives rise to a unique isomorphism of
+Dt-modules (cyclotomic synchronization)
+ιt :C v
+∼
+− →Λv,t;
+see [4, Cor. 2.19(i), pp. 289–291; Rem. 2.19.2, p. 293] and [11, Prop. 1.5(iii)–(iv), pp. 240–
+241]). Then we have a map
+φv,t = (ιt)−1
+∗ ◦κ t : O▷
+v,t − →∞H1(︁
+Dt,(l·∆ Θ)(Πv)
+)︁
+,
+whereκ t : O▷
+v,t → ∞H1(Dt,Λ v,t) is the local Kummer map.
+35
+
+=== PDF PAGE 36 ===
+An important part of the content of Theorem 3.11 (see also [12, Prop. 3.5(ii), pp. 517–
+520]) is that the image of the map (say,ψ v) from (the Frobenius-like version of) the theta
+monoidM Θ
+v,∞ to the product of ∞H1(︁
+Dt,(l·∆ Θ)(Πv)
+)︁
+is contained in the image of
+φv :=
+∏︂
+t
+φv,t :
+∏︂
+t
+O▷
+v,t − →
+∏︂
+t
+∞H1(︁
+Dt,(l·∆ Θ)(Πv)
+)︁
+;
+see [12, Thm. 3.11(ii), pp. 574–575; Rem. 3.11.1(iii)–(v), pp. 581–584].
+Remark6.2.3.In regard to the actual context of IUT theory, the monoid O▷
+v,t is, to be
+more precise, the local monoid belonging to a certain prime-strip Ψ cns(F≻)t ([11, Cor.
+4.10(i), pp. 384–385]), and inside the product ∏︁
+t O▷
+v,t of these monoids, one has the
+Gaussian monoid, which comes with a splitting rougly like “((q t2
+v )t)N · O×
+v,0,” where the
+last O×
+v,0 is embedded diagonally into ∏︁
+t O▷
+v,t.
+One can regard O▷
+v,t as a subset of log( O×µ
+v,t ), and we have
+∏︂
+t
+Iv,t ⊂
+∏︂
+t
+log(O×µ
+v,t ),
+whereI v,t is the log-shell of type (MF) (cf.§5.1 (c)) attached to the Frobenius-like real-
+ization, chosen in§6.2 (b), of the ´ etale-unit portion of the input BPS.
+6.2 (h). Step 7: The action of ΘN.The image of the Frobenioid-theoretic theta monoid
+M Θ,Frob
+v,∞ coincides with the image of the Gaussian monoid underφ v, which implies that
+the discreteN-part of the Gaussian monoid may naturally be regarded as a submonoid of∏︁
+t O▷
+v,t. In particular, it follows from the inclusion just above that one may reconstruct
+the natural action of the discreteN-part of the Gaussian monoid on ∏︁
+t Iv,t:
+LGPN
+v ↷
+∏︂
+t
+Iv,t.(6-4)
+6.2 (i). Step 8: “Possible regions” in the volume container.When the local action of
+Step 7 is assembled globally according to the definition of the large volume container in
+§5.2 (f), the possible images of the Θ-pilot object are obtained as
+LGP·U⊆VC(I)⊗ Z Q,
+whereUranges over suitable subsets of the large volume container VC(I).
+6.3.Cyclotomic rigidity.One of the most important technical elements in the algo-
+rithm of Theorem 3.11 is cyclotomic rigidity, i.e., a suitable isomorphism of cyclotomes
+(cf.§0.4 (f)). This rigidifies the morphism Θ-Λ-rgd in Diagram 3. Without this rigidity,
+since every cyclotome has a faithful natural action of ˆ︁Z× as discussed in§0.4 (f), when
+the Kummer class is transported into the large volume container associated to log-shells,
+what is determined is not the Θ-value itself, but only its ˆ︁Z×-power orbit. In that case,
+what is compared with theq-pilot object would not be the Θ-values themselves, but
+indeterminate profinite powers ofq, and it would become hopeless to obtain an inequal-
+ity such as Corollary 3.12. Cyclotomic rigidity is thus an important technical aspect in
+reconstructing the Θ-value.
+Below, let us discuss cyclotomic rigidity in a little more detail.
+First, consider the algebraic closure kof a local fieldk, its absolute Galois groupG k,
+and theG k-monoidO ▷
+k . We write an abstract monoid with group action isomorphic to
+this as
+G↷M.
+36
+
+=== PDF PAGE 37 ===
+Then, from the torsion ofM, one obtains the cyclotome
+Λ(M) = lim← −n
+M gp[n].
+On the other hand, fromGas well, the cyclotome Λ(G)
+def
+= Λ(M(G)) is reconstructed,
+whereM(G) is the “ O▷
+v ” in§4.2 (b). Cyclotomic rigidity is the canonical isomorphism
+between these two cyclotomes
+ιG↷M : Λ(M)
+∼
+− →Λ(G).(6-5)
+Note that the construction of “ι G↷M” is natural with respect to isomorphisms of “G↷
+M.”
+However, there is a point to be noted here. The isomorphismι G↷M is natural with
+respect to isomorphisms of the dataG↷M, but it is not natural as it stands with
+respect to weaker data such as
+G↷M × orG↷M ×
+tor.
+Among the automorphisms of this weaker data there are automorphisms that do not
+lift to automorphisms of the originalG↷M, and their effect typically appears as ˆ︁Z×-
+ambiguity. Thus, we might say thatι G↷M can be reconstructed fromG↷M ×
+tor, “in the
+multiradial sense,” up to ˆ︁Z×-indeterminacy.
+In the Θ-value-action construction of IUT, a Θ-cyclotomic rigidity even more precise
+than this ordinary local cyclotomic rigidity is used. Roughly speaking, one restricts the
+Kummer class of the Θ-function
+[Θ]∈H 1(︁
+∆(Πv, ¨Y ),Λ(M Θ)
+)︁
+to the cuspidal inertia group corresponding to the Θ-labels. Since the Θ-function has
+a zero of order one at the relevant cusp, this restriction gives an isomorphism between
+cyclotomes. As its inverse map, one obtains
+Θ-Λ-rgd: Λ(M Θ)
+∼
+− →Λ(Πv, ¨Y ).
+This is the content of (6-2).
+7. Θ-link and the big-H diagram
+7.1. Θ-link.
+7.1 (a). Θ-pilot BPS.Before explaining the Θ-link, let us discuss the Θ-pilot BPS needed
+for its construction. We define the Θ-pilot BPS as follows:
+•for eachv ∈V , writeR v
+def
+=R·Θ v, where Θ v is a formal symbol;
+•for eachv ∈V , define theR-linear homomorphismψ v :R v →Rby
+ψv(Θv) =
+⎧
+⎪⎪⎨
+⎪⎪⎩
+s·deg(q v) (v ∈V bad);
+s·deg(p v) (v ∈V good ∩V non);
+s·2π(v ∈V arc),
+where
+s:= (1 2 + 22 +· · ·+ (l ⋇)2)/l⋇;
+•write PF for the kernel of the (necessarily surjective)R-linear homomorphism
+∑︂
+v∈V
+ψv ⊗Z R:
+⨁︂
+v∈V
+Rv −↠R; (7-1)
+37
+
+=== PDF PAGE 38 ===
+•writeC
+def
+= ⨁︁
+v∈V
+Rv/PF;
+•for eachv ∈V , define the local pilotφ v ∈ Catv to be the image inCof Θ v ∈R v.
+The value-group BPS obtained in this way is called the Θ-pilot value-group BPS in the
+´ etale Hodge theaterH, and a BPS having this type of value-group portion is called a
+Θ-pilot BPS.
+7.1 (b). Θ-link.A Θ-link is a link determined by a “sufficiently weakened” gluing of
+prime-strip data between two Hodge theaters, and its “weakness” makes it possible to
+treat the Θ-pilot object on the domain side and theq-pilot object on the codomain side
+as “two pilots” of the same abstract BPS.
+Let us consider two Hodge theaters †HTand ‡HT. In ‡HT, consider theq-pilot BPS
+(cf.§4.2 (c)) ‡Bq, and in †HT, consider the Θ-pilot BPS †BΘ. Then, roughly speaking, a
+Θ×µ-link is the full poly-isomorphism (gluing) from †BΘ to ‡Bq, and it gives the following
+situation:
+(a) (compatibility with ´ etale-like coric data) this gluing is compatible with the ´ etale-
+like mono-analytic portions, that is, with the coric identifications of theD⊢-prime-
+strips:
+(b) (correspondence between the Θ-pilot value-group BPS and theq-pilot value-group
+BPS) it gives the isomorphism between the Θ-pilot value-group BPS on the do-
+main Hodge theater †HTand theq-pilot value-group BPS on the codomain Hodge
+theater ‡HT;
+(c) (mutual alienness of the AHSs) the holomorphic structures on the two sides, that
+is, the ring/scheme structures, are not identified.
+Remark7.1.1.The rough explanation of the Θ-link given above is based on a simplified
+formulation for purposes of exposition in the present paper. In the original papers, there
+are multiple variants of Θ-links, such as Θ-, Θ ×µ-, Θ ×µ
+gau-, Θ ×µ
+LGP-, and Θ ×µ
+lgp -links, and
+their respective relationships with Frobenioids, Gaussian monoids, LGP-monoids, and
+log-shells are precisely distinguished. What is needed in the present paper is the Θ ×µ
+LGP-
+link among them, which is related to the log-volume comparison of Corollary 3.12.
+7.2.Big-H diagram.
+7.2 (a).Two log sequences connected by aΘ-link.The big-H diagram is a diagram (a
+subdiagram of the log-theta-lattice) consisting of two log sequences and a horizontal Θ-
+link connecting them. In the present paper, we draw it, in simplified form, as follows.
+The Hodge theater structures of the left-hand, right-hand column (0,∗), (1,∗) is the
+Hodge theater structures that gives rise to the Θ-pilot,q-pilot BPSs in the Θ-link that
+appears in the big-H diagram under consideration, respectively. Note that the Θ-link
+cannot extend to an isomorphism of Hodge theaters.
+7.2 (b).Log-Kummer correspondences.At each place (Hodge theater) of Figure 4, log-
+shells of type (HF) (cf.§5.1 (a)) are determined; from these, together with the ´ etale-like
+portions 0,◦HT D and 1,◦HT D of the Hodge theaters on the respective sides, and the log-
+shells of type (HE) (cf.§5.1 (b)) 0,´ etI:= 0,◦I(D) and 1,´ etI:= 1,◦I(D) in each of them, one
+can draw a diagram as in Figure 5.
+Here, Kmm denotes the Kummer isomorphisms from Frobenius-like log-shells to ´ etale-
+like log-shells. This diagram is far from commutative, but it indicates that the contents
+of the log-shells of type (HF) in the log sequence on each side can be controlled by the
+common log-shell of type (HE) on the respective side.
+38
+
+=== PDF PAGE 39 ===
+... ...
+0,1HT
+log
+OO
+1,1HT
+log
+OO
+0,0HT
+Θ-link //
+log
+OO
+1,0HT
+log
+OO
+0,−1HT
+log
+OO
+1,−1HT.
+log
+OO
+...
+log
+OO
+...
+log
+OO
+Figure 4.Big-H diagram
+0,1I 1,1I
+0,0I 1,0I
+0,−1I 1,−1I
+0,´ etI 1,´ etI
+log
+log
+log
+log
+−1Kmm
+0Kmm
+1Kmm
+−1Kmm
+0Kmm
+1Kmm
+Figure 5.Log and Kummer maps between log-shells
+7.2 (c).Upper Semi-Compatibility andInd 3.To put it in terms of Mochizuki’s expla-
+nation, the role of the log-Kummer correspondence is to control, within the entire log
+sequence, the Frobenius-like unit part that shifts one step at a time through the iteration
+of the log-link. The multiradial algorithm in Theorem 3.11, in broad terms, attempts
+to reconstruct the structure on the value-group side, such as an integral structure, from
+the ´ etale-unit part; therefore, the unit part appears in a position shifted by one step via
+the log-link. To extract the invariant part with respect to this one-step shift, Mochizuki
+adopts the approach of treating the log sequence itself as a single vertical column and
+handling it as a single object; cf. [12, Introduction, pp. 408–410].
+39
+
+=== PDF PAGE 40 ===
+Mochizuki emphasizes that, although the log-link and the Kummer isomorphism are
+not commutative, the log-shell acts as an upper-bound that simultaneously contains their
+images. Mochizuki refers to this property as “upper semi-commutativity” in the log-
+Kummer correspondence, or “upper semi-compatibility” between the log-link and the
+Kummer isomorphisms.
+The third indeterminacy Ind 3 arises from this log-Kummer correspondence. Specif-
+ically, it is formulated as an upper-bound constraint in such a way that, even after
+undergoing a shift by the log-link, all required images remain within the log-shell. See
+[12, Rem. 1.2.2(iii), pp. 442–443; Thm. 3.11(ii), pp. 575–577].
+8.On the logic from theorem 3.11 to corollary 3.12
+8.1.Procedure on the big-H diagram.In this section, based on the discussion so
+far, we will outline the process for deriving Corollary 3.12 from Theorem 3.11 in the
+third IUT paper [12]. Here, we will attempt to illustrate as concretely as possible—yet
+schematically—how this argument is carried out on the big-H diagram (Figure 4).
+8.1 (a). Starting point.We start from theq-pilot BPS inside 1,0HT. The procession-
+normalized log-volume of theq-pilot object
+−|log(q )| ∈R
+is computed in the usual way in the right-hand column. According to Mochizuki, the
+following procedure may be regarded as another but equivalent way of calculating this
+value:
+The proof of Corollary 3.12 [...] is based on the followingfundamental
+observation: themultiradial representationdiscussed above yields
+two tautologically equivalentways to compute
+theq-pilot log-volume−|log(q )|[.] ([12, p. 421])
+8.1 (b). Reading the same underlying abstract BPS from the left-hand side by the Θ-link.
+The Θ-link glues the rigidifiedq-pilot BPS on the right-hand side full poly-isomorphically
+to the Θ-pilot BPS on the left-hand side. They are related as two rigidifications of
+sufficiently weakened abstract prime-strip data.
+8.1 (c). Executing Theorem 3.11 in the left-hand column.Apply the multiradial algorithm
+of Theorem 3.11 to the BPSs that appear in the Θ-link. By this, regions{ 0,0U λ}λ of
+possible images of the Θ-pilot object are obtained inside VC( 0,0O×µ
+v ), which may be
+identified with the large volume container associated to log-shell at (0,1). Here, 0,0O×µ
+v
+is regarded as a log-shell, that is, as a log-shellI v(F ⊢×µ) of type (MF) (§5.1 (c)).
+8.1 (d). Moving to the right-hand column by ´ etale-picturepermutation symmetries.The
+collection of regions obtained as the output of the algorithm of Theorem 3.11 lies in the
+large volume container associated to 0,0O×µ
+v , which may be regarded as the log-shell at
+(1,1). Since, under the Θ-link, the unit group portions 0,0O×µ
+v and 1,0O×µ
+v are identified,
+one may regard the output of Theorem 3.11 as lying in the large volume container given
+by the log-shells associated to 1,0O×µ
+v . We write the collection of regions thus obtained
+as{ 1,0U λ}λ ⊂VC( 1,0O×µ
+v ).
+40
+
+=== PDF PAGE 41 ===
+Remark8.1.1.According to the following excerpt, the transformation from{ 0,0U λ}λ to
+{1,0U λ}λ can also be interpreted as the result obtained on the right-hand side by simul-
+taneously executing the algorithm:
+[The] construction algorithm may be expressed in terms that aresimul-
+taneouslyvalid/executable/well-defined relative toboththearithmetic
+holomorphic structurethat gives rise to the Θ-pilot objectin thedomain
+of the Θ-linkandthearithmetic holomorphic structurethat gives rise to
+theinput data prime-strip[.] ([12, Rem. 3.11.1(v), p. 585])
+8.1 (e). Reading through the log-Kummer correspondence in the right-hand holomorphic
+structure.The collection of regions{ 1,0U λ}λ lies in the large volume container associated
+to the log-shells 1,0O×µ
+v . We identify 1,0O×µ
+v (up to Ind 2) with the one obtained as the
+subquotient of 1,0K v, apply the log function once to form the log-shell 1,1I= 1,1I(F) of
+type (HF), and regard{ 1,0U λ}λt as lying in the large volume container associated to 1,1I.
+We write the collection of regions thus regarded as{ 1,1U λ}λ ⊂VC( 1,1I)⊗Q.
+8.1 (f). Taking the holomorphic hull.Taking the union of the possible image regions
+{1,1U λ}λ, one takes the holomorphic hull (with respect to the ring structure at (1,1))
+1,1U hol ⊆VC( 1,1I)
+and then takes the normalized determinant to obtain an arithmetic line bundle (1,1U hol)det
+(with respect to the ring structure at (1,1)).
+8.1 (g). Ladder argument.Up to this point, we have argued by placing a Θ-link0,0HT
+Θ-link
+→
+1,0HTbetween 0,0HTand 1,0HT. In general, for every integerm, one places a Θ-link
+0,mHT
+Θ-link
+→ 1,mHTbetween 0,mHTand 1,mHTand carries out the same argument.
+This yields, with theq-pilot BPS of 1,mHTas input, the Θ-pilot arithmetic line bundle
+(1,m+1U hol)det in 1,m+1HT.
+If one regards the right-hand log sequence 1,∗HTas a single object, then one has
+obtained an algorithm that obtains a diagonal line bundle ( 1,∆U hol)det from the diagonal
+q-pilot BPS 1,∆Bq.
+8.1 (h). Taking the log-volume.Take the procession-normalized log-volume of ( 1,∆U hol)det.
+The value log-vol((U hol)det) is−|log(Θ)|.
+8.1 (i). Attempt to reach a conclusion.Mochizuki asserts that, by properties of the al-
+gorithm itself such as (IPL), (SHE), and (APT), discussed below, the procedure from
+§8.1 (b) to§8.1 (h) becomes a way of calculating, with indeterminacies, the real number
+−|log(q)|, which is independent of the way of calculating the real number−|log(q)|in
+§8.1 (a). He further asserts that, on the basis of this, one can construct a proof that
+obtains the inequality of Corollary 3.12
+−|log(q )| ≤ −|log(Θ )|.(8-1)
+8.2.(IPL), (SHE), (APT).Here let us organize, in the terminology of the present
+paper, the three properties (IPL), (SHE), and (APT) used in the preceding subsection.
+According to Mochizuki,(IPL) input prime-strip link is the property that
+41
+
+=== PDF PAGE 42 ===
+[the] output data is constructed in such a way that it islinked/related,
+via full poly-isomorphisms ofF ⊩▶×µ-prime-stripsinduced by operations
+in the algorithm, to theinput data prime-strip, i.e., the“coric”/“fixed”
+q-pilotF ⊩▶×µ-prime-strip, equipped with itsrigidifyingarithmetic
+holomorphic structure[...]. ([12, Rem. 3.11.1(iii), p. 582])
+This can be almost word-for-word translated as: the intermediate BPS of typeIthat
+appears in the process of constructing the output regionU λ of Theorem 3.11 is linked,
+by the full poly-isomorphism, to the input-data prime-strip, that is, to theq-pilot BPS
+in the right-hand column.
+Remark8.2.1.However, we remark that the assertion that two BPSs are “linked,” in the
+sense that there exists an isomorphism between them, is a vacuous assertion since the
+category of BPSs is a connected groupoid. Therefore, the concept of a “link” needs a
+more precise definition that can be formalized in Lean.
+According to Mochizuki,(SHE) simultaneous holomorphic expressibility is the property
+that
+[the] construction of this output data, as well as the output data itself,
+is expressed in terms that aresimultaneouslyvalid/executable/well-
+defined relative toboth
+thearithmetic holomorphic structurethat gives rise to the
+Θ-pilot objectin thedomainof the Θ-link—i.e., in more tech-
+nical language, in terms of/as afunctionof structures in the
+Θ±ellNF-Hodge theater in the domain of the Θ-link—
+and
+thearithmetic holomorphic structurethat gives rise to the
+input data prime-strip[...] in thecodomainof the Θ-link—
+i.e., in more technical language, in terms of/as afunctionof
+structures in the Θ ±ellNF-Hodge theater in the codomain of the
+Θ-link. ([12, Rem. 3.11.1(iii), p. 583])
+That is, in our wording, the output construction and output regions of Theorem 3.11
+are expressed by words that are simultaneously valid/executable/well-defined not only
+with respect to the ring-theoretic background on the domain side, which produces the
+Θ-pilot object, but also with respect to the ring-theoretic background on the codomain
+side, which produces the input-data prime-strip, that is, theq-pilot object.
+(APT) algorithmic parallel transport is the property that 8
+[the] parallel transport mechanism doesnotconsist of a simple instance
+of transport ofsome set-theoretic region[such as the region in the ten-
+sor packet of log-shells determined by the Θ-pilot objectin thedomainof
+the Θ-link]via some set-theoretic function. Rather, it consists of acon-
+struction algorithmthat issimultaneously valid/executable/well-
+definedwith respect to the arithmetic holomorphic structures in the do-
+main and codomain of the Θ-link [...]. ([12, Rem. 3.11.1(iv), p. 584])
+Although this is not explicitly stated in the original IUT paper, this property appears
+to be the main basis for the excerpt from Remark 8.1.1.
+8Here, we can think of a “tensor packet” as what we call a “large volume container.”
+42
+
+=== PDF PAGE 43 ===
+8.3.From theorem 3.11 to corollary 3.12.Based on the properties described above,
+from Theorem 3.11 to Corollary 3.12, especially the final part of the argument, can be
+interpreted, broadly speaking, as follows (cf. [12, Proof of Cor. 3.12, Step (xi), pp. 606ff]).
+Fix theq-pilot object in the right-hand column 1,0HT. Its log-volume is computed
+by the native holomorphic structure as−|log(q)|. On the other hand, by the Θ-link,
+thisq-pilot prime-strip is linked full poly-isomorphically to the Θ-pilot prime-strip in the
+left-hand column.
+When Theorem 3.11 is applied to the Θ-pilot object in the left-hand column, one
+obtains regions{ 0,0U λ}of possible images of the Θ-pilot object. These regions are indexed
+by Ind1, Ind2, and Ind 3. By ´ etale-picture permutation symmetries and the log-Kummer
+correspondence, this output region is expressed as a region{ 1,1U λ}in the right-hand
+column.
+•Here, by (IPL), the construction of{ 1,1U λ}is linked to the right-handq-pilot
+input prime-strip.
+•Also, by (SHE),{ 1,1U λ}is expressible in the language of the holomorphic structure
+of 1,0HT, and is moreover compatible with the condition that theq-pilot log-
+volume is fixed as−|log(q )|.
+•Furthermore, by (APT), the passage above is justified not as a set-theoretic trans-
+port that identifies the ring structures on the two sides, but as an algorithmic
+parallel transport executed simultaneously with respect to coric data.
+Then, accordiong to Mochizuki’s interpretation ([12, Step (xi) of the proof of Cor.
+3.12]), the IPL, SHE, and APT properties implies that the set of procession-normalized
+log-volumes of the admissible output regions contains theq-pilot log-volume as one of its
+possible values. That is,
+−|log(q )| ∈R ≤−|log(Θ )|.
+By the definition ofR ≤−|log(Θ )|, this means
+−|log(q )| ≤ −|log(Θ )|.
+Remark8.3.1.In Mochizuki’s explanation, the core of the proof of Corollary 3.12 is ex-
+pressed by saying that “two tautologically equivalent ways” of calculating theq-pilot
+log-volume−|log(q )|are obtained. In the terminology of the present paper, the first cal-
+culation is the direct calculation of theq-pilot log-volume by the ring structure that arises
+from the right-hand column. The second calculation is the calculation that reads theq-
+pilot log-volume as a possible log-volume of the Θ-pilot output region by passing through
+the Θ-link, the multiradial algorithm of Theorem 3.11, the log-Kummer correspondence,
+and the holomorphic hull. It is asserted that, as a result of the ladder argument, these
+two calculations meet inside the same right-hand volume container, and (8-1) follows.
+9.Points to be clarified
+As is clear from the discussion so far in this article, we are reserving our final judgment
+on whether a proof exists for Corollary 3.12 in Mochizuki’s third paper on IUT theory
+[12]. The reason for this is that there are parts of the proof’s argument—namely, the
+reasoning leading from Theorem 3.11 to Corollary 3.12—that we have not been able to
+fully follow.
+In this section, we will briefly describe these “parts we have not been able to follow”
+in as simple terms as possible. Although this is stated in simple terms, it has not been
+43
+
+=== PDF PAGE 44 ===
+Πv Πv, ¨Y
+M M∞ ∞H 1(Πv, ¨Y ,Λ(M ∞)) ∞H 1(Πv, ¨Y , ℓ·∆ c)
+⊃
+↷ ↷
+Kummer
+∼
+Λ-rigidity
+∏︁
+t ∞H 1(Dt,v, ℓ·∆ c)
+∏︁
+t O▷
+t,v
+∏︁
+t log(O×µ
+t,v )
+Galois evaluation
+Figure 6.Theηalgorithm
+essentially simplified. We believe that if the problem described in the “main goal” below
+is solved, then Corollary 3.12 (and thus, in particular, the abc conjecture) will follow.
+“Theηalgorithm” described below is essentially the same as the “Theorem 3.11 algo-
+rithm” described in§8.1, but it is a rephrasing of the algorithm in a context that does
+not explicitly deal with the big-H diagram.
+9.1.Theηalgorithm.We start with a BPS, sayB= ({G v ↷M v},C). We proceed as
+follows:
+9.1 (a).Step 1.Choose an isomorphism between the given BPS and the Θ-pilot BPS
+(§7.1 (a)) associated to a Hodge theaterHT. This gives us, at each placev , the action
+on a monoid
+Πv ↷Θ N × O×
+v ,
+where Θ is a formal symbol (as that in the Θ-pilot BPS (§7.1 (a))) that represents the
+generator ofNacting on the right-hand monoid by “powers.”
+9.1 (b).Step 2.Use an anabelian algorithm to determine the subgroup Π v, ¨Y and a natural
+action on
+M∞
+def
+= Θ Q≥0 × O×
+v
+which is compatible with the previous action.
+9.1 (c).Step 3.The torsion inM ∞ is isomorphic toQ/Zand thus the adic Tate module
+(with the action of Πv, ¨Y ) provides a “cyclotome” Λ(M∞) as well as a canonical “Kummer”
+map
+M∞ − →H1(Πv, ¨Y ,Λ(M ∞)).
+44
+
+=== PDF PAGE 45 ===
+9.1 (d).Step 4.There is an anabelian algorithm that constructs the geometric part of
+Πv, ¨Y , say ∆. Put
+∆c def
+= [∆,∆]
+[∆,[∆,∆]] .
+This is isomorphic to ˆ︁Z, and there is a canonical isomorphism (the “cyclotomic rigidity
+isomorphism”; cf.§6.3) of type
+Λ(M∞) ∼= ℓ·∆ c,
+compatible with the action of the fundamental group. We consider the composition of
+the above Kummer map with this map to obtain
+M∞ − →∞H1(Πv, ¨Y , ℓ·∆ c).
+9.1 (e).Step 5.We recover decomposition groups (D t,v)t in some anabelian way (cf.
+§6.2 (f)) inside of Π ¨Y , and restrict to obtain
+∞H1(Πv, ¨Y , ℓ·∆ c)− →
+∏︂
+t
+∞H1(Dt,v, ℓ·∆ c).
+9.1 (f).Step 6.Using another cyclotomic rigidity isomorphism, and some synchronization
+(cf.§6.2 (g)), we obtain
+∏︂
+t
+O▷
+v,t − →
+∏︂
+t
+∞H1(Dt,v, ℓ·∆ c),
+and one proves that the map fromM ∞ described above actually factors through this∏︁
+t O▷
+v,t. Here, note that, as in§6.2 (g), O▷
+v,t’s should be read as a component of a certain
+container of the splitting monoid (Gaussian monoid) [11, Cor. 4.10(i), pp. 384–385].
+9.1 (g).Step 7. ∏︁
+t O▷
+v,t embeds in ∏︁
+t K v,t, which we identify with ∏︁
+t O×µ
+v,t via log. This
+contains the log-shells ∏︁
+t Iv,t of type (MF).
+9.1 (h).Step 8.Putting everything together, we obtain an action of Θ (via LGP) on∏︁
+t Iv,t, and thus an action of the “N” part from the very beginning of the algorithm
+(which is contained inM ∞).
+9.1 (i).Step 9.Relate the log-shellsI v,t to those constructed from the original BPS, and
+consider them as if they were constructed from the original BPS in the standard way.
+That is, the log-shells of type (MF) obtained from the chosen Hodge-theater realization
+are compared, via the Kummer isomorphisms, with the log-shells ´ etIv,t of type (ME)
+reconstructed functorially from the original ´ etale-unit BPS and its compact structure.
+Along the log sequence this comparison is only upper semi-compatible. Hence, in this
+way, one can read the output in terms of the original input data in the log-shells ´ etIv,t
+with Ind3-ambiguity.
+9.2.The main goal.In the discussion above, we have explained how to construct an
+action ofNon VC(I v), in an anabelian way, after fixing an isomorphism between a given
+BPS and the Θ-BPS associated to a Hodge theater (and this action is thus subject to
+indeterminacies Ind1 and Ind2).
+45
+
+=== PDF PAGE 46 ===
+Once we fixS⊂VC(I v), this provides an isomorphism between theCpart of the
+original BPS (which we denote byR val 9) and theCconstructed using the action andS
+as the integral structure, which we denote byR ss 10; more precisely,
+Rss ={T⊂VC(I v)|adelic and measurable}/∼,
+whereT∼T ′ if and only if the volume ofTcoincides with that ofT ′; we defineM= 1·S
+(the action of 1∈N), which represents “LGP·S” (cf.§6.2 (h)), and put the class ofM
+inR ss to be the pilot. Thus the isomorphism
+ηanab
+S :R val ∼
+− →Rss
+of the pointed real vector spaces depends onS, and is constructed via anabelian methods
+as discussed above.
+On the other hand, when we work with a BPS that was constructed as theq-BPS of a
+Hodge theater, this perspective provides us with an isomorphism
+ηq :R val ∼
+− →Rss,
+where the pilot of the targetR ss is given by the class of{q vOv}embedded “diagonally”
+into the large volume container VC(I v).
+The main goal now is to relate these two kinds of isomorphisms: the one arising from
+qand the one arising from anabelian methods. Concretely, we wish to show that there
+exists some suitableSsuch that
+ηq =η anab
+S .(9-1)
+9.3.Minimal structure of theη-algorithm.The input of theη-algorithm is a BPS,
+whose ´ etale-unit portion consists of actions of local Galois groups on unit monoids to-
+gether with compact structures, and whose value-group portion is an oriented real line
+with local pilots; see§4.1. From the value-group portion, a real lineR val with a canonical
+pilot was constructed. On the other hand, from the operation (multiplication) of the unit
+monoid, an additive object was constructed via log, and from that, another real lineR ss
+was constructed. The construction of the latter is
+´ etale-unit portion⇝log-shells⇝volume containers⇝R ss,
+where the arrows stand for the constructions described in§5.1, the immediately following
+subsection on volume containers,§5.3, and the present§9.
+Theη’s, which are isomorphisms between these two real lines, describe the relationship
+between the value-group portion and the ´ etale-unit portion, and (9-1) indicates that the
+starting pointη q belongs to an orbit (an analogue of a Teichm¨ uller deformation) generated
+by the indeterminacies of the formation ofη anab
+S . In other words, at the level of degree
+(log-volume), the rigidifiedq-pilot is represented in the output regions, and this outlines
+Mochizuki’s strategy to obtain the desired inequality between the log-volumes.
+10.An examination of Scholze-Stix document
+10.1.Scope of the examination.We now compare our analysis with that made by
+Scholze and Stix in [15], in which the conclusion is reached that “the suggested proof has
+[a problem] so severe that in our opinion small modifications will not rescue the proof
+strategy.” In the final part of [15], the occurrence of monodromy in the identifications
+among the various ordered one-dimensional real vector spaces appearing in the theory is
+pointed out as a flaw in the proof [15, pp. 9–10] (see Figure 7 below). The purpose of the
+9The super-script “val” indicates that it is a copy ofRcoming from the value-group part of the BPS.
+10The super-script “ss” means, according to Mochizuki,semi-simplification.
+46
+
+=== PDF PAGE 47 ===
+present section is to put this observation in context, based on our exposition in§6–§9,
+and to indicate why this occurrence of monodromy does not represent an obstruction to
+the intended proof strategy of Mochizuki.
+10.2.The Scholze-Stix hexagon.We reproduce the diagram from [15, p. 10] in Fig-
+ure 7; interpret the terms of the diagram in our language; and confirm the observation
+made in [15] that the diagram does not commute.
+R⊙,Θ
+ww
+Θ-link
+∼=
+// R⊙,q
+""
+(R⊙c,Θj)j=1,...,ℓ⋇
+''
+R⊙c,q
+||
+RΘ =
+// Rq
+Figure 7.The Scholze-Stix hexagon
+In the language of [15], the entries at the top level of the diagram are “abstract pilots”;
+the entries at the middle level of the diagram are “concrete pilots”; and the entries at
+the bottom level of the diagram are identical copies ofR. We have translated the precise
+definitions of these entries into our language; the result can be found in the following
+table.
+Scholze-Stix LANA
+R⊙,Θ
+the Θ-pilot value-group BPS viewed as an ob-
+ject abstractly isomorphic to theq-pilot value-
+group BPS
+R⊙,q
+theq-pilot value-group BPS viewed as an ob-
+ject abstractly isomorphic to theq-pilot value-
+group BPS
+R⊙c,Θj
+the “jth-component” of the Θ-pilot value-
+group BPS
+R⊙c,q theq-pilot value-group BPS
+RΘ andR q identical copies of the real lineR
+Table 2.Definitions of the entries in Figure 7
+In [15], each of these one-dimensional real vector spaces is regarded as apointedspace;
+all of the arrows in the diagram are morphisms of pointed vector spaces except for the
+diagonal arrows from the middle row to the bottom row, which are degree maps. The
+compositionR ⊙,Θ →R Θ scales by a factor of
+1
+ℓ⋇ (12 + 22 +· · ·+ (ℓ ⋇)2)
+while the compositionR ⊙,q →R q scales by a factor of 1.
+47
+
+=== PDF PAGE 48 ===
+From this we may conclude thatifthe deduction of [12, Cor. 3.12, pp. 597–598] from
+[12, Thm. 3.11, pp. 573–580] could be phrased in a manner that factors through a diagram
+as in Figure 7, then one would have to repair commutativity by introducing a factor of
+O(ℓ2). This would render the final inequality powerless to prove a conclusion as strong
+as theabcconjecture.
+In our understanding, however, the inequality in [12, Cor. 3.12, pp. 597–598] is not
+obtained by comparing the volumes of two pilots situated on the two sides of the Θ-
+link. Rather, it is obtained by comparing the degree of arithmetic line bundles within the
+arithmetic holomorphic structure on one side of the Θ-link. Thus, the non-commutativity
+of the diagram in Figure 7 does not, by itself, establish a defect in the intended proof
+strategy.
+10.3.Comparison of approaches.We now explain the required comparison in terms
+of our presentation in§9. As indicated there, the proof of Corollary 3.12 rests on the
+comparison (9-1) in which the two maps have different construction processes. The map
+ηq is obtained from theq-pilot together with the native arithmetic holomorphic structure
+of theq-side. The mapη anab
+S is obtained by starting from a weakened BPS, reconstructing
+the relevant action by anabelian and Kummer-theoretic procedures, and selecting suitable
+integral-structure dataSinside the product of log-shells. Both are then intended to be
+read in the same semiring/log-shell targetR ss, with the source identifications stipulated
+in§9.2.
+The analysis of Scholze-Stix compresses these construction processes down to abstract
+generators, concrete divisors, and trivialized real lines. By contrast, (9-1) asserts a com-
+parison of two constructionsbeforecomputing degrees; only after such a comparison has
+been established can one pass to a common volume container where one can compare
+normalized log-volumes. In Mochizuki’s original argument, the final inequality is ob-
+tained by comparing the log-volume of theq-pilot object at 1,0HTwith the log-volume
+of the region ( 1,∆U hol)det; these two objects lie on thesameside of the Θ-link, i.e., the
+right-hand side of the Θ-link.
+Viewing from a different perspective, Scholze-Stix seems to try to identify, in a coherent
+manner, the copies ofRarising from the two sides of the Θ-link in order to obtain a
+“common ground” (i.e., commonR) for comparing the log-volumes of objects lying on
+opposite sides of the Θ-link. According to Mochizuki, however, IUT provides two distinct
+ways of computing the log-volume of theq-pilot object: the usual computation and the
+computation via the multiradial algorithm. It is important to note that the role of the
+Θ-link is not to enable a direct comparison of numerical invariants lying on its two sides.
+Note also that Mochizuki asserts that the multiradial algorithm may be established by
+considering, e.g., the indeterminacy Ind3 and the ´ etale-unit portions “Gv ↷ O×µ
+v ,” which
+were not discussed by Scholze-Stix.
+10.4.The effect of “blurring”.At the end of their report [15, p. 10], Scholze-Stix say
+that Mochizuki claimed commutativity “up to the ‘blurring’ given by certain indetermi-
+nacies,” and they infer a “factor of at leastO(ℓ 2)” that would make the inequality useless.
+The report gives no separate mathematical definition of “blurring”; from context one may
+infer that this is meant to refer to the effects of Ind1, Ind2, and Ind3, but [15] works with a
+compression in which the ´ etale-unit data, the log-Kummer correspondence, and the three
+indeterminacies are not represented separately to describe these effects precisely. In any
+case, the conclusion about a “factor of at leastO(ℓ 2)” seems to depend on the predicate
+that the derivation of the final equality depends on reconciling the diagram in Figure 7.
+48
+
+=== PDF PAGE 49 ===
+The wording in [15] further suggests that Ind 1, Ind2, and Ind 3 act directly on the real
+numbers appearing in Corollary 3.12. In our interpretation, these effects occur elsewhere:
+the indeterminacies create ambiguities in the choice of the setSin (9-1). These ambigui-
+ties are reflected in the log-volume calculation for the hull in IUT IV [13]; this calculation
+is made at each place individually, but the effects of Ind 1, Ind2, and Ind 3 cannot be de-
+tected locally (as one would reasonably expect from the fact that the desired diophantine
+inequality is not a purely local phenomenon). This description also suggests that the
+indeterminacies must be carefully managed so as to keep the log-volume of the hull small
+enough to yield a meaningful inequality.
+10.5.Provisional assessment.To reiterate, we concur that the diagram in Figure 7
+does not commute, and that repairing it would require a rescaling factor that is too large
+to yield a proof of theabcconjecture. Indeed, this point was also made by Mochizuki in
+his response to [15] (see [9,§12, (IUAD)]): “[this situation] occurs whenever one works
+within a single holomorphic structure/ring theory.”
+On the other hand, our analysis does not give rise to this particular diagram; rather,
+the elaboration of theη-algorithm shows that the proof of the final numerical inequality
+hinges on the compatibility (9-1) which is not manifestly false. However, we, the LANA
+project, do not have a proof of (9-1) at this time.
+Of course, it should be noted here that there are also several points in common between
+our analysis and that of Scholze-Stix. Perhaps the most important common point is that
+both reports point out a problem in the “process of deriving Corollary 3.12 from Theorem
+3.11,” and that this issue relates to the “identification of copies of the real number line
+R.” However, to elaborate further on the former point, although Scholze-Stix went on to
+argue that “the suggested proof has [a problem] so severe that, in [their] opinion, minor
+modifications will not rescue the proof strategy,” we are not making any claims regarding
+the possibility or difficulty of remedying. Furthermore, regarding the question of whether
+a proof of the “abcConjecture” exists, while many LANA members hold the view that
+“the original paper does not contain at least aformalizableproof,” the members were
+unable to reach complete consensus on this point.
+References
+[1] Yuichiro Hoshi. Introduction to mono-anabelian geometry. In Publications math´ ematiquesde
+Besan¸ con.Alg` ebreet th´ eoriedes nombres. 2021, volume 2021 of Publ. Math. Besan¸ conAlg` ebre
+Th´ eorieNr., pages 5–44. Presses Univ. Franche-Comt´ e, Besan¸ con, [2022]©2022.
+[2] Shinichi Mochizuki. A survey of the Hodge-Arakelov theory of elliptic curves. I. In Arithmetic
+fundamental groups and noncommutative algebra (Berkeley, CA, 1999), volume 70 of Proc. Sympos.
+Pure Math., pages 533–569. Amer. Math. Soc., Providence, RI, 2002.
+[3] Shinichi Mochizuki. A survey of the Hodge-Arakelov theory of elliptic curves. II. In Algebraic
+geometry 2000, Azumino (Hotaka), volume 36 of Adv. Stud. Pure Math., pages 81–114. Math.
+Soc. Japan, Tokyo, 2002.
+[4] Shinichi Mochizuki. The ´ etale theta function and its Frobenioid-theoretic manifestations.Publ. Res.
+Inst. Math. Sci., 45(1):227–349, 2009.
+[5] Shinichi Mochizuki. Topics in absolute anabelian geometry I: generalities. J. Math. Sci. Univ. Tokyo,
+19(2):139–242, 2012.
+[6] Shinichi Mochizuki. Topics in absolute anabelian geometry II: decomposition groups and endomor-
+phisms. J. Math. Sci. Univ. Tokyo, 20(2):171–269, 2013.
+[7] Shinichi Mochizuki. A panoramic overview of inter-universal Teichm¨ uller theory. In Algebraic
+number theory and related topics 2012, volume B51 of RIMS Kˆ okyˆ urokuBessatsu, pages 301–345.
+Res. Inst. Math. Sci. (RIMS), Kyoto, 2014.
+[8] Shinichi Mochizuki. Topics in absolute anabelian geometry III: global reconstruction algorithms. J.
+Math. Sci. Univ. Tokyo, 22(4):939–1156, 2015.
+49
+
+=== PDF PAGE 50 ===
+[9] Shinichi Mochizuki. Report on discussions, held during the period march 15-20, 2018, concerning
+inter-universal Teichm¨ uller theory (iutch), February 2019.
+[10] Shinichi Mochizuki. Inter-universal Teichm¨ uller theory I: Construction of Hodge theaters.Publ. Res.
+Inst. Math. Sci., 57(1-2):3–207, 2021.
+[11] Shinichi Mochizuki. Inter-universal Teichm¨ uller theory II: Hodge-Arakelov-theoretic evaluation.
+Publ. Res. Inst. Math. Sci., 57(1-2):209–401, 2021.
+[12] Shinichi Mochizuki. Inter-universal Teichm¨ uller theory III: Canonical splittings of the log-theta-
+lattice. Publ. Res. Inst. Math. Sci., 57(1-2):403–626, 2021.
+[13] Shinichi Mochizuki. Inter-universal Teichm¨ uller theory IV: Log-volume computations and set-
+theoretic foundations. Publ. Res. Inst. Math. Sci., 57(1-2):627–723, 2021.
+[14] Shinichi Mochizuki. Report on the current situation surrounding inter-universal teichm¨ uller theory
+(iut), October 2025.
+[15] Peter Scholze and Jakob Stix. Why abc is still a conjecture, 2018.
+Core members of LANA Project:
+Fumiharu Kato (Leader; ZEN university)
+Johan Commelin (Utrecht University)
+Yuichiro Hoshi (Research Institute for Mathematical Sciences, Kyoto University)
+Kiran Kedlaya (University of California, San Diego)
+Adam Topaz (University of Alberta;)
+Corresponding author
+Fumiharu Kato
+Faculty of Social Informatics, ZEN university
+3-12-11 Shinjuku, Zushi City, Kanagawa 249-0007, Japan
+Email:fumiharu kato@zen.ac.jp
+50
