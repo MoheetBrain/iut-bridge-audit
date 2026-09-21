@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "map_dictionary",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "map_id",
+      "source_notation",
+      "domain",
+      "codomain",
+      "canonicality",
+      "injective?",
+      "surjective?",
+      "isomorphism?",
+      "structure_preserved",
+      "structure_forgotten",
+      "dependence_on_choice",
+      "dependence_on_S",
+      "affected_by_Ind1",
+      "affected_by_Ind2",
+      "affected_by_Ind3",
+      "source_location",
+      "notes",
+      "source_ids",
+      "evidence_type",
+      "arrow_kind",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "map_id": {
+        "type": "string"
+      },
+      "source_notation": {
+        "type": "string"
+      },
+      "domain": {
+        "type": "string"
+      },
+      "codomain": {
+        "type": "string"
+      },
+      "canonicality": {
+        "type": "string"
+      },
+      "injective?": {
+        "type": "string"
+      },
+      "surjective?": {
+        "type": "string"
+      },
+      "isomorphism?": {
+        "type": "string"
+      },
+      "structure_preserved": {
+        "type": "string"
+      },
+      "structure_forgotten": {
+        "type": "string"
+      },
+      "dependence_on_choice": {
+        "type": "string"
+      },
+      "dependence_on_S": {
+        "type": "string"
+      },
+      "affected_by_Ind1": {
+        "type": "string"
+      },
+      "affected_by_Ind2": {
+        "type": "string"
+      },
+      "affected_by_Ind3": {
+        "type": "string"
+      },
+      "source_location": {
+        "type": "string"
+      },
+      "notes": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "arrow_kind": {
+        "type": "string"
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

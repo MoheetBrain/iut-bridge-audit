@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "orbit_ledger",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "transformation_id",
+      "origin",
+      "acts_on",
+      "action_on_S",
+      "action_on_eta_anab",
+      "invariant_properties",
+      "potentially_changed_properties",
+      "exact/provisional",
+      "source",
+      "notes",
+      "source_ids",
+      "evidence_type",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "transformation_id": {
+        "type": "string"
+      },
+      "origin": {
+        "type": "string"
+      },
+      "acts_on": {
+        "type": "string"
+      },
+      "action_on_S": {
+        "type": "string"
+      },
+      "action_on_eta_anab": {
+        "type": "string"
+      },
+      "invariant_properties": {
+        "type": "string"
+      },
+      "potentially_changed_properties": {
+        "type": "string"
+      },
+      "exact/provisional": {
+        "type": "string"
+      },
+      "source": {
+        "type": "string"
+      },
+      "notes": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

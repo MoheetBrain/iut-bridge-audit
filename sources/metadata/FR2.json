@@ -1,0 +1,22 @@
+{
+  "source_id": "FR2",
+  "author": "Shinichi Mochizuki",
+  "title": "The Geometry of Frobenioids II: Poly-Frobenioids",
+  "year": "2008",
+  "version": "Author PDF June 2008",
+  "status": "Published paper; author-hosted version",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Frobenioids_II.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Geometry%20of%20Frobenioids%20II.pdf",
+  "sha256": "0185e64c4107123a20d2fd72f6e5a5ff8e5c1356d3caee69b7d5700e291ac0a9",
+  "relevant_pages_sections": "Example 5.6(iii)–(iv)",
+  "purpose": "cQ3 local/global collections and localization",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Published paper; author-hosted version",
+  "retrieval_date": "2026-09-21T04:35:41.211244+00:00",
+  "bytes": 514623,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

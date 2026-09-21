@@ -1,0 +1,4 @@
+# Preserve the exact bytes of hash-pinned upstream evidence.
+sources/primary/** -text -whitespace
+sources/secondary/** -text -whitespace
+sources/lana_agents_iut/** -text -whitespace

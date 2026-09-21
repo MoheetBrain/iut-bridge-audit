@@ -1,0 +1,22 @@
+{
+  "source_id": "ELS",
+  "author": "Shinichi Mochizuki",
+  "title": "On the Essential Logical Structure of Inter-universal Teichmuller Theory in Terms of Logical AND / Logical OR Relations",
+  "year": "2024",
+  "version": "Author PDF; March 2024 version as printed",
+  "status": "Author exposition",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Essential_Logical_Structure.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Essential%20Logical%20Structure%20of%20Inter-universal%20Teichmuller%20Theory.pdf",
+  "sha256": "c0e63b629aa174aa065e93d08defe3e5d0837c8778aab527383798baf8ca6e32",
+  "relevant_pages_sections": "Section 3.10 Stp7–Stp8, PDF pp.151–156",
+  "purpose": "Author account of simultaneous construction and vertical labels",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Author exposition",
+  "retrieval_date": "2026-09-21T04:35:32.363694+00:00",
+  "bytes": 1021306,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

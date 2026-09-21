@@ -1,0 +1,22 @@
+{
+  "source_id": "IUT3",
+  "author": "Shinichi Mochizuki",
+  "title": "Inter-universal Teichmuller Theory III: Canonical Splittings of the Log-theta-lattice",
+  "year": "2020",
+  "version": "Author PDF May 2020; paper published PRIMS 2021",
+  "status": "Published paper; author-hosted version",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/IUT_III.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20III.pdf",
+  "sha256": "9a7ee3c77b1c7717210c0613eb39b6844649d0040dc3d9e1be7d544f8f91a0b9",
+  "relevant_pages_sections": "Proposition 1.2; Remark 3.1.1; Proposition 3.5; Proposition 3.9; Remark 3.9.5; Theorem 3.11; Corollary 3.12 xi-d–f",
+  "purpose": "Original construction and its disputed compatibility",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Published paper; author-hosted version",
+  "retrieval_date": "2026-09-21T04:35:32.363350+00:00",
+  "bytes": 1307865,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

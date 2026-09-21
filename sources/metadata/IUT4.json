@@ -1,0 +1,22 @@
+{
+  "source_id": "IUT4",
+  "author": "Shinichi Mochizuki",
+  "title": "Inter-universal Teichmuller Theory IV: Log-volume Computations and Set-theoretic Foundations",
+  "year": "2020",
+  "version": "Recovered author PDF refreshed with identical hash",
+  "status": "Published paper; author-hosted version",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/IUT_IV.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20IV.pdf",
+  "sha256": "5bf4b1e0a8c2686562a6859e5009d301335044cfb5efec5d3a9edf764e4af87f",
+  "relevant_pages_sections": "Section 1 and section 3 (species); not comprehensively reread",
+  "purpose": "Downstream context and formal-quotient language; retained dependency",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Published paper; author-hosted version",
+  "retrieval_date": "2026-09-21T04:35:43.682427+00:00",
+  "bytes": 632447,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

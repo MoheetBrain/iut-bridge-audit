@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "eta_algorithm",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "step_id",
+      "step_number",
+      "source_location",
+      "input_objects",
+      "output_objects",
+      "operation",
+      "justification",
+      "choices_introduced",
+      "structure_preserved",
+      "structure_forgotten",
+      "canonical",
+      "indeterminacy_introduced",
+      "dependencies",
+      "open_question",
+      "priority",
+      "source_ids",
+      "evidence_type",
+      "map_ids",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "step_id": {
+        "type": "string"
+      },
+      "step_number": {
+        "type": "string"
+      },
+      "source_location": {
+        "type": "string"
+      },
+      "input_objects": {
+        "type": "string"
+      },
+      "output_objects": {
+        "type": "string"
+      },
+      "operation": {
+        "type": "string"
+      },
+      "justification": {
+        "type": "string"
+      },
+      "choices_introduced": {
+        "type": "string"
+      },
+      "structure_preserved": {
+        "type": "string"
+      },
+      "structure_forgotten": {
+        "type": "string"
+      },
+      "canonical": {
+        "type": "string"
+      },
+      "indeterminacy_introduced": {
+        "type": "string"
+      },
+      "dependencies": {
+        "type": "string"
+      },
+      "open_question": {
+        "type": "string"
+      },
+      "priority": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "map_ids": {
+        "type": "string"
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

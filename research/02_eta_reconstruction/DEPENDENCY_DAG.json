@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "kind": "SPECIFICATION_DEPENDENCY_DAG_NOT_PROOF_GRAPH",
+  "nodes": [
+    {
+      "id": "U01",
+      "label": "BPS-to-original-prime-strip fidelity",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LANA;IUT2",
+      "source_location": "§4.1 p.23; IUT2 Definition 4.9(viii) p.158",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U02",
+      "label": "Full labeled execution and mono-theta environment data",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LANA;IUT2;ET",
+      "source_location": "LANA §6.2 pp.33–36; IUT2 Proposition 1.5; ET Corollary 2.19",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U03",
+      "label": "Ordinary H1 versus direct-limit H1 in Step 3",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LANA",
+      "source_location": "§6.1 pp.31–32; §9.1(c) p.44; Figure 6",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U04",
+      "label": "Coherent synchronized Step6 factorization",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LANA;IUT2;ET",
+      "source_location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U05",
+      "label": "MF/ME and vertical/archimedean transport",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "IUT3;LANA",
+      "source_location": "IUT3 Proposition 3.5(ii), Theorem 3.11(ii) pp.155–156; LANA §9.1(g)–(i) p.45",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U06",
+      "label": "Adelic region class and weighted-volume quotient",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LANA;IUT3",
+      "source_location": "LANA §9.2 p.46; IUT3 Remark 3.1.1 pp.94–96; Proposition 3.9 pp.115–117",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U07",
+      "label": "Common equality type, orientation, q-root and diagonal conventions",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LANA;IUT3",
+      "source_location": "LANA pp.24,26,46; IUT3 xi-d/e pp.183–184",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U08",
+      "label": "Full admissibility, coupled choices and induced transformations",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "IUT3;LANA",
+      "source_location": "IUT3 Theorem 3.11 pp.153–158; LANA §§9–10 pp.44–49",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U09",
+      "label": "Native q constraint through formal quotient and normalized comparison",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "IUT3;ELS;FORM",
+      "source_location": "IUT3 cQ3/cQ4 pp.141–143; xi-d–f pp.183–184; ELS Stp7–8 pp.151–156; FORM pp.10–11",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "U10",
+      "label": "Kernel replay and imported proof-package closure",
+      "kind": "UNRESOLVED_OBLIGATION",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Implication/Corollary23.lean:119–125; lake-manifest.json @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "S01",
+      "label": "Step 1: Choose a BPS-to-Theta-pilot-BPS isomorphism and obtain the local monoid action.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT2",
+      "source_location": "LANA §9.1(a) p.44; §6.2(b) p.33",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S02",
+      "label": "Step 2: Reconstruct theta-cover subgroup and rationally enlarged monoid/action.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT2",
+      "source_location": "LANA §9.1(b) p.44; §6.2(c)–(d) pp.33–34",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S03",
+      "label": "Step 3: Take torsion Tate module and Kummer maps at invariant levels, then the direct limit.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA",
+      "source_location": "LANA §9.1(c) p.44 versus Figure 6 p.44; §6.1 pp.31–32",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S04",
+      "label": "Step 4: Reconstruct geometric subquotient and change coefficients via cyclotomic rigidity.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT2;ET",
+      "source_location": "LANA §9.1(d) p.45; §6.2(e) p.35; IUT2 p.29; ET p.58",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S05",
+      "label": "Step 5: Recover labeled decomposition groups and restrict cohomology classes.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA",
+      "source_location": "LANA §9.1(e) p.45; §6.2(f) p.35",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S06",
+      "label": "Step 6: Use local Kummer maps and synchronized coefficient identifications; factor the theta image through the Gaussian/splitting-monoid container.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT2;ET",
+      "source_location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 pp.29–30,158–159; ET p.58",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S07",
+      "label": "Step 7: Embed local monoids in chosen field realizations and use the log identification of units modulo torsion with the additive ambient group.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT3",
+      "source_location": "LANA §9.1(g) p.45; §5.1 pp.26–28; IUT3 Proposition 1.2 pp.32–33",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S08",
+      "label": "Step 8: Extract the discrete Gaussian N action via LGP and assemble labeled local actions in the large volume container.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT3",
+      "source_location": "LANA §9.1(h) p.45; §6.2(h)–(i) p.36; §5.2 pp.28–29",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "S09",
+      "label": "Step 9: Compare MF and functorially reconstructed ME shells through Kummer maps; read the output in the original input setting, subject to upper semi-compatibility.",
+      "kind": "ALGORITHM_STEP",
+      "source_ids": "LANA;IUT3;ELS",
+      "source_location": "LANA §9.1(i) p.45; §7.2(c) pp.39–40; IUT3 pp.155–156",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "TARGET",
+      "label": "Existence of suitable S with eta_q = eta_anab_S",
+      "kind": "TARGET",
+      "source_ids": "LANA",
+      "source_location": "§9.2 equation (9-1), PDF p.46",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "IUT311",
+      "label": "Theorem 3.11 with source structures and indeterminacies",
+      "kind": "SOURCE_THEOREM",
+      "source_ids": "IUT3",
+      "source_location": "pp.153–158",
+      "status": "SOURCE_CLAIM_ONLY"
+    },
+    {
+      "id": "BRIDGE",
+      "label": "Source-faithful bridge and LANA/Lean correspondence",
+      "kind": "UNRESOLVED_BRIDGE",
+      "source_ids": "IUT3;LANA;LCODE",
+      "source_location": "IUT3 xi-d–f pp.183–184; LANA §9.2; Iut/Cor312/Statement.lean:43–52",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "VARIANT",
+      "label": "Iut.Corollary312Variant X := X.qPilot.lhs ≤ X.rhsData.rhs",
+      "kind": "PROP_DEFINITION",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Cor312/Statement.lean:89–91 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "H312",
+      "label": "h312: forall X, P X -> Corollary312Variant X",
+      "kind": "EXPLICIT_HYPOTHESIS",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Implication/Corollary23.lean:119–125 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "PACKAGES",
+      "label": "ProofPackage; Corollary22Inputs; ThetaDataExistence; prime bounds",
+      "kind": "EXPLICIT_HYPOTHESES",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Implication/Corollary23.lean:119–125 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "C22",
+      "label": "Corollary22Inputs.c2: conditional numerical bound",
+      "kind": "SOURCE_CODE_THEOREM",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Implication/Corollary22.lean:384 onward @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "STMTII",
+      "label": "statementII_of_cor312",
+      "kind": "SOURCE_CODE_THEOREM",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Implication/Corollary23.lean:56–112 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "ABC",
+      "label": "Conditional theorem cor312Variant_implies_abc",
+      "kind": "SOURCE_CODE_THEOREM",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Implication/Corollary23.lean:119–125 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "TRIPOD_INPUTS",
+      "label": "Pi1; Tp; residual cyclic bound hcyc; concrete h312",
+      "kind": "EXPLICIT_HYPOTHESES",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Tripod/Main.lean:78–79,125–143 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    },
+    {
+      "id": "TRIPOD",
+      "label": "Iut.Tripod.abc_of_variant: tripodTheory.StatementII",
+      "kind": "SOURCE_CODE_THEOREM",
+      "source_ids": "LCODE",
+      "source_location": "Iut/Tripod/Main.lean:125–143 @ 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+      "status": "VERIFIED_PRIMARY"
+    }
+  ],
+  "edges": [
+    {
+      "source": "U01",
+      "target": "S01",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U02",
+      "target": "S01",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S01",
+      "target": "S02",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U02",
+      "target": "S02",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S02",
+      "target": "S03",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U03",
+      "target": "S03",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S03",
+      "target": "S04",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U02",
+      "target": "S04",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U04",
+      "target": "S04",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S04",
+      "target": "S05",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U02",
+      "target": "S05",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U04",
+      "target": "S05",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S05",
+      "target": "S06",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U04",
+      "target": "S06",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S06",
+      "target": "S07",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U05",
+      "target": "S07",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S07",
+      "target": "S08",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U06",
+      "target": "S08",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U08",
+      "target": "S08",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S08",
+      "target": "S09",
+      "relation": "construction prerequisite",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U05",
+      "target": "S09",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U06",
+      "target": "S09",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U07",
+      "target": "S09",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U08",
+      "target": "S09",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U09",
+      "target": "S09",
+      "relation": "unresolved typing or fidelity obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "S09",
+      "target": "TARGET",
+      "relation": "map construction needed before stating existence target",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "IUT311",
+      "target": "BRIDGE",
+      "relation": "correspondence/derivation not reconstructed",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "TARGET",
+      "target": "BRIDGE",
+      "relation": "LANA asserted relevance; no formal equivalence certified",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "U09",
+      "target": "BRIDGE",
+      "relation": "native-q and formal-quotient obligation",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "BRIDGE",
+      "target": "VARIANT",
+      "relation": "missing source-faithfulness derivation; NOT a proved implication",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "VARIANT",
+      "target": "H312",
+      "relation": "proposition occurring in hypothesis, NOT a proof",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "H312",
+      "target": "C22",
+      "relation": "explicit bridge hypothesis required",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "PACKAGES",
+      "target": "C22",
+      "relation": "additional explicit packages required",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "C22",
+      "target": "STMTII",
+      "relation": "conditional source-code use",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "STMTII",
+      "target": "ABC",
+      "relation": "statementII_implies_statementI with ProofPackage",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "PACKAGES",
+      "target": "ABC",
+      "relation": "additional explicit hypotheses",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U10",
+      "target": "ABC",
+      "relation": "kernel and imported-axiom certification outstanding",
+      "status": "UNRESOLVED"
+    },
+    {
+      "source": "STMTII",
+      "target": "TRIPOD",
+      "relation": "conditional source-code use with constructed concrete inputs",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "TRIPOD_INPUTS",
+      "target": "TRIPOD",
+      "relation": "explicit remaining hypotheses",
+      "status": "RECONSTRUCTION"
+    },
+    {
+      "source": "U10",
+      "target": "TRIPOD",
+      "relation": "kernel and imported-axiom certification outstanding",
+      "status": "UNRESOLVED"
+    }
+  ]
+}

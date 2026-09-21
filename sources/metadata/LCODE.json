@@ -1,0 +1,26 @@
+{
+  "source_id": "LCODE",
+  "author": "lana-agents/iut contributors",
+  "title": "lana-agents/iut source repository",
+  "year": "2026",
+  "version": "main commit 2d8f000457da6447fa4df4bfec7365c1a49b6384",
+  "status": "Public Lean source; specification and conditional proofs",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/lana_iut_2d8f000.tar.gz",
+  "url": "https://codeload.github.com/lana-agents/iut/tar.gz/2d8f000457da6447fa4df4bfec7365c1a49b6384",
+  "sha256": "e9bd4b16621bf9e7e8e7835295b720fca264049ac22fdc5df72a44efb68bf339",
+  "relevant_pages_sections": "Iut/Cor312/Statement.lean; Iut/Implication/Corollary23.lean and local import slice",
+  "purpose": "Audit exact proposition, placeholders, interfaces and downstream conditional results",
+  "authors": [
+    "lana-agents/iut contributors"
+  ],
+  "publication_status": "Public Lean source; specification and conditional proofs",
+  "retrieval_date": "2026-09-21T04:35:47.213164+00:00",
+  "bytes": 1240285,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies",
+  "branch": "main",
+  "commit": "2d8f000457da6447fa4df4bfec7365c1a49b6384",
+  "extracted_worktree": "sources/lana_agents_iut",
+  "working_files_verified_against_archive": 202
+}

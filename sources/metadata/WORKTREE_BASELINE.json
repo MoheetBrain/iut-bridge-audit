@@ -1,0 +1,8 @@
+{
+  "base_commit": "5098565e7f88e75718344702640d5d769e3f3074",
+  "preexisting_changes": [
+    "README.md reduced to two original lines",
+    "recovery/2026-09-21/README.md deleted"
+  ],
+  "handling": "Do not restore the recovery README. Revise the current two-line root README as requested. Exclude the pre-existing deletion from the audit commit."
+}

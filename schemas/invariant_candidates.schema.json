@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "invariant_candidates",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "invariant_id",
+      "name",
+      "status",
+      "evidence",
+      "scope",
+      "limitations",
+      "source_location",
+      "source_ids",
+      "evidence_type",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "invariant_id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PROVEN INVARIANT",
+          "PLAUSIBLE",
+          "DISPROVEN",
+          "UNKNOWN"
+        ]
+      },
+      "evidence": {
+        "type": "string"
+      },
+      "scope": {
+        "type": "string"
+      },
+      "limitations": {
+        "type": "string"
+      },
+      "source_location": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

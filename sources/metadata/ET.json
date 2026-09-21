@@ -1,0 +1,22 @@
+{
+  "source_id": "ET",
+  "author": "Shinichi Mochizuki",
+  "title": "The Etale Theta Function and its Frobenioid-theoretic Manifestations",
+  "year": "2008",
+  "version": "Author PDF December 2008; published 2009",
+  "status": "Published paper; author-hosted version",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Etale_Theta.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/The%20Etale%20Theta%20Function%20and%20its%20Frobenioid-theoretic%20Manifestations.pdf",
+  "sha256": "42c5d9180c69bc9fa6596ce1a11662494315954ed74301060bf1819f955a7406",
+  "relevant_pages_sections": "Corollary 2.19(i) p.58; Remarks 2.19.2–2.19.3 p.61",
+  "purpose": "Step 6 synchronization and its first-power normalization",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Published paper; author-hosted version",
+  "retrieval_date": "2026-09-21T04:35:42.897439+00:00",
+  "bytes": 814566,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

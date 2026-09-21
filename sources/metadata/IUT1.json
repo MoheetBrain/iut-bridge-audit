@@ -1,0 +1,22 @@
+{
+  "source_id": "IUT1",
+  "author": "Shinichi Mochizuki",
+  "title": "Inter-universal Teichmuller Theory I: Construction of Hodge Theaters",
+  "year": "2020",
+  "version": "Author PDF May 2020; paper published PRIMS 2021",
+  "status": "Published paper; author-hosted version",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/IUT_I.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20I.pdf",
+  "sha256": "7360e3ed27c235b5497a0743d3ed1646fbb97688547d16b7c784fc7f127f1f03",
+  "relevant_pages_sections": "Definition 3.1; Definition 5.2",
+  "purpose": "Genuine initial data and global/local prime-strip dictionary",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Published paper; author-hosted version",
+  "retrieval_date": "2026-09-21T04:35:35.693621+00:00",
+  "bytes": 1280589,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

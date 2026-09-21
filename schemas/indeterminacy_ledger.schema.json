@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "indeterminacy_ledger",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "indeterminacy_id",
+      "formal_source_definition",
+      "object_acted_upon",
+      "action_type",
+      "orbit_equivalence_generated",
+      "structure_preserved",
+      "structure_lost",
+      "numerical_scale_changes",
+      "orientation_changes",
+      "point_changes",
+      "log_volume_changes",
+      "native_q_pilot_acted_upon",
+      "eta_q_acted_upon",
+      "eta_anab_acted_upon",
+      "source_location",
+      "source_ids",
+      "evidence_type",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "indeterminacy_id": {
+        "type": "string"
+      },
+      "formal_source_definition": {
+        "type": "string"
+      },
+      "object_acted_upon": {
+        "type": "string"
+      },
+      "action_type": {
+        "type": "string"
+      },
+      "orbit_equivalence_generated": {
+        "type": "string"
+      },
+      "structure_preserved": {
+        "type": "string"
+      },
+      "structure_lost": {
+        "type": "string"
+      },
+      "numerical_scale_changes": {
+        "type": "string"
+      },
+      "orientation_changes": {
+        "type": "string"
+      },
+      "point_changes": {
+        "type": "string"
+      },
+      "log_volume_changes": {
+        "type": "string"
+      },
+      "native_q_pilot_acted_upon": {
+        "type": "string"
+      },
+      "eta_q_acted_upon": {
+        "type": "string"
+      },
+      "eta_anab_acted_upon": {
+        "type": "string"
+      },
+      "source_location": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

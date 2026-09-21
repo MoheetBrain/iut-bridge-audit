@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "object_dictionary",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "object_id",
+      "source_notation",
+      "normalized_name",
+      "mathematical_type",
+      "ambient_structure",
+      "pointed?",
+      "oriented?",
+      "local_global",
+      "label/index",
+      "construction_source",
+      "equality_semantics",
+      "notes",
+      "source_ids",
+      "evidence_type",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "object_id": {
+        "type": "string"
+      },
+      "source_notation": {
+        "type": "string"
+      },
+      "normalized_name": {
+        "type": "string"
+      },
+      "mathematical_type": {
+        "type": "string"
+      },
+      "ambient_structure": {
+        "type": "string"
+      },
+      "pointed?": {
+        "type": "string"
+      },
+      "oriented?": {
+        "type": "string"
+      },
+      "local_global": {
+        "type": "string"
+      },
+      "label/index": {
+        "type": "string"
+      },
+      "construction_source": {
+        "type": "string"
+      },
+      "equality_semantics": {
+        "type": "string"
+      },
+      "notes": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "choice_registry",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "choice_id",
+      "stage",
+      "object_acted_on",
+      "source_of_choice",
+      "allowed_values",
+      "canonical?",
+      "existence_proved?",
+      "uniqueness?",
+      "affects_eta?",
+      "affects_scale?",
+      "affects_orientation?",
+      "affects_pointing?",
+      "affects_integral_structure?",
+      "interaction_with_other_choices",
+      "source_location",
+      "confidence",
+      "notes",
+      "source_ids",
+      "evidence_type",
+      "claim_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "choice_id": {
+        "type": "string"
+      },
+      "stage": {
+        "type": "string"
+      },
+      "object_acted_on": {
+        "type": "string"
+      },
+      "source_of_choice": {
+        "type": "string"
+      },
+      "allowed_values": {
+        "type": "string"
+      },
+      "canonical?": {
+        "type": "string"
+      },
+      "existence_proved?": {
+        "type": "string"
+      },
+      "uniqueness?": {
+        "type": "string"
+      },
+      "affects_eta?": {
+        "type": "string"
+      },
+      "affects_scale?": {
+        "type": "string"
+      },
+      "affects_orientation?": {
+        "type": "string"
+      },
+      "affects_pointing?": {
+        "type": "string"
+      },
+      "affects_integral_structure?": {
+        "type": "string"
+      },
+      "interaction_with_other_choices": {
+        "type": "string"
+      },
+      "source_location": {
+        "type": "string"
+      },
+      "confidence": {
+        "type": "string"
+      },
+      "notes": {
+        "type": "string"
+      },
+      "source_ids": {
+        "type": "string"
+      },
+      "evidence_type": {
+        "type": "string",
+        "enum": [
+          "SOURCE FACT",
+          "SOURCE CLAIM",
+          "RECONSTRUCTION",
+          "INFERENCE",
+          "OPEN QUESTION"
+        ]
+      },
+      "claim_ids": {
+        "type": "string"
+      }
+    }
+  }
+}

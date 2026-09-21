@@ -1,0 +1,22 @@
+{
+  "source_id": "LANA",
+  "author": "LANA Project",
+  "title": "Project LANA Interim Report on IUT Theory",
+  "year": "2026",
+  "version": "PDF branch commit b8e4636edea64d0b9fdc1d7f6a51e63c1f5d1676",
+  "status": "Interim report",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/LANA_report_202607.pdf",
+  "url": "https://raw.githubusercontent.com/katobungen/LANA_report_202607/b8e4636edea64d0b9fdc1d7f6a51e63c1f5d1676/LANA_report_202607.pdf",
+  "sha256": "aa53093aa8d69dbce5f8fb4f541069a418650260dee1ef532917aa8db89606c7",
+  "relevant_pages_sections": "Sections 4–10, especially 9.1–9.3 pp.44–46 and 10.5 p.49",
+  "purpose": "Primary evidence for LANA’s own reconstruction, not a proof of IUT",
+  "authors": [
+    "LANA Project"
+  ],
+  "publication_status": "Interim report",
+  "retrieval_date": "2026-09-21T04:35:33.708796+00:00",
+  "bytes": 640461,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

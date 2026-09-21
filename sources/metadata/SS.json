@@ -1,0 +1,23 @@
+{
+  "source_id": "SS",
+  "author": "Peter Scholze; Jakob Stix",
+  "title": "Why abc is still a conjecture",
+  "year": "2018",
+  "version": "July 2018 author-hosted PDF; byte-pinned",
+  "status": "Authors’ critique",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Scholze_Stix.pdf",
+  "url": "https://www.math.uni-bonn.de/people/scholze/WhyABCisStillaConjecture.pdf",
+  "sha256": "4ec276246a2a92d2e211a0dae5afd073b5eae7e2b37e9bbabe3cb82c7e0b34a0",
+  "relevant_pages_sections": "Section 2.2 pp.9–10",
+  "purpose": "Preserve precise criticism and its abstraction assumptions",
+  "authors": [
+    "Peter Scholze",
+    "Jakob Stix"
+  ],
+  "publication_status": "Authors’ critique",
+  "retrieval_date": "2026-09-21T04:39:54.841427+00:00",
+  "bytes": 527012,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

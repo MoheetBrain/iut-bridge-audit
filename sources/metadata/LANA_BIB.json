@@ -1,0 +1,22 @@
+{
+  "source_id": "LANA_BIB",
+  "author": "LANA Project",
+  "title": "LANA report bibliography",
+  "year": "2026",
+  "version": "main commit 293bdd89463473ae13d40834d70fb4b7ba81da1f",
+  "status": "Repository bibliography",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/LANA.bib",
+  "url": "https://raw.githubusercontent.com/katobungen/LANA_report_202607/293bdd89463473ae13d40834d70fb4b7ba81da1f/LANA.bib",
+  "sha256": "3a2e26a5475d61e1bbbe3fcee184210d70ef3312f30953a09d798bf800a7565a",
+  "relevant_pages_sections": "Entries used by eta-algorithm citations",
+  "purpose": "Identify cited dependencies without substituting journal page numbers for PDF pages",
+  "authors": [
+    "LANA Project"
+  ],
+  "publication_status": "Repository bibliography",
+  "retrieval_date": "2026-09-21T04:35:47.182772+00:00",
+  "bytes": 7848,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

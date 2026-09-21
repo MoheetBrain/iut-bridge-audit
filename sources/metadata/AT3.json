@@ -1,0 +1,22 @@
+{
+  "source_id": "AT3",
+  "author": "Shinichi Mochizuki",
+  "title": "Topics in Absolute Anabelian Geometry III: Global Reconstruction Algorithms",
+  "year": "2015",
+  "version": "Author PDF November 2015",
+  "status": "Published paper; author-hosted version",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/AbsTop_III.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Topics%20in%20Absolute%20Anabelian%20Geometry%20III.pdf",
+  "sha256": "e8115df30a86dea26e2ebf60cb333558ff28fe3e4d57017a80421787b53421a9",
+  "relevant_pages_sections": "Propositions 5.7–5.8; Corollary 5.10",
+  "purpose": "Log-shell reconstruction and normalized volume; recursive proof not fully rechecked",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Published paper; author-hosted version",
+  "retrieval_date": "2026-09-21T04:35:42.176914+00:00",
+  "bytes": 1132226,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

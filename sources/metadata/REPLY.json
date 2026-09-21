@@ -1,0 +1,22 @@
+{
+  "source_id": "REPLY",
+  "author": "Shinichi Mochizuki",
+  "title": "Comments on the manuscript by Scholze–Stix concerning inter-universal Teichmuller theory",
+  "year": "2018",
+  "version": "Cmt2018-05.pdf; byte-pinned author version",
+  "status": "Author response",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Comments_Scholze_Stix.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Cmt2018-05.pdf",
+  "sha256": "d71c38308322bdb403b11c6f450f8f67797600c5c9ac7c28505c8d1c43c1f53b",
+  "relevant_pages_sections": "C6–C8 pp.3–4; C12–C14",
+  "purpose": "Do not silently erase labels or full prime-strip structure",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Author response",
+  "retrieval_date": "2026-09-21T04:35:33.962467+00:00",
+  "bytes": 95893,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

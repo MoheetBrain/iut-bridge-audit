@@ -1,0 +1,80 @@
+{
+  "checked_at_utc": "2026-09-21T05:14:48.810079+00:00",
+  "scope": "Data integrity and source-code lexical audit; not mathematical or Lean kernel certification",
+  "resolved_check_issue": "Initial staged whitespace check found CRLF in generated CSVs and whitespace in byte-pinned upstream TeX. Generated CSVs now use LF. Raw pinned evidence is preserved byte-for-byte with -text/-whitespace attributes.",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "scripts/verify_sources.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 18 source pins and metadata records; 202 LANA files match pinned archive\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_ledgers.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: schemas, evidence labels, source locators, foreign keys, nine steps, DAG and generated views\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/render_ledgers.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "Checked 21 ledger/schema views\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/build_dependency_graph.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "Dependency graph checked\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_comment_string_masking (test_research_artifacts.LedgerTests) ... ok\ntest_dangling_map_endpoint (test_research_artifacts.LedgerTests) ... ok\ntest_duplicate_id (test_research_artifacts.LedgerTests) ... ok\ntest_generated_views_current (test_research_artifacts.LedgerTests) ... ok\ntest_graph_cycle (test_research_artifacts.LedgerTests) ... ok\ntest_graph_dangling_endpoint (test_research_artifacts.LedgerTests) ... ok\ntest_invalid_evidence (test_research_artifacts.LedgerTests) ... ok\ntest_missing_claim_status (test_research_artifacts.LedgerTests) ... ok\ntest_missing_invariant_status (test_research_artifacts.LedgerTests) ... ok\ntest_missing_locator (test_research_artifacts.LedgerTests) ... ok\ntest_missing_source (test_research_artifacts.LedgerTests) ... ok\ntest_nonexistent_step (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_invariant (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_object (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_source (test_research_artifacts.LedgerTests) ... ok\ntest_valid_database (test_research_artifacts.LedgerTests) ... ok\ntest_snapshot_tampering_rejected (test_research_artifacts.SourceTests) ... ok\ntest_source_tampering_rejected (test_research_artifacts.SourceTests) ... ok\ntest_valid_source_fixture (test_research_artifacts.SourceTests) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.049s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

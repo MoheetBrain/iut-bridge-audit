@@ -1,0 +1,22 @@
+{
+  "source_id": "ALIEN",
+  "author": "Shinichi Mochizuki",
+  "title": "The Mathematics of Mutually Alien Copies: from Gaussian Integrals to Inter-universal Teichmuller Theory",
+  "year": "2020",
+  "version": "Author-hosted PDF; byte-pinned",
+  "status": "Author exposition",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Alien_Copies.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Alien%20Copies,%20Gaussians,%20and%20Inter-universal%20Teichmuller%20Theory.pdf",
+  "sha256": "b2510b7276ab08f9f758e283200a4fc87205d2439d6d9b75afe8df6ccb182d1e",
+  "relevant_pages_sections": "Section 3.11(v), pp.143–146; retained dependency",
+  "purpose": "Additional author explanation of the structured closed loop",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Author exposition",
+  "retrieval_date": "2026-09-21T04:35:44.781772+00:00",
+  "bytes": 1016365,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

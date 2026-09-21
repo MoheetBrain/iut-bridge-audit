@@ -1,0 +1,22 @@
+{
+  "source_id": "FORM",
+  "author": "Shinichi Mochizuki",
+  "title": "On the Formalization of IUT: a Preliminary Progress Report",
+  "year": "2026",
+  "version": "April 2026 lecture notes; joint work in progress with Y. Hoshi, G. Yamashita, Y. Yang, ...",
+  "status": "Lecture notes; work in progress",
+  "primary_secondary": "primary",
+  "local_path": "sources/primary/Formalization_2026_04.pdf",
+  "url": "https://www.kurims.kyoto-u.ac.jp/~motizuki/Formalization%20of%20IUT%20%282026-04%29.pdf",
+  "sha256": "9a32b2485b5875574d7470256d3414b88ee6ac3ed8a39a82ea7332e25072ee9c",
+  "relevant_pages_sections": "PDF pp.10–11, four triangles and informal 3.11.5",
+  "purpose": "Separate report of formalization from a verified bridge",
+  "authors": [
+    "Shinichi Mochizuki"
+  ],
+  "publication_status": "Lecture notes; work in progress",
+  "retrieval_date": "2026-09-21T04:35:32.363809+00:00",
+  "bytes": 347480,
+  "page_number_convention": "One-based PDF page indices unless a repository file/line or explicit journal page is stated",
+  "read_scope": "Selected relevant passages, not a recursive proof audit of all dependencies"
+}

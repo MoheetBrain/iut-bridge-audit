@@ -1,27 +1,54 @@
-# iut-bridge-audit
-A focused, reproducible audit of the IUT III Theorem 3.11 → Corollary 3.12 bridge, testing whether the xi-e machinery genuinely implies xi-f’s q-pilot log-volume membership claim via formal dependency analysis and countermodel search.
+# IUT bridge audit
 
-## Recovered audit — 21 September 2026
+Is the native q comparison map in the family of admissible anabelian reconstructions?
 
-The existing IUT work from the `P= NP` task has been recovered here. It was originally saved in the separate `IUT_CHALLENGER` directory, outside Superlinear. This recovery copies the reports and their supporting evidence; it does not advance or independently validate their mathematical conclusions.
+\[
+\exists\ S\ \text{suitable},\qquad\eta^q=\eta^{\mathrm{anab}}_S.
+\]
 
-| Deliverable | Contents |
-|---|---|
-| [Critical bridge report](IUT_STAGE1_CRITICAL_BRIDGE.md) | Target, source-reading boundary, attempted reconstruction, and stopping point |
-| [Source ledger](IUT_STAGE1_SOURCE_MAP.csv) | Source locations, interpretations, dependencies, and evidence status |
-| [Dependency graph](IUT_STAGE1_DEPENDENCY_GRAPH.json) | Typed registry and unresolved proof obligations |
-| [Candidate missing-premise analysis](IUT_STAGE1_MISSING_PREMISE.md) | Conditional sufficient criterion and source-faithfulness limitations |
-| [Recovered final status](recovery/2026-09-21/IUT_STAGE1_STATUS.txt) | Exact status block from the earlier response |
-| [Recovery record](recovery/2026-09-21/README.md) | Original response, provenance, checksums, and scope |
+This is LANA's equation (9-1), §9.2, p.46 [C003]. Its exact source-faithful admissibility predicate and common equality type remain only partly reconstructed. The term “orbit” names the intended image family; no full group action is assumed.
 
-The recovered result is **TARGET_NOT_YET_FORMALIZABLE_WITHOUT_LARGER_IUT_DEPENDENCY**. The critical implication was neither proved nor refuted. No faithful countermodel or prize-relevant flaw was established, and the audit created no Lean formalization of the bridge. The copied third-party source snapshots do contain their existing Lean files.
+The question concerns the Theorem 3.11 → Corollary 3.12 bridge. LANA relates its compatibility goal to that bridge, while Mochizuki's sources retain local/global, unit/Galois, tensor and normalization structure that must also enter a faithful comparison [C004, C009, C014–C016]. Their full equivalence is not established by this audit.
 
-The recorded next action is to specify and check IUT III Remark 3.9.5(ix), especially cQ3/cQ4, including preservation of the native q constraint through the output construction and normalized volume comparison. That action remains unstarted by this recovery.
+## What is known
 
-## Supporting material
+The pinned LANA report explicitly describes nine η steps and does not claim to prove or disprove its final compatibility [C001–C006, C022]. Its Lean repository defines `Corollary312Variant` and supplies conditional downstream implications requiring that variant as a hypothesis [C007–C008, C027]. The original IUT corpus asserts additional compatibilities, including cQ3/cQ4; those assertions are preserved and traced.
 
-- [`sources/`](sources/) contains the retrieved PDFs, LANA report source, original retrieval metadata, and two pinned repository snapshots. Their revision identities are recorded in [PROVENANCE.json](recovery/2026-09-21/PROVENANCE.json).
-- [`tmp/`](tmp/) retains the earlier extracted texts, page data, rendered pages, and ledger-building helper. These are recovered working materials, not disposable omissions from the evidence package.
-- The report's companion links now resolve within this repository. The copied helper resolves its root from its own location. Exact originals of both edited files are retained in [`recovery/2026-09-21/originals/`](recovery/2026-09-21/originals/).
+## What is not known here
 
-The [attached stages 1–3 prompt](recovery/2026-09-21/STAGES_1_3_REQUEST_REFERENCE.txt) is retained as reference context. Its instructions were not executed during recovery. The earlier label “Stage 1” does not certify completion of the source-lock, η-reconstruction, or admissibility deliverables requested by that later prompt.
+A complete Adm(D), the induced effect of every choice, the common normalized equality type, and native-q preservation through the formal quotient have not been certified. No flaw, countermodel, independence result or unconditional bridge proof is claimed. Scoped normalization laws are recorded without presenting them as invariants of the entire η family.
+
+## Current deliverables
+
+**Stages 1–3 only. Stage 4: NO-GO.** Start with [STATUS.md](STATUS.md) and the twelve-question [gate](STAGE_1_3_GATE.md).
+
+- [Source manifest](research/01_source_lock/SOURCE_MANIFEST.csv), [claim registry](research/01_source_lock/CLAIM_REGISTRY.csv), [priority](research/01_source_lock/SOURCE_PRIORITY.md) and [gaps](research/01_source_lock/SOURCE_GAPS.md).
+- [Exact target](research/02_eta_reconstruction/ETA_TARGET.md), [nine-step algorithm](research/02_eta_reconstruction/ETA_ALGORITHM.md), object/map dictionaries, [dependency DAG](research/02_eta_reconstruction/DEPENDENCY_DAG.md) and [code audit](research/02_eta_reconstruction/LANA_CODE_AUDIT.md).
+- [Partial admissibility](research/03_admissibility_orbit/ADM_DEFINITION.md), choice/indeterminacy/orbit ledgers, [candidate invariants](research/03_admissibility_orbit/INVARIANT_CANDIDATES.md), [orbit specification](research/03_admissibility_orbit/ORBIT_SPEC.md) and [faithfulness checks](research/03_admissibility_orbit/FALSIFICATION_TESTS.md).
+
+`research/RESEARCH_DATABASE.json` is the canonical structured research record. Scripts generate CSV/Markdown views and schemas. Every substantive ledger row has source provenance and an epistemic label. The older audit recovered from the misplaced task remains in the repository as historical material; it is not a substitute for the current source checks. The other project was not edited.
+
+## Scientific rules
+
+Keep SOURCE FACT, SOURCE CLAIM, RECONSTRUCTION, INFERENCE and OPEN QUESTION distinct. Cite pinned primary passages for source mathematics. Noncanonicity does not refute existence. Arbitrary rescaling is not assumed admissible. Ind3 upper semi-compatibility is not replaced by strict commutativity. A toy abstraction is not a faithful IUT countermodel. UNKNOWN is an acceptable result.
+
+## Reproducibility
+
+Python 3.9+ standard library suffices for the offline checks:
+
+```sh
+python3 scripts/verify_sources.py
+python3 scripts/validate_ledgers.py
+python3 -m unittest discover -s tests -v
+```
+
+To regenerate the derived audit views:
+
+```sh
+python3 scripts/audit_lana.py
+python3 scripts/render_ledgers.py
+python3 scripts/build_dependency_graph.py
+python3 scripts/validate_ledgers.py
+```
+
+See [COMMANDS.md](COMMANDS.md) for acquisition, source-rendering and verification commands. Source downloads are separate from offline verification. Current author URLs may change; saved hashes and immutable code/report commits define this audit snapshot. There is no Lean kernel replay in this run, and passing data-integrity tests does not certify the mathematics.
