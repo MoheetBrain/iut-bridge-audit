@@ -1,0 +1,54 @@
+id,title,source,locator,leaf_category,verification_scope
+INITIAL,Initial theta data,IUT1,Definition 3.1,DEFINITION,Published assertion or definition; not a kernel-checked theorem
+BPS,"Full prime-strip, units, value, local/global pilots",IUT2,"Definition 4.9(viii), PDF pp.158–159",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+LATTICE,LGP log-theta lattice and fixed Theta gluing,IUT3,"Definition 3.8(ii)–(iii), pp.112–113",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+CORIC,Vertical and horizontal coricity,IUT3,Theorem 1.5(i)–(iii),PREVIOUSLY PROVED THEOREM,Published assertion or definition; not a kernel-checked theorem
+EVAL,Theta evaluation and full prime-strip isomorphisms,IUT2,"Corollary 4.10(i)–(ii), pp.159–160",PREVIOUSLY PROVED COROLLARY,Published assertion or definition; not a kernel-checked theorem
+KUMMER,Mono-theta Kummer isomorphisms,IUT3,Proposition 2.1(ii)–(v),PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+LOCAL_MULTI,Multiradial mono-theta data,IUT3,Corollary 2.3(i)–(iii),PREVIOUSLY PROVED COROLLARY,Published assertion or definition; not a kernel-checked theorem
+PACKETS,Holomorphic and monoanalytic tensor packets,IUT3,"Propositions 3.1–3.2, pp.92–100",PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+LOG_KUMMER,Upper semi-compatible log-Kummer systems,IUT3,"Proposition 3.5(i)–(ii), pp.104–106",PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+GLOBAL_FROB,Global LGP/lgp Frobenioids,IUT3,Proposition 3.7(iii)–(iv),PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+GLOBAL_KUMMER,Global Kummer comparison and noninterference,IUT3,"Proposition 3.10(i)–(ii), pp.147–149",PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+LOCAL_VOLUME,Local Haar/radial volumes and log compatibility,AT3,"Proposition 5.7(i)–(ii), PDF pp.137–139",PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+WEIGHTS,Normalized packet weights,IUT3,"Remark 3.1.1(ii)–(iv), pp.94–97",EXPLICIT CONSTRUCTION,Published assertion or definition; not a kernel-checked theorem
+P39,Normalized packet/procession/global volumes,IUT3,"Proposition 3.9(i)–(iv), pp.115–118",,Published assertion or definition; not a kernel-checked theorem
+RSS,Equal-integral quotient of Fn and integration,IUT3,"Remark 3.9.4(i), pp.120–122",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+RSS_LOG,Log-link-compatible realified semisimplifications,IUT3,"Remark 3.9.4(iii)–(vi), pp.122–126",,Published assertion or definition; not a kernel-checked theorem
+Q_GENERATOR,Native q generator and normalized log-volume,IUT3,"Remark 3.9.4(iv), pp.123–124",,Published assertion or definition; not a kernel-checked theorem
+NATIVE_Q,Fixed native q reference,IUT3,"Corollary 3.12 statement p.174; Remark 3.11.1(ii), p.160",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+HULL,Minimal holomorphic hull and bounded-family hull,IUT3,"Remark 3.9.5(i)–(iv),(vi), pp.127–130",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+UPPER,Upper-set quotient and formal inverse systems,IUT3,"Remark 3.9.5(v)–(vi), pp.129–130",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+FR_PULL,Frobenioid linear/pull-back morphisms,FR1,"Definitions 1.2(i)–(ii), 1.3(i), PDF pp.19–24",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+FR_POWER,Naive Frobenius functor,FR1,"Proposition 2.1(i)–(iii), PDF pp.44–45",PREVIOUSLY PROVED PROPOSITION,Published assertion or definition; not a kernel-checked theorem
+FR_LOCALIZE,Number-field local/global localization functors,FR2,"Example 5.6(iii)–(iv), PDF pp.63–65",EXPLICIT CONSTRUCTION,Published assertion or definition; not a kernel-checked theorem
+DET,Weighted determinant and structural-sheaf correction,IUT3,"Remark 3.9.5(vii)(Ob2)–(Ob6), pp.131–135",,Published assertion or definition; not a kernel-checked theorem
+CQ3,Local-global upper-category pair with Galois/unit actions,IUT3,"Remark 3.9.5(ix)(cQ3), pp.141–142",,Published assertion or definition; not a kernel-checked theorem
+CQ4,Log-shift comparison with retained Galois/unit portions,IUT3,"Remark 3.9.5(ix)(cQ4), p.142",,Published assertion or definition; not a kernel-checked theorem
+OB9,Bijection of hull log-volumes across log-link,IUT3,"Remark 3.9.5(vii)(Ob9)–(Ob9-2), pp.138–139",,Published assertion or definition; not a kernel-checked theorem
+SQ5,Coarse normalized volume evaluation,IUT3,"Remark 3.9.5(viii)(sQ5),(ix)(iQ5), pp.139–143",,Published assertion or definition; not a kernel-checked theorem
+TH311,Multiradial algorithm and compatibilities,IUT3,"Theorem 3.11(i)–(iii), pp.153–159",,Published assertion or definition; not a kernel-checked theorem
+IPL,Explicit full-strip path from input to output,IUT3,"Remarks 3.10.2, 3.11.1(ii)–(iii), pp.151–152,159–162",,Published assertion or definition; not a kernel-checked theorem
+SHE_APT,Same-column execution and algorithmic transport,IUT3,"Remark 3.11.1(iii)–(v), pp.161–163",,Published assertion or definition; not a kernel-checked theorem
+PILOT_RECON,Signed pilot reconstruction in global Frobenioid,IUT3,"Remark 2.4.2(iv)–(vi), pp.90–91",EXPLICIT CONSTRUCTION,Published assertion or definition; not a kernel-checked theorem
+INFIMA,Extended region volumes via infima/inverse systems,IUT3,"Remark 3.9.7(ii)–(iii), pp.146–147",DEFINITION,Published assertion or definition; not a kernel-checked theorem
+CL,Asserted q-rigidified closed loop before sQ5,IUT3,"Remark 3.9.5(ix), pp.143–144",,Published assertion or definition; not a kernel-checked theorem
+U_NATIVE,Unverified restriction of descended output comparison to native q-rigidification,IUT3,"Remark 3.9.5(ix), pp.143–144; Remark 3.11.1(iii), pp.160–162",UNRESOLVED DEPENDENCY,Published assertion or definition; not a kernel-checked theorem
+ENG_PRE,Partially typed pre-sQ5 specialization; audit notation only,IUT3,"Remark 3.9.5(ix), pp.143–144; Remark 3.12.2(ii)(eitw)/(fitw), p.189",,Published assertion or definition; not a kernel-checked theorem
+XI_D,Declared output downset and native scalar in same R,IUT3,"Corollary 3.12 proof (xi-d), p.183",,Published assertion or definition; not a kernel-checked theorem
+XI_E,Output construction executable subject to fixed native scalar,IUT3,"Corollary 3.12 proof (xi-e), pp.183–184",,Published assertion or definition; not a kernel-checked theorem
+U_DESCENT,Preservation of still-unresolved pre-sQ5 relation by scoped scalar calculus,IUT3,Remark 3.9.5(vii)(Ob9); Corollary 3.12 proof (xi-f),UNRESOLVED DEPENDENCY,Published assertion or definition; not a kernel-checked theorem
+XI_F,Native scalar belongs to output downset,IUT3,"Corollary 3.12 proof (xi-f), p.184",,Published assertion or definition; not a kernel-checked theorem
+ORDER,Half-line membership implies inequality,IUT3,"Corollary 3.12 proof (xi-d),(xi-f), pp.183–184",,Published assertion or definition; not a kernel-checked theorem
+COR312,Corollary numerical conclusion,IUT3,"Corollary 3.12 statement, p.174",,Published assertion or definition; not a kernel-checked theorem
+FITW,Fixed-strip simultaneous intertwining / special-case explanation,IUT3,"Remark 3.12.2(ii)(aitw)–(fitw), pp.188–189",,Published assertion or definition; not a kernel-checked theorem
+ALIEN_CL,Closed-loop identity restriction explanation,ALIEN,"Section 3.11(v)(1cld)–(9cld), PDF pp.143–146",,Published assertion or definition; not a kernel-checked theorem
+FRGINV,"Recovery after forgetting, modulo indeterminacies",ELS,"Section 3.11 (RcnLb),(HolFrLb),(MnAlyLb),(FrgInv), pp.163–164",,Published assertion or definition; not a kernel-checked theorem
+GLUDT,Only abstract full prime-strip glued across Theta-link,ELS,"Section 3.11 (GluDt), p.164",,Published assertion or definition; not a kernel-checked theorem
+LOGOR,0-column log saturation,ELS,"Section 3.11 (logORInd), pp.161–162",,Published assertion or definition; not a kernel-checked theorem
+STP17,Stp1–Stp7 construction with refined vertical labels,ELS,"Section 3.10, pp.148–153",,Published assertion or definition; not a kernel-checked theorem
+ENGLF,Fixed-gluing engulfing explanatory assertion,ELS,"Section 3.10 (FxGl),(NoCmpIss),(Englf), p.155",,Published assertion or definition; not a kernel-checked theorem
+CCD,Expanding-gluing diagrams and terminal engulfing assertion,ELS,"Example 3.10.2(ii), pp.159–160",EXPLANATORY RESTATEMENT,Published assertion or definition; not a kernel-checked theorem
+FORM4,Fourth triangle HDD composed with SHE,FORM,PDF pp.10–11,,Published assertion or definition; not a kernel-checked theorem
+LANA_EQ,Suitable-S equality of eta maps,LANA,"Sections 9.2–9.3 equation (9-1), p.46; 10.3–10.5, pp.48–49",,Published assertion or definition; not a kernel-checked theorem
+SCALAR_RENAMING,"If Englf is defined as scalar membership, it is target-equivalent",IUT3,"Corollary 3.12 proof (xi-f), p.184",TARGET-EQUIVALENT CLAIM,Published assertion or definition; not a kernel-checked theorem

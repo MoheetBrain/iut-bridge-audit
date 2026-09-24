@@ -1,0 +1,11 @@
+# Smallest unresolved obligation identified
+
+The remaining work is more specific than checking whether an arbitrary forgetting map preserves q. The independent normalized-volume machinery is present. The issue is the **native-q restriction of the descended formal output comparison**.
+
+With the fixed full prime-strip gluing and native codomain q-rigidification, identify the comparison arising from Theorem 3.11/IPL and show that its passage through the cQ3 local/global category pair and the cQ4 shifted log-Kummer diagram retains that rigidification as the permitted specialization described in Remark 3.9.5(ix), pp.143–144. The restriction must retain unit/Galois actions, local/global localization and the source's allowed formal systems. It must not be replaced by equality of abstract strip labels or by defining “specialization” to mean scalar membership.
+
+**This is the narrowest verification obligation isolated by the audit, not a proved weakest sufficient proposition.** A complete Rel_pre predicate is still unavailable. In particular, neither an exact object witness nor an inverse-system realization has been proved to be the source's necessary-and-sufficient form. The correct formulation may use a descended functor plus a compatible natural comparison, but its full types and restriction law must be recovered before making that assertion formal.
+
+Exact recommended next task: **Extract and type the native-q restriction diagram at IUT3 Remark 3.9.5(ix), pp.141–144, by composing the full-strip path of Remark 3.10.2/IPL with the cQ3 local/global structure poly-morphisms and the cQ4 log-shift relation; either construct the q-rigidification compatibility witnesses from named prior clauses of Theorem 3.11 or identify the first unprovided witness with its exact source locator.** Use ELS Stp7 and FrgInv/GluDt only as explanatory guides. Do not assume the restriction law, demand a global section, or begin a Lean proof/countermodel search.
+
+The scalar endpoint is then a second, scoped application problem: prove that this actual relation is among those respected by Prop3.9/Rmk3.9.4/Ob9. Any approximation must be given a defined direction and limiting/infimum semantics. The elementary closed-half-line argument is already available and needs no research expansion.

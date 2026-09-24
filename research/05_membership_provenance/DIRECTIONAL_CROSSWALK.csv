@@ -1,0 +1,15 @@
+from_formulation,to_formulation,status,locator,notes
+IUT_PRE,ELS,SOURCE_CLAIM,"ELS pp.148–155,163–164",Author explains fixed-strip construction as Englf; not an independent proof.
+ELS,IUT_PRE,PARTIAL,ELS Stp7 p.153; IUT3 cQ3/cQ4 pp.141–144,Recover original category pair and retained actions; terminal q specialization still unresolved.
+IUT_PRE,FORM,SOURCE_CLAIM,FORM pp.10–11,Fourth triangle presented as reorganized final comparison.
+FORM,IUT_PRE,PARTIAL,FORM pp.10–11; IUT3 Remark 3.9.5,"Need instantiated descent and q-rigidified comparison, not composite syntax alone."
+IUT_PRE,LANA,UNKNOWN,"LANA pp.46,48–49; IUT3 p.184",Membership or formal approximation does not establish an attained suitable S.
+LANA,IUT_PRE,UNKNOWN,"LANA pp.46,48–49",Equality in realified target does not recover Galois/unit/category comparison.
+ELS,FORM,PARTIAL,ELS pp.151–164; FORM pp.10–11,Same intended construction; no functorial equivalence between presentations provided.
+FORM,ELS,PARTIAL,FORM pp.10–11; ELS p.155,"Same intended specialization, not proof of terminal engulfing."
+ELS,LANA,UNKNOWN,ELS p.155; LANA equation (9-1) p.46,No suitable-S realizer extracted.
+LANA,ELS,UNKNOWN,"LANA pp.46,48–49; ELS pp.143–155",No reconstruction of full formal engulfing from scalar map equality.
+FORM,LANA,UNKNOWN,FORM pp.10–11; LANA p.46,No source-certified equality of choice spaces/types.
+LANA,FORM,UNKNOWN,LANA p.46; FORM pp.10–11,No construction of fourth-triangle species/mutations from eta equality.
+LANA,IUT_SCALAR,PARTIAL,LANA p.46; IUT3 (xi-d)–(xi-f) pp.183–184,"Sufficient only if suitability, common normalization, and inclusion in source output family are identified."
+IUT_SCALAR,LANA,UNKNOWN,IUT3 p.184; LANA p.46,Downset membership alone supplies no exact S or equality of eta maps.

@@ -1,0 +1,582 @@
+{
+  "normalization": "Dehyphenate word-breaking line ends; Unicode NFKC, remove whitespace and soft hyphens, casefold; one-based character offsets; stem matches include container candidates",
+  "source_ranges": [
+    [
+      "IUT3",
+      "IUT_III",
+      [
+        [
+          126,
+          130,
+          "O01"
+        ],
+        [
+          131,
+          145,
+          "O02"
+        ],
+        [
+          153,
+          163,
+          "O03"
+        ],
+        [
+          182,
+          184,
+          "O04"
+        ],
+        [
+          188,
+          189,
+          "O05"
+        ],
+        [
+          190,
+          191,
+          "O06"
+        ]
+      ]
+    ],
+    [
+      "ELS",
+      "Essential_Logical_Structure",
+      [
+        [
+          44,
+          44,
+          "O16"
+        ],
+        [
+          139,
+          144,
+          "O07"
+        ],
+        [
+          145,
+          147,
+          "O18"
+        ],
+        [
+          148,
+          150,
+          "O08"
+        ],
+        [
+          151,
+          154,
+          "O09"
+        ],
+        [
+          155,
+          155,
+          "O10"
+        ],
+        [
+          156,
+          158,
+          "O19"
+        ],
+        [
+          159,
+          160,
+          "O11"
+        ],
+        [
+          161,
+          164,
+          "O12"
+        ]
+      ]
+    ],
+    [
+      "FORM",
+      "Formalization_2026_04",
+      [
+        [
+          1,
+          5,
+          "O13"
+        ],
+        [
+          6,
+          9,
+          "O17"
+        ],
+        [
+          10,
+          11,
+          "O13"
+        ]
+      ]
+    ],
+    [
+      "LANA",
+      "LANA_report_202607",
+      [
+        [
+          43,
+          43,
+          "O14"
+        ],
+        [
+          44,
+          45,
+          "O20"
+        ],
+        [
+          46,
+          49,
+          "O14"
+        ]
+      ]
+    ],
+    [
+      "ALIEN",
+      "Alien_Copies",
+      [
+        [
+          143,
+          146,
+          "O15"
+        ]
+      ]
+    ]
+  ],
+  "pages": [
+    {
+      "source": "IUT3",
+      "page": 126,
+      "normalized_text_sha256": "73b3be3430f4add347116a30270b65d35d971642a1195444a1fd0f4b8fa0d93d"
+    },
+    {
+      "source": "IUT3",
+      "page": 127,
+      "normalized_text_sha256": "4b528d8dfd193cbf32d2a37abd50a2edea63ad771a6babd364bf90330eeacf2e"
+    },
+    {
+      "source": "IUT3",
+      "page": 128,
+      "normalized_text_sha256": "abb18ce3fe7796d8d146ecaff893329154f77a74eb9a548de3ebec3f0b61222a"
+    },
+    {
+      "source": "IUT3",
+      "page": 129,
+      "normalized_text_sha256": "ca7a6909d75a15b112b1c98a3b7d030cd93ba9d7b4cea7e38a797d2c1f697563"
+    },
+    {
+      "source": "IUT3",
+      "page": 130,
+      "normalized_text_sha256": "d98d16b4c0512417264dcf8c77d1ea89fd7f026a5a33445c22a243bf9b0e14fc"
+    },
+    {
+      "source": "IUT3",
+      "page": 131,
+      "normalized_text_sha256": "867114e9ca190b7fe45878e54708500045aa8d05c95aa7c0bcb735e8d95fb116"
+    },
+    {
+      "source": "IUT3",
+      "page": 132,
+      "normalized_text_sha256": "3542745c55ae882b67bb839d7b1f590246c4ea53e5c5aff249d61b314b205284"
+    },
+    {
+      "source": "IUT3",
+      "page": 133,
+      "normalized_text_sha256": "0e21f89e877f8cbd31a21384aa1b75f688317c3916586d5379eac1118fc4b94c"
+    },
+    {
+      "source": "IUT3",
+      "page": 134,
+      "normalized_text_sha256": "737bfd169962e15599d69ac6e3232fe952fa94f2792b9ecb44e5c55df1c8600e"
+    },
+    {
+      "source": "IUT3",
+      "page": 135,
+      "normalized_text_sha256": "b1e2582e6d1472c7c90e2be027a585aa195d7ec91da10d530689653a2896a3d6"
+    },
+    {
+      "source": "IUT3",
+      "page": 136,
+      "normalized_text_sha256": "f033b098bbd4c9c396548fa846d91d1ff6d4d8cc12b548261a57fe8faeae68f4"
+    },
+    {
+      "source": "IUT3",
+      "page": 137,
+      "normalized_text_sha256": "8bad0fa4406ae31e235b2aacfc8d0743df5a446502df452ca38a38e30a891abd"
+    },
+    {
+      "source": "IUT3",
+      "page": 138,
+      "normalized_text_sha256": "5b1d4f31f6de782af7787e67de9ba3baf67d4c9765e96f63dc81f97240932ee6"
+    },
+    {
+      "source": "IUT3",
+      "page": 139,
+      "normalized_text_sha256": "c3ccc17069345185a65721db65c8d2236b0bf8ce1cc906c3694792c1438a46e3"
+    },
+    {
+      "source": "IUT3",
+      "page": 140,
+      "normalized_text_sha256": "538fd4314503fc1f38760145fa0b083033bb2367dcf642c7c554d38b6966bcaa"
+    },
+    {
+      "source": "IUT3",
+      "page": 141,
+      "normalized_text_sha256": "f48f7ad8729348a8a2c9f4757195e998c25358afd38735c32d26ac12e18f2953"
+    },
+    {
+      "source": "IUT3",
+      "page": 142,
+      "normalized_text_sha256": "7c33a7645cd123ac9d5c57168033fb4cb24e25a0d0a77d1492226c3e6b84b671"
+    },
+    {
+      "source": "IUT3",
+      "page": 143,
+      "normalized_text_sha256": "58e4c3b5b2485e6bc9a8cebc35566ca220f017e3887b41a88e8cd10760a081c0"
+    },
+    {
+      "source": "IUT3",
+      "page": 144,
+      "normalized_text_sha256": "6b496f88d3c6c54beb2f2f8351ef02bbd79f4a871e0b4794bcb84ce0d6aa8a0c"
+    },
+    {
+      "source": "IUT3",
+      "page": 145,
+      "normalized_text_sha256": "02881b4e8d87f00815874ae83117ec6d3e614c50f7951e9f1f71620ce22da63a"
+    },
+    {
+      "source": "IUT3",
+      "page": 153,
+      "normalized_text_sha256": "65f5fea3a8e2ceac8e74b677ff69567ca78687a63ab51b1cb2e22a22b61ce73b"
+    },
+    {
+      "source": "IUT3",
+      "page": 154,
+      "normalized_text_sha256": "69bd6e0ad3fa772f6e4279ae55f051c2660161d839c6aee828910cd3c4e01ae9"
+    },
+    {
+      "source": "IUT3",
+      "page": 155,
+      "normalized_text_sha256": "b1e95103b421b695cfc274f40380e6877eb06a10e4925d30830751501598ecc7"
+    },
+    {
+      "source": "IUT3",
+      "page": 156,
+      "normalized_text_sha256": "5dca7ee5a13a923a33175863478a7173c64a120434dc8de4f9a4b1d8fb45c04d"
+    },
+    {
+      "source": "IUT3",
+      "page": 157,
+      "normalized_text_sha256": "48f47b288f2f8e1099d08fd8bd40609b7b81516e03cf8a6290bb6f67d61af65d"
+    },
+    {
+      "source": "IUT3",
+      "page": 158,
+      "normalized_text_sha256": "8a506e892e3c62b1d7e9df39fd351ac6843a9a395eaa826e8fa44d7f512eb424"
+    },
+    {
+      "source": "IUT3",
+      "page": 159,
+      "normalized_text_sha256": "2a43051c65dc1327ef48d2e2fc4a16c88c9291a0da5ac388955151d1823c6445"
+    },
+    {
+      "source": "IUT3",
+      "page": 160,
+      "normalized_text_sha256": "75596cd0beaca9f2c774293cf6e931c48bad3c3376b01fd74e9a643bf113e8b8"
+    },
+    {
+      "source": "IUT3",
+      "page": 161,
+      "normalized_text_sha256": "8eb79cc13f746b7a47089d74ed8b1cd6efa84f4a11ed492093a84cef3e24f2b5"
+    },
+    {
+      "source": "IUT3",
+      "page": 162,
+      "normalized_text_sha256": "6863c75c1128d85c4e62837867787486843cd99004048deb0f6c3833a617f52f"
+    },
+    {
+      "source": "IUT3",
+      "page": 163,
+      "normalized_text_sha256": "75aceb9619e1e24d763666deb90310967608232337cd2993ac4b58b739e23736"
+    },
+    {
+      "source": "IUT3",
+      "page": 182,
+      "normalized_text_sha256": "8f600d305065d075031cd40980d7ceb8ea0cced4cbbed9faa87f2b0ac1c03a5f"
+    },
+    {
+      "source": "IUT3",
+      "page": 183,
+      "normalized_text_sha256": "8eb0a4b610ad507008b6a5827069e26507f1c6e9fbd2909036a6b5cfbdc927a2"
+    },
+    {
+      "source": "IUT3",
+      "page": 184,
+      "normalized_text_sha256": "9951d79373d5097d0e39f8d534c5b861c75fd2ee3b7c4f95109479549d4ed1a1"
+    },
+    {
+      "source": "IUT3",
+      "page": 188,
+      "normalized_text_sha256": "ee0f015176c58e3f75ec0d7fc29b452a0611cad56d8dff97935b8679e0a5ce9c"
+    },
+    {
+      "source": "IUT3",
+      "page": 189,
+      "normalized_text_sha256": "62da5cbb01334d339e0b4e2629759d51c9b05b78cabd6763660a85d3de16e201"
+    },
+    {
+      "source": "IUT3",
+      "page": 190,
+      "normalized_text_sha256": "3701a5e35878613ea722684b96aedf6994f48b11cb27675ed356fd76c166c859"
+    },
+    {
+      "source": "IUT3",
+      "page": 191,
+      "normalized_text_sha256": "98a98b579d3acb97c67d40c9aaa949181ab8eae2c49e07df72fb361874488a07"
+    },
+    {
+      "source": "ELS",
+      "page": 44,
+      "normalized_text_sha256": "3bcbc5e7d3985fbec89dafb36d52bf92146cca76e8cd9132ccf44d35ec5e2479"
+    },
+    {
+      "source": "ELS",
+      "page": 139,
+      "normalized_text_sha256": "867424ec8e236651afb4409774224d36daaef7a1c8c1747fec44aa768888c0f3"
+    },
+    {
+      "source": "ELS",
+      "page": 140,
+      "normalized_text_sha256": "f9d48007f5c22b691de327d9d3653d020bf39ffa1d24cc15ffb9622f07a16821"
+    },
+    {
+      "source": "ELS",
+      "page": 141,
+      "normalized_text_sha256": "7d9bc9cf4c7a9bd7503141de82f8f496c35e39ba00dc86aa1751584972266a17"
+    },
+    {
+      "source": "ELS",
+      "page": 142,
+      "normalized_text_sha256": "6f6f3611d5750728bcfd77eb11b5503220fb789cfe9a2a26ea3250dbd12f0f86"
+    },
+    {
+      "source": "ELS",
+      "page": 143,
+      "normalized_text_sha256": "53fcfad12f8b6836cb720c5e0416df2225c2465914acd4338fa51890bb007366"
+    },
+    {
+      "source": "ELS",
+      "page": 144,
+      "normalized_text_sha256": "bb4439d79f95144f4363e251b79774ed48a8781979e873fcfdc744332d1e5f3f"
+    },
+    {
+      "source": "ELS",
+      "page": 145,
+      "normalized_text_sha256": "b0e1a88eb0c37180c5b38ef4507e47d50d6ed68183b236cef3084bad3bfc7484"
+    },
+    {
+      "source": "ELS",
+      "page": 146,
+      "normalized_text_sha256": "e401910bb2a3b699f785e875de9449215771efd338f63d83b5b08005d6c4f4ca"
+    },
+    {
+      "source": "ELS",
+      "page": 147,
+      "normalized_text_sha256": "5f52c9dbd3e7aed1cf8e38dcecfbbc0d68f299962ea7e548ffc7fc6c8245a24e"
+    },
+    {
+      "source": "ELS",
+      "page": 148,
+      "normalized_text_sha256": "96b4b06adcfa894d693178f03d2b636407f5a0dfd972962d7722e2e79d299215"
+    },
+    {
+      "source": "ELS",
+      "page": 149,
+      "normalized_text_sha256": "5b329ce5d3a8c367a05f370c30b9557cd244cbe3701eca10abf25a805a1a8e33"
+    },
+    {
+      "source": "ELS",
+      "page": 150,
+      "normalized_text_sha256": "bcc0490e3821927982da16b516d187db86352adb7d1bb4a3c58135874f30df91"
+    },
+    {
+      "source": "ELS",
+      "page": 151,
+      "normalized_text_sha256": "9fda1ee86bd380b27503aefb670d34a6b4511523aa53331382896c31f41e7015"
+    },
+    {
+      "source": "ELS",
+      "page": 152,
+      "normalized_text_sha256": "84ad7fd765bf1a834e8a1cbc4b6679f54a77db234323afe0e439350f48acbc2e"
+    },
+    {
+      "source": "ELS",
+      "page": 153,
+      "normalized_text_sha256": "1872bf5dbcaf6fe375a7a648a1cbe2aa554ff22789b13455d138d7c7e11451a8"
+    },
+    {
+      "source": "ELS",
+      "page": 154,
+      "normalized_text_sha256": "3a2f8c008b229fa1f04f1d6e45b0ab7984deffe70ce0a7ec2f43831b7c0eb5fd"
+    },
+    {
+      "source": "ELS",
+      "page": 155,
+      "normalized_text_sha256": "51052723b4fbaad3770486e82c438c7ce2336f17b137a95fff90caa13e3fc12e"
+    },
+    {
+      "source": "ELS",
+      "page": 156,
+      "normalized_text_sha256": "97f95c173df20f9c7ac9c136383f12e41b0730158db201ee2bc5f1ef717d9e0e"
+    },
+    {
+      "source": "ELS",
+      "page": 157,
+      "normalized_text_sha256": "f041e434218abaced6dc8a1e7037b9ec4448d350f39372c9619c197b463eadee"
+    },
+    {
+      "source": "ELS",
+      "page": 158,
+      "normalized_text_sha256": "2c8b583714885dfa5cec71e7a2bda06d416bad543e5ad417932bb35a1aabf007"
+    },
+    {
+      "source": "ELS",
+      "page": 159,
+      "normalized_text_sha256": "40f57aa00424ae6f46332b240f4d69130b41423cf871d998da056ef7ca65764a"
+    },
+    {
+      "source": "ELS",
+      "page": 160,
+      "normalized_text_sha256": "12176370cd1fb68de759bd5c481969182f426a28d207886247ca0b374979ab29"
+    },
+    {
+      "source": "ELS",
+      "page": 161,
+      "normalized_text_sha256": "bfe06bdd1d3be518e2244b8b659af101294e27c0d5bf71b6f20f3b64cc86a2cc"
+    },
+    {
+      "source": "ELS",
+      "page": 162,
+      "normalized_text_sha256": "8dbdb2250bff3528e65f6be54a0c51379bf954811093cb982fe20c61d62c834f"
+    },
+    {
+      "source": "ELS",
+      "page": 163,
+      "normalized_text_sha256": "28800b2d3bce8342595f579519339d477f59e20d15c1e11ca030c7420ffef62c"
+    },
+    {
+      "source": "ELS",
+      "page": 164,
+      "normalized_text_sha256": "ecf58c767542d845539d6d65288d51b1afbdcc37b50b3a148e301aa02c4c5514"
+    },
+    {
+      "source": "FORM",
+      "page": 1,
+      "normalized_text_sha256": "8a6de0a9470af2737c3e5fee418099e7e779689d45ae328c8c661c5a61702494"
+    },
+    {
+      "source": "FORM",
+      "page": 2,
+      "normalized_text_sha256": "28d519f9109e45c93cdd021fd53f64ca5332296ef532fe26e72a1b5d1086d520"
+    },
+    {
+      "source": "FORM",
+      "page": 3,
+      "normalized_text_sha256": "8dcebe74afe39ccabefa1f9882a3eb444e693f9b83db21c6053a2c9ea643a304"
+    },
+    {
+      "source": "FORM",
+      "page": 4,
+      "normalized_text_sha256": "cb138bbfbfba21c50376aa30d360b9d28ac4f00fe9eb4b6e82b1c348ea83fc41"
+    },
+    {
+      "source": "FORM",
+      "page": 5,
+      "normalized_text_sha256": "3cea3e55eb2b1eb8b53d7666f2f8e8aedbbf9b30586bd8079f63b04c29de9900"
+    },
+    {
+      "source": "FORM",
+      "page": 6,
+      "normalized_text_sha256": "9694d773cef2d56c3e51a12739c23b59d0bcb529d0b06a8ce500aef52abce63f"
+    },
+    {
+      "source": "FORM",
+      "page": 7,
+      "normalized_text_sha256": "ed366e5972427dc2611396133045070eac115e2d62e973795d3e4b1a54e49aa7"
+    },
+    {
+      "source": "FORM",
+      "page": 8,
+      "normalized_text_sha256": "dd7c359b9ad7117154d4631ea6d8ec8f54f600259cf5ae0d311f299711e08d1f"
+    },
+    {
+      "source": "FORM",
+      "page": 9,
+      "normalized_text_sha256": "69da372a49aac35aa297bda8c42d2323242e8246a728cc5bad5124f4588efb86"
+    },
+    {
+      "source": "FORM",
+      "page": 10,
+      "normalized_text_sha256": "1014d1ee17c6e79a6153a2da0b8c9ed6a79247f39020823b973099aebacf5751"
+    },
+    {
+      "source": "FORM",
+      "page": 11,
+      "normalized_text_sha256": "54c7eba6bea093282314267997e94653aa6f390893a199ca380bb213451e6ea7"
+    },
+    {
+      "source": "LANA",
+      "page": 43,
+      "normalized_text_sha256": "d5d584000d9548c682c31bf90350240a63f5d4222595194bb122f398072f7fbd"
+    },
+    {
+      "source": "LANA",
+      "page": 44,
+      "normalized_text_sha256": "c3e390530719df333b9fcb84c4d80d92ca7d9761c53295962568590db2ee5aa5"
+    },
+    {
+      "source": "LANA",
+      "page": 45,
+      "normalized_text_sha256": "0ae8105f3d66f1c536b8fa661ee0fb31a6821462aa22ff631964c1733e29a25c"
+    },
+    {
+      "source": "LANA",
+      "page": 46,
+      "normalized_text_sha256": "bb5c2eb9438eeeec324243218d5a955ea631c7b52bbf65cccd763b896617fbe4"
+    },
+    {
+      "source": "LANA",
+      "page": 47,
+      "normalized_text_sha256": "c36ffe377ad9b3d54c0b1118236c433bfdcf6a15e94aa924ec958865caaf2192"
+    },
+    {
+      "source": "LANA",
+      "page": 48,
+      "normalized_text_sha256": "f57ee3b69db146ae24b5802d8c762eefe3bff401e0161a0726a59363ace6dd54"
+    },
+    {
+      "source": "LANA",
+      "page": 49,
+      "normalized_text_sha256": "a0b39bab199a1bd8d94a8e737bafd0f32585564fa57c71413a4ab8480af326e2"
+    },
+    {
+      "source": "ALIEN",
+      "page": 143,
+      "normalized_text_sha256": "e30a6cdc8294586530ad6a2657ce6ae7073850f15759f7dd3ecc0375857e79cd"
+    },
+    {
+      "source": "ALIEN",
+      "page": 144,
+      "normalized_text_sha256": "493d348f0fbb21bf69bb2cb8fee2122387ee2295fb6f4ae431e9e605968e9788"
+    },
+    {
+      "source": "ALIEN",
+      "page": 145,
+      "normalized_text_sha256": "e918822dec82a7b4521981640c848b6692f2be5bb66e4894b73e58280249d001"
+    },
+    {
+      "source": "ALIEN",
+      "page": 146,
+      "normalized_text_sha256": "42504ee9b14d003ce03323d5686a6f939def5a958ca53818527b23813927bd7a"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+from_claim,to_claim,relation,source,locator,status,notes
+TH311,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+TH311,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+TH311,FITW,EXPLAINS,IUT3,"Remark 3.12.2(ii)(ditw)–(fitw), pp.188–189",SOURCE_ASSERTED,Explanatory direction; not a replacement proof of the earlier target.
+TH311,ENGLF,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+TH311,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+TH311,XI_F,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+TH311,COR312,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,FITW,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,ENGLF,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,XI_F,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ3,COR312,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,FITW,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,ENGLF,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,XI_F,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+CQ4,COR312,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+FITW,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+FITW,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+FITW,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+FITW,ENGLF,EXPLAINS,ELS,"Section 3.10 (FxGl),(Englf), p.155",SOURCE_ASSERTED,Explanatory direction; not a replacement proof of the earlier target.
+FITW,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+FITW,XI_F,CLAIMED_SCALAR_IMAGE,ELS;IUT3,ELS Stp8 pp.153–154; IUT3 fitw p.189,PARTIAL,Not an independently verified implication; scalarized reading is target-equivalent.
+FITW,COR312,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+ENGLF,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+ENGLF,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+ENGLF,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+ENGLF,FITW,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+ENGLF,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+ENGLF,XI_F,CLAIMED_SCALAR_IMAGE,ELS;IUT3,ELS Stp8 pp.153–154; IUT3 fitw p.189,PARTIAL,Not an independently verified implication; scalarized reading is target-equivalent.
+ENGLF,COR312,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_E,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_E,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_E,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_E,FITW,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_E,ENGLF,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_E,XI_F,CLAIMED_PROOF,IUT3,"Corollary 3.12 proof (xi-f), p.184",UNRESOLVED,Printed thus is not a new theorem-level derivation.
+XI_E,COR312,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_F,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_F,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_F,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_F,FITW,EXPLAINS,IUT3,"Remark 3.12.2(ii)(eitw)–(fitw), p.189",SOURCE_ASSERTED,Explanatory direction; not a replacement proof of the earlier target.
+XI_F,ENGLF,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_F,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+XI_F,COR312,PROVES_GIVEN_STATED_NORMALIZATION,IUT3,"Corollary 3.12 proof (xi-f), p.184",VERIFIED_ELEMENTARY,Conditional on native scalar membership already established.
+COR312,TH311,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+COR312,CQ3,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+COR312,CQ4,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+COR312,FITW,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+COR312,ENGLF,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+COR312,XI_E,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.
+COR312,XI_F,RELATIONSHIP_UNKNOWN,IUT3;ELS,Not identified in audited passages,UNKNOWN,No independent implication inferred from proximity or a shared intended conclusion.

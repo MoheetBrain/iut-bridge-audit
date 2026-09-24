@@ -1,0 +1,105 @@
+{
+  "timestamp_utc": "2026-09-24T20:33:41.505980+00:00",
+  "base_commit": "4570c0568ac324edc77127828d4fabaca6d805c5",
+  "required_package_files_checked": 18,
+  "gate_file_present": true,
+  "tests_passed": 33,
+  "source_pins": 18,
+  "lana_snapshot_files": 202,
+  "provenance_nodes": 53,
+  "proof_and_exposition_edges": 76,
+  "ordered_pairs": 56,
+  "semantic_anchors": 20,
+  "lexical_occurrences": 83,
+  "lexical_scope_pages": 87,
+  "rendered_pages_visually_inspected": 6,
+  "results": [
+    {
+      "command": [
+        "python3",
+        "scripts/verify_sources.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 18 source pins and metadata records; 202 LANA files match pinned archive\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_ledgers.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: schemas, evidence labels, source locators, foreign keys, nine steps, DAG and generated views\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/render_closed_loop.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 79 Stage 3.5 rows; source IDs, epistemic labels, schemas, graph references and view freshness\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/render_membership.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 53 nodes, 76 edges, 83 lexical occurrences, 56 ordered pairs; locators, source IDs, leaf classes, DAG and generated views\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_dangling_closed_loop_endpoint_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_evidence_and_generated_views (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_graph_cannot_diverge_from_evidence (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_missing_locator_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_unknown_source_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_unsupported_epistemic_promotion_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_dangling_source_and_node_rejected (test_membership_artifacts.MembershipAudit) ... ok\ntest_explanation_cannot_be_promoted (test_membership_artifacts.MembershipAudit) ... ok\ntest_incomplete_pair_matrix_rejected (test_membership_artifacts.MembershipAudit) ... ok\ntest_missing_leaf_class_rejected (test_membership_artifacts.MembershipAudit) ... ok\ntest_missing_locator_rejected_except_unknown (test_membership_artifacts.MembershipAudit) ... ok\ntest_open_chain_cannot_be_marked_verified (test_membership_artifacts.MembershipAudit) ... ok\ntest_proof_cycle_rejected (test_membership_artifacts.MembershipAudit) ... ok\ntest_snapshot_valid_and_views_fresh (test_membership_artifacts.MembershipAudit) ... ok\ntest_comment_string_masking (test_research_artifacts.LedgerTests) ... ok\ntest_dangling_map_endpoint (test_research_artifacts.LedgerTests) ... ok\ntest_duplicate_id (test_research_artifacts.LedgerTests) ... ok\ntest_generated_views_current (test_research_artifacts.LedgerTests) ... ok\ntest_graph_cycle (test_research_artifacts.LedgerTests) ... ok\ntest_graph_dangling_endpoint (test_research_artifacts.LedgerTests) ... ok\ntest_invalid_evidence (test_research_artifacts.LedgerTests) ... ok\ntest_missing_claim_status (test_research_artifacts.LedgerTests) ... ok\ntest_missing_invariant_status (test_research_artifacts.LedgerTests) ... ok\ntest_missing_locator (test_research_artifacts.LedgerTests) ... ok\ntest_missing_source (test_research_artifacts.LedgerTests) ... ok\ntest_nonexistent_step (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_invariant (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_object (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_source (test_research_artifacts.LedgerTests) ... ok\ntest_valid_database (test_research_artifacts.LedgerTests) ... ok\ntest_snapshot_tampering_rejected (test_research_artifacts.SourceTests) ... ok\ntest_source_tampering_rejected (test_research_artifacts.SourceTests) ... ok\ntest_valid_source_fixture (test_research_artifacts.SourceTests) ... ok\n\n----------------------------------------------------------------------\nRan 33 tests in 0.057s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "mathematical_certification": false,
+  "formal_b1_status": "UNRESOLVED",
+  "full_b2_status": "PARTIAL",
+  "diagnostic_sources_locally_hash_pinned": false,
+  "preexisting_deletion_excluded": "recovery/2026-09-21/README.md",
+  "limitations": [
+    "Accepted published-result leaf boundaries are not complete recursive proof checks.",
+    "Diagnostic author full texts read via web; PDF download unavailable.",
+    "Term classifications are passage-level and limited to declared inspection scope.",
+    "No Stage4 work or new Lean bridge."
+  ],
+  "repairs_during_validation": [
+    "Staged whitespace check detected CRLF in lexical CSV; normalized to LF and fixed generator, then rechecked successfully."
+  ]
+}

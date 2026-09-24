@@ -1,0 +1,23 @@
+# Stage 3.75 gate
+
+**2026-09-24 — PARTIAL_CHAIN_WITH_UNRESOLVED_DEPENDENCY. Stage 4: NO-GO.** Source audit artifacts are delivered; the requested complete mathematical type and independent B1 derivation remain unresolved. This is neither a proof nor a refutation of IUT.
+
+| Question | Answer |
+|---|---|
+| Q1. Exact type of Englf? | Not fully recovered. Intended pre-sQ5 specialization of intertwining structures over a fixed full prime-strip, through poly-isomorphisms, the cQ3 local/global category pair and cQ4 log-shift diagrams. Ordinary set membership appears only in specific region constructions or after scalar evaluation. |
+| Q2. Independently derived from prior results? | PARTIAL_DERIVATION. Prior results support the construction and normalization components. Native-q specialization is asserted before Cor3.12 in Rmk3.9.5(ix), but its full typed derivation has not been checked. |
+| Q3. Weakest source-faithful B1? | Not yet a complete proposition. The narrowest identified obligation is the native-q restriction of the descended formal output comparison. See B1 and MINIMAL_BRIDGE. |
+| Q4. Supporting theorems? | Thm3.11(i)–(iii); Prop2.1, Cor2.3, Props3.5/3.7/3.10 and IUT2 Cor4.10 for IPL; Thm1.5 for coricity; FR1 Defs1.2/1.3 and Prop2.1; FR2 Ex5.6 for cQ3; Prop3.9/Rmk3.9.4/Ob9 for synchronization and scalar compatibility. Exact scopes and accepted theorem boundaries are in the provenance ledger. |
+| Q5. Does B1 already encode scalar membership? | The intended structured reading does not define it as membership. A complete implication to membership is still unverified. |
+| Q6. Legitimate encoding or target-equivalent? | If Englf is instead defined as scalar membership, it is target-equivalent and provides no independent bridge. No equivalence between that definition and the original structured relation was proved. |
+| Q7. What does sQ5 preserve? | Specified normalized local/global log-volumes, q-generator evaluation and compatible values under Rss/log-link comparison, including Ob9's hull-value bijection after comparable objects are formed. It forgets Galois/Frobenius-like unit data; it does not preserve arbitrary objectwise membership or guarantee exact witness attainment. |
+| Q8. Is B2 independently supported? | The scalar calculus is supported by Prop3.9, Rmk3.9.4 and Ob9, with AT3 Prop5.7 behind local compatibility. Full B2 is PARTIAL until the actual structured relation is typed and shown to be in that calculus's domain. |
+| Q9. B1+B2 gives xi-f with no unstated premise? | Not established. Calling an untyped native realization relation B1 would hide the missing work. Conditional order soundness is clear once the required comparison/approximation is actually supplied. |
+| Q10. Fourth triangle: B1, B2 or both? | It targets B1-style specialization/final comparison with hull/determinant and compatible-volume machinery packaged into the reorganized antecedent. The intended numerical application spans both; it is not a stand-alone B2 theorem or a checked proof in the pinned report. |
+| Q11. LANA (9-1) equivalent/stronger/weaker/different? | DIFFERENTLY_TYPED relative to pre-sQ5 B1; both implication directions UNKNOWN. With additional common-type/admissibility identifications, exact-S equality suffices for scalar membership and can demand more than downset semantics. Strict strength/equivalence for actual IUT remains unproved. |
+| Q12. Do diagnostics omit actual IUT structure? | YES: full unit/Galois/local-global data and normalized Rss/log-link machinery are not instantiated in their abstractions. A complete native-q comparison certificate remains unverified. Their abstract models neither refute nor validate the actual bridge. |
+| Q13. Smallest unresolved proposition? | Specify and verify the q-rigidification restriction of the Thm3.11/IPL comparison through cQ3/cQ4, including localization and formal-system compatibility. This is an identified obligation, not a certified weakest theorem statement. |
+| Q14. Final xi-e→xi-f classification? | **PARTIAL_CHAIN_WITH_UNRESOLVED_DEPENDENCY.** B1 UNRESOLVED; B2 PARTIAL; B3 elementary. No actual logical dependency cycle was established. |
+| Q15. Stage 4? | **NO-GO.** Faithful premises and the comparison relation are not sufficiently recovered for a positive formal proof or a negative model search. The user's stop rule is observed. |
+
+Exact next task: [MINIMAL_BRIDGE.md](research/05_membership_provenance/MINIMAL_BRIDGE.md). Deliverables and validation: [audit index](research/05_membership_provenance/README.md). The previous [Stage 3.5 gate](STAGE_3_5_GATE.md) remains historical; its global-lift correction remains in force.

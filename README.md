@@ -1,6 +1,8 @@
 # IUT bridge audit
 
-Is the native q comparison map in the family of admissible anabelian reconstructions?
+The current target is the native-q specialization in the formal output construction before scalar evaluation. Its exact mathematical type and independent derivation remain unresolved. [Stage 3.75](STAGE_3_75_GATE.md) separates that B1 obligation from the substantial normalized-volume machinery supporting B2.
+
+A related, differently typed target in LANA asks whether the native q comparison map belongs to the admissible anabelian family:
 
 \[
 \exists\ S\ \text{suitable},\qquad\eta^q=\eta^{\mathrm{anab}}_S.
@@ -20,15 +22,17 @@ A complete Adm(D), the induced effect of every choice, the common normalized equ
 
 ## Current deliverables
 
-**Stage 3.5 delivered. Stage 4: NO-GO.** Start with [STATUS.md](STATUS.md), the twelve-question [current gate](STAGE_3_5_GATE.md), and the [closed-loop audit index](research/04_closed_loop/README.md). The [Stages 1–3 gate](STAGE_1_3_GATE.md) is historical; its global-lift requirement has been corrected.
+**Stage 3.75 audit delivered; formal reconstruction partial. Stage 4: NO-GO.** Start with [STATUS.md](STATUS.md), the [15-question current gate](STAGE_3_75_GATE.md), and the [membership provenance index](research/05_membership_provenance/README.md). The [Stage 3.5 gate](STAGE_3_5_GATE.md) and [Stages 1–3 gate](STAGE_1_3_GATE.md) remain historical.
 
-The mandatory U04 audit finds **GLOBAL LIFT NOT REQUIRED** by the detailed printed route. The source asserts a closed loop preserving q-intertwining while constructing Θ-intertwining up to indeterminacies on one fixed abstract full prime-strip. Its independent verification and both directions of the LANA exact-S crosswalk remain incomplete. Native q log-volume is explicitly excluded from Ind1/2/3; it is not placed in the Θ-output orbit.
+B1 remains UNRESOLVED: q-rigidified specialization through cQ3/cQ4 is source asserted but not fully typed and independently derived. B2 is PARTIAL: normalized Rss/log-link machinery is recovered, while its application to that relation remains open. The full chain is PARTIAL_CHAIN_WITH_UNRESOLVED_DEPENDENCY. No logical cycle was established. LANA exact-S equality is not equated with source downset membership.
+
+The Stage 3.5 U04 correction remains: **GLOBAL LIFT NOT REQUIRED**. Native q log-volume is excluded from Ind1/2/3 and is not itself placed under arbitrary Θ-output indeterminacies.
 
 - [Source manifest](research/01_source_lock/SOURCE_MANIFEST.csv), [claim registry](research/01_source_lock/CLAIM_REGISTRY.csv), [priority](research/01_source_lock/SOURCE_PRIORITY.md) and [gaps](research/01_source_lock/SOURCE_GAPS.md).
 - [Exact target](research/02_eta_reconstruction/ETA_TARGET.md), [nine-step algorithm](research/02_eta_reconstruction/ETA_ALGORITHM.md), object/map dictionaries, [dependency DAG](research/02_eta_reconstruction/DEPENDENCY_DAG.md) and [code audit](research/02_eta_reconstruction/LANA_CODE_AUDIT.md).
 - [Partial admissibility](research/03_admissibility_orbit/ADM_DEFINITION.md), choice/indeterminacy/orbit ledgers, [candidate invariants](research/03_admissibility_orbit/INVARIANT_CANDIDATES.md), [orbit specification](research/03_admissibility_orbit/ORBIT_SPEC.md) and [faithfulness checks](research/03_admissibility_orbit/FALSIFICATION_TESTS.md).
 
-`research/RESEARCH_DATABASE.json` is the canonical Stages 1–3 record, updated with the Stage 3.5 corrections. `research/04_closed_loop/STAGE35_DATABASE.json` contains the new 79-row source reconstruction. Scripts generate CSV/Markdown views and schemas. Every substantive ledger row has source provenance and an epistemic label. The older audit recovered from the misplaced task remains in the repository as historical material; it is not a substitute for the current source checks. The other project was not edited.
+`research/RESEARCH_DATABASE.json` is the canonical Stages 1–3 record, updated with the Stage 3.5 corrections. `research/04_closed_loop/STAGE35_DATABASE.json` contains the historical 79-row source reconstruction. `research/05_membership_provenance/STAGE375_DATABASE.json` contains the current 53-node/76-edge provenance audit; generated views separate proof support from later explanation. Scripts generate CSV/Markdown views and schemas. Every substantive ledger row has source provenance and an epistemic label. The older audit recovered from the misplaced task remains in the repository as historical material; it is not a substitute for the current source checks. The other project was not edited.
 
 ## Scientific rules
 
@@ -42,6 +46,7 @@ Python 3.9+ standard library suffices for the offline checks:
 python3 scripts/verify_sources.py
 python3 scripts/validate_ledgers.py
 python3 scripts/render_closed_loop.py --check
+python3 scripts/render_membership.py --check
 python3 -m unittest discover -s tests -v
 ```
 
