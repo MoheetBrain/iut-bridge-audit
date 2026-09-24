@@ -1,5 +1,11 @@
 # Reproduction and command record
 
+## Stage 3.5 addition — 2026-09-24
+
+Branch `codex/stage-3-5-closed-loop` starts at exact commit `ecd62b5f6f82eae722c9dcc68e5e0c83c3186f47`. The prior deletion of `recovery/2026-09-21/README.md` remains unstaged. Source inspection, renders and the exact Lean replay are recorded in `research/04_closed_loop/READING_LOG.md`, `PDF_RENDER_COMMANDS.json` and `LEAN_REPLAY.md`. The new canonical source ledger is `STAGE35_DATABASE.json`; regenerate/check with `python3 scripts/render_closed_loop.py` / `python3 scripts/render_closed_loop.py --check`. The new validation record is `research/04_closed_loop/VALIDATION_RESULTS.json`.
+
+The command record below describes the earlier Stages 1–3 run. Its statement that no Lean replay was attempted is historical and is superseded by the exact-toolchain timeout record above.
+
 All relative paths below are relative to `/Users/moheet/Documents/ChatGPT/IUT 🧮` (the clone of `https://github.com/MoheetBrain/iut-bridge-audit.git`). This run creates branch `codex/stages-1-3-audit` from recovered-source commit `5098565e7f88e75718344702640d5d769e3f3074`. `sources/metadata/WORKTREE_BASELINE.json` records the pre-existing changes. No command targets P-vs-NP/Superlinear for mutation.
 
 ## Acquisition and pinning

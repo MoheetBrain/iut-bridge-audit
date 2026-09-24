@@ -20,13 +20,15 @@ A complete Adm(D), the induced effect of every choice, the common normalized equ
 
 ## Current deliverables
 
-**Stages 1–3 only. Stage 4: NO-GO.** Start with [STATUS.md](STATUS.md) and the twelve-question [gate](STAGE_1_3_GATE.md).
+**Stage 3.5 delivered. Stage 4: NO-GO.** Start with [STATUS.md](STATUS.md), the twelve-question [current gate](STAGE_3_5_GATE.md), and the [closed-loop audit index](research/04_closed_loop/README.md). The [Stages 1–3 gate](STAGE_1_3_GATE.md) is historical; its global-lift requirement has been corrected.
+
+The mandatory U04 audit finds **GLOBAL LIFT NOT REQUIRED** by the detailed printed route. The source asserts a closed loop preserving q-intertwining while constructing Θ-intertwining up to indeterminacies on one fixed abstract full prime-strip. Its independent verification and both directions of the LANA exact-S crosswalk remain incomplete. Native q log-volume is explicitly excluded from Ind1/2/3; it is not placed in the Θ-output orbit.
 
 - [Source manifest](research/01_source_lock/SOURCE_MANIFEST.csv), [claim registry](research/01_source_lock/CLAIM_REGISTRY.csv), [priority](research/01_source_lock/SOURCE_PRIORITY.md) and [gaps](research/01_source_lock/SOURCE_GAPS.md).
 - [Exact target](research/02_eta_reconstruction/ETA_TARGET.md), [nine-step algorithm](research/02_eta_reconstruction/ETA_ALGORITHM.md), object/map dictionaries, [dependency DAG](research/02_eta_reconstruction/DEPENDENCY_DAG.md) and [code audit](research/02_eta_reconstruction/LANA_CODE_AUDIT.md).
 - [Partial admissibility](research/03_admissibility_orbit/ADM_DEFINITION.md), choice/indeterminacy/orbit ledgers, [candidate invariants](research/03_admissibility_orbit/INVARIANT_CANDIDATES.md), [orbit specification](research/03_admissibility_orbit/ORBIT_SPEC.md) and [faithfulness checks](research/03_admissibility_orbit/FALSIFICATION_TESTS.md).
 
-`research/RESEARCH_DATABASE.json` is the canonical structured research record. Scripts generate CSV/Markdown views and schemas. Every substantive ledger row has source provenance and an epistemic label. The older audit recovered from the misplaced task remains in the repository as historical material; it is not a substitute for the current source checks. The other project was not edited.
+`research/RESEARCH_DATABASE.json` is the canonical Stages 1–3 record, updated with the Stage 3.5 corrections. `research/04_closed_loop/STAGE35_DATABASE.json` contains the new 79-row source reconstruction. Scripts generate CSV/Markdown views and schemas. Every substantive ledger row has source provenance and an epistemic label. The older audit recovered from the misplaced task remains in the repository as historical material; it is not a substitute for the current source checks. The other project was not edited.
 
 ## Scientific rules
 
@@ -39,6 +41,7 @@ Python 3.9+ standard library suffices for the offline checks:
 ```sh
 python3 scripts/verify_sources.py
 python3 scripts/validate_ledgers.py
+python3 scripts/render_closed_loop.py --check
 python3 -m unittest discover -s tests -v
 ```
 
@@ -51,4 +54,4 @@ python3 scripts/build_dependency_graph.py
 python3 scripts/validate_ledgers.py
 ```
 
-See [COMMANDS.md](COMMANDS.md) for acquisition, source-rendering and verification commands. Source downloads are separate from offline verification. Current author URLs may change; saved hashes and immutable code/report commits define this audit snapshot. There is no Lean kernel replay in this run, and passing data-integrity tests does not certify the mathematics.
+See [COMMANDS.md](COMMANDS.md) for acquisition, source-rendering and verification commands. Source downloads are separate from offline verification. Current author URLs may change; saved hashes and immutable code/report commits define this audit snapshot. The exact Lean 4.32.0 build was attempted in an isolated copy with all 12 dependency revisions verified; it timed out before completion or `#print axioms`. See the [replay record](research/04_closed_loop/LEAN_REPLAY.md). Passing data-integrity tests does not certify the mathematics.

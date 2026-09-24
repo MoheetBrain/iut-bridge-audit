@@ -1,5 +1,7 @@
 # Stage 1–3 completion gate — STOP
 
+> Historical gate, superseded by [Stage 3.5](STAGE_3_5_GATE.md). The global structured-lift requirement in Q10/Q11 below is withdrawn: detailed primary TeX uses image containment, specified Gaussian image equality and its discrete action. The old analysis is retained for provenance; it is not a current source requirement. See [U04 minimality](research/04_closed_loop/U04_MINIMALITY.md).
+
 Audit date: 2026-09-21. **Verdict: NO-GO for Stage 4.** The requested source/data deliverables exist; the mathematical reconstruction is partial. SOURCE FACT, SOURCE CLAIM, RECONSTRUCTION, INFERENCE and OPEN QUESTION remain distinct in the claim registry. No proof, disproof, faithful countermodel or missing-axiom theorem is established.
 
 ## Q1. Can η_q be typed exactly from the primary sources?

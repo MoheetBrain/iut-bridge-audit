@@ -1,0 +1,56 @@
+[
+  {
+    "command": [
+      "pdftoppm",
+      "-f",
+      "142",
+      "-l",
+      "142",
+      "-scale-to",
+      "1700",
+      "-png",
+      "-singlefile",
+      "sources/primary/IUT_III.pdf",
+      "research/04_closed_loop/evidence/IUT3_142"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "pdftoppm",
+      "-f",
+      "174",
+      "-l",
+      "174",
+      "-scale-to",
+      "1700",
+      "-png",
+      "-singlefile",
+      "sources/primary/IUT_III.pdf",
+      "research/04_closed_loop/evidence/IUT3_174"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "pdftoppm",
+      "-f",
+      "189",
+      "-l",
+      "189",
+      "-scale-to",
+      "1700",
+      "-png",
+      "-singlefile",
+      "sources/primary/IUT_III.pdf",
+      "research/04_closed_loop/evidence/IUT3_189"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

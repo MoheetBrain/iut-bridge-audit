@@ -7,19 +7,19 @@ flowchart TD
   U01["U01: BPS-to-original-prime-strip fidelity"]
   U02["U02: Full labeled execution and mono-theta environment data"]
   U03["U03: Ordinary H1 versus direct-limit H1 in Step 3"]
-  U04["U04: Coherent synchronized Step6 factorization"]
+  U04["U04: Specified Gaussian image realization and discrete action (global lift requirement withdrawn)"]
   U05["U05: MF/ME and vertical/archimedean transport"]
   U06["U06: Adelic region class and weighted-volume quotient"]
   U07["U07: Common equality type, orientation, q-root and diagonal conventions"]
   U08["U08: Full admissibility, coupled choices and induced transformations"]
-  U09["U09: Native q constraint through formal quotient and normalized comparison"]
+  U09["U09: Closed-loop q-constraint descent and LANA crosswalk"]
   U10["U10: Kernel replay and imported proof-package closure"]
   S01["S01: Step 1: Choose a BPS-to-Theta-pilot-BPS isomorphism and obtain the local monoid action."]
   S02["S02: Step 2: Reconstruct theta-cover subgroup and rationally enlarged monoid/action."]
   S03["S03: Step 3: Take torsion Tate module and Kummer maps at invariant levels, then the direct limit."]
   S04["S04: Step 4: Reconstruct geometric subquotient and change coefficients via cyclotomic rigidity."]
   S05["S05: Step 5: Recover labeled decomposition groups and restrict cohomology classes."]
-  S06["S06: Step 6: Use local Kummer maps and synchronized coefficient identifications; factor the theta image through the Gaussian/splitting-monoid container."]
+  S06["S06: Step 6: Use synchronized local Kummer maps; compare theta image with image of the specified Gaussian monoid and retain its discrete splitting actor."]
   S07["S07: Step 7: Embed local monoids in chosen field realizations and use the log identification of units modulo torsion with the additive ambient group."]
   S08["S08: Step 8: Extract the discrete Gaussian N action via LGP and assemble labeled local actions in the large volume container."]
   S09["S09: Step 9: Compare MF and functorially reconstructed ME shells through Kummer maps; read the output in the original input setting, subject to upper semi-compatibility."]
@@ -124,19 +124,19 @@ flowchart TD
 - U01: LANA;IUT2, §4.1 p.23; IUT2 Definition 4.9(viii) p.158 [UNRESOLVED].
 - U02: LANA;IUT2;ET, LANA §6.2 pp.33–36; IUT2 Proposition 1.5; ET Corollary 2.19 [UNRESOLVED].
 - U03: LANA, §6.1 pp.31–32; §9.1(c) p.44; Figure 6 [UNRESOLVED].
-- U04: LANA;IUT2;ET, LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10 [UNRESOLVED].
+- U04: LANA_TEX;IUT2;ET, LANA_TEX lines 1987–1996,2009–2017; IUT2 Corollary 4.10(i) pp.158–159 [UNRESOLVED].
 - U05: IUT3;LANA, IUT3 Proposition 3.5(ii), Theorem 3.11(ii) pp.155–156; LANA §9.1(g)–(i) p.45 [UNRESOLVED].
-- U06: LANA;IUT3, LANA §9.2 p.46; IUT3 Remark 3.1.1 pp.94–96; Proposition 3.9 pp.115–117 [UNRESOLVED].
-- U07: LANA;IUT3, LANA pp.24,26,46; IUT3 xi-d/e pp.183–184 [UNRESOLVED].
+- U06: LANA;IUT3, LANA §9.2 p.46; IUT3 Remark 3.9.4(i)–(vi) pp.120–126; Remark 3.1.1 pp.94–97 [UNRESOLVED].
+- U07: LANA;IUT1;IUT2;IUT3, IUT1 Example 3.2(iv) p.71; IUT2 Corollary 4.10(i) pp.158–159; IUT3 Remark 3.9.4 pp.120–126; LANA §9.2 p.46 [UNRESOLVED].
 - U08: IUT3;LANA, IUT3 Theorem 3.11 pp.153–158; LANA §§9–10 pp.44–49 [UNRESOLVED].
-- U09: IUT3;ELS;FORM, IUT3 cQ3/cQ4 pp.141–143; xi-d–f pp.183–184; ELS Stp7–8 pp.151–156; FORM pp.10–11 [UNRESOLVED].
+- U09: IUT3;LANA, IUT3 Remark 3.9.5(ix) pp.141–144; Remark 3.12.2(ii)(fitw) p.189; xi-d–f pp.183–184; LANA §9.2–9.3 p.46 [UNRESOLVED].
 - U10: LCODE, Iut/Implication/Corollary23.lean:119–125; lake-manifest.json @ 2d8f000457da6447fa4df4bfec7365c1a49b6384 [UNRESOLVED].
 - S01: LANA;IUT2, LANA §9.1(a) p.44; §6.2(b) p.33 [SOURCE_CLAIM_ONLY].
 - S02: LANA;IUT2, LANA §9.1(b) p.44; §6.2(c)–(d) pp.33–34 [SOURCE_CLAIM_ONLY].
 - S03: LANA, LANA §9.1(c) p.44 versus Figure 6 p.44; §6.1 pp.31–32 [SOURCE_CLAIM_ONLY].
 - S04: LANA;IUT2;ET, LANA §9.1(d) p.45; §6.2(e) p.35; IUT2 p.29; ET p.58 [SOURCE_CLAIM_ONLY].
 - S05: LANA, LANA §9.1(e) p.45; §6.2(f) p.35 [SOURCE_CLAIM_ONLY].
-- S06: LANA;IUT2;ET, LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 pp.29–30,158–159; ET p.58 [SOURCE_CLAIM_ONLY].
+- S06: LANA;LANA_TEX;IUT2;ET, LANA_TEX lines 1987–1996,2009–2017; IUT2 Corollary 4.10(i) pp.158–159 [SOURCE_CLAIM_ONLY].
 - S07: LANA;IUT3, LANA §9.1(g) p.45; §5.1 pp.26–28; IUT3 Proposition 1.2 pp.32–33 [SOURCE_CLAIM_ONLY].
 - S08: LANA;IUT3, LANA §9.1(h) p.45; §6.2(h)–(i) p.36; §5.2 pp.28–29 [SOURCE_CLAIM_ONLY].
 - S09: LANA;IUT3;ELS, LANA §9.1(i) p.45; §7.2(c) pp.39–40; IUT3 pp.155–156 [SOURCE_CLAIM_ONLY].

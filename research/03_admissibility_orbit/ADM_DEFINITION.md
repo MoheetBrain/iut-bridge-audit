@@ -14,7 +14,7 @@ The database's 12 records include choices, representative changes and forced str
 | BPS realization | Preserve local pilots, product-formula kernel and compact/unit data [LANA §4.1, pp.23–24] | Equivalence to complete IUT prime-strips and allowed realizations [U01] |
 | Environment | Recover the prescribed mono-theta system and labels, not freely chosen cyclotomes [IUT2 Proposition 1.5, pp.29–30] | Exact dependence on the initial realization [U02] |
 | Kummer chain | Use invariant-level domains and compatible direct limits [LANA §6.1, pp.31–32] | Reconcile Step 3 with Figure 6 [U03] |
-| Synchronized lift | Factor through the actual Gaussian/splitting monoid with the stated rigidity [LANA §6.2(g), pp.35–36] | Structured lift and its behavior under allowed changes [U04] |
+| Synchronized realization | Compare specified theta/Gaussian images with the stated rigidity [LANA_TEX lines 1987–2017] | Actual Gaussian splitting/action and permitted changes; no global section required [corrected U04] |
 | Shells and packets | Retain compact submodules, tensor factors, labels and weights [IUT3 Proposition 1.2, pp.32–33; Remark 3.1.1, pp.94–96] | Barred/unbarred restriction and full MF/ME transport [U05] |
 | Regions S | S is used as integral-structure data in the reconstructed volume container [LANA §9.2, p.46] | Source-accepted region class and permitted variation [U06, U08] |
 | Vertical comparison | Use upper semi-compatibility: finite-place inclusions, infinite-place surjections [IUT3 Theorem 3.11(ii), pp.155–156] | Full induced relation on S and η [U05, U08] |
@@ -29,4 +29,4 @@ The database's 12 records include choices, representative changes and forced str
 
 **OPEN QUESTION [R_U04, R_U07, R_U08]:** Distinct S could give the same volume class or η; the fibers have not been classified. Equality of volumes of arbitrary regions is not an extracted equivalence relation on **admissible executions**. A complete relation on (e,S) must be induced by source-allowed structured maps, must respect composition where defined, and must make the resulting η well-defined in one equality type. These checks remain open.
 
-The full Ind1/Ind2 definitions act on structured procession/unit data. Ind3 is recorded as a comparison relation with bounds, not a group action. Effects on the native q pilot and η_q are UNKNOWN unless a source theorem supplies them. See `INDETERMINACY_LEDGER.csv`.
+The full Ind1/Ind2 definitions act on structured procession/unit data. Ind3 is recorded as a comparison relation with bounds, not a group action. Stage 3.5 locates the explicit exclusion of the native q log-volume from Ind1/2/3 in IUT3 Corollary 3.12, p.174. The full η comparison remains incompletely typed; do not create a shared η_q/η_anab orbit. See `INDETERMINACY_LEDGER.csv`.

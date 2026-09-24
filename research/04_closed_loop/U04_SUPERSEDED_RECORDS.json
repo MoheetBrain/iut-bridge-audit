@@ -1,0 +1,109 @@
+{
+  "status": "HISTORICAL_SUPERSEDED_NOT_CURRENT_REQUIREMENT",
+  "base_commit": "ecd62b5f6f82eae722c9dcc68e5e0c83c3186f47",
+  "records": {
+    "maps": [
+      {
+        "map_id": "M09",
+        "source_notation": "f: M_infty → prod Obar^triangleright",
+        "domain": "O_MINF",
+        "codomain": "O_OMON",
+        "canonicality": "UNRESOLVED_COHERENT_LIFT",
+        "injective?": "UNKNOWN",
+        "surjective?": "UNKNOWN",
+        "isomorphism?": "UNKNOWN",
+        "structure_preserved": "Required equation M08∘f = M07∘M06∘M04",
+        "structure_forgotten": "UNKNOWN",
+        "dependence_on_choice": "CH04;CH05;CH06;CH07",
+        "dependence_on_S": "NO",
+        "affected_by_Ind1": "UNKNOWN",
+        "affected_by_Ind2": "UNKNOWN",
+        "affected_by_Ind3": "UNKNOWN",
+        "source_location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10(i) pp.158–159",
+        "notes": "Source asserts factorization. Exact equivariant lift family and representative behavior not reconstructed.",
+        "source_ids": "LANA;IUT2",
+        "evidence_type": "SOURCE CLAIM",
+        "arrow_kind": "FACTORIZATION_MAP",
+        "claim_ids": "R_M09"
+      }
+    ],
+    "choices": [
+      {
+        "choice_id": "CH07",
+        "stage": "S06",
+        "object_acted_on": "O_OMON",
+        "source_of_choice": "Synchronized Kummer realization / factorization",
+        "allowed_values": "Lifts inside actual splitting-monoid container satisfying phi∘f=psi",
+        "canonical?": "UNKNOWN",
+        "existence_proved?": "SOURCE_CLAIM_FACTORIZATION",
+        "uniqueness?": "UNKNOWN",
+        "affects_eta?": "YES_RELEVANT",
+        "affects_scale?": "UNKNOWN",
+        "affects_orientation?": "UNKNOWN",
+        "affects_pointing?": "UNKNOWN",
+        "affects_integral_structure?": "YES",
+        "interaction_with_other_choices": "CH03;CH04;CH05;CH06",
+        "source_location": "LANA §9.1(f)–(g) p.45; §6.2(g) pp.35–36",
+        "confidence": "HIGH_FOR_SOURCE_DESCRIPTION_ONLY",
+        "notes": "No proof that arbitrary pointwise lifts give a permissible global lift.",
+        "source_ids": "LANA",
+        "evidence_type": "RECONSTRUCTION",
+        "claim_ids": "R_CH07"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "U04",
+        "title": "Coherent synchronized Step6 factorization",
+        "source_ids": "LANA;IUT2;ET",
+        "source_location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10",
+        "status": "UNRESOLVED",
+        "required_resolution": "Give the actual factorization objects, existence scope, and permitted representative changes; image containment alone is insufficient.",
+        "evidence_type": "OPEN QUESTION",
+        "claim_ids": "R_U04"
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "R_M09",
+        "exact_claim": "map M09: f: M_infty → prod Obar^triangleright | UNRESOLVED_COHERENT_LIFT | Source asserts factorization. Exact equivariant lift family and representative behavior not reconstructed.",
+        "status": "SOURCE_CLAIM_ONLY",
+        "source_id": "LANA;IUT2",
+        "location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10(i) pp.158–159",
+        "evidence_type": "SOURCE CLAIM",
+        "confidence": "BOUNDED",
+        "notes": "Consult the complete row, especially its restrictions and UNKNOWN entries."
+      },
+      {
+        "claim_id": "R_CH07",
+        "exact_claim": "choice CH07: Synchronized Kummer realization / factorization | Lifts inside actual splitting-monoid container satisfying phi∘f=psi | No proof that arbitrary pointwise lifts give a permissible global lift.",
+        "status": "RECONSTRUCTION",
+        "source_id": "LANA",
+        "location": "LANA §9.1(f)–(g) p.45; §6.2(g) pp.35–36",
+        "evidence_type": "RECONSTRUCTION",
+        "confidence": "BOUNDED",
+        "notes": "Consult the complete row, especially its restrictions and UNKNOWN entries."
+      },
+      {
+        "claim_id": "R_U04",
+        "exact_claim": "question U04: Coherent synchronized Step6 factorization | Give the actual factorization objects, existence scope, and permitted representative changes; image containment alone is insufficient.",
+        "status": "UNRESOLVED",
+        "source_id": "LANA;IUT2;ET",
+        "location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10",
+        "evidence_type": "OPEN QUESTION",
+        "confidence": "BOUNDED",
+        "notes": "Consult the complete row, especially its restrictions and UNKNOWN entries."
+      },
+      {
+        "claim_id": "C024",
+        "exact_claim": "The narrow Step6 obligation identified here is a coherent source-structured factorization phi_r composed with f_r equals psi_r; its full realization domain remains unresolved.",
+        "status": "UNRESOLVED",
+        "source_id": "LANA;IUT2;ET",
+        "location": "LANA §6.2(g) pp.35–36; §9.1(f) p.45; IUT2 Corollary 4.10(i); ET Corollary 2.19(i)",
+        "evidence_type": "OPEN QUESTION",
+        "confidence": "HIGH_WITH_STATED_SCOPE",
+        "notes": "Not asserted to be a logically weakest premise or a missing theorem in IUT."
+      }
+    ]
+  }
+}

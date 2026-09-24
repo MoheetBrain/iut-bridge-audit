@@ -1,5 +1,7 @@
 # LANA source-code audit
 
+> Historical Stages 1–3 static audit. Stage 3.5 installed the exact toolchain, fetched and verified the pinned dependencies, and attempted a targeted build; it timed out before kernel completion or axiom inspection. See [the replay record](../04_closed_loop/LEAN_REPLAY.md). The historical statements below about installation/fetching describe the earlier run.
+
 **SOURCE FACT [C007–C008, C021, C025, C027].** Repository: `lana-agents/iut`; branch: `main`; commit: `2d8f000457da6447fa4df4bfec7365c1a49b6384`; acquired 2026-09-21. The 202-file working snapshot in `sources/lana_agents_iut/` matches the fresh immutable archive. Exact per-file hashes are in `sources/metadata/LANA_FILE_MANIFEST.csv`.
 
 This is a **lexical source and local-import audit**. It is not Lean elaboration, theorem-specific kernel checking or an external-dependency axiom audit. No new Lean file was created. `LANA_STATIC_AUDIT.json` records `kernel_replayed: false`.

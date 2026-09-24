@@ -34,11 +34,11 @@ Generated from the research database. These are boundaries of this audit, not as
 
 ## U04
 
-- **title:** Coherent synchronized Step6 factorization
-- **source ids:** LANA;IUT2;ET
-- **source location:** LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10
-- **status:** UNRESOLVED
-- **required resolution:** Give the actual factorization objects, existence scope, and permitted representative changes; image containment alone is insufficient.
+- **title:** Specified Gaussian image realization and discrete action (global lift requirement withdrawn)
+- **source ids:** LANA_TEX;IUT2;ET
+- **source location:** LANA_TEX lines 1987–1996,2009–2017; IUT2 Corollary 4.10(i) pp.158–159
+- **status:** CORRECTED_OVERSTRONG_LIFT_REQUIREMENT; REALIZATION_FIDELITY_PARTIAL
+- **required resolution:** Reconstruct actual synchronized Gaussian image equality and splitting actor with torsion/labels/prime-strip data; no global structured section required by printed Step7.
 - **evidence type:** OPEN QUESTION
 - **claim ids:** R_U04
 
@@ -56,19 +56,19 @@ Generated from the research database. These are boundaries of this audit, not as
 
 - **title:** Adelic region class and weighted-volume quotient
 - **source ids:** LANA;IUT3
-- **source location:** LANA §9.2 p.46; IUT3 Remark 3.1.1 pp.94–96; Proposition 3.9 pp.115–117
-- **status:** UNRESOLVED
-- **required resolution:** Specify positivity, finiteness, local compactness, global restriction and vector operations; no arbitrary measurable subsets.
+- **source location:** LANA §9.2 p.46; IUT3 Remark 3.9.4(i)–(vi) pp.120–126; Remark 3.1.1 pp.94–97
+- **status:** PARTIAL_LOCAL_RSS_AND_WEIGHTS_RECONSTRUCTED
+- **required resolution:** Local Fn/equal-integral monoid and log transport now explicit. Reconcile global LANA region quotient, domain restrictions and vector operations with weighted IUT semisimplification; see COMMON_TARGET.md.
 - **evidence type:** OPEN QUESTION
 - **claim ids:** R_U06
 
 ## U07
 
 - **title:** Common equality type, orientation, q-root and diagonal conventions
-- **source ids:** LANA;IUT3
-- **source location:** LANA pp.24,26,46; IUT3 xi-d/e pp.183–184
-- **status:** UNRESOLVED
-- **required resolution:** Specify fixed underlying line and transports without identifying the two target pilots by definition.
+- **source ids:** LANA;IUT1;IUT2;IUT3
+- **source location:** IUT1 Example 3.2(iv) p.71; IUT2 Corollary 4.10(i) pp.158–159; IUT3 Remark 3.9.4 pp.120–126; LANA §9.2 p.46
+- **status:** PARTIAL_ROOT_NORMALIZATION_AND_TRANSPORT_RECONSTRUCTED
+- **required resolution:** Root convention, native sign, diagonal route and weights located. Complete global common oriented equality type and label identification without declaring target pilots equal; see COMMON_TARGET.md.
 - **evidence type:** OPEN QUESTION
 - **claim ids:** R_U07
 
@@ -84,11 +84,11 @@ Generated from the research database. These are boundaries of this audit, not as
 
 ## U09
 
-- **title:** Native q constraint through formal quotient and normalized comparison
-- **source ids:** IUT3;ELS;FORM
-- **source location:** IUT3 cQ3/cQ4 pp.141–143; xi-d–f pp.183–184; ELS Stp7–8 pp.151–156; FORM pp.10–11
+- **title:** Closed-loop q-constraint descent and LANA crosswalk
+- **source ids:** IUT3;LANA
+- **source location:** IUT3 Remark 3.9.5(ix) pp.141–144; Remark 3.12.2(ii)(fitw) p.189; xi-d–f pp.183–184; LANA §9.2–9.3 p.46
 - **status:** UNRESOLVED
-- **required resolution:** Reconstruct the local-global categories, determinant/twist, vertical transport and comparison with LANA outputs.
+- **required resolution:** Verify actual CL_src(D,Q,O) implies fixed native scalar belongs to source output downset through cQ3/cQ4 and sQ5. Neither direction with exact suitable-S eta equality is established; see Stage 3.5 gate.
 - **evidence type:** OPEN QUESTION
 - **claim ids:** R_U09
 
@@ -97,7 +97,7 @@ Generated from the research database. These are boundaries of this audit, not as
 - **title:** Kernel replay and imported proof-package closure
 - **source ids:** LCODE
 - **source location:** Iut/Implication/Corollary23.lean:119–125; lake-manifest.json @ 2d8f000457da6447fa4df4bfec7365c1a49b6384
-- **status:** UNRESOLVED
-- **required resolution:** Static source/import audit completed; exact-toolchain build and print-axioms certification not performed.
+- **status:** EXACT_TOOLCHAIN_BUILD_ATTEMPTED_TIMEOUT; AXIOMS_UNKNOWN
+- **required resolution:** Lean 4.32.0 installed; all 12 dependency revisions and unchanged manifest verified in isolated copy. Targeted build timed out after 480s; #print axioms not reached. Complete kernel/axiom replay if practical; see LEAN_BUILD_REPLAY.json.
 - **evidence type:** OPEN QUESTION
 - **claim ids:** R_U10

@@ -1,0 +1,49 @@
+{
+  "stage": "3.5",
+  "recorded_at_utc": "2026-09-24T16:42:44.253Z",
+  "base_commit": "ecd62b5f6f82eae722c9dcc68e5e0c83c3186f47",
+  "branch": "codex/stage-3-5-closed-loop",
+  "scope": "Integrity and reproducibility only; no mathematical theorem certification",
+  "commands": [
+    {
+      "command": "python3 scripts/verify_sources.py",
+      "chunk_id": "c53f58",
+      "wall_time_seconds": 0.000005334,
+      "exit_code": 0,
+      "original_token_count": 20,
+      "output": "PASS: 18 source pins and metadata records; 202 LANA files match pinned archive\n"
+    },
+    {
+      "command": "python3 scripts/validate_ledgers.py",
+      "chunk_id": "72bd29",
+      "wall_time_seconds": 0.000005375,
+      "exit_code": 0,
+      "original_token_count": 25,
+      "output": "PASS: schemas, evidence labels, source locators, foreign keys, nine steps, DAG and generated views\n"
+    },
+    {
+      "command": "python3 scripts/render_closed_loop.py --check",
+      "chunk_id": "8daf4d",
+      "wall_time_seconds": 0.000006167,
+      "exit_code": 0,
+      "original_token_count": 25,
+      "output": "PASS: 79 Stage 3.5 rows; source IDs, epistemic labels, schemas, graph references and view freshness\n"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -v",
+      "chunk_id": "659cef",
+      "wall_time_seconds": 0.00000625,
+      "exit_code": 0,
+      "original_token_count": 494,
+      "output": "test_dangling_closed_loop_endpoint_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_evidence_and_generated_views (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_graph_cannot_diverge_from_evidence (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_missing_locator_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_unknown_source_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_unsupported_epistemic_promotion_rejected (test_closed_loop_artifacts.ClosedLoopIntegrity) ... ok\ntest_comment_string_masking (test_research_artifacts.LedgerTests) ... ok\ntest_dangling_map_endpoint (test_research_artifacts.LedgerTests) ... ok\ntest_duplicate_id (test_research_artifacts.LedgerTests) ... ok\ntest_generated_views_current (test_research_artifacts.LedgerTests) ... ok\ntest_graph_cycle (test_research_artifacts.LedgerTests) ... ok\ntest_graph_dangling_endpoint (test_research_artifacts.LedgerTests) ... ok\ntest_invalid_evidence (test_research_artifacts.LedgerTests) ... ok\ntest_missing_claim_status (test_research_artifacts.LedgerTests) ... ok\ntest_missing_invariant_status (test_research_artifacts.LedgerTests) ... ok\ntest_missing_locator (test_research_artifacts.LedgerTests) ... ok\ntest_missing_source (test_research_artifacts.LedgerTests) ... ok\ntest_nonexistent_step (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_invariant (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_object (test_research_artifacts.LedgerTests) ... ok\ntest_unknown_source (test_research_artifacts.LedgerTests) ... ok\ntest_valid_database (test_research_artifacts.LedgerTests) ... ok\ntest_snapshot_tampering_rejected (test_research_artifacts.SourceTests) ... ok\ntest_source_tampering_rejected (test_research_artifacts.SourceTests) ... ok\ntest_valid_source_fixture (test_research_artifacts.SourceTests) ... ok\n\n----------------------------------------------------------------------\nRan 25 tests in 0.054s\n\nOK\n"
+    },
+    {
+      "command": "git diff --check",
+      "chunk_id": "22a576",
+      "wall_time_seconds": 0.000004417,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  ]
+}

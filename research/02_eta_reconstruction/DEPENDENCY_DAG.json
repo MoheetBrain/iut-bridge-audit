@@ -28,10 +28,10 @@
     },
     {
       "id": "U04",
-      "label": "Coherent synchronized Step6 factorization",
+      "label": "Specified Gaussian image realization and discrete action (global lift requirement withdrawn)",
       "kind": "UNRESOLVED_OBLIGATION",
-      "source_ids": "LANA;IUT2;ET",
-      "source_location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 Corollary 4.10",
+      "source_ids": "LANA_TEX;IUT2;ET",
+      "source_location": "LANA_TEX lines 1987–1996,2009–2017; IUT2 Corollary 4.10(i) pp.158–159",
       "status": "UNRESOLVED"
     },
     {
@@ -47,15 +47,15 @@
       "label": "Adelic region class and weighted-volume quotient",
       "kind": "UNRESOLVED_OBLIGATION",
       "source_ids": "LANA;IUT3",
-      "source_location": "LANA §9.2 p.46; IUT3 Remark 3.1.1 pp.94–96; Proposition 3.9 pp.115–117",
+      "source_location": "LANA §9.2 p.46; IUT3 Remark 3.9.4(i)–(vi) pp.120–126; Remark 3.1.1 pp.94–97",
       "status": "UNRESOLVED"
     },
     {
       "id": "U07",
       "label": "Common equality type, orientation, q-root and diagonal conventions",
       "kind": "UNRESOLVED_OBLIGATION",
-      "source_ids": "LANA;IUT3",
-      "source_location": "LANA pp.24,26,46; IUT3 xi-d/e pp.183–184",
+      "source_ids": "LANA;IUT1;IUT2;IUT3",
+      "source_location": "IUT1 Example 3.2(iv) p.71; IUT2 Corollary 4.10(i) pp.158–159; IUT3 Remark 3.9.4 pp.120–126; LANA §9.2 p.46",
       "status": "UNRESOLVED"
     },
     {
@@ -68,10 +68,10 @@
     },
     {
       "id": "U09",
-      "label": "Native q constraint through formal quotient and normalized comparison",
+      "label": "Closed-loop q-constraint descent and LANA crosswalk",
       "kind": "UNRESOLVED_OBLIGATION",
-      "source_ids": "IUT3;ELS;FORM",
-      "source_location": "IUT3 cQ3/cQ4 pp.141–143; xi-d–f pp.183–184; ELS Stp7–8 pp.151–156; FORM pp.10–11",
+      "source_ids": "IUT3;LANA",
+      "source_location": "IUT3 Remark 3.9.5(ix) pp.141–144; Remark 3.12.2(ii)(fitw) p.189; xi-d–f pp.183–184; LANA §9.2–9.3 p.46",
       "status": "UNRESOLVED"
     },
     {
@@ -124,10 +124,10 @@
     },
     {
       "id": "S06",
-      "label": "Step 6: Use local Kummer maps and synchronized coefficient identifications; factor the theta image through the Gaussian/splitting-monoid container.",
+      "label": "Step 6: Use synchronized local Kummer maps; compare theta image with image of the specified Gaussian monoid and retain its discrete splitting actor.",
       "kind": "ALGORITHM_STEP",
-      "source_ids": "LANA;IUT2;ET",
-      "source_location": "LANA §9.1(f) p.45; §6.2(g) pp.35–36; IUT2 pp.29–30,158–159; ET p.58",
+      "source_ids": "LANA;LANA_TEX;IUT2;ET",
+      "source_location": "LANA_TEX lines 1987–1996,2009–2017; IUT2 Corollary 4.10(i) pp.158–159",
       "status": "SOURCE_CLAIM_ONLY"
     },
     {

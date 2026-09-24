@@ -8,7 +8,7 @@ These are **RECONSTRUCTION / OPEN QUESTION** checks of the specification, not at
 | Rescaling license | Any proposed rescaling must lift to the full source data, preserve the appropriate pilots/weights and satisfy all coupling conditions [R_CH01–R_CH12] | No arbitrary rescaling admitted |
 | Diagram semantics | Replace strict commutativity by upper semi-compatibility exactly where the source does [C013, IUT3 Theorem 3.11(ii)] | Inclusions/surjections retained; complete η action UNKNOWN |
 | Pointing tautology | Target pilot [1·S] must not be identified with the native q pilot in the definition of admissibility [C012, C023] | Separate pilots retained |
-| Kummer lift | Image containment cannot alone certify a source-structured coherent inverse/factorization [C024] | U04 open |
+| Kummer realization | Preserve image containment and specified Gaussian action without requiring a global section [C035A; superseded C024] | GLOBAL LIFT NOT REQUIRED; realization fidelity still partial |
 | Measure class | General measurable regions must not silently inherit the source packet-weighted formulas [C016, R_U06] | U06 open |
 | Source retention | Native unit/Galois/localization and determinant data must survive until the source says they are forgotten [C014] | U09 open |
 | Same equality type | All compositions must use specified source transports rather than arbitrary line isomorphisms [R_U07] | U07 open |

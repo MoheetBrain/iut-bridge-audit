@@ -1,0 +1,103 @@
+{
+  "description": "Source-asserted closed loop. Cycle is a compatibility assertion, not a proof or literal composite identity. sQ5 branches off after cQ3/cQ4.",
+  "nodes": [
+    {
+      "id": "Q",
+      "type": "native codomain full prime-strip with q-itw"
+    },
+    {
+      "id": "THETA",
+      "type": "domain full prime-strip with Theta-itw"
+    },
+    {
+      "id": "DETACHED",
+      "type": "etale-like Kummer-detached representation"
+    },
+    {
+      "id": "EVALUATED",
+      "type": "evaluated Gaussian/LGP representation"
+    },
+    {
+      "id": "HULL",
+      "type": "weighted determinant objects in codomain Frobenioids"
+    },
+    {
+      "id": "FORMAL",
+      "type": "formal quotient presentation with local-global data"
+    },
+    {
+      "id": "SHIFTED",
+      "type": "vertically adjusted comparable data; loop closure source-claimed"
+    },
+    {
+      "id": "QVALUE",
+      "type": "fixed native scalar"
+    },
+    {
+      "id": "VOLUME",
+      "type": "output scalar downset"
+    }
+  ],
+  "edges": [
+    {
+      "ledger_id": "CL_01",
+      "source": "Q",
+      "target": "THETA",
+      "edge_type": "full poly-isomorphism"
+    },
+    {
+      "ledger_id": "CL_02",
+      "source": "THETA",
+      "target": "DETACHED",
+      "edge_type": "poly-isomorphism"
+    },
+    {
+      "ledger_id": "CL_03",
+      "source": "DETACHED",
+      "target": "EVALUATED",
+      "edge_type": "poly-isomorphism"
+    },
+    {
+      "ledger_id": "CL_04",
+      "source": "EVALUATED",
+      "target": "HULL",
+      "edge_type": "functorial reconstruction"
+    },
+    {
+      "ledger_id": "CL_05",
+      "source": "HULL",
+      "target": "FORMAL",
+      "edge_type": "formal quotient"
+    },
+    {
+      "ledger_id": "CL_06",
+      "source": "FORMAL",
+      "target": "SHIFTED",
+      "edge_type": "log-link relation"
+    },
+    {
+      "ledger_id": "CL_07",
+      "source": "SHIFTED",
+      "target": "Q",
+      "edge_type": "other"
+    },
+    {
+      "ledger_id": "CL_08",
+      "source": "SHIFTED",
+      "target": "VOLUME",
+      "edge_type": "other"
+    },
+    {
+      "ledger_id": "CL_09",
+      "source": "Q",
+      "target": "QVALUE",
+      "edge_type": "other"
+    },
+    {
+      "ledger_id": "CL_10",
+      "source": "QVALUE",
+      "target": "VOLUME",
+      "edge_type": "other"
+    }
+  ]
+}
