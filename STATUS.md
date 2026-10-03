@@ -1,5 +1,7 @@
 # Current audit status
 
+**2026-10-03: READY_FOR_SPECIALIST_CLARIFICATION.** [E3d.3](research/09_log_step_adequacy/DECISION.md) supplies a positive local native-q Rss calculation and supersedes the earlier full-orbit necessity claim. The [native-to-hull packet](research/10_native_hull_review/REVIEW_NOTE.md) isolates the selected comparison asserted in Yamashita's Corollary 13.13, with [source provenance](research/10_native_hull_review/SOURCE_MAP.csv) and an [unsent request](research/10_native_hull_review/REQUEST_DRAFT.txt). Raw outputs, their hull, selected comparison data and numerical representatives remain distinct. Native attachment to the bounded hull/formal construction, W*, an admissible approximation sequence and xi-f remain unresolved. Stop at specialist clarification; no automatic further micro-audit or external sending. The historical snapshot below is retained, including its superseded next action.
+
 **2026-09-24 — STAGE 3.75 AUDIT DELIVERED; FORMAL RECONSTRUCTION PARTIAL; STAGE 4 NO-GO.**
 
 - **B1: UNRESOLVED.** The intended pre-sQ5 relation concerns native-q specialization of intertwining on a fixed full prime-strip through cQ3/cQ4 formal categories/diagrams. Its complete predicate and independent derivation remain unrecovered. It is asserted in original IUT3 Remark3.9.5(ix), not only in later exposition.

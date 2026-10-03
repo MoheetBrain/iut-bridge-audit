@@ -1,0 +1,12 @@
+Subject: Selected native-q comparison in Yamashita's Corollary 13.13
+
+In Yamashita's Corollary 13.13 proof (p.353), which construction supplies the region inside the Theta-output hull compared with the native q-pilot region, what kind of isomorphism or weaker formal comparison is intended, and which preceding result, with its instantiation, ensures the native marking and normalized degree compatibility under jointly admissible choices?
+
+We have reconstructed the local Rss numerical comparison of IUT III Remark 3.9.4(iii)-(iv), pp.123-124, including preservation of the source-normalized native q-power value. This does not identify its weighted function representative with an admissible arithmetic region, or attach a generic chart to the particular labeled Kummer domain.
+
+The review anchors are Yamashita's Remark 11.1.1, p.248, Theorem 13.12(3), pp.349-351, and Corollary 13.13, pp.352-353; and IUT III Ob9/Ob9-1, pp.138-139, and Remark 3.9.5(ix), pp.143-144. We distinguish raw outputs from their hull and do not require the selected comparison to be a raw output, canonical region, exact attainment, or full determinant-orbit transport.
+
+An explicit construction, a theorem with its instantiation, a correction to our interpretation, or a weaker sufficient comparison would resolve this clarification.
+
+Yamashita: https://www.kurims.kyoto-u.ac.jp/~gokun/DOCUMENTS/abc2018Jan19.pdf
+IUT III (May 2020 author version): https://www.kurims.kyoto-u.ac.jp/~motizuki/Inter-universal%20Teichmuller%20Theory%20III.pdf

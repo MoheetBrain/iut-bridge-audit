@@ -1,5 +1,7 @@
 # IUT bridge audit
 
+**Current state, 2026-10-03: READY_FOR_SPECIALIST_CLARIFICATION.** [E3d.3](research/09_log_step_adequacy/DECISION.md) reconstructs the local native-q Rss numerical comparison and supersedes the earlier claim that full determinant-orbit transport is necessary. The [native-to-hull review packet](research/10_native_hull_review/REVIEW_NOTE.md) asks about the selected comparison inside the bounded hull/formal construction; it does not require a raw algorithm output or exact attainment. The attachment remains unresolved. The request is unsent; no further micro-audit is authorized by this packet. Historical reports are preserved; the Stage 3.75-era summary below is not the latest gate.
+
 The current target is the native-q specialization in the formal output construction before scalar evaluation. Its exact mathematical type and independent derivation remain unresolved. [Stage 3.75](STAGE_3_75_GATE.md) separates that B1 obligation from the substantial normalized-volume machinery supporting B2.
 
 A related, differently typed target in LANA asks whether the native q comparison map belongs to the admissible anabelian family:
